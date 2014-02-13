@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Structured data NOW</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Publishing structured data by default in open source library systems">
+		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,318 +37,424 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>Structured data by default</h1>
+					<h3>in open source library systems</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://coffeecode.net">Dan Scott</a> / <a href="http://google.com/+DanScottCan">+DanScottCan</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
+					<h2>The web</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+                        A platform for efficiently sharing cats
 					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
+                    <img src="images/cat.jpg"></a>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
+					<h2>Also, hypertext documents</h2>
+                    <pre><code>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Fancy academic article&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;The web as intellectual rising tide&lt;/h1&gt;
+    &lt;p&gt;As my esteemed colleague
+      &lt;a href="http://example.com/author"&gt;Foo Bar&lt;/a&gt; has 
+      &lt;a href="http://example.com/article"&gt;astutely observed&lt;/a&gt;
+      ...
+    &lt;/p&gt;
+  &lt;body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                </section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                <section>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+                    <section>
+                        <h2>Organizing the web Yahoo-style</h2>
+                        <img src="images/yahoo-old-style.png"><br />
+                        <cite><a href="https://web.archive.org/web/19961128071707/http://www8.yahoo.com/Science/Computer_Science/">Internet Archive Wayback Machine</a></cite>
+                    </section>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+                    <section>
+                        <h2>Organizing the web Yahoo-style</h2>
+                        <blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <br />
+                        Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
+                        </blockquote>
+                        <cite>Rosenfeld, Lou. <em>CMC Magazine</em>, "The Untimely Death of Yahoo". September 1, 1995. <a href="http://www.ibiblio.org/cmc/mag/1995/sep/last.html">(online)</a></cite>
+                        <aside class="notes">More gold: <q>It seems likely that techniques from classical librarianship, which have had only limited success in libraries and other traditional information environments, will scale even less so in the distributed, decentralized and heterogeneous information space that we find on the Web.</q></aside>
+                    </section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                    <section>
+                        <h2>Google: ranking the link (and more)</h2>
+                        <p>Google attacked the <em>bag of words</em> keyword problem a number of ways:</p>
+                        <ul>
+                            <li><a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">PageRank algorithm</a> - evolution of academic citation analysis</li>
+                            <li>Weighting keyword importance by appearance (size, boldness)</li>
+                            <li>Using keywords in external links to a given page</li>
+                        </ul>
+                        <p>... and won (at least to date)</p>
+                    </section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+                    <section>
+                        <h2>Plenty of ambiguity problems remain</h2>
+                        <p>When a web page mentions "Dan Scott", it could be:</p>
+                        <ul>
+                            <li>"Dan Scott" the character from the One Tree Hill TV show</li>
+                            <li>"Dan Scott" the artist from Magic the Gathering card game</li>
+                            <li>"Dan Scott" the Ontario academic professor from the University of Waterloo</li>
+                            <li>"Dan Scott" the Ontario academic librarian from Laurentian University</li>
+                        </ul>
+                    </section>
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+                </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+                <section>
+                    <section>
+                        <h3>Vannevar Bush and the Memex</h3>
+                        <blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
+                        [...]<br />
+                        A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote>
+                        <cite><em>Atlantic Monthly</em>, "As We May Think". July 1, 1945. <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">(online)</a></cite>
+                    </section>
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+                    <section>
+                        <h3>Tim Berners-Lee and the Web</h3>
+                        <p>HTTP and HTML enter the scene:<p>
+                        <blockquote>We should work toward a universal linked information system, in which generality
+                        and portability are more important than fancy graphics techniques and complex extra facilities.</blockquote>
+                        <cite>CERN. "Information Management: A Proposal". May 1990. <a href="http://www.w3.org/History/1989/proposal.html">(online)</a></cite>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
+                        <aside class="notes">Most information then online (news groups, gopher) was organized as a tree; Lee found this too restrictive.</aside>
+                    </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+                    <section>
+                        <h3>Tim Berners-Lee and the Semantic Web</h3>
+                        <blockquote>
+                        The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning,
+                        better enabling computers and people to work in cooperation.
+                        </blockquote>
+                        <cite><em>Scientific American</em>, "The Semantic Web". May 17, 2001.</cite>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
+                        <aside class="notes">Then goes on to describe RDF and XML as the building blocks of the semantic web. That's an extension of the existing web how, exactly?</aside>
+                    </section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                </section>
 
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
+                <section>
+                    <section>
+                        <h3>Resource Description Framework (RDF) and XML</h3>
+                        <ul>
+                            <li>RDF describes <code>subject::property::value</code> relationships as <em>triples</em></li>
+                            <li><em>Linked data</em> replaces literal values with URLs to support a graph structure</li>
+                            <li>Common early serialization of RDF triples was in XML:
+                            <pre><code>&lt;?xml version="1.0"?&gt;
+&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:ex="http://example.org/stuff/1.0/"&gt;
+  &lt;rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
+        dc:title="RDF/XML Syntax Specification (Revised)"&gt;
+    &lt;ex:editor&gt;
+      &lt;rdf:Description ex:fullName="Dave Beckett"&gt;
+        &lt;ex:homePage rdf:resource="http://purl.org/net/dajobe/" /&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/ex:editor&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</code></pre>
+<cite>W3C. "RDF/XML Syntax Specification (Revised)". February 10, 2004. <a href="http://www.w3.org/TR/REC-rdf-syntax/#example7">Online</a></cite>
+                            </li>
+                        </ul>
+                        <aside class="notes">This is a sanity test... If that looks unwieldy, you are probably sane.</aside>
+                    </section>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
+                    <section>
+                        <h3>RDF in Attributes (RDFa)</h3>
+                        <ul>
+                            <li>RDF serialization that uses a handful of attributes to decorate existing XML</li>
+                            <li>Proposed in 2004 for use in XHTML; started to take off with HTML5</li>
+                                <pre><code>&lt;body vocab="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      prefix="dc: http://purl.org/dc/elements/1.1/
+      ex: http://example.org/stuff/1.0/"&gt;
+  &lt;div typeof="Description"
+       about="http://www.w3.org/TR/rdf-syntax-grammar"&gt;
+    &lt;h1 property="dc:title"&gt;RDF/XML Syntax Specification (Revised)&lt;/h1&gt;
+    &lt;div property="ex:editor" typeof="Description"&gt;
+       &lt;span property="ex:fullName"&gt;
+          &lt;a href="http://purl.org/net/dajobe/"
+             property="ex:homePage"&gt;Dave Beckett&lt;/a&gt;
+       &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                            </li>
+                            <li><em>microdata</em> is a roughly equivalent competing form of inline markup</li>
+                        </ul>
+                    </section>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
+                    <section>
+                        <h3>The Semantic Web circa 2010</h3>
+                        <ul>
+                            <li>Semantic Web efforts resulted in many deeply specialized vocabularies (objects and properties)</li>
+                            <li>
+                                <ul>
+                                    <li>Best practice was to mix and match vocabularies
+                                    <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
+                                    <li>Highly complex, quickly overwhelming</li>
+                                </ul>
+                            </li>
+                            <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
+                            <li>Competing practitioner approaches included microformats, structured data via microdata and RDFa, OGP</li>
+                            <li>Result was academically interesting, but in many ways a heterogenous mess</li>
+                    </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+                    <section>
+                        <h3>schema.org</h3>
+                        <ul>
+                            <li>In July 2011, <a href="http://schema.org">schema.org</a> was announced by major search engines (Google, Yahoo, Yandex)</li>
+                            <li>Some goals:
+                                <ol>
+                                    <li>Offer a simple vocabulary for the <em>short tail</em> of web results (events, products, people)</li>
+                                    <li>Enable normal web page publishers to be able to add schema.org markup via RDFa or microdata without having to be Semantic Web experts</li>
+                                    <li>Enable search engines to aggregate data and apply finer-grained disambiguation and relevance strategies</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                </section>
+                <section>
+                    <section>
+                        <h3>Libraries: early technology adopters</h3>
+                        <ul>
+                            <li>Telnet access to catalogues</li>
+                            <li>Z39.50 protocol for sharing records</li>
+                            <li>OpenURL protocol for resolving article requests</li>
+                            <li>COinS microformat for embedding citations in HTML</li>
+                            <li>unAPI for offering different metadata representations</li>
+                        </ul>
+                        <p style="padding-top: 1em">Fatal flaw: almost entirely library-specific technologies</p>
+                    </section>
 
-    var nodes = document.querySelectorAll( selector );
+                    <section>
+                        <h3>MARC: (still) kind of a big deal</h3>
+                        <p>... to libraries ...</p>
+                        <img src='images/ron_burgundy.jpg'>
+                    </section>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                    <section>
+                        <h3>Enduring technology</h3>
+                        <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
+                        <ul>
+                            <li>Binary format designed for record sharing and tape storage in the 1960s</li>
+                            <li>Mixture of position-dependent data in "fixed fields" and fields with variable-length subfields</li>
+                            <li>Combined with cataloging rules to create conventions like: <code>245 $a $b $c = Title</code></li>
+                        </ul>
+<pre><code>
+02199cam a22004698i 4500
+001 123456
+005 20131223124722.0
+008 130924s2013    nyu      b    001 0 eng  
+020    $a 9780804139571
+100 1  $a Burgundy, Ron
+245 10 $a Let me off at the top! $b my classy life and other musings
+264  1 $a New York : $b Crown Archetype, $c [2013].
+300    $a 223 pages, 16 unnumbered pages of plates : $b illustrations ; $c 22 cm 
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>MARC: XML serialization</h3>
+                        <p>Same inscrutable semantics, more verbose, but usable with standard tools</p>
+<pre><code><record>
+  <leader>02199cam a22004698i 4500</leader>
+  <controlfield tag="001">123456</controlfield>
+  <controlfield tag="005">20131223124722.0</controlfield>
+  <controlfield tag="008">130924s2013    nyu      b    001 0 eng  </controlfield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9780804139571</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Burgundy, Ron.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Let me off at the top!</subfield>
+    <subfield code="b">my classy life and other musings</subfield>
+  </datafield>
+</code></pre>
+                        <p>MARC is still at the core of almost every library system today</p>
+                    </section>
+                </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                <section>
+                    <section>
+                    <h2>Research directions</h2>
+                    <ul>
+                        <li><strong>Question</strong>: Can library metadata be relevant to normal search engines?</li>
+                        <li><strong>Actions</strong>:
+                        <ul>
+                            <li>Map MARC data to schema.org vocabulary</li>
+                            <li>Implement schema.org in open source library systems</li>
+                            <li>Propose enhancements to schema.org for library and bibliographic data</li>
+                        </ul></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+                <section>
+                    <h2>MARC data to schema.org base types</h2>
+<table>
+<thead>
+<tr>
+<th>Schema.org type</th><th>MARC 21 leader[06] value</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Book</td><td><code>a</code></td></tr>
+<tr><td>Map</td><td><code>e</code></td></tr>
+<tr><td>MusicAlbum</td><td><code>j</code></td></tr>
+<tr><td>CreativeWork</td><td>All other LDR values</td></tr>
+</tbody>
+</table>
+                    <aside class="notes">Plenty of room to improve based on finer-grained mappings from the fixed fields</aside>
+                </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
+                <section>
+                    <h2>MARC to schema.org properties</h2>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
+<table>
+<thead>
+<tr><th>Schema.org property</th><th>MARC 21 field/subfield</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>245/All subfields except w, 0, 4, 5, 6, 8, 9</td>
+</tr>
+<tr>
+<td><code>Book :: isbn</code></td>
+<td>022/a</td>
+</tr>
+<tr>
+<td><code>publisher :: Organization :: location</code></td>
+<td>(260/a or 264[indicator 2="1"])/a</td>
+</tr>
+<tr>
+<td><code>publisher :: Organization :: name</code></td>
+<td>(260/b or 264[indicator 2="1"])/b</td>
+</tr>
+<tr>
+<td><code>datePublished</code></td>
+<td>(260/c or 264[indicator 2="1"])/c</td>
+</tr>
+</tbody>
+</table>
+                    <p>(Just a small sample)</p>
+                </section>
 
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+                <section>
+                    <h2>Library items as schema.org Offers</h2>
+                    <ul>
+                        <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
+                        <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search</li>
+                        <li>Libraries offer items for "lease" at zero cost
+                        (W3 Schema.org Bibliographic Extension community group <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a>)</li>
+                    </ul>
+                    <table>
+                        <thead>
+                            <tr><th>Offer property</th><th>Library item</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>seller</code></td><td>Library</td></tr>
+                            <tr><td><code>sku</code></td><td>Call number</td></tr>
+                            <tr><td><code>serialNumber</code></td><td>Barcode</td></tr>
+                            <tr><td><code>availableAtOrFrom</code></td><td>Shelving location</td></tr>
+                            <tr><td><code>availability</code></td><td>Item status</td></tr>
+                        </tbody>
+                    </table>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+                    <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
+                </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
+                <section>
+                    <h2>2012 Common Crawl analysis</h2>
+                    <ul>
+                        <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
+                        <li>Possible reasons for this low adoption rate include:
+                        <ul>
+                            <li>Perceived return on investment is low in risk-averse, under-resourced institutions</li>
+                            <li>Proprietary systems do not facilitate shared modifications of HTML templates</li>
+                            <li>Sufficient access to underlying metadata may not be available in proprietary systems</li>
+                        </ul></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
+                <section>
+                    <h2>Open source library systems</h2>
+    <blockquote>the modifications [can] be done by those actors who have the best information about their value [and] are best equipped to carry them out</blockquote>
+    <cite>Schwarz, M., Takhteyev, Y.: Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639 (2010)</cite>
+                    <ul>
+                        <li>Open source library systems can evolve quickly:</li>
+                        <ul>
+                            <li>Contributions from a broad community adopted and released on a rapid, iterative cycle</li>
+                            <li>"Power of the default" means that those who upgrade to the latest release usually reflect default settings</li>
+                        </ul></li>
+                        <li><strong>Hypothesis</strong>: Open source library systems are most likely to contribute schema.org linked data in the short term</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+                <section>
+                    <h2>Open source implementations</h2>
+                    <ul>
+                        <li>My efforts have:
+                        <ul>
+                            <li>Enhanced Evergreen, Koha, and VuFind to publish schema.org data</li>
+                            <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
+                        </ul></li>
+                        <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
+                        <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
+                        <li><strong>Plan</strong>: Once a Common Crawl 2014 corpus is available, rerun Ronallo's analysis and determine sources of schema.org data</li>
+                    </ul>
+                </section>
 
-			</div>
+                <section>
+                    <h2>Practical results</h2>
+                    <ul>
+                        <li><strong>Promise</strong>: A common vocabulary and mapping practices should ease cross-system integration</li>
+                        <li><strong>Use case</strong>: Google Custom Search Engine (CSE) supports facets based on structured data such as schema.org</li>
+                        <li><strong>Result</strong>: It <a href="https://www.google.com/cse/publicurl?cx=001640895724279509587:bicww4ntllg">works!</a>
+                            <ul>
+                                <li>Combined Evergreen + VuFind instances in a single search instance</li>
+                                <li>Faceted by schema.org <code>author</code> value</li>
+                            </ul>
+                        </li>
+                        <li><strong>Plan</strong>: Implement a custom search engine that crawls sitemaps, understands complex RDF, and can look up
+                            availability in real time</li>
+                    </ul>
+                </section>
 
+                <section>
+                    <h2>Extending the schema.org vocabulary</h2>
+                    <ul>
+                        <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
+                        <ul>
+                            <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
+                        </ul></li>
+                        <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
+                            <ul>
+                                <li><code>Article</code>
+                                <ul>
+                                    <li><code> :: isPartOf :: PublicationIssue</code></li>
+                                    <li><code> :: isPartOf :: PublicationVolume</code></li>
+                                    <li><code> :: isPartOf :: Periodical</code></li>
+                                </ul></li>
+                            </ul>
+                        </li>
+                        <li>Enables structured inline citations, regardless of citation format!</li>
+                    </ul>
+                    </section>
+                </section>
+            </div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
