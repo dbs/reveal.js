@@ -106,13 +106,18 @@
                     </section>
 
                     <section>
+                        <h2>Bags of words are still hard</h2>
+                        <img src="images/semantic_news_fail.png">
+                    </section>
+
+                    <section>
                         <h2>Plenty of ambiguity problems remain</h2>
                         <p>When a web page mentions "Dan Scott", it could be:</p>
                         <ul>
-                            <li>"Dan Scott" the character from the One Tree Hill TV show</li>
-                            <li>"Dan Scott" the artist from Magic the Gathering card game</li>
-                            <li>"Dan Scott" the Ontario academic professor from the University of Waterloo</li>
-                            <li>"Dan Scott" the Ontario academic librarian from Laurentian University</li>
+                            <li>the character from the One Tree Hill TV show</li>
+                            <li>the artist from Magic the Gathering card game</li>
+                            <li>the Ontario academic professor from the University of Waterloo</li>
+                            <li>the Ontario academic librarian from Laurentian University</li>
                         </ul>
                     </section>
 
@@ -418,14 +423,16 @@
                             <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
                         </ul></li>
                         <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
+                        <li>Open source moves <em>very</em> fast: Koha already deprecated the theme I enhanced</li>
                         <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
                         <li><strong>Plan</strong>: Once a Common Crawl 2014 corpus is available, rerun Ronallo's analysis and determine sources of schema.org data</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Practical results</h2>
+                    <h2>Quick union catalogues</h2>
                     <ul>
+                        <li>Many libraries have resource-sharing agreements, but infrastructure requires crufty Z39.50 lookups or periodic MARC batch loads</li>
                         <li><strong>Promise</strong>: A common vocabulary and mapping practices should ease cross-system integration</li>
                         <li><strong>Use case</strong>: Google Custom Search Engine (CSE) supports facets based on structured data such as schema.org</li>
                         <li><strong>Result</strong>: It <a href="https://www.google.com/cse/publicurl?cx=001640895724279509587:bicww4ntllg">works!</a>
@@ -476,6 +483,7 @@
                             <ul>
                                 <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
                                 <li>Build a proof-of-concept RDFa crawler / extractor union catalogue</li>
+                                <li>Port Koha effort to latest theme</li>
                                 <li>Improve type mapping (diving into fixed fields)</li>
                                 <li>Progress towards linked data</li>
                             </ul>
