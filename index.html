@@ -30,17 +30,17 @@
 		<![endif]-->
 	</head>
 
-	<body>
+	<body vocab="http://schema.org/" typeof="Article">
 
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Structured data by default</h1>
-					<h3>in open source library systems</h3>
-					<p>
-						<small>Created by <a href="http://coffeecode.net">Dan Scott</a> / <a href="http://google.com/+DanScottCan">+DanScottCan</a></small>
+					<h1 property="name">Structured data by default in open source library systems</h1>
+					<p property="creator" typeof="Person">
+                        <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
+                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-02-14">February 14, 2014</time></small>
 					</p>
 				</section>
 
@@ -127,7 +127,7 @@
                         <blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
                         [...]<br />
                         A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote>
-                        <cite><em>Atlantic Monthly</em>, "As We May Think". July 1, 1945. <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">(online)</a></cite>
+                        <cite><em>Atlantic Monthly</em>, "<a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">As We May Think</a>". July 1, 1945.</cite>
                     </section>
 
                     <section>
