@@ -112,12 +112,16 @@
 
                     <section>
                         <h2>Plenty of ambiguity problems remain</h2>
-                        <p>When a web page mentions "Dan Scott", it could be:</p>
                         <ul>
-                            <li>the character from the One Tree Hill TV show</li>
-                            <li>the artist from Magic the Gathering card game</li>
-                            <li>the Ontario academic professor from the University of Waterloo</li>
-                            <li>the Ontario academic librarian from Laurentian University</li>
+                            <li>When a web page mentions "Dan Scott", it could be:
+                            <ul>
+                                <li>the character from the One Tree Hill TV show</li>
+                                <li>the artist from Magic the Gathering card game</li>
+                                <li>the Ontario academic professor from the University of Waterloo</li>
+                                <li>the Ontario academic librarian from Laurentian University</li>
+                            </ul>
+                            </li>
+                            <li>What about variations like "Daniel B. Scott", "Scott, Dan", "Scott, Dan, 1972-"?
                         </ul>
                     </section>
 
@@ -137,9 +141,9 @@
                         <p>HTTP and HTML enter the scene:<p>
                         <blockquote>We should work toward a universal linked information system, in which generality
                         and portability are more important than fancy graphics techniques and complex extra facilities.</blockquote>
-                        <cite>CERN. "Information Management: A Proposal". May 1990. <a href="http://www.w3.org/History/1989/proposal.html">(online)</a></cite>
+                        <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". May 1990.</a></cite>
 
-                        <aside class="notes">Most information then online (news groups, gopher) was organized as a tree; Lee found this too restrictive.</aside>
+                        <aside class="notes">Most information then online (news groups, gopher) was organized as a tree; Berners-Lee found this too restrictive.</aside>
                     </section>
 
                     <section>
@@ -151,6 +155,20 @@
                         <cite><em>Scientific American</em>, "The Semantic Web". May 17, 2001.</cite>
 
                         <aside class="notes">Then goes on to describe RDF and XML as the building blocks of the semantic web. That's an extension of the existing web how, exactly?</aside>
+                    </section>
+
+                    <section>
+                        <h3>Tim Berners-Lee and Linked Data</h3>
+                        <blockquote>
+for HTML or RDF, the same expectations apply to make the web grow:
+<ol>
+    <li>Use URIs as names for things</li>
+    <li>Use HTTP URIs so that people can look up those names.</li>
+    <li>When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL)</li>
+    <li>Include links to other URIs. so that they can discover more things.</li>
+</ol>
+                        </blockquote>
+                        <cite>Berners-Lee, Tim. "<a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked data - design issues</a>". July 27, 2006.</cite>
                     </section>
 
                 </section>
@@ -213,7 +231,7 @@
                                 <ul>
                                     <li>Best practice was to mix and match vocabularies
                                     <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
-                                    <li>Highly complex, quickly overwhelming</li>
+                                    <li>Despite linked data principles, still highly complex and easily overwhelming</li>
                                 </ul>
                             </li>
                             <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
@@ -296,18 +314,46 @@
 </code></pre>
                         <p>MARC is still at the core of almost every library system today</p>
                     </section>
+
+                    <section>
+                        <h3>Linked data library systems</h3>
+                        <ul>
+                            <li>Some library systems <em>have</em> successfully discarded MARC in favour of a linked data model:</li>
+                            <ul>
+                                <li>Swedish Union Catalog</li>
+                                <li>German National Library</li>
+                                <li>Bibliothèque nationale de France</li>
+                            </ul>
+                            </li>
+                            <li>Common attributes:
+                                <ul>
+                                    <li>Large institutions</li>
+                                    <li>Resources to sustain multi-year development efforts with concurrent systems</li>
+                                    <li>Ability to mandate significant changes to established practices</li>
+                                </ul>
+                            </li>
+                            <li>Not a model that can be followed by most resource-constrained libraries today</li>
+                        </ul>
+                    </section>
+
                 </section>
 
                 <section>
                     <section>
                     <h2>Research directions</h2>
                     <ul>
-                        <li><strong>Question</strong>: Can library metadata be relevant to normal search engines?</li>
+                        <li><strong>Questions</strong>:
+                            <ul>
+                                <li>Can library systems evolve towards a linked data model?</li>
+                                <li>Can library metadata be relevant to normal search engines?</li>
+                            </ul>
+                        </li>
                         <li><strong>Actions</strong>:
                         <ul>
                             <li>Map MARC data to schema.org vocabulary</li>
                             <li>Implement schema.org in open source library systems</li>
                             <li>Propose enhancements to schema.org for library and bibliographic data</li>
+                            <li>Propose enhancements to MARC standards to support evolution towards linked data models</li>
                         </ul></li>
                     </ul>
                 </section>
@@ -324,7 +370,7 @@
 <tr><td>Book</td><td><code>a</code></td></tr>
 <tr><td>Map</td><td><code>e</code></td></tr>
 <tr><td>MusicAlbum</td><td><code>j</code></td></tr>
-<tr><td>CreativeWork</td><td>All other LDR values</td></tr>
+<tr><td>CreativeWork</td><td>All other leader values</td></tr>
 </tbody>
 </table>
                     <aside class="notes">Plenty of room to improve based on finer-grained mappings from the fixed fields</aside>
