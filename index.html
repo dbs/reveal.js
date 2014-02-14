@@ -416,6 +416,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search</li>
                         <li>Libraries offer items for "lease" at zero cost
                         (W3 Schema.org Bibliographic Extension community group <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a>)</li>
+                        <li>Potential to disintermediate the relationship between libraries and search engines</li>
                     </ul>
                     <table>
                         <thead>
@@ -485,9 +486,10 @@ for HTML or RDF, the same expectations apply to make the web grow:
                             <ul>
                                 <li>Combined Evergreen + VuFind instances in a single search instance</li>
                                 <li>Faceted by schema.org <code>author</code> value</li>
+                                <li>Exposes Google's simplistic string-based implementation of structured data</li>
                             </ul>
                         </li>
-                        <li><strong>Plan</strong>: Implement a custom search engine that crawls sitemaps, understands complex RDF, and can look up
+                        <li><strong>Plan</strong>: Implement a custom search engine that periodically crawls sitemaps, understands <em>complex</em> RDF, and can look up
                             availability in real time</li>
                     </ul>
                 </section>
@@ -525,13 +527,13 @@ for HTML or RDF, the same expectations apply to make the web grow:
                                 <li>Benefits the world!</li>
                             </ul>
                         </li>
-                        <li>More to do:
+                        <li>Much more to do:
                             <ul>
                                 <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
                                 <li>Build a proof-of-concept RDFa crawler / extractor union catalogue</li>
                                 <li>Port Koha effort to latest theme</li>
                                 <li>Improve type mapping (diving into fixed fields)</li>
-                                <li>Progress towards linked data</li>
+                                <li>Evolve MARC towards directly linked data</li>
                             </ul>
                         </li>
                     </ul>
