@@ -6,7 +6,7 @@
 
 		<title>Structured data NOW</title>
 
-		<meta name="description" content="Publishing structured data by default in open source library systems">
+		<meta name="description" content="Structuring library data on the web with schema.org: we're on it">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,7 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/theme/custom.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,22 +44,32 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 property="name">Structured data by default in open source library systems</h1>
+					<h1 property="name">Structuring library data on the web with schema.org: we're on it</h1>
 					<p property="creator" typeof="Person">
                         <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
-                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-02-14">February 14, 2014</time></small>
+                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-19">March 19, 2014</time></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>The web</h2>
-					<p>
-                        A platform for efficiently sharing cats
-					</p>
+                    <section>
+                        <h3>Happy 25th, World Wide Web!</h3>
+                        <blockquote>We should work toward a universal linked information system, in which generality
+                        and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
+                        <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". March 1989.</a></cite>
+
+                        <aside class="notes"><blockquote>We should work toward a universal linked information system, in which generality
+                        and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
+Most information then online (news groups, gopher) was organized as a tree; Berners-Lee found this too restrictive.</aside>
+                    </section>
+
+
+				  <section>
+					<h3>A platform for efficiently sharing cats</h3>
                     <img src="images/cat.jpg"></a>
-				</section>
+				  </section>
 
-				<section>
+				  <section>
 					<h2>Also, hypertext documents</h2>
                     <pre><code>
 &lt;html&gt;
@@ -72,9 +83,10 @@
       &lt;a href="http://example.com/article"&gt;astutely observed&lt;/a&gt;
       ...
     &lt;/p&gt;
-  &lt;body&gt;
+  &lt;/body&gt;
 &lt;/html&gt;
                     </code></pre>
+				  </section>
                 </section>
 
                 <section>
@@ -91,14 +103,17 @@
                         Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
                         </blockquote>
                         <cite>Rosenfeld, Lou. <em>CMC Magazine</em>, "The Untimely Death of Yahoo". September 1, 1995. <a href="http://www.ibiblio.org/cmc/mag/1995/sep/last.html">(online)</a></cite>
-                        <aside class="notes">More gold: <q>It seems likely that techniques from classical librarianship, which have had only limited success in libraries and other traditional information environments, will scale even less so in the distributed, decentralized and heterogeneous information space that we find on the Web.</q></aside>
+                        <aside class="notes"><blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <br />
+                        Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
+                        </blockquote>
+More gold: <q>It seems likely that techniques from classical librarianship, which have had only limited success in libraries and other traditional information environments, will scale even less so in the distributed, decentralized and heterogeneous information space that we find on the Web.</q></aside>
                     </section>
 
                     <section>
                         <h2>Google: ranking the link (and more)</h2>
-                        <p>Google attacked the <em>bag of words</em> keyword problem a number of ways:</p>
+                        <p>Google attacked the <em>bag of words</em> problem:</p>
                         <ul>
-                            <li><a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">PageRank algorithm</a> - evolution of academic citation analysis</li>
+                            <li><a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">PageRank algorithm</a> - evolving academic citation analysis</li>
                             <li>Weighting keyword importance by appearance (size, boldness)</li>
                             <li>Using keywords in external links to a given page</li>
                         </ul>
@@ -108,6 +123,11 @@
                     <section>
                         <h2>Bags of words are still hard</h2>
                         <img src="images/semantic_news_fail.png">
+                    </section>
+
+                    <section>
+                        <h2>Bags of words are still hard</h2>
+                        <img src="images/semantic_news_fail2.png">
                     </section>
 
                     <section>
@@ -128,23 +148,18 @@
                 </section>
 
                 <section>
+<!--
                     <section>
                         <h3>Vannevar Bush and the Memex</h3>
                         <blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
                         [...]<br />
                         A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote>
                         <cite><em>Atlantic Monthly</em>, "<a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">As We May Think</a>". July 1, 1945.</cite>
+                        <aside class="notes"><blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
+                        [...]<br />
+                        A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote></aside>
                     </section>
-
-                    <section>
-                        <h3>Tim Berners-Lee and the Web</h3>
-                        <p>HTTP and HTML enter the scene:<p>
-                        <blockquote>We should work toward a universal linked information system, in which generality
-                        and portability are more important than fancy graphics techniques and complex extra facilities.</blockquote>
-                        <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". May 1990.</a></cite>
-
-                        <aside class="notes">Most information then online (news groups, gopher) was organized as a tree; Berners-Lee found this too restrictive.</aside>
-                    </section>
+-->
 
                     <section>
                         <h3>Tim Berners-Lee and the Semantic Web</h3>
@@ -169,6 +184,18 @@ for HTML or RDF, the same expectations apply to make the web grow:
 </ol>
                         </blockquote>
                         <cite>Berners-Lee, Tim. "<a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked data - design issues</a>". July 27, 2006.</cite>
+                        <aside class="notes">
+                        <blockquote>
+for HTML or RDF, the same expectations apply to make the web grow:
+<ol>
+    <li>Use URIs as names for things</li>
+    <li>Use HTTP URIs so that people can look up those names.</li>
+    <li>When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL)</li>
+    <li>Include links to other URIs. so that they can discover more things.</li>
+</ol>
+                        </blockquote>
+                        </aside>
+
                     </section>
 
                 </section>
@@ -204,20 +231,19 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <ul>
                             <li>RDF serialization that uses a handful of attributes to decorate existing XML</li>
                             <li>Proposed in 2004 for use in XHTML; started to take off with HTML5</li>
-                                <pre><code>&lt;body vocab="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-      prefix="dc: http://purl.org/dc/elements/1.1/
-      ex: http://example.org/stuff/1.0/"&gt;
-  &lt;div typeof="Description"
-       about="http://www.w3.org/TR/rdf-syntax-grammar"&gt;
-    &lt;h1 property="dc:title"&gt;RDF/XML Syntax Specification (Revised)&lt;/h1&gt;
-    &lt;div property="ex:editor" typeof="Description"&gt;
-       &lt;span property="ex:fullName"&gt;
-          &lt;a href="http://purl.org/net/dajobe/"
-             property="ex:homePage"&gt;Dave Beckett&lt;/a&gt;
-       &lt;/span&gt;
+                                <pre><code>&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
+  &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
+    &lt;h1 property="name"&gt;The web as intellectual rising tide&lt;/h1&gt;
+    &lt;div property="articleBody"&gt;
+      &lt;p&gt;As my esteemed colleague
+        &lt;a href="http://example.com/author" typeof="Person"&gt;Foo Bar&lt;/a&gt; has 
+        &lt;a href="http://example.com/article" property="citation"&gt;astutely observed&lt;/a&gt;
+        ...
+      &lt;/p&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/body&gt;</code></pre>
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
                             </li>
                             <li><em>microdata</em> is a roughly equivalent competing form of inline markup</li>
                         </ul>
@@ -253,6 +279,21 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         </ul>
                     </section>
 
+                    <section>
+                        <h3>schema.org: hierarchical types</h3>
+                        <img src="images/schema-Thing.png">
+                    </section>
+
+                    <section>
+                        <h3>schema.org: Creative Works</h3>
+                        <img src="images/schema-CreativeWork.png">
+                    </section>
+
+                    <section>
+                        <h3>schema.org: focus on examples</h3>
+                        <img src="images/schema-CreativeWork-examples.png">
+                    </section>
+
                 </section>
                 <section>
                     <section>
@@ -267,20 +308,14 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <p style="padding-top: 1em">Fatal flaw: almost entirely library-specific technologies</p>
                     </section>
 
-                    <section>
+                    <section data-background="images/ron_burgundy.jpg">
                         <h3>MARC: (still) kind of a big deal</h3>
-                        <p>... to libraries ...</p>
                         <img src='images/ron_burgundy.jpg'>
                     </section>
 
-                    <section>
+                    <section data-background="images/ron_burgundy.jpg">
                         <h3>Enduring technology</h3>
                         <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
-                        <ul>
-                            <li>Binary format designed for record sharing and tape storage in the 1960s</li>
-                            <li>Mixture of position-dependent data in "fixed fields" and fields with variable-length subfields</li>
-                            <li>Combined with cataloging rules to create conventions like: <code>245 $a $b $c = Title</code></li>
-                        </ul>
 <pre><code>
 02199cam a22004698i 4500
 001 123456
@@ -293,7 +328,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
 300    $a 223 pages, 16 unnumbered pages of plates : $b illustrations ; $c 22 cm 
 </code></pre>
                     </section>
-                    <section>
+                    <section data-background="images/ron_burgundy.jpg">
                         <h3>MARC: XML serialization</h3>
                         <p>Same inscrutable semantics, more verbose, but usable with standard tools</p>
 <pre><code><record>
@@ -312,54 +347,90 @@ for HTML or RDF, the same expectations apply to make the web grow:
     <subfield code="b">my classy life and other musings</subfield>
   </datafield>
 </code></pre>
-                        <p>MARC is still at the core of almost every library system today</p>
                     </section>
 
                     <section>
-                        <h3>Linked data library systems</h3>
+                        <h3>Linked data library system leadership</h3>
                         <ul>
-                            <li>Some library systems <em>have</em> successfully discarded MARC in favour of a linked data model:</li>
+                            <li>Some library systems <em>have</em> supplemented or discarded MARC for a linked data model:</li>
                             <ul>
                                 <li>Swedish Union Catalog</li>
                                 <li>German National Library</li>
                                 <li>Bibliothèque nationale de France</li>
                             </ul>
                             </li>
-                            <li>Common attributes:
-                                <ul>
-                                    <li>Large institutions</li>
-                                    <li>Resources to sustain multi-year development efforts with concurrent systems</li>
-                                    <li>Ability to mandate significant changes to established practices</li>
-                                </ul>
-                            </li>
-                            <li>Not a model that can be followed by most resource-constrained libraries today</li>
                         </ul>
                     </section>
 
+                    <section>
+                        <h3>But is your library...</h3>
+                        <ul>
+                            <li>Large</li>
+                            <li>Able to sustain multi-year development efforts with concurrent systems</li>
+                            <li>Able to mandate significant changes to established practices</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
                     <section>
-                    <h2>Research directions</h2>
-                    <ul>
-                        <li><strong>Questions</strong>:
-                            <ul>
-                                <li>Can library systems evolve towards a linked data model?</li>
-                                <li>Can library metadata be relevant to normal search engines?</li>
-                            </ul>
-                        </li>
-                        <li><strong>Actions</strong>:
+                        <h3>Small steps to structured data</h3>
                         <ul>
-                            <li>Map MARC data to schema.org vocabulary</li>
-                            <li>Implement schema.org in open source library systems</li>
-                            <li>Propose enhancements to schema.org for library and bibliographic data</li>
-                            <li>Propose enhancements to MARC standards to support evolution towards linked data models</li>
-                        </ul></li>
-                    </ul>
+                            <li>Enhance your catalogues with web standards:<ul>
+                                <li>Persistent URIs</li>
+                                <li>HTML5</li>
+                                <li>RDFa (or microdata) expressing schema.org</li>
+                                <li>Sitemaps</li>
+                            </ul></li>
+                            <li>Check the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a> (<em>SchemaBibEx</em>) for best practices and proposed extensions</li>
+                        </ul>
+                        <aside class="notes">Hopefully everyone already has persistent URIs!</aside>
+                    </section>
+
+                    <section>
+                        <h2>2012 Common Crawl analysis</h2>
+                        <ul>
+                            <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
+                            <li>Possible reasons for this low adoption rate include:
+                            <ul>
+                                <li>Perceived return on investment is low in risk-averse, under-resourced institutions</li>
+                                <li>Proprietary systems do not facilitate shared modifications of HTML templates</li>
+                                <li>Sufficient access to underlying metadata may not be available in proprietary systems</li>
+                            </ul></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Open source library systems</h2>
+        <blockquote>the modifications [can] be done by those actors who have the best information about their value [and] are best equipped to carry them out</blockquote>
+        <cite>Schwarz, M., Takhteyev, Y.: Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639 (2010)</cite>
+                        <ul>
+                            <li>Open source library systems can evolve quickly:</li>
+                            <ul>
+                                <li>Contributions from a broad community adopted and released on a rapid, iterative cycle</li>
+                                <li>"Power of the default" means that those who upgrade to the latest release usually reflect default settings</li>
+                            </ul></li>
+                            <li><strong>Hypothesis</strong>: Open source library systems are most likely to contribute schema.org linked data in the short term</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Open source implementations</h2>
+                        <ul>
+                            <li>My efforts have:
+                            <ul>
+                                <li>Enhanced Evergreen, Koha, and VuFind to publish schema.org data</li>
+                                <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
+                            </ul></li>
+                            <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
+                            <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>MARC data to schema.org base types</h2>
+                    <section>
+                        <h2>MARC data to schema.org types</h2>
 <table>
 <thead>
 <tr>
@@ -373,11 +444,11 @@ for HTML or RDF, the same expectations apply to make the web grow:
 <tr><td>CreativeWork</td><td>All other leader values</td></tr>
 </tbody>
 </table>
-                    <aside class="notes">Plenty of room to improve based on finer-grained mappings from the fixed fields</aside>
-                </section>
+                        <aside class="notes">Plenty of room to improve based on finer-grained mappings from the fixed fields; if you want to help, let's talk!</aside>
+                    </section>
 
-                <section>
-                    <h2>MARC to schema.org properties</h2>
+                    <section>
+                        <h2>MARC to schema.org properties (sample)</h2>
 
 <table>
 <thead>
@@ -406,136 +477,120 @@ for HTML or RDF, the same expectations apply to make the web grow:
 </tr>
 </tbody>
 </table>
-                    <p>(Just a small sample)</p>
-                </section>
+                        <aside class="notes">"name" is "title" here! Also note that ISBD punctuation really sucks.</aside>
+                    </section>
 
-                <section>
-                    <h2>Library items as schema.org Offers</h2>
-                    <ul>
-                        <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
-                        <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search</li>
-                        <li>Libraries offer items for "lease" at zero cost
-                        (W3 Schema.org Bibliographic Extension community group <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a>)</li>
-                        <li>Potential to disintermediate the relationship between libraries and search engines</li>
-                    </ul>
-                    <table>
-                        <thead>
-                            <tr><th>Offer property</th><th>Library item</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><code>seller</code></td><td>Library</td></tr>
-                            <tr><td><code>sku</code></td><td>Call number</td></tr>
-                            <tr><td><code>serialNumber</code></td><td>Barcode</td></tr>
-                            <tr><td><code>availableAtOrFrom</code></td><td>Shelving location</td></tr>
-                            <tr><td><code>availability</code></td><td>Item status</td></tr>
-                        </tbody>
-                    </table>
-
-                    <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
-                </section>
-
-                <section>
-                    <h2>2012 Common Crawl analysis</h2>
-                    <ul>
-                        <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
-                        <li>Possible reasons for this low adoption rate include:
+                    <section>
+                        <h2>Library items as schema.org Offers</h2>
                         <ul>
-                            <li>Perceived return on investment is low in risk-averse, under-resourced institutions</li>
-                            <li>Proprietary systems do not facilitate shared modifications of HTML templates</li>
-                            <li>Sufficient access to underlying metadata may not be available in proprietary systems</li>
-                        </ul></li>
-                    </ul>
-                </section>
+                            <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
+                            <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search engines</li>
+                            <li>Libraries therefore offer items for "lease" at zero cost
+                            (SchemaBibEx <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a>)</li>
+                        </ul>
+                        <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
+                    </section>
 
-                <section>
-                    <h2>Open source library systems</h2>
-    <blockquote>the modifications [can] be done by those actors who have the best information about their value [and] are best equipped to carry them out</blockquote>
-    <cite>Schwarz, M., Takhteyev, Y.: Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639 (2010)</cite>
-                    <ul>
-                        <li>Open source library systems can evolve quickly:</li>
+                    <section>
+                        <h2>Library items mapped to schema.org Offers</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Offer property</th><th>Library item</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>seller</code></td><td>Library</td></tr>
+                                <tr><td><code>sku</code></td><td>Call number</td></tr>
+                                <tr><td><code>serialNumber</code></td><td>Barcode</td></tr>
+                                <tr><td><code>availableAtOrFrom</code></td><td>Shelving location</td></tr>
+                                <tr><td><code>availability</code></td><td>Item status</td></tr>
+                            </tbody>
+                        </table>
+
+                    </section>
+
+                    <section>
+                        <h2>Thought experiment</h2>
                         <ul>
-                            <li>Contributions from a broad community adopted and released on a rapid, iterative cycle</li>
-                            <li>"Power of the default" means that those who upgrade to the latest release usually reflect default settings</li>
-                        </ul></li>
-                        <li><strong>Hypothesis</strong>: Open source library systems are most likely to contribute schema.org linked data in the short term</li>
-                    </ul>
-                </section>
+                            <li>So we're exposing our holdings to the web</li>
+                            <li class="fragment">... in a common format understood by search engines</li>
+                            <li class="fragment">... linked to the library that holds the items</li>
+                            <li class="fragment">... with that library's physical address, hours of operation, web site and contact info</li>
+                            <li class="fragment">...</li>
+                            <li class="fragment">... when can I stop doing batch uploads to OCLC and/or other union catalogues?</li>
+                        </ul>
+                    </section>
 
-                <section>
-                    <h2>Open source implementations</h2>
-                    <ul>
-                        <li>My efforts have:
+                    <section>
+                        <h2>Quick union catalogues</h2>
                         <ul>
-                            <li>Enhanced Evergreen, Koha, and VuFind to publish schema.org data</li>
-                            <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
-                        </ul></li>
-                        <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
-                        <li>Open source moves <em>very</em> fast: Koha already deprecated the theme I enhanced</li>
-                        <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
-                        <li><strong>Plan</strong>: Once a Common Crawl 2014 corpus is available, rerun Ronallo's analysis and determine sources of schema.org data</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Quick union catalogues</h2>
-                    <ul>
-                        <li>Many libraries have resource-sharing agreements, but infrastructure requires crufty Z39.50 lookups or periodic MARC batch loads</li>
-                        <li><strong>Promise</strong>: A common vocabulary and mapping practices should ease cross-system integration</li>
-                        <li><strong>Use case</strong>: Google Custom Search Engine (CSE) supports facets based on structured data such as schema.org</li>
-                        <li><strong>Result</strong>: It <a href="https://www.google.com/cse/publicurl?cx=001640895724279509587:bicww4ntllg">works!</a>
-                            <ul>
-                                <li>Combined Evergreen + VuFind instances in a single search instance</li>
-                                <li>Faceted by schema.org <code>author</code> value</li>
-                                <li>Exposes Google's simplistic string-based implementation of structured data</li>
-                            </ul>
-                        </li>
-                        <li><strong>Plan</strong>: Implement a custom search engine that periodically crawls sitemaps, understands <em>complex</em> RDF, and can look up
-                            availability in real time</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Extending the schema.org vocabulary</h2>
-                    <ul>
-                        <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
-                        <ul>
-                            <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
-                        </ul></li>
-                        <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
-                            <ul>
-                                <li><code>Article</code>
+                            <li>Many libraries have resource-sharing agreements, but infrastructure requires crufty Z39.50 lookups or periodic MARC batch loads</li>
+                            <li><strong>Promise</strong>: Common vocabulary and mapping practices should ease cross-system integration</li>
+                            <li><strong>Use case</strong>: Google Custom Search Engine (CSE) supports facets based on structured data such as schema.org</li>
+                            <li><strong>Result</strong>: It <a href="https://www.google.com/cse/publicurl?cx=001640895724279509587:bicww4ntllg">works!</a>
                                 <ul>
-                                    <li><code> :: isPartOf :: PublicationIssue</code></li>
-                                    <li><code> :: isPartOf :: PublicationVolume</code></li>
-                                    <li><code> :: isPartOf :: Periodical</code></li>
-                                </ul></li>
-                            </ul>
-                        </li>
-                        <li>Enables structured inline citations, regardless of citation format!</li>
-                    </ul>
+                                    <li>Combined Evergreen + VuFind instances in a single search instance</li>
+                                    <li>Faceted by schema.org <code>author</code> value</li>
+                                    <li>Exposes Google's simplistic string-based implementation of structured data</li>
+                                </ul>
+                            </li>
+                            <li><strong>Plan</strong>: Implement a custom search engine that periodically crawls sitemaps, understands <em>complex</em> RDF, and can look up
+                                availability in real time</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <img src="images/google-cse-success.png">
+                    </section>
+
+                    <section>
+                        <h2>Extending the schema.org vocabulary</h2>
+                        <ul>
+                            <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
+                            <ul>
+                                <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
+                            </ul></li>
+                            <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
+                                <ul>
+                                    <li><code>Article</code>
+                                    <ul>
+                                        <li><code> :: isPartOf :: PublicationIssue</code></li>
+                                        <li><code> :: isPartOf :: PublicationVolume</code></li>
+                                        <li><code> :: isPartOf :: Periodical</code></li>
+                                    </ul></li>
+                                </ul>
+                            </li>
+                            <li>Enables structured inline citations, regardless of citation format!</li>
+                        </ul>
                     </section>
                 </section>
 
                 <section>
                     <h2>Summary</h2>
                     <ul>
-                        <li>W3C standardization process can be daunting, but works</li>
                         <li>Open source software as reference implementation:
                             <ul>
                                 <li>Strengthens proposals</li>
-                                <li>May hasten proprietary implementations</li>
-                                <li>Benefits the world!</li>
+                                <li>May hasten and improve proprietary implementations</li>
+                                <li>Is immediately useful</li>
                             </ul>
                         </li>
                         <li>Much more to do:
                             <ul>
                                 <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
                                 <li>Build a proof-of-concept RDFa crawler / extractor union catalogue</li>
-                                <li>Port Koha effort to latest theme</li>
                                 <li>Improve type mapping (diving into fixed fields)</li>
                                 <li>Evolve MARC towards directly linked data</li>
                             </ul>
                         </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li><a href="http://schema.org">schema.org</a> - official web site</li>
+                        <li><a href="http://stuff.coffeecode.net/2014/schema_org_codelab/">schema.org hands-on code lab</a> - teaches you step by step how to add schema.org to a web page using RDFa</li>
+                        <li><a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend Community Group</a> - best practices for schema.org bibliographic use cases, extension proposals in progress, mailing list for assistance</li>
                     </ul>
                 </section>
             </div>

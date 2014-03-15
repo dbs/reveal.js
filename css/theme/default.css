@@ -150,11 +150,4 @@ body {
     font-size: 0.6em;
 }
 
-.reveal table {
-    border-spacing: 0em;
-}
 
-.reveal table tr, .reveal table td {
-    border: 2px solid white;
-    padding-left: 0.5em;
-}
