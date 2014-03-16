@@ -6,7 +6,7 @@
 
 		<title>Structured data NOW</title>
 
-		<meta name="description" content="Structuring library data on the web with schema.org: we're on it">
+		<meta name="description" content="Structuring library data on the web with schema.org">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,7 +44,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 property="name">Structuring library data on the web with schema.org: we're on it</h1>
+					<h1 property="name">Structuring library data on the web with schema.org</h1>
 					<p property="creator" typeof="Person">
                         <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
                         <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-19">March 19, 2014</time></small>
@@ -56,7 +56,9 @@
                         <h3>Happy 25th, World Wide Web!</h3>
                         <blockquote>We should work toward a universal linked information system, in which generality
                         and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
+                        <p>
                         <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". March 1989.</a></cite>
+                        </p>
 
                         <aside class="notes"><blockquote>We should work toward a universal linked information system, in which generality
                         and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
@@ -70,7 +72,7 @@ Most information then online (news groups, gopher) was organized as a tree; Bern
 				  </section>
 
 				  <section>
-					<h2>Also, hypertext documents</h2>
+					<h3>Also, hypertext documents</h3>
                     <pre><code>
 &lt;html&gt;
   &lt;head&gt;
@@ -92,17 +94,22 @@ Most information then online (news groups, gopher) was organized as a tree; Bern
                 <section>
 
                     <section>
-                        <h2>Organizing the web Yahoo-style</h2>
+                        <h3>Organizing the web Yahoo-style</h3>
                         <img src="images/yahoo-old-style.png"><br />
+                        <p>
                         <cite><a href="https://web.archive.org/web/19961128071707/http://www8.yahoo.com/Science/Computer_Science/">Internet Archive Wayback Machine</a></cite>
+                        </p>
                     </section>
 
                     <section>
-                        <h2>Organizing the web Yahoo-style</h2>
-                        <blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <br />
+                        <h3>Organizing the web Yahoo-style</h3>
+                        <blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <p>
                         Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
+                        </p>
                         </blockquote>
-                        <cite>Rosenfeld, Lou. <em>CMC Magazine</em>, "The Untimely Death of Yahoo". September 1, 1995. <a href="http://www.ibiblio.org/cmc/mag/1995/sep/last.html">(online)</a></cite>
+                        <p>
+                        <cite title="CMC Magazine, The Untimely Death of Yahoo">Rosenfeld, Lou. September 1, 1995. <a href="http://www.ibiblio.org/cmc/mag/1995/sep/last.html">(online)</a></cite>
+                        </p>
                         <aside class="notes"><blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <br />
                         Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
                         </blockquote>
@@ -110,28 +117,26 @@ More gold: <q>It seems likely that techniques from classical librarianship, whic
                     </section>
 
                     <section>
-                        <h2>Google: ranking the link (and more)</h2>
-                        <p>Google attacked the <em>bag of words</em> problem:</p>
+                        <h3>Google and the <em>bag of words</em></h3>
                         <ul>
                             <li><a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">PageRank algorithm</a> - evolving academic citation analysis</li>
                             <li>Weighting keyword importance by appearance (size, boldness)</li>
                             <li>Using keywords in external links to a given page</li>
                         </ul>
-                        <p>... and won (at least to date)</p>
                     </section>
 
                     <section>
-                        <h2>Bags of words are still hard</h2>
+                        <h3>Bags of words are still hard</h3>
                         <img src="images/semantic_news_fail.png">
                     </section>
 
                     <section>
-                        <h2>Bags of words are still hard</h2>
+                        <h3>Bags of words are still hard</h3>
                         <img src="images/semantic_news_fail2.png">
                     </section>
 
                     <section>
-                        <h2>Plenty of ambiguity problems remain</h2>
+                        <h3>Plenty of ambiguity problems remain</h3>
                         <ul>
                             <li>When a web page mentions "Dan Scott", it could be:
                             <ul>
@@ -167,7 +172,9 @@ More gold: <q>It seems likely that techniques from classical librarianship, whic
                         The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning,
                         better enabling computers and people to work in cooperation.
                         </blockquote>
+                        <p>
                         <cite><em>Scientific American</em>, "The Semantic Web". May 17, 2001.</cite>
+                        </p>
 
                         <aside class="notes">Then goes on to describe RDF and XML as the building blocks of the semantic web. That's an extension of the existing web how, exactly?</aside>
                     </section>
@@ -183,7 +190,9 @@ for HTML or RDF, the same expectations apply to make the web grow:
     <li>Include links to other URIs. so that they can discover more things.</li>
 </ol>
                         </blockquote>
+                        <p>
                         <cite>Berners-Lee, Tim. "<a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked data - design issues</a>". July 27, 2006.</cite>
+                        </p>
                         <aside class="notes">
                         <blockquote>
 for HTML or RDF, the same expectations apply to make the web grow:
@@ -202,7 +211,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
 
                 <section>
                     <section>
-                        <h3>Resource Description Framework (RDF) and XML</h3>
+                        <h3>Resource Description Framework (RDF)</h3>
                         <ul>
                             <li>RDF describes <code>subject::property::value</code> relationships as <em>triples</em></li>
                             <li><em>Linked data</em> replaces literal values with URLs to support a graph structure</li>
@@ -220,10 +229,28 @@ for HTML or RDF, the same expectations apply to make the web grow:
     &lt;/ex:editor&gt;
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;</code></pre>
+<p>
 <cite>W3C. "RDF/XML Syntax Specification (Revised)". February 10, 2004. <a href="http://www.w3.org/TR/REC-rdf-syntax/#example7">Online</a></cite>
+</p>
                             </li>
                         </ul>
                         <aside class="notes">This is a sanity test... If that looks unwieldy, you are probably sane.</aside>
+                    </section>
+
+                    <section>
+                        <h3>The Semantic Web circa 2010</h3>
+                        <ul>
+                            <li>Semantic Web efforts resulted in many deeply specialized vocabularies (objects and properties)</li>
+                            <li>
+                                <ul>
+                                    <li>Best practice was to mix and match vocabularies
+                                    <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
+                                    <li>Despite linked data principles, still highly complex and easily overwhelming</li>
+                                </ul>
+                            </li>
+                            <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
+                            <li>Competing practitioner approaches included microformats, structured data via microdata and RDFa, OGP</li>
+                            <li>Result was academically interesting, but in many ways a heterogenous mess</li>
                     </section>
 
                     <section>
@@ -247,22 +274,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
                             </li>
                             <li><em>microdata</em> is a roughly equivalent competing form of inline markup</li>
                         </ul>
-                    </section>
-
-                    <section>
-                        <h3>The Semantic Web circa 2010</h3>
-                        <ul>
-                            <li>Semantic Web efforts resulted in many deeply specialized vocabularies (objects and properties)</li>
-                            <li>
-                                <ul>
-                                    <li>Best practice was to mix and match vocabularies
-                                    <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
-                                    <li>Despite linked data principles, still highly complex and easily overwhelming</li>
-                                </ul>
-                            </li>
-                            <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
-                            <li>Competing practitioner approaches included microformats, structured data via microdata and RDFa, OGP</li>
-                            <li>Result was academically interesting, but in many ways a heterogenous mess</li>
                     </section>
 
                     <section>
@@ -305,7 +316,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                             <li>COinS microformat for embedding citations in HTML</li>
                             <li>unAPI for offering different metadata representations</li>
                         </ul>
-                        <p style="padding-top: 1em">Fatal flaw: almost entirely library-specific technologies</p>
+                        <p style="padding-top: 1em"><em>Consistent flaw</em>: almost entirely library-specific technologies</p>
                     </section>
 
                     <section data-background="images/ron_burgundy.jpg">
@@ -365,30 +376,31 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     <section>
                         <h3>But is your library...</h3>
                         <ul>
-                            <li>Large</li>
+                            <li>Large (national scale)</li>
                             <li>Able to sustain multi-year development efforts with concurrent systems</li>
                             <li>Able to mandate significant changes to established practices</li>
+                            <li>...?</li>
                         </ul>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h3>Small steps to structured data</h3>
+                        <h3>Better living through Web standards</h3>
                         <ul>
-                            <li>Enhance your catalogues with web standards:<ul>
+                            <li><strong>Hypothesis</strong>: We <em>can</em> iterate towards linked data with existing systems</li>
+                            <li>Enhance our catalogues with web standards:<ul>
                                 <li>Persistent URIs</li>
                                 <li>HTML5</li>
                                 <li>RDFa (or microdata) expressing schema.org</li>
-                                <li>Sitemaps</li>
+                                <li>Sitemaps listing all the URIs of interest</li>
                             </ul></li>
-                            <li>Check the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a> (<em>SchemaBibEx</em>) for best practices and proposed extensions</li>
                         </ul>
                         <aside class="notes">Hopefully everyone already has persistent URIs!</aside>
                     </section>
 
                     <section>
-                        <h2>2012 Common Crawl analysis</h2>
+                        <h3>Reality check: 2012 Common Crawl</h3>
                         <ul>
                             <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
                             <li>Possible reasons for this low adoption rate include:
@@ -401,9 +413,11 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Open source library systems</h2>
+                        <h3>Open source library systems</h3>
         <blockquote>the modifications [can] be done by those actors who have the best information about their value [and] are best equipped to carry them out</blockquote>
-        <cite>Schwarz, M., Takhteyev, Y.: Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639 (2010)</cite>
+        <p>
+        <cite title="Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639">Schwarz, M., Takhteyev, Y. (2010)</cite>
+        </p>
                         <ul>
                             <li>Open source library systems can evolve quickly:</li>
                             <ul>
@@ -415,7 +429,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Open source implementations</h2>
+                        <h3>Open source implementations</h3>
                         <ul>
                             <li>My efforts have:
                             <ul>
@@ -430,7 +444,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
 
                 <section>
                     <section>
-                        <h2>MARC data to schema.org types</h2>
+                        <h3>MARC data to schema.org types</h3>
 <table>
 <thead>
 <tr>
@@ -448,7 +462,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>MARC to schema.org properties (sample)</h2>
+                        <h3>MARC to schema.org properties (sample)</h3>
 
 <table>
 <thead>
@@ -481,7 +495,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Library items as schema.org Offers</h2>
+                        <h3>Library items as schema.org Offers</h3>
                         <ul>
                             <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
                             <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search engines</li>
@@ -492,7 +506,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Library items mapped to schema.org Offers</h2>
+                        <h3>Library items mapped to schema.org Offers</h3>
                         <table>
                             <thead>
                                 <tr><th>Offer property</th><th>Library item</th></tr>
@@ -509,7 +523,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Thought experiment</h2>
+                        <h3>Thought experiment</h3>
                         <ul>
                             <li>So we're exposing our holdings to the web</li>
                             <li class="fragment">... in a common format understood by search engines</li>
@@ -521,7 +535,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Quick union catalogues</h2>
+                        <h3>Quick union catalogues</h3>
                         <ul>
                             <li>Many libraries have resource-sharing agreements, but infrastructure requires crufty Z39.50 lookups or periodic MARC batch loads</li>
                             <li><strong>Promise</strong>: Common vocabulary and mapping practices should ease cross-system integration</li>
@@ -543,7 +557,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h2>Extending the schema.org vocabulary</h2>
+                        <h3>Extending the schema.org vocabulary</h3>
                         <ul>
                             <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
                             <ul>
@@ -565,7 +579,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                 </section>
 
                 <section>
-                    <h2>Summary</h2>
+                    <h3>Summary</h3>
                     <ul>
                         <li>Open source software as reference implementation:
                             <ul>
@@ -586,7 +600,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                 </section>
 
                 <section>
-                    <h2>Resources</h2>
+                    <h3>Resources</h3>
                     <ul>
                         <li><a href="http://schema.org">schema.org</a> - official web site</li>
                         <li><a href="http://stuff.coffeecode.net/2014/schema_org_codelab/">schema.org hands-on code lab</a> - teaches you step by step how to add schema.org to a web page using RDFa</li>
