@@ -525,7 +525,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <ul>
                             <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
                             <ul>
-                                <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
+                                <li>Focus on online access overlooked relationships to publications and print attributes</li>
                             </ul></li>
                             <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
                                 <ul>
@@ -534,11 +534,40 @@ for HTML or RDF, the same expectations apply to make the web grow:
                                         <li><code> :: isPartOf :: PublicationIssue</code></li>
                                         <li><code> :: isPartOf :: PublicationVolume</code></li>
                                         <li><code> :: isPartOf :: Periodical</code></li>
+                                        <li><code> :: isPartOf :: Book</code></li>
                                     </ul></li>
                                 </ul>
                             </li>
                             <li>Enables structured inline citations, regardless of citation format!</li>
                             <li><strong>Status:</strong> <em>Under consideration by schema.org</em></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>SchemaBibEx: Comics</h3>
+                        <img src="images/schema-comics.png">
+                    </section>
+                    <section>
+                        <h3>SchemaBibEx: Comics</h3>
+                        <img src="images/schema-peter-olson.png">
+                    </section>
+                    <section>
+                        <h3>SchemaBibEx: Comics</h3>
+                        <ul>
+                            <li>Collaborating with Henry Andrews (<a href="http://comics.org">comics.org</a>) and <a href="https://google.com/+PeterOlson">Peter Olson</a> (Marvel)</li>
+                            <li>Specialization of <code>Periodical</code></li>
+                            <li>Depends on outcome of contributor/role discussion for <code>SportsEvent</code> proposal</li>
+                            <li><strong>Status:</strong> <em>In progress</em></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>SchemaBibEx: overall status</h3>
+                        <ul>
+                            <li>Exited active extension proposal development mode</li>
+                            <li>Documenting best practices and supporting adopters</li>
+                            <li>Will call ad-hoc meetings for new extension requirements</li>
+                            <li><a href="http://www.w3.org/community/schemabibex/">Join our community</a> and post questions to the mailing list!</li>
                         </ul>
                     </section>
                 </section>
@@ -549,7 +578,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <ul>
                             <li>schema.org offers a <code>Library</code> organization type</li>
                             <li>ILS often tracks library hours, contact information, address, branch relationships</li>
-                            <li>Evergreen, as of 2.6 release, will expose this</li>
+                            <li>Evergreen, as of 2.6 release, will expose this information</li>
                         </ul>
                     </section>
 
@@ -666,6 +695,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                                 <li>Evolve MARC towards directly linked data</li>
                             </ul>
                         </li>
+                        <li>SchemaBibEx now in <q>community support mode</q>; if you have implementation questions, ask us!</li>
                     </ul>
                 </section>
 
