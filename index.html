@@ -361,6 +361,12 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
+                        <img src="images/google-books-library.png">
+                        <p>If your holdings are not in OCLC, you're not linked to Google Books.</p>
+                        <p class="fragment">Our decentralized infrastructure has been centralized.</p>
+                    </section>
+
+                    <section>
                         <h3>Linked data library system leadership</h3>
                         <ul>
                             <li>Some library systems <em>have</em> supplemented or discarded MARC for a linked data model:</li>
@@ -444,70 +450,45 @@ for HTML or RDF, the same expectations apply to make the web grow:
 
                 <section>
                     <section>
-                        <h3>MARC data to schema.org types</h3>
-<table>
-<thead>
-<tr>
-<th>Schema.org type</th><th>MARC 21 leader[06] value</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>Book</td><td><code>a</code></td></tr>
-<tr><td>Map</td><td><code>e</code></td></tr>
-<tr><td>MusicAlbum</td><td><code>j</code></td></tr>
-<tr><td>CreativeWork</td><td>All other leader values</td></tr>
-</tbody>
-</table>
-                        <aside class="notes">Plenty of room to improve based on finer-grained mappings from the fixed fields; if you want to help, let's talk!</aside>
+                        <h3>We're all in this together: SchemaBibEx</h3>
+                        <blockquote>
+                        The mission of this group is to discuss and prepare proposal(s) for extending Schema.org schemas for the improved representation of bibliographic information markup and sharing.
+                        </blockquote>
+                        <ul>
+                            <li>Founded by Richard Wallis (OCLC) in September 2012</li>
+                            <li>Formally known as the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a></li>
+                            <li>Accomplishments include:<ul>
+                                <li><em>Citations</em> as properties of all CreativeWorks (<em>accepted</em>)</li>
+                                <li><em>Holdings</em> as expressions of Offers (<em>best practice</em>)</li>
+                                <li><em>Collections</em> for complex relationships between CreativeWorks (<em>proposed</em>)</li>
+                                <li><em>Periodicals</em> as containers for Articles (<em>proposed</em>)</li>
+                            </ul></li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>MARC to schema.org properties (sample)</h3>
-
-<table>
-<thead>
-<tr><th>Schema.org property</th><th>MARC 21 field/subfield</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td>245/All subfields except w, 0, 4, 5, 6, 8, 9</td>
-</tr>
-<tr>
-<td><code>Book :: isbn</code></td>
-<td>022/a</td>
-</tr>
-<tr>
-<td><code>publisher :: Organization :: location</code></td>
-<td>(260/a or 264[indicator 2="1"])/a</td>
-</tr>
-<tr>
-<td><code>publisher :: Organization :: name</code></td>
-<td>(260/b or 264[indicator 2="1"])/b</td>
-</tr>
-<tr>
-<td><code>datePublished</code></td>
-<td>(260/c or 264[indicator 2="1"])/c</td>
-</tr>
-</tbody>
-</table>
-                        <aside class="notes">"name" is "title" here! Also note that ISBD punctuation really sucks.</aside>
+                        <h3>SchemaBibEx: Citations everywhere</h3>
+                        <ul>
+                            <li>Originally only the <code>MedicalScholarlyArticle</code> type had a <code>citation</code> property</li>
+                            <li>Alf Eaton, via SchemaBibEx, proposed making the property applicable to all <code>CreativeWork</code> types</li>
+                            <li><strong>Status</strong>: <em>accepted</em></li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h3>Library items as schema.org Offers</h3>
+                        <h3>SchemaBibEx: Library items as schema.org Offers</h3>
                         <ul>
                             <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
                             <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search engines</li>
-                            <li>Libraries therefore offer items for "lease" at zero cost
-                            (SchemaBibEx <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a>)</li>
+                            <li>Libraries therefore offer items for "lease" at zero cost</li>
+                            <li><strong>Status</strong>: SchemaBibEx <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a></li>
                         </ul>
                         <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
                     </section>
 
                     <section>
-                        <h3>Library items mapped to schema.org Offers</h3>
-                        <table>
+                        <h3>Mapping holdings to schema.org Offers</h3>
+                        <table style="margin: 0px auto;">
                             <thead>
                                 <tr><th>Offer property</th><th>Library item</th></tr>
                             </thead>
@@ -519,18 +500,121 @@ for HTML or RDF, the same expectations apply to make the web grow:
                                 <tr><td><code>availability</code></td><td>Item status</td></tr>
                             </tbody>
                         </table>
+                    </section>
 
+                    <section>
+                        <h3>Holdings as Offers: example</h3>
+<pre><code>&lt;tr property="offers" typeof="Offer"&gt;
+  &lt;td&gt;
+    &lt;a property="seller" typeof="Library" href="http://example.org/library"&gt;
+      &lt;span property="name"&gt;C.H. Booth Library - Newtown&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;link property="businessFunction" href="http://purl.org/goodrelations/v1#LeaseOut"&gt;
+    &lt;link property="itemOffered" href="#schemarecord"&gt;
+  &lt;/td&gt;
+  &lt;td&gt;&lt;span property="sku"&gt;641.5 ROM c. 2&lt;/span&gt;&lt;/td&gt;
+  &lt;td property="serialNumber"&gt;34014012862984&lt;/td&gt;
+  &lt;td property="availableAtOrFrom"&gt;Adult Nonfiction&lt;/td&gt;
+  &lt;td&gt;&lt;link property="availability" href="http://schema.org/InStock"&gt;Available&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>SchemaBibEx: Periodicals</h3>
+                        <ul>
+                            <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
+                            <ul>
+                                <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
+                            </ul></li>
+                            <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
+                                <ul>
+                                    <li><code><code>Article</code> (and all child types such as <code>ScholarlyArticle</code>)</code>
+                                    <ul>
+                                        <li><code> :: isPartOf :: PublicationIssue</code></li>
+                                        <li><code> :: isPartOf :: PublicationVolume</code></li>
+                                        <li><code> :: isPartOf :: Periodical</code></li>
+                                    </ul></li>
+                                </ul>
+                            </li>
+                            <li>Enables structured inline citations, regardless of citation format!</li>
+                            <li><strong>Status:</strong> <em>Under consideration by schema.org</em></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Structured library information</h3>
+                        <ul>
+                            <li>schema.org offers a <code>Library</code> organization type</li>
+                            <li>ILS often tracks library hours, contact information, address, branch relationships</li>
+                            <li>Evergreen, as of 2.6 release, will expose this</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Structured library information example</h3>
+                        <pre><code>&lt;div vocab="http://schema.org/" typeof="Library"&gt;
+    &lt;h1 property="name"&gt;Example Branch 1&lt;/h1&gt;
+    &lt;div&gt;&lt;a href="http://example.com/BR1" property="url"&gt;Library web site&lt;/a&gt;&lt;/div&gt;
+
+    &lt;h2&gt;Opening hours&lt;/h2&gt;
+        &lt;div property="openingHoursSpecification" typeof="OpeningHoursSpecification"&gt;
+            &lt;link property="dayOfWeek" href="http://purl.org/goodrelations/v1#Monday"&gt;
+            Monday: &lt;span property="opens"&gt;12:00 AM&lt;/span&gt; - 
+                    &lt;span property="closes"&gt;12:00 AM&lt;/span&gt;
+       &lt;/div&gt;
+    
+    &lt;h2&gt;Contact information&lt;/h2&gt;
+        &lt;div&gt;Email: &lt;a href="mailto:br1@example.com" property="email"&gt;br1@example.com&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;Telephone: &lt;a href="tel:(555) 555-0271" property="telephone"&gt;(555) 555-0271&lt;/a&gt;&lt;/div&gt;
+
+        &lt;div property="location address" typeof="PostalAddress"&gt;
+            &lt;h3 property="contactType"&gt;Mailing address&lt;/h3&gt;
+            &lt;span property="streetAddress"&gt;BR1&lt;br&gt;123 Main St.&lt;/span&gt;&lt;br&gt;
+            &lt;span property="addressLocality"&gt;Anywhere&lt;/span&gt;&lt;br&gt;
+            &lt;span property="addressRegion"&gt;GA&lt;/span&gt;&lt;br&gt;
+            &lt;span property="addressCountry"&gt;US&lt;/span&gt;&lt;br&gt;
+            &lt;span property="postalCode"&gt;30303&lt;/span&gt;&lt;br&gt;
+        &lt;/div&gt;
+
+    &lt;h2&gt;Branch relationship&lt;/h2&gt;
+    &lt;div id="branch-info"&gt;Parent library: 
+        &lt;a property="branchOf" href="/eg/opac/library/SYS1"&gt;Example System 1&lt;/a&gt;
+    &lt;/div&gt;
+</pre></code>
                     </section>
 
                     <section>
                         <h3>Thought experiment</h3>
                         <ul>
-                            <li>So we're exposing our holdings to the web</li>
-                            <li class="fragment">... in a common format understood by search engines</li>
-                            <li class="fragment">... linked to the library that holds the items</li>
-                            <li class="fragment">... with that library's physical address, hours of operation, web site and contact info</li>
+                            <li>So we're exposing our holdings to the web...</li>
+                            <li class="fragment">in a common format understood by search engines...</li>
+                            <li class="fragment">linked to the library that holds the items...</li>
+                            <li class="fragment">with that library's physical address, hours of operation, web site and contact info...</li>
                             <li class="fragment">...</li>
-                            <li class="fragment">... when can I stop doing batch uploads to OCLC and/or other union catalogues?</li>
+                            <li class="fragment">when can we stop doing batch uploads to OCLC and/or other union catalogues?</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Sitemaps</h3>
+                        <ul>
+                            <li>Standard documented at <a href="http://sitemaps.org">http://sitemaps.org</a>
+                            <li>Simple XML lists of URLs that should be crawled, with optional <em>change</em> information:</li>
+                            <pre><code>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://laurentian.concat.ca/eg/opac/record/100000?locg=105&lt;/loc&gt;
+    &lt;lastmod&gt;2009-05-03&lt;/lastmod&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://laurentian.concat.ca/eg/opac/record/100001?locg=105&lt;/loc&gt;
+    &lt;lastmod&gt;2009-05-03&lt;/lastmod&gt;
+  &lt;/url&gt;
+ ...
+&lt;/urlset&gt;
+</code></pre>
                         </ul>
                     </section>
 
@@ -547,8 +631,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
                                     <li>Exposes Google's simplistic string-based implementation of structured data</li>
                                 </ul>
                             </li>
-                            <li><strong>Plan</strong>: Implement a custom search engine that periodically crawls sitemaps, understands <em>complex</em> RDF, and can look up
-                                availability in real time</li>
                         </ul>
                     </section>
 
@@ -557,42 +639,30 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h3>Extending the schema.org vocabulary</h3>
+                        <h3>Quick union catalogues: in progress</h3>
                         <ul>
-                            <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
-                            <ul>
-                                <li>Initial focus on online information had made it impossible to represent a significant part of the world's information</li>
-                            </ul></li>
-                            <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
+                            <li><a href="https://github.com/dbs/schema-unioncat">Schema UnionCat</a>: &lt; 100 lines of Python to crawl sitemaps and extract <em>complex</em> RDF</li>
+                            <li>Currently a proof of concept</li>
+                            <li>Future enhancements (if there is interest):
                                 <ul>
-                                    <li><code>Article</code>
-                                    <ul>
-                                        <li><code> :: isPartOf :: PublicationIssue</code></li>
-                                        <li><code> :: isPartOf :: PublicationVolume</code></li>
-                                        <li><code> :: isPartOf :: Periodical</code></li>
-                                    </ul></li>
+                                    <li>Only crawl new and updated sitemap entries</li>
+                                    <li>Store and search extracted RDF</li>
+                                    <li>Check item availability on demand</li>
                                 </ul>
                             </li>
-                            <li>Enables structured inline citations, regardless of citation format!</li>
                         </ul>
-                    </section>
                 </section>
 
                 <section>
                     <h3>Summary</h3>
                     <ul>
-                        <li>Open source software as reference implementation:
-                            <ul>
-                                <li>Strengthens proposals</li>
-                                <li>May hasten and improve proprietary implementations</li>
-                                <li>Is immediately useful</li>
-                            </ul>
-                        </li>
-                        <li>Much more to do:
+                        <li>Web standards (sitemaps, RDFa, schema.org) &gt; library-niche solutions and offer a path back to decentralization</li>
+                        <li>Catalogues can feed metadata directly to general search engines</li>
+                        <li>Open source implementations strengthen proposals; may hasten and improve proprietary implementations</li>
+                        <li>We have much more to do:
                             <ul>
                                 <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
-                                <li>Build a proof-of-concept RDFa crawler / extractor union catalogue</li>
-                                <li>Improve type mapping (diving into fixed fields)</li>
+                                <li>Enhance proof-of-concept RDFa crawler / extractor / union catalogue</li>
                                 <li>Evolve MARC towards directly linked data</li>
                             </ul>
                         </li>
