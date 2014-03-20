@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Structured data in library systems: we are on it</title>
+		<title>Structured library data: holdings, libraries, and beyond</title>
 
-		<meta name="description" content="Until recently, there has been a disappointing level of adoption of schema.org structured data in traditional core library systems such as catalogues and institutional repositories. But there is still hope! In this session, l'll briefly (re)introduce you to the schema.org  vocabulary as expressed in microdata and RDFa and convince you that it matters to libraries, explain how our W3 Schema Bib Extend group participates in the schema.org development process, identify library systems that now publish schema.org structured data by default, and explore emerging possibilities for enhancing libraries' presence on the web with structured data.">
+		<meta name="description" content="Structured library data in the Evergreen open source integrated library system">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 		<link rel="stylesheet" href="css/theme/custom.css">
 
 		<!-- For syntax highlighting -->
@@ -44,10 +44,10 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 property="name">Structuring library data on the web with schema.org</h1>
+					<h1 property="name">Structured library data: holdings, libraries, and beyond</h1>
 					<p property="creator" typeof="Person">
                         <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
-                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-19">March 19, 2014</time></small>
+                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-21">March 21, 2014</time></small>
 					</p>
 				</section>
 
@@ -87,8 +87,7 @@ Most information then online (news groups, gopher) was organized as a tree; Bern
 
 				  <section>
 					<h3>Also, hypertext documents</h3>
-                    <pre><code>
-&lt;html&gt;
+                    <pre><code>&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Fancy academic article&lt;/title&gt;
   &lt;/head&gt;
@@ -100,41 +99,8 @@ Most information then online (news groups, gopher) was organized as a tree; Bern
       ...
     &lt;/p&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-                    </code></pre>
+&lt;/html&gt;</code></pre>
 				  </section>
-
-                    <section>
-                        <h3>Organizing the web Yahoo-style</h3>
-                        <img src="images/yahoo-old-style.png">
-                        <p>
-                        <cite><a href="https://web.archive.org/web/19961128071707/http://www8.yahoo.com/Science/Computer_Science/">Internet Archive Wayback Machine</a></cite>
-                        </p>
-                    </section>
-
-                    <section>
-                        <h3>Organizing the web Yahoo-style</h3>
-                        <blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <p>
-                        Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
-                        </p>
-                        </blockquote>
-                        <p>
-                        <cite title="CMC Magazine, The Untimely Death of Yahoo">Rosenfeld, Lou. September 1, 1995. <a href="http://www.ibiblio.org/cmc/mag/1995/sep/last.html">(online)</a></cite>
-                        </p>
-                        <aside class="notes"><blockquote>Yahoo's architecture provides a fairly consistent and easy to use interface for browsing a hierarchy of roughly 70,000 entries. [...] <br />
-                        Due to this ambiguity [of keyword searching], information searching is just plain hard, regardless of whether you're dealing with Yahoo's index or the card catalog at your local public library. [...]
-                        </blockquote>
-More gold: <q>It seems likely that techniques from classical librarianship, which have had only limited success in libraries and other traditional information environments, will scale even less so in the distributed, decentralized and heterogeneous information space that we find on the Web.</q></aside>
-                    </section>
-
-                    <section>
-                        <h3>Google and the <em>bag of words</em></h3>
-                        <ul>
-                            <li><a href="http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf">PageRank algorithm</a> - evolving academic citation analysis</li>
-                            <li>Weighting keyword importance by appearance (size, boldness)</li>
-                            <li>Using keywords in external links to a given page</li>
-                        </ul>
-                    </section>
 
                     <section>
                         <h3>Bags of words are still hard</h3>
@@ -164,19 +130,6 @@ More gold: <q>It seems likely that techniques from classical librarianship, whic
                 </section>
 
                 <section>
-<!--
-                    <section>
-                        <h3>Vannevar Bush and the Memex</h3>
-                        <blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
-                        [...]<br />
-                        A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote>
-                        <cite><em>Atlantic Monthly</em>, "<a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/">As We May Think</a>". July 1, 1945.</cite>
-                        <aside class="notes"><blockquote>publication has been extended far beyond our present ability to make real use of the record.<br />
-                        [...]<br />
-                        A record if it is to be useful to science, must be continuously extended, it must be stored, and above all it must be consulted.</blockquote></aside>
-                    </section>
--->
-
                     <section>
                         <h3>Trouble with the Semantic Web</h3>
                     </section>
@@ -220,33 +173,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         </blockquote>
                         </aside>
 
-                    </section>
-
-                    <section>
-                        <h3>Resource Description Framework (RDF)</h3>
-                        <ul>
-                            <li>RDF describes <code>subject::property::value</code> relationships as <em>triples</em></li>
-                            <li><em>Linked data</em> replaces literal values with URLs to support a graph structure</li>
-                            <li>Common early serialization of RDF triples was in XML:
-                            <pre><code>&lt;?xml version="1.0"?&gt;
-&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:dc="http://purl.org/dc/elements/1.1/"
-         xmlns:ex="http://example.org/stuff/1.0/"&gt;
-  &lt;rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
-        dc:title="RDF/XML Syntax Specification (Revised)"&gt;
-    &lt;ex:editor&gt;
-      &lt;rdf:Description ex:fullName="Dave Beckett"&gt;
-        &lt;ex:homePage rdf:resource="http://purl.org/net/dajobe/" /&gt;
-      &lt;/rdf:Description&gt;
-    &lt;/ex:editor&gt;
-  &lt;/rdf:Description&gt;
-&lt;/rdf:RDF&gt;</code></pre>
-<p>
-<cite>W3C. "RDF/XML Syntax Specification (Revised)". February 10, 2004. <a href="http://www.w3.org/TR/REC-rdf-syntax/#example7">Online</a></cite>
-</p>
-                            </li>
-                        </ul>
-                        <aside class="notes">This is a sanity test... If that looks unwieldy, you are probably sane.</aside>
                     </section>
 
                     <section>
@@ -344,42 +270,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         <img src='images/ron_burgundy.jpg'>
                     </section>
 
-                    <section data-background="images/ron_burgundy.jpg">
-                        <h3>Enduring technology</h3>
-                        <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
-<pre><code>
-02199cam a22004698i 4500
-001 123456
-005 20131223124722.0
-008 130924s2013    nyu      b    001 0 eng  
-020    $a 9780804139571
-100 1  $a Burgundy, Ron
-245 10 $a Let me off at the top! $b my classy life and other musings
-264  1 $a New York : $b Crown Archetype, $c [2013].
-300    $a 223 pages, 16 unnumbered pages of plates : $b illustrations ; $c 22 cm 
-</code></pre>
-                    </section>
-                    <section data-background="images/ron_burgundy.jpg">
-                        <h3>MARC: XML serialization</h3>
-                        <p>Same inscrutable semantics, more verbose, but usable with standard tools</p>
-<pre><code><record>
-  <leader>02199cam a22004698i 4500</leader>
-  <controlfield tag="001">123456</controlfield>
-  <controlfield tag="005">20131223124722.0</controlfield>
-  <controlfield tag="008">130924s2013    nyu      b    001 0 eng  </controlfield>
-  <datafield tag="020" ind1=" " ind2=" ">
-    <subfield code="a">9780804139571</subfield>
-  </datafield>
-  <datafield tag="100" ind1="1" ind2=" ">
-    <subfield code="a">Burgundy, Ron.</subfield>
-  </datafield>
-  <datafield tag="245" ind1="1" ind2="0">
-    <subfield code="a">Let me off at the top!</subfield>
-    <subfield code="b">my classy life and other musings</subfield>
-  </datafield>
-</code></pre>
-                    </section>
-
                     <section>
                         <img src="images/google-books-library.png">
                         <p>If your holdings are not in OCLC, you're not linked to Google Books.</p>
@@ -443,25 +333,24 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h3>Open source library systems</h3>
-        <blockquote>the modifications [can] be done by those actors who have the best information about their value [and] are best equipped to carry them out</blockquote>
-        <p>
-        <cite title="Half a Century of Public Software Institutions: Open Source as a Solution to HoldUp Problem. Journal of Public Economic Theory. 12(4), 609–639">Schwarz, M., Takhteyev, Y. (2010)</cite>
-        </p>
-                        <ul>
-                            <li>Open source library systems can evolve quickly:</li>
+                        <h3>Crawling: Evergreen early days</h3>
+                        <ul><li>Simplistic implementation of schema.org via microdata with the 2.2 and 2.3 releases:
                             <ul>
-                                <li>Contributions from a broad community adopted and released on a rapid, iterative cycle</li>
-                                <li>"Power of the default" means that those who upgrade to the latest release usually reflect default settings</li>
-                            </ul></li>
-                            <li><strong>Hypothesis</strong>: Open source library systems are most likely to contribute schema.org linked data in the short term</li>
+                                <li>title/author/keyword properties</li>
+                                <li>Direct plain text values (no embedded types)</li>
+                            </ul>
+                        </li>
+                        <li>2.4 release broke entities out as <code>Person</code> and <code>Organization</code> types, separated <code>birthDate</code> and <code>deathDate</code> values</li>
+                        <li>2.5 release switched to RDFa, exposed holdings as <code>Offer</code> types</li>
+                        <li>2.6 release includes links from holdings to <code>Library</code> types</li>
                         </ul>
+                        
                     </section>
 
                     <section>
                         <h3>Open source implementations</h3>
                         <ul>
-                            <li>My efforts have, in the spirit of Dorothea Salo's <a href="http://lj.libraryjournal.com/2013/12/opinion/peer-to-peer-review/linked-data-in-the-creases-peer-to-peer-review/">Linked data in the creases</a>:
+                            <li>My efforts have:
                             <ul>
                                 <li>Enhanced Evergreen, Koha, and VuFind to publish schema.org data</li>
                                 <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
@@ -479,7 +368,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         The mission of this group is to discuss and prepare proposal(s) for extending Schema.org schemas for the improved representation of bibliographic information markup and sharing.
                         </blockquote>
                         <ul>
-                            <li>Founded by Richard Wallis (OCLC) in September 2012, participants include Karen Coyle, Niklas Lindstrom</li>
+                            <li>Founded by Richard Wallis (OCLC) in September 2012</li>
                             <li>Formally known as the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a></li>
                             <li>Accomplishments include:<ul>
                                 <li><em>Citations</em> as properties of all CreativeWorks (<em>accepted</em>)</li>
@@ -610,12 +499,12 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <img src="images/schema-googlemaps-dewitt.png">
+                        <img src="images/schema-googlemaps-dewitt.png"> XXX
                         <aside class="notes">Lots of information here - today's hours, address, phone number, web site...</aside>
                     </section>
 
                     <section>
-                        <img src="images/schema-bingmaps-dewitt.png">
+                        <img src="images/schema-bingmaps-dewitt.png"> XXX
                         <aside class="notes">What the...? "Mac Alster"? No hours, Twitter but no web site...</aside>
                     </section>
 
@@ -663,6 +552,25 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
+                        <h3>Removing the human link to library information</h3>
+                        <ul>
+                            <li>I know some libraries aren't thrilled by the holdings links to library pages</li>
+                            <li>Open up <code>Open-ILS/src/templates/opac/parts/library_name_link.tt2</code> and change:
+<pre><code>    IF lib_url; '&lt;a property="seller" typeof="Library" href="'; lib_url | url; '"&gt;'; END;
+    '&lt;span property="name"&gt;'; org_name | html; '&lt;/span&gt;';
+    IF lib_url; '&lt;/a&gt;'; END;
+</pre></code></li>
+                            <li>to:
+<pre><code>    IF lib_url; '&lt;span property="seller" typeof="Library"&gt;
+    &lt;link property="url" href="'; lib_url | url; '"&gt;'; END;
+    '&lt;span property="name"&gt;'; org_name | html; '&lt;/span&gt;';
+    IF lib_url; '&lt;/span&gt;'; END;
+</pre></code></li>
+
+                        </ul>
+                    </section>
+
+                    <section>
                         <h3>Thought experiment</h3>
                         <ul>
                             <li>So we're exposing our holdings to the web...</li>
@@ -691,6 +599,7 @@ for HTML or RDF, the same expectations apply to make the web grow:
  ...
 &lt;/urlset&gt;
 </code></pre>
+                            <li>Basic SQL fo an Evergreen sitemap-generating script: <a href="http://goo.gl/XXX">Google Docs</a></li>
                         </ul>
                     </section>
 
@@ -730,11 +639,24 @@ for HTML or RDF, the same expectations apply to make the web grow:
                 </section>
 
                 <section>
+                    <h3>Evergreen: next steps</h3>
+                    <ul>
+                        <li>Extend the item type mappings (fixed fields / MVF / CRA) to more granular schema.org types</li>
+                        <li>Turn the rough sitemap SQL into an actual script</li>
+                        <li>Track the impact of this effort on relevance in "normal" search engines</li>
+                    </ul>
+                </section>
+
+            </section>
+
+            <section>
+                <section>
                     <h3>Summary</h3>
                     <ul>
                         <li>Web standards (sitemaps, RDFa, schema.org) &gt; library-niche solutions and offer a path back to decentralization</li>
                         <li>Catalogues can feed metadata directly to general search engines</li>
                         <li>Open source implementations strengthen proposals; may hasten and improve proprietary implementations</li>
+                        <li>Evergreen is the current leader in this space</li>
                         <li>We have much more to do:
                             <ul>
                                 <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
