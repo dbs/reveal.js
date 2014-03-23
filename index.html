@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Structured library data: holdings, libraries, and beyond</title>
+		<title>Structured data NOW</title>
 
-		<meta name="description" content="Structured library data in the Evergreen open source integrated library system">
+		<meta name="description" content="Structured data NOW: Expressing library data as schema.org in RDFa with open source systems.">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,10 +44,10 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 property="name">Structured library data: holdings, libraries, and beyond</h1>
+					<h1 property="name">Structured data NOW</h1>
 					<p property="creator" typeof="Person">
                         <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
-                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-21">March 21, 2014</time></small>
+                        <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-25">March 25, 2014</time></small>
 					</p>
 				</section>
 
@@ -64,43 +64,13 @@
 
 				<section>
                     <section>
-                        <h3>The trouble with the web</h3>
-                    </section>
-                    <section>
                         <h3>Happy 25th, World Wide Web!</h3>
                         <blockquote>We should work toward a universal linked information system, in which generality
                         and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
                         <p>
                         <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". March 1989.</a></cite>
                         </p>
-
-                        <aside class="notes"><blockquote>We should work toward a universal linked information system, in which generality
-                        and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
-Most information then online (news groups, gopher) was organized as a tree; Berners-Lee found this too restrictive.</aside>
                     </section>
-
-
-				  <section>
-					<h3>A platform for efficiently sharing cats</h3>
-                    <img src="images/cat.jpg">
-				  </section>
-
-				  <section>
-					<h3>Also, hypertext documents</h3>
-                    <pre><code>&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Fancy academic article&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;The web as intellectual rising tide&lt;/h1&gt;
-    &lt;p&gt;As my esteemed colleague
-      &lt;a href="http://example.com/author"&gt;Foo Bar&lt;/a&gt; has 
-      &lt;a href="http://example.com/article"&gt;astutely observed&lt;/a&gt;
-      ...
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-				  </section>
 
                     <section>
                         <h3>Bags of words are still hard</h3>
@@ -127,75 +97,27 @@ Most information then online (news groups, gopher) was organized as a tree; Bern
                         </ul>
                     </section>
 
-                </section>
-
-                <section>
-                    <section>
-                        <h3>Trouble with the Semantic Web</h3>
-                    </section>
-            
-                    <section>
-                        <h3>Tim Berners-Lee again</h3>
-                        <blockquote>
-                        The Semantic Web is not a separate Web but an extension of the current one, in which information is given well-defined meaning,
-                        better enabling computers and people to work in cooperation.
-                        </blockquote>
-                        <p>
-                        <cite><em>Scientific American</em>, "The Semantic Web". May 17, 2001.</cite>
-                        </p>
-
-                        <aside class="notes">Then goes on to describe RDF and XML as the building blocks of the semantic web. That's an extension of the existing web how, exactly?</aside>
-                    </section>
-
-                    <section>
-                        <h3>Tim Berners-Lee and Linked Data</h3>
-                        <blockquote>
-for HTML or RDF, the same expectations apply to make the web grow:
-<ol>
-    <li>Use URIs as names for things</li>
-    <li>Use HTTP URIs so that people can look up those names.</li>
-    <li>When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL)</li>
-    <li>Include links to other URIs. so that they can discover more things.</li>
-</ol>
-                        </blockquote>
-                        <p>
-                        <cite>Berners-Lee, Tim. "<a href="http://www.w3.org/DesignIssues/LinkedData.html">Linked data - design issues</a>". July 27, 2006.</cite>
-                        </p>
-                        <aside class="notes">
-                        <blockquote>
-for HTML or RDF, the same expectations apply to make the web grow:
-<ol>
-    <li>Use URIs as names for things</li>
-    <li>Use HTTP URIs so that people can look up those names.</li>
-    <li>When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL)</li>
-    <li>Include links to other URIs. so that they can discover more things.</li>
-</ol>
-                        </blockquote>
-                        </aside>
-
-                    </section>
-
                     <section>
                         <h3>The Semantic Web circa 2010</h3>
                         <ul>
-                            <li>Semantic Web efforts resulted in many deeply specialized vocabularies (objects and properties)</li>
+                            <li>Many deeply specialized vocabularies (objects and properties)</li>
                             <li>
                                 <ul>
-                                    <li>Best practice was to mix and match vocabularies
+                                    <li>Best practice was to mix and match vocabularies</li>
                                     <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
                                     <li>Despite linked data principles, still highly complex and easily overwhelming</li>
                                 </ul>
                             </li>
                             <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
                             <li>Competing practitioner approaches included microformats, structured data via microdata and RDFa, OGP</li>
-                            <li>Result was academically interesting, but in many ways a heterogenous mess</li>
+                            <li>Academically interesting, but in many ways a heterogenous mess</li>
                     </section>
 
                     <section>
                         <h3>RDF in Attributes (RDFa)</h3>
                         <ul>
                             <li>RDF serialization that uses a handful of attributes to decorate existing XML</li>
-                            <li>Proposed in 2004 for use in XHTML; started to take off with HTML5</li>
+                            <li>Proposed in 2004 for use in XHTML; started to take off with HTML5
                                 <pre><code>&lt;html&gt;
   &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
   &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
@@ -278,9 +200,9 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
+                        <h3 class="fragment">Our decentralized infrastructure has been centralized.</h3>
                         <img src="images/google-books-library.png">
                         <p>If your holdings are not in OCLC, you're not linked to Google Books.</p>
-                        <p class="fragment">Our decentralized infrastructure has been centralized.</p>
                     </section>
 
                     <section>
@@ -327,6 +249,25 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
+                        <h3>All of this has happened before...</h3>
+                        <ul>
+                            <li><a href="http://www.w3.org/2005/Incubator/lld/XGR-lld-20111025/">W3C Library
+                                Linked Data Incubator Group Report</a> recommendations in October 2011 included:
+                            </li>
+                        </ul>
+                        <blockquote style="width: inherit;">
+                                * That <strong>library standards bodies</strong> increase
+                                library participation in Semantic Web standardization, develop library data
+                                standards that are compatible with Linked Data, and disseminate best-practice
+                                design patterns tailored to library Linked Data;<br />
+                                * That <strong>data and systems designers</strong> design enhanced user services based on
+                                Linked Data capabilities, create URIs for the items in library datasets,
+                                develop policies for managing RDF vocabularies and their URIs, and express
+                                library data by re-using or mapping to existing Linked Data vocabularies;
+                        </blockquote>
+                    </section>
+
+                    <section>
                         <h3>Reality check: 2012 Common Crawl</h3>
                         <ul>
                             <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
@@ -340,28 +281,25 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
-                        <h3>Crawling: Evergreen early days</h3>
-                        <ul><li>Simplistic implementation of schema.org via microdata with the 2.2 and 2.3 releases:
+                        <h3>Tackling the problem with Evergreen</h3>
+                        <ul>
+                            <li>Began publishing schema.org from Evergreen catalogue pages <em>by default</em> in 2012</li>
+                            <li>Simplistic microdata with the 2.2 and 2.3 releases:
                             <ul>
                                 <li>title/author/keyword properties</li>
                                 <li>Direct plain text values (no embedded types)</li>
                             </ul>
                         </li>
                         <li>2.4 release broke entities out as <code>Person</code> and <code>Organization</code> types, separated <code>birthDate</code> and <code>deathDate</code> values</li>
-                        <li>2.5 release switched to RDFa, exposed holdings as <code>Offer</code> types</li>
-                        <li>2.6 release includes links from holdings to <code>Library</code> types</li>
+                        <li>2.5 release (late 2013) switched to RDFa, exposed holdings as <code>Offer</code> types</li>
+                        <li>2.6 release (soon!) includes links from holdings to <code>Library</code> types</li>
                         </ul>
-                        
                     </section>
 
                     <section>
-                        <h3>Open source implementations</h3>
+                        <h3>Further open source implementations</h3>
                         <ul>
-                            <li>My efforts have:
-                            <ul>
-                                <li>Enhanced Evergreen, Koha, and VuFind to publish schema.org data</li>
-                                <li>Enhanced Evergreen to expose <code>Library</code> metadata (location, contact information, hours of operation) linked from offers</li>
-                            </ul></li>
+                            <li>Koha 3.14 and VuFind 2.1 committed patches to add bibliographic data + holdings <em>by default</em></li>
                             <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
                             <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
                         </ul>
@@ -396,22 +334,24 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     </section>
 
                     <section>
+                        <h3>SchemaBibEx: Library items as schema.org Offers</h3>
+                        <ul>
+                            <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
+                            <li>Library-specific holdings vocabulary seemed
+                                unlikely to gain traction from search engines (<q>express library data by
+                                re-using or mapping to existing Linked Data vocabularies</q>)</li>
+                            <li>Libraries therefore offer items for "lease" at zero cost</li>
+                            <li><strong>Status</strong>: SchemaBibEx <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a></li>
+                        </ul>
+                        <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
+                    </section>
+
+                    <section>
                         <img src="images/evergreen-details.png">
                     </section>
 
                     <section>
                         <img src="images/koha-details.png">
-                    </section>
-
-                    <section>
-                        <h3>SchemaBibEx: Library items as schema.org Offers</h3>
-                        <ul>
-                            <li>GoodRelations vocabulary for surfacing product information, based on an <em>agent-object-promise</em> model, was incorporated into schema.org</li>
-                            <li>Library-specific holdings vocabulary seemed unlikely to gain traction from search engines</li>
-                            <li>Libraries therefore offer items for "lease" at zero cost</li>
-                            <li><strong>Status</strong>: SchemaBibEx <a href="http://www.w3.org/community/schemabibex/wiki/Holdings_via_Offer">recommended practice</a></li>
-                        </ul>
-                        <aside class="notes">Resulted in rewriting much of schema.org's Product/Offer vocabulary to support non-commercial interests</aside>
                     </section>
 
                     <section>
@@ -527,6 +467,11 @@ for HTML or RDF, the same expectations apply to make the web grow:
 
                     <section>
                         <h3>Structured library information example</h3>
+                        <img src="images/schema-library-info.png">
+                    </section>
+
+                    <section>
+                        <h3>Structured library information example</h3>
                         <pre><code>&lt;div vocab="http://schema.org/" typeof="Library"&gt;
     &lt;h1 property="name"&gt;Example Branch 1&lt;/h1&gt;
     &lt;div&gt;&lt;a href="http://example.com/BR1" property="url"&gt;Library web site&lt;/a&gt;&lt;/div&gt;
@@ -556,25 +501,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
         &lt;a property="branchOf" href="/eg/opac/library/SYS1"&gt;Example System 1&lt;/a&gt;
     &lt;/div&gt;
 </pre></code>
-                    </section>
-
-                    <section>
-                        <h3>Removing the human link to library information</h3>
-                        <ul>
-                            <li>I know some libraries aren't thrilled by the holdings links to library pages</li>
-                            <li>Open up <code>Open-ILS/src/templates/opac/parts/library_name_link.tt2</code> and change:
-<pre><code>    IF lib_url; '&lt;a property="seller" typeof="Library" href="'; lib_url | url; '"&gt;'; END;
-    '&lt;span property="name"&gt;'; org_name | html; '&lt;/span&gt;';
-    IF lib_url; '&lt;/a&gt;'; END;
-</pre></code></li>
-                            <li>to:
-<pre><code>    IF lib_url; '&lt;span property="seller" typeof="Library"&gt;
-    &lt;link property="url" href="'; lib_url | url; '"&gt;'; END;
-    '&lt;span property="name"&gt;'; org_name | html; '&lt;/span&gt;';
-    IF lib_url; '&lt;/span&gt;'; END;
-</pre></code></li>
-
-                        </ul>
                     </section>
 
                     <section>
@@ -645,15 +571,6 @@ for HTML or RDF, the same expectations apply to make the web grow:
                         </ul>
                 </section>
 
-                <section>
-                    <h3>Evergreen: next steps</h3>
-                    <ul>
-                        <li>Extend the item type mappings (fixed fields / MVF / CRA) to more granular schema.org types</li>
-                        <li>Turn the rough sitemap SQL into an actual script</li>
-                        <li>Track the impact of this effort on relevance in "normal" search engines</li>
-                    </ul>
-                </section>
-
             </section>
 
             <section>
@@ -661,13 +578,13 @@ for HTML or RDF, the same expectations apply to make the web grow:
                     <h3>Summary</h3>
                     <ul>
                         <li>Web standards (sitemaps, RDFa, schema.org) &gt; library-niche solutions and offer a path back to decentralization</li>
-                        <li>Catalogues can feed metadata directly to general search engines</li>
-                        <li>Open source implementations strengthen proposals; may hasten and improve proprietary implementations</li>
-                        <li>Evergreen is the current leader in this space</li>
+                        <li>Catalogues <em>can</em> feed metadata directly to general search engines</li>
+                        <li>Open source implementations strengthen proposals; hopefully hasten proprietary implementations</li>
                         <li>We have much more to do:
                             <ul>
-                                <li>Common Crawl analyses: broaden domains for 2012, update for 2014</li>
+                                <li>Update Common Crawl analyses: broaden domains for 2012, update for 2014</li>
                                 <li>Enhance proof-of-concept RDFa crawler / extractor / union catalogue</li>
+                                <li>UNIMARC and NORMARC mappings for Koha</li>
                                 <li>Evolve MARC towards directly linked data</li>
                             </ul>
                         </li>
