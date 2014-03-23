@@ -255,15 +255,21 @@
                                 Linked Data Incubator Group Report</a> recommendations in October 2011 included:
                             </li>
                         </ul>
-                        <blockquote style="width: inherit;">
-                                * That <strong>library standards bodies</strong> increase
+                        <blockquote>
+                            <ul>
+                                <li>
+                                That <strong>library standards bodies</strong> increase
                                 library participation in Semantic Web standardization, develop library data
                                 standards that are compatible with Linked Data, and disseminate best-practice
                                 design patterns tailored to library Linked Data;<br />
-                                * That <strong>data and systems designers</strong> design enhanced user services based on
+                                </li>
+                                <li>
+                                That <strong>data and systems designers</strong> design enhanced user services based on
                                 Linked Data capabilities, create URIs for the items in library datasets,
                                 develop policies for managing RDF vocabularies and their URIs, and express
                                 library data by re-using or mapping to existing Linked Data vocabularies;
+                                </li>
+                            </ul>
                         </blockquote>
                     </section>
 
@@ -299,7 +305,7 @@
                     <section>
                         <h3>Further open source implementations</h3>
                         <ul>
-                            <li>Koha 3.14 and VuFind 2.1 committed patches to add bibliographic data + holdings <em>by default</em></li>
+                            <li>Koha 3.14 and VuFind 2.1 accepted patches to express bibliographic data + holdings</li>
                             <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
                             <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
                         </ul>
@@ -315,12 +321,6 @@
                         <ul>
                             <li>Founded by Richard Wallis (OCLC) in September 2012</li>
                             <li>Formally known as the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a></li>
-                            <li>Accomplishments include:<ul>
-                                <li><em>Citations</em> as properties of all CreativeWorks (<em>accepted</em>)</li>
-                                <li><em>Holdings</em> as expressions of Offers (<em>best practice</em>)</li>
-                                <li><em>Collections</em> for complex relationships between CreativeWorks (<em>proposed</em>)</li>
-                                <li><em>Periodicals</em> as containers for Articles (<em>proposed</em>)</li>
-                            </ul></li>
                         </ul>
                     </section>
 
@@ -392,6 +392,7 @@
                         <h3>SchemaBibEx: Periodicals</h3>
                         <ul>
                             <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
+                            <li>
                             <ul>
                                 <li>Focus on online access overlooked relationships to publications and print attributes</li>
                             </ul></li>
