@@ -45,21 +45,16 @@
 			<div class="slides">
 				<section>
 					<h1 property="name">Structured data NOW</h1>
+                    <h3 property="alternateName">Seeding schema.org in library systems</h3>
 					<p property="creator" typeof="Person">
-                        <small><a href="http://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
+                        <small><a href="https://coffeecode.net" property="url"><span property="name">Dan Scott</span></a> / <a href="http://google.com/+DanScottCan" property="sameAs">+DanScottCan</a></small><br />
                         <small><span property="worksFor" typeof="CollegeOrUniversity"><a property="url" href="http://laurentian.ca"><span property="name">Laurentian University</span></a></span>, <time property="datePublished" content="2014-03-25">March 25, 2014</time></small>
 					</p>
 				</section>
 
                 <section>
-                    <h3>One day at Google I/O 2012...</h3>
-                    <p><a href="https://google.com/+AdeOshineye">Ade Oshineye</a> was singing the praises of Google+ Local pages</p>
-                    <p><strong title="It was _totally_ me">Some guy</strong> commented on Ade's <a href="https://plus.google.com/u/0/+AdeOshineye/posts/VZ3rmxPQVix">G+ post</a> about the presentation:</p>
-                    <blockquote>Still looking forward to a simple solution for
-                    automated Page updates for non-spammy metadata like hours of operation (yes, I
-                    was the guy who asked that question). Maybe we could teach G+ to scrape some
-                    selected microdata from an authoritative linked Web site, if pushing seems too
-                    dangerous?</blockquote>
+                    <h3><em>alternate title:</em></h3>
+                    <h2 class="fragment">Tales of a semantic web dropout!</h2>
                 </section>
 
 				<section>
@@ -74,6 +69,11 @@
 
                     <section>
                         <h3>Bags of words are still hard</h3>
+                        <img src="images/semantic_news_fail3.png">
+                    </section>
+
+                    <section>
+                        <h3>Bags of words are still hard</h3>
                         <img src="images/semantic_news_fail.png">
                     </section>
 
@@ -81,106 +81,8 @@
                         <h3>Bags of words are still hard</h3>
                         <img src="images/semantic_news_fail2.png">
                     </section>
-
-                    <section>
-                        <h3>Plenty of ambiguity problems remain</h3>
-                        <ul>
-                            <li>When a web page mentions "Dan Scott", it could be:
-                            <ul>
-                                <li>the character from the One Tree Hill TV show</li>
-                                <li>the artist from Magic the Gathering card game</li>
-                                <li>the Ontario academic professor from the University of Waterloo</li>
-                                <li>the Ontario academic librarian from Laurentian University</li>
-                            </ul>
-                            </li>
-                            <li>What about variations like "Daniel B. Scott", "Scott, Dan", "Scott, Dan, 1972-"?
-                        </ul>
-                    </section>
-
-                    <section>
-                        <h3>The Semantic Web circa 2010</h3>
-                        <ul>
-                            <li>Many deeply specialized vocabularies (objects and properties)</li>
-                            <li>
-                                <ul>
-                                    <li>Best practice was to mix and match vocabularies</li>
-                                    <li>Web Ontology Language (OWL) enables subtle cross-vocabulary equivalence expressions</li>
-                                    <li>Despite linked data principles, still highly complex and easily overwhelming</li>
-                                </ul>
-                            </li>
-                            <li>Content negotiation for different serializations (RDF/XML, N3, Turtle, ...): difficult in practice to deploy</li>
-                            <li>Competing practitioner approaches included microformats, structured data via microdata and RDFa, OGP</li>
-                            <li>Academically interesting, but in many ways a heterogenous mess</li>
-                    </section>
-
-                    <section>
-                        <h3>RDF in Attributes (RDFa)</h3>
-                        <ul>
-                            <li>RDF serialization that uses a handful of attributes to decorate existing XML</li>
-                            <li>Proposed in 2004 for use in XHTML; started to take off with HTML5
-                                <pre><code>&lt;html&gt;
-  &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
-  &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
-    &lt;h1 property="name"&gt;The web as intellectual rising tide&lt;/h1&gt;
-    &lt;div property="articleBody"&gt;
-      &lt;p&gt;As my esteemed colleague
-        &lt;a href="http://example.com/author" typeof="Person"&gt;Foo Bar&lt;/a&gt; has 
-        &lt;a href="http://example.com/article" property="citation"&gt;astutely observed&lt;/a&gt;
-        ...
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            </li>
-                            <li><em>microdata</em> is a roughly equivalent competing form of inline markup</li>
-                            <li><em>RDFa Lite</em> is a simplified version, pared down to five attributes</li>
-                        </ul>
-                    </section>
                 </section>
 
-                <section>
-                    <section>
-                        <h3>schema.org</h3>
-                        <img src="images/schema_borg_W7OK4T.jpg">
-                        <p style="font-size: smaller; text-align: right;"><a href="http://www.flickr.com/photos/wiredforsound23/6209344010/">Brickcon 2011</a> by <a href="http://www.flickr.com/photos/wiredforsound23/">wiredforlego</a></p>
-                    </section>
-
-                    <section>
-                        <h3>schema.org</h3>
-                        <ul>
-                            <li>In July 2011, <a href="http://schema.org">schema.org</a> was announced by major search engines (Google, Yahoo, Yandex)</li>
-                            <li>Some goals:
-                                <ol>
-                                    <li>Offer a simple vocabulary for the <em>short tail</em> of web results (events, products, people)</li>
-                                    <li>Enable normal web page publishers to be able to add schema.org markup via RDFa Lite or microdata without having to be Semantic Web experts</li>
-                                    <li>Enable search engines to aggregate data and apply finer-grained disambiguation and relevance strategies</li>
-                                </ol>
-                            </li>
-                            <li>A reaction to the state of the Semantic Web</li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <h3>schema.org: hierarchical types</h3>
-                        <img src="images/schema-Thing.png">
-                    </section>
-
-                    <section>
-                        <h3>schema.org: Creative Works</h3>
-                        <img src="images/schema-CreativeWork.png">
-                    </section>
-
-                    <section>
-                        <h3>schema.org: Book</h3>
-                        <img src="images/schema-Book.png">
-                    </section>
-
-                   <section>
-                        <h3>schema.org: focus on examples</h3>
-                        <img src="images/schema-CreativeWork-examples.png">
-                    </section>
-
-                </section>
                 <section>
                     <section>
                         <h3>Libraries: early technology adopters</h3>
@@ -195,7 +97,7 @@
                     </section>
 
                     <section data-background="images/ron_burgundy.jpg">
-                        <h3>MARC: (still) kind of a big deal</h3>
+                        <h3 style="color: white;">MARC: (still) kind of a big deal</h3>
                         <img src='images/ron_burgundy.jpg'>
                     </section>
 
@@ -224,9 +126,116 @@
                             <li>Large (national scale)</li>
                             <li>Able to sustain multi-year development efforts with concurrent systems</li>
                             <li>Able to mandate significant changes to established practices</li>
-                            <li>...?</li>
                         </ul>
                     </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>In all honesty</h3>
+                        <ul>
+                            <li class="fragment">I wanted to make my library system part of the Semantic Web, but:
+                                <ul>
+                                    <li class="fragment">RDF/XML, N3, Turtle</li>
+                                    <li class="fragment">conneg</li>
+                                    <li class="fragment">Vocabularies, ontologies</li>
+                                    <li class="fragment">open-world vs. closed-world assumptions</li>
+                                    <li class="fragment">Triple stores, SPARQL</li>
+                                    <li class="fragment">OWL</li>
+                                    <li class="fragment">Protegé</li>
+                                    <li class="fragment">Billions of triples</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <img class="fragment" src="images/really.gif">
+                        <img class="fragment" src="images/really2.gif">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>One day at Google I/O 2011...</h3>
+                        <img src="images/timothy_jordan.jpg">
+                        <p>Talk: <strong>Scalable structured markup</strong> (for Rich Snippets)</p>
+                    </section>
+
+                    <section>
+                        <h3>schema.org</h3>
+                        <ul>
+                            <li>In July 2011, <a href="http://schema.org">schema.org</a> was announced by major search engines (Google, Yahoo, Yandex)</li>
+                            <li>Some goals:
+                                <ol>
+                                    <li>Offer a simple vocabulary for the <em>short tail</em> of web results (events, products, people)</li>
+                                    <li>Enable normals to add schema.org markup (via RDFa Lite or microdata) without having to be Semantic Web experts</li>
+                                    <li>Enable search engines to aggregate data and apply finer-grained disambiguation and relevance strategies</li>
+                                </ol>
+                            </li>
+                            <li>A reaction to the state of the Semantic Web</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>schema.org: hierarchical types</h3>
+                        <img src="images/schema-Thing.png">
+                    </section>
+
+                    <section>
+                        <h3>schema.org: Creative Works</h3>
+                        <img src="images/schema-CreativeWork.png">
+                    </section>
+
+                    <section>
+                        <h3>schema.org: Book</h3>
+                        <img src="images/schema-Book.png">
+                    </section>
+
+                   <section>
+                        <h3>schema.org: focus on examples</h3>
+                        <img src="images/schema-CreativeWork-examples.png">
+                    </section>
+
+                    <section>
+                        <h3>RDF in Attributes (RDFa)</h3>
+                        <ul>
+                            <li>2004 proposal that started to take off with HTML5</li>
+                            <li>RDF serialization that decorates HTML with a dozen or so attributes</li>
+                            <li><em>RDFa Lite</em> is pared down to just five attributes</li>
+                        </ul>
+                                <pre><code>&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
+  &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
+    &lt;h1 property="name"&gt;The web as intellectual rising tide&lt;/h1&gt;
+    &lt;div property="articleBody"&gt;
+      &lt;p&gt;As my esteemed colleague
+        &lt;a href="http://example.com/author" typeof="Person"&gt;&lt;span
+           property="name"&gt;Foo Bar&lt;/span&gt;&lt;/a&gt; has 
+        &lt;a href="http://example.com/article" property="citation"&gt;astutely
+           observed&lt;/a&gt; ...
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <ul>
+                            <li><em>microdata</em> is a roughly equivalent form of inline markup</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <img src="images/schema-linter.png">
+                        <p><a href="http://linter.structured-data.org">http://linter.structured-data.org</a></p>
+                    </section>
+
+                    <section>
+                        <h3>Baby steps</h3>
+                        <ul>
+                            <li>By early 2012, Evergreen was publishing simplistic title/author/keyword schema.org via microdata</li>
+                            <li>Very shortly after, OCLC WorldCat started publishing rich, heavily extended schema.org via JSON</li>
+                        </ul>
+                    </section>
+
                 </section>
 
                 <section>
@@ -271,6 +280,7 @@
                                 </li>
                             </ul>
                         </blockquote>
+                        <p>Authors included code4lib regulars such as Karen Coyle, Antoine Isaac, Peter Murray, Jodi Schneider, Ross Singer, Ed Summers, Jeff Young (apologies for anyone I've missed!)
                     </section>
 
                     <section>
@@ -289,7 +299,6 @@
                     <section>
                         <h3>Tackling the problem with Evergreen</h3>
                         <ul>
-                            <li>Began publishing schema.org from Evergreen catalogue pages <em>by default</em> in 2012</li>
                             <li>Simplistic microdata with the 2.2 and 2.3 releases:
                             <ul>
                                 <li>title/author/keyword properties</li>
@@ -374,16 +383,18 @@
                         <h3>Holdings as Offers: example</h3>
 <pre><code>&lt;tr property="offers" typeof="Offer"&gt;
   &lt;td&gt;
-    &lt;a property="seller" typeof="Library" href="http://example.org/library"&gt;
-      &lt;span property="name"&gt;C.H. Booth Library - Newtown&lt;/span&gt;
-    &lt;/a&gt;
-    &lt;link property="businessFunction" href="http://purl.org/goodrelations/v1#LeaseOut"&gt;
+    &lt;a property="seller" typeof="Library"
+       href="http://example.org/library"&gt;&lt;span
+         property="name"&gt;C.H. Booth Library - Newtown&lt;/span&gt;&lt;/a&gt;
+    &lt;link property="businessFunction"
+          href="http://purl.org/goodrelations/v1#LeaseOut"&gt;
     &lt;link property="itemOffered" href="#schemarecord"&gt;
   &lt;/td&gt;
   &lt;td&gt;&lt;span property="sku"&gt;641.5 ROM c. 2&lt;/span&gt;&lt;/td&gt;
   &lt;td property="serialNumber"&gt;34014012862984&lt;/td&gt;
   &lt;td property="availableAtOrFrom"&gt;Adult Nonfiction&lt;/td&gt;
-  &lt;td&gt;&lt;link property="availability" href="http://schema.org/InStock"&gt;Available&lt;/td&gt;
+  &lt;td&gt;&lt;link property="availability"
+            href="http://schema.org/InStock"&gt;Available&lt;/td&gt;
 &lt;/tr&gt;
 </code></pre>
                     </section>
@@ -391,11 +402,7 @@
                     <section>
                         <h3>SchemaBibEx: Periodicals</h3>
                         <ul>
-                            <li>schema.org had an <code>Article</code> type and an unstructured <code>citation</code> property</li>
-                            <li>
-                            <ul>
-                                <li>Focus on online access overlooked relationships to publications and print attributes</li>
-                            </ul></li>
+                            <li>schema.org had an <code>Article</code> type but no containing publication types</li>
                             <li>Drove a <a href="http://www.w3.org/community/schemabibex/wiki/Article"><code>Periodical</code> extension proposal</a> that supported journal/magazine relationships:
                                 <ul>
                                     <li><code><code>Article</code> (and all child types such as <code>ScholarlyArticle</code>)</code>
@@ -416,19 +423,6 @@
                         <h3>SchemaBibEx: Comics</h3>
                         <img src="images/schema-comics.png">
                     </section>
-                    <section>
-                        <h3>SchemaBibEx: Comics</h3>
-                        <img src="images/schema-peter-olson.png">
-                    </section>
-                    <section>
-                        <h3>SchemaBibEx: Comics</h3>
-                        <ul>
-                            <li>Collaborating with Henry Andrews (<a href="http://comics.org">comics.org</a>) and <a href="https://google.com/+PeterOlson">Peter Olson</a> (Marvel)</li>
-                            <li>Specialization of <code>Periodical</code></li>
-                            <li>Depends on outcome of contributor/role discussion for <code>SportsEvent</code> proposal</li>
-                            <li><strong>Status:</strong> <em>In progress</em></li>
-                        </ul>
-                    </section>
 
                     <section>
                         <h3>SchemaBibEx: overall status</h3>
@@ -447,13 +441,22 @@
                     </section>
 
                     <section>
-                        <img src="images/schema-googlemaps-dewitt.png">
-                        <aside class="notes">Lots of information here - today's hours, address, phone number, web site...</aside>
+                        <h3>One day at Google I/O 2012...</h3>
+                        <p><a href="https://google.com/+AdeOshineye">Ade Oshineye</a> was singing the praises of Google+ Local pages</p>
+                        <p><strong title="It was _totally_ me">Some guy</strong> commented on Ade's <a href="https://plus.google.com/u/0/+AdeOshineye/posts/VZ3rmxPQVix">G+ post</a> about the presentation:</p>
+                        <blockquote>Still looking forward to a simple solution for
+                        automated Page updates for non-spammy metadata like hours of operation (yes, I
+                        was the guy who asked that question). Maybe we could teach G+ to scrape some
+                        selected microdata from an authoritative linked Web site, if pushing seems too
+                        dangerous?</blockquote>
                     </section>
 
                     <section>
-                        <img src="images/schema-bingmaps-dewitt.png">
-                        <aside class="notes">What the...? "Mac Alster"? No hours, Twitter but no web site...</aside>
+                        <img src="images/library-info-raleigh-google.png">
+                    </section>
+
+                    <section>
+                        <img src="images/library-info-raleigh-bing.png">
                     </section>
 
                     <section>
@@ -475,18 +478,23 @@
                         <h3>Structured library information example</h3>
                         <pre><code>&lt;div vocab="http://schema.org/" typeof="Library"&gt;
     &lt;h1 property="name"&gt;Example Branch 1&lt;/h1&gt;
-    &lt;div&gt;&lt;a href="http://example.com/BR1" property="url"&gt;Library web site&lt;/a&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;a href="http://example.com/BR1"
+        property="url"&gt;Library web site&lt;/a&gt;&lt;/div&gt;
 
     &lt;h2&gt;Opening hours&lt;/h2&gt;
-        &lt;div property="openingHoursSpecification" typeof="OpeningHoursSpecification"&gt;
-            &lt;link property="dayOfWeek" href="http://purl.org/goodrelations/v1#Monday"&gt;
+        &lt;div property="openingHoursSpecification"
+             typeof="OpeningHoursSpecification"&gt;
+            &lt;link property="dayOfWeek"
+                  href="http://purl.org/goodrelations/v1#Monday"&gt;
             Monday: &lt;span property="opens"&gt;12:00 AM&lt;/span&gt; - 
                     &lt;span property="closes"&gt;12:00 AM&lt;/span&gt;
-       &lt;/div&gt;
+        &lt;/div&gt;
     
     &lt;h2&gt;Contact information&lt;/h2&gt;
-        &lt;div&gt;Email: &lt;a href="mailto:br1@example.com" property="email"&gt;br1@example.com&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;Telephone: &lt;a href="tel:(555) 555-0271" property="telephone"&gt;(555) 555-0271&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;Email: &lt;a href="mailto:br1@example.com"
+            property="email"&gt;br1@example.com&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;Telephone: &lt;a href="tel:(555) 555-0271"
+            property="telephone"&gt;(555) 555-0271&lt;/a&gt;&lt;/div&gt;
 
         &lt;div property="location address" typeof="PostalAddress"&gt;
             &lt;h3 property="contactType"&gt;Mailing address&lt;/h3&gt;
@@ -499,7 +507,8 @@
 
     &lt;h2&gt;Branch relationship&lt;/h2&gt;
     &lt;div id="branch-info"&gt;Parent library: 
-        &lt;a property="branchOf" href="/eg/opac/library/SYS1"&gt;Example System 1&lt;/a&gt;
+        &lt;a property="branchOf"
+           href="/eg/opac/library/SYS1"&gt;Example System 1&lt;/a&gt;
     &lt;/div&gt;
 </pre></code>
                     </section>
