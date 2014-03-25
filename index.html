@@ -55,20 +55,14 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
 				</section>
 
                 <section>
-                    <h3><em>alternate title:</em></h3>
-                    <h2 class="fragment">Tales of a semantic web dropout!</h2>
+                    <h3>Basic premises of this talk</h3>
+                    <ol>
+                        <li>We want our resources to be found via normal search engines</li>
+                        <li>We want our metadata to be readily accessible and reusable by non-library developers</li>
+                    </ol>
                 </section>
 
 				<section>
-                    <section>
-                        <h3>Happy 25th, World Wide Web!</h3>
-                        <blockquote>We should work toward a universal linked information system, in which generality
-                        and portability are more important than fancy graphics techniques and complex extra facilities. [...] There is also much support from the publishing industry, and from librarians whose job it is to organise information.</blockquote>
-                        <p>
-                        <cite>CERN. "<a href="http://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a>". March 1989.</a></cite>
-                        </p>
-                    </section>
-
                     <section>
                         <h3>Bags of words are still hard</h3>
                         <img src="images/semantic_news_fail3.png">
@@ -103,36 +97,14 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                         <img src='images/ron_burgundy.jpg'>
                     </section>
 
-                    <section>
-                        <h3 class="fragment">Our decentralized infrastructure has been centralized.</h3>
-                        <img src="images/google-books-library.png">
-                        <p>If your holdings are not in OCLC, you're not linked to Google Books.</p>
-                    </section>
-
-                    <section>
-                        <h3>Linked data library system leadership</h3>
-                        <ul>
-                            <li>Some library systems <em>have</em> supplemented or discarded MARC for a linked data model:</li>
-                            <ul>
-                                <li>Swedish Union Catalog</li>
-                                <li>German National Library</li>
-                                <li>Bibliothèque nationale de France</li>
-                            </ul>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <h3>But is your library...</h3>
-                        <ul>
-                            <li>Large (national scale)</li>
-                            <li>Able to sustain multi-year development efforts with concurrent systems</li>
-                            <li>Able to mandate significant changes to established practices</li>
-                        </ul>
-                    </section>
                 </section>
 
                 <section>
+                    <section>
+                        <h3><em>alternate title:</em></h3>
+                        <h2 class="fragment">Tales of a semantic web dropout!</h2>
+                    </section>
+
                     <section>
                         <h3>In all honesty</h3>
                         <ul>
@@ -140,12 +112,11 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                                 <ul>
                                     <li class="fragment">RDF/XML, N3, Turtle</li>
                                     <li class="fragment">conneg</li>
-                                    <li class="fragment">Vocabularies, ontologies</li>
+                                    <li class="fragment">Vocabularies and ontologies</li>
                                     <li class="fragment">open-world vs. closed-world assumptions</li>
                                     <li class="fragment">Triple stores, SPARQL</li>
-                                    <li class="fragment">OWL</li>
-                                    <li class="fragment">Protegé</li>
-                                    <li class="fragment">Billions of triples</li>
+                                    <li class="fragment">OWL, mixed specialist vocabularies</li>
+                                    <li class="fragment">Billions of triples vs practical incentives</li>
                                 </ul>
                             </li>
                         </ul>
@@ -204,44 +175,70 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                     </section>
 
                     <section>
-                        <h3>RDF in Attributes (RDFa)</h3>
-                        <ul>
-                            <li>2004 proposal that started to take off with HTML5</li>
-                            <li>RDF serialization that decorates HTML with a dozen or so attributes</li>
-                            <li><em>RDFa Lite</em> is pared down to just five attributes</li>
-                        </ul>
-                                <pre><code>&lt;html&gt;
-  &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
-  &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
-    &lt;h1 property="name"&gt;The web as intellectual rising tide&lt;/h1&gt;
-    &lt;div property="articleBody"&gt;
-      &lt;p&gt;As my esteemed colleague
-        &lt;a href="http://example.com/author" typeof="Person"&gt;&lt;span
-           property="name"&gt;Foo Bar&lt;/span&gt;&lt;/a&gt; has 
-        &lt;a href="http://example.com/article" property="citation"&gt;astutely
-           observed&lt;/a&gt; ...
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                        <ul>
-                            <li><em>microdata</em> is a roughly equivalent form of inline markup</li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <img src="images/schema-linter.png">
-                        <p><a href="http://linter.structured-data.org">http://linter.structured-data.org</a></p>
-                    </section>
-
-                    <section>
                         <h3>Baby steps</h3>
                         <ul>
-                            <li>By early 2012, Evergreen was publishing simplistic title/author/keyword schema.org via microdata</li>
-                            <li>Very shortly after, OCLC WorldCat started publishing rich, heavily extended schema.org via JSON</li>
+                            <li>By early 2012, Evergreen was publishing simplistic title / author / keyword schema.org via microdata</li>
+                            <li>OCLC WorldCat also started publishing rich, heavily extended schema.org via JSON</li>
                         </ul>
                     </section>
 
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Practical problems close to home</h3>
+                    </section>
+
+                    <section>
+                        <h3 class="fragment">Our decentralized infrastructure has been centralized.</h3>
+                        <img src="images/google-books-library.png">
+                        <p>If your holdings are not in OCLC, you're not linked to Google Books.</p>
+                    </section>
+
+                    <section>
+                        <h3>One day at Google I/O 2012...</h3>
+                        <p><a href="https://google.com/+AdeOshineye">Ade Oshineye</a> was singing the praises of Google+ Local pages</p>
+                        <p><strong title="It was _totally_ me">Some guy</strong> commented on Ade's <a href="https://plus.google.com/u/0/+AdeOshineye/posts/VZ3rmxPQVix">G+ post</a> about the presentation:</p>
+                        <blockquote>Still looking forward to a simple solution for
+                        automated Page updates for non-spammy metadata like hours of operation (yes, I
+                        was the guy who asked that question). Maybe we could teach G+ to scrape some
+                        selected microdata from an authoritative linked Web site, if pushing seems too
+                        dangerous?</blockquote>
+                    </section>
+
+                    <section>
+                        <img src="images/library-info-raleigh-google.png">
+                    </section>
+
+                    <section>
+                        <img src="images/library-info-raleigh-bing.png">
+                    </section>
+
+                    <section>
+                        <img src="images/library-info-raleigh-osm.png">
+                    </section>
+
+                    <section>
+                        <h3>Linked data library system leadership</h3>
+                        <ul>
+                            <li>Some library systems <em>have</em> supplemented or discarded MARC for a linked data model:
+                                <ul>
+                                    <li>Swedish Union Catalog</li>
+                                    <li>German National Library</li>
+                                    <li>Bibliothèque nationale de France</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>But is your library...</h3>
+                        <ul>
+                            <li>Large (national scale)</li>
+                            <li>Able to sustain multi-year development efforts with concurrent systems</li>
+                            <li>Able to mandate significant changes to established practices</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -286,45 +283,47 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                                 </li>
                             </ul>
                         </blockquote>
-                        <p>Authors included code4lib regulars such as Karen Coyle, Antoine Isaac, Peter Murray, Jodi Schneider, Ross Singer, Ed Summers, Jeff Young (apologies for anyone I've missed!)
+                        <p>Authors included code4lib regulars such as Karen Coyle, Antoine Isaac, Peter Murray, Jodi Schneider, Ross Singer, Ed Summers, Jeff Young (apologies for anyone I've missed!)</p>
                     </section>
 
                     <section>
                         <h3>Reality check: 2012 Common Crawl</h3>
                         <ul>
                             <li>Ronallo<a href="http://jronallo.github.io/presentations/2013-dlf/presentation_with_notes/">(*)</a> found that American academic libraries published under 10,000 schema.org instances in total</li>
-                            <li>Possible reasons for this low adoption rate include:
-                            <ul>
-                                <li>Perceived return on investment is low in risk-averse, under-resourced institutions</li>
-                                <li>Proprietary systems do not facilitate shared modifications of HTML templates</li>
-                                <li>Sufficient access to underlying metadata may not be available in proprietary systems</li>
-                            </ul></li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>Tackling the problem with Evergreen</h3>
+                        <h3>RDF in Attributes (RDFa)</h3>
                         <ul>
-                            <li>Simplistic microdata with the 2.2 and 2.3 releases:
-                            <ul>
-                                <li>title/author/keyword properties</li>
-                                <li>Direct plain text values (no embedded types)</li>
-                            </ul>
-                        </li>
-                        <li>2.4 release broke entities out as <code>Person</code> and <code>Organization</code> types, separated <code>birthDate</code> and <code>deathDate</code> values</li>
-                        <li>2.5 release (late 2013) switched to RDFa, exposed holdings as <code>Offer</code> types</li>
-                        <li>2.6 release (soon!) includes links from holdings to <code>Library</code> types</li>
+                            <li>2004 proposal that started to take off with HTML5</li>
+                            <li>RDF serialization that decorates HTML with a dozen or so attributes</li>
+                            <li><em>RDFa Lite</em> is pared down to just five attributes</li>
+                        </ul>
+                                <pre><code>&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;Fancy academic article&lt;/title&gt;&lt;/head&gt;
+  &lt;body vocab="http://schema.org/" typeof="ScholarlyArticle"&gt;
+    &lt;h1 property="name"&gt;The web as intellectual rising tide&lt;/h1&gt;
+    &lt;div property="articleBody"&gt;
+      &lt;p&gt;As my esteemed colleague
+        &lt;a href="http://example.com/author" typeof="Person"&gt;&lt;span
+           property="name"&gt;Foo Bar&lt;/span&gt;&lt;/a&gt; has 
+        &lt;a href="http://example.com/article" property="citation"&gt;astutely
+           observed&lt;/a&gt; ...
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <ul>
+                            <li><em>microdata</em> is a roughly equivalent form of inline markup</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>Further open source implementations</h3>
-                        <ul>
-                            <li>Koha 3.14 and VuFind 2.1 accepted patches to express bibliographic data + holdings</li>
-                            <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
-                            <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
-                        </ul>
+                        <img src="images/schema-linter.png">
+                        <p><a href="http://linter.structured-data.org">http://linter.structured-data.org</a></p>
                     </section>
+
                 </section>
 
                 <section>
@@ -336,6 +335,7 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                         <ul>
                             <li>Founded by Richard Wallis (OCLC) in September 2012</li>
                             <li>Formally known as the <a href="http://www.w3.org/community/schemabibex/">W3C Schema Bib Extend community group</a></li>
+                            <li>Participants include Karen Coyle, Ross Singer, Corey Harper, Laura Dawson, Niklas Lindstrom, Jeff Young, and many others</li>
                         </ul>
                     </section>
 
@@ -431,7 +431,7 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                     </section>
 
                     <section>
-                        <h3>SchemaBibEx: overall status</h3>
+                        <h3>SchemaBibEx: current status</h3>
                         <ul>
                             <li>Exited active extension proposal development mode</li>
                             <li>Documenting best practices and supporting adopters</li>
@@ -439,30 +439,45 @@ This presentation highlights Dan's work with systems such as Evergreen, Koha, an
                             <li><a href="http://www.w3.org/community/schemabibex/">Join our community</a> and post questions to the mailing list!</li>
                         </ul>
                     </section>
+
+                    <section>
+                        <h3>Tackling the problem with Evergreen</h3>
+                        <ul>
+                            <li>Simplistic microdata with the 2.2 and 2.3 releases:
+                            <ul>
+                                <li>title/author/keyword properties</li>
+                                <li>Direct plain text values (no embedded types)</li>
+                            </ul>
+                        </li>
+                        <li>2.4 release broke entities out as <code>Person</code> and <code>Organization</code> types, separated <code>birthDate</code> and <code>deathDate</code> values</li>
+                        <li>2.5 release (late 2013) switched to RDFa, exposed holdings as <code>Offer</code> types</li>
+                        <li>2.6 release (soon!) includes links from holdings to <code>Library</code> types</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Further open source implementations</h3>
+                        <ul>
+                            <li>Koha 3.14 and VuFind 2.1 accepted patches to express bibliographic data + holdings</li>
+                            <li>Independently, the Blacklight library system was enhanced to publish schema.org data</li>
+                            <li>Approximately 4,000 library systems will publish schema.org data as sites adopt the latest releases</li>
+                            <li>Open source library systems served as the reference implementations for our work</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>OCLC previews 194 million open Work descriptions</h3>
+                        <ul>
+                            <li>Huge props to OCLC Research for publishing the Open Linked Data Bibliographic Work descriptions in February 2014</li>
+                            <li>Builds on the work of SchemaBibEx and existing schema.org proposals such as miniSKOS</li>
+                            <li>Great steps forward!</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
                     <section>
                         <h3>Structured library information</h3>
-                    </section>
-
-                    <section>
-                        <h3>One day at Google I/O 2012...</h3>
-                        <p><a href="https://google.com/+AdeOshineye">Ade Oshineye</a> was singing the praises of Google+ Local pages</p>
-                        <p><strong title="It was _totally_ me">Some guy</strong> commented on Ade's <a href="https://plus.google.com/u/0/+AdeOshineye/posts/VZ3rmxPQVix">G+ post</a> about the presentation:</p>
-                        <blockquote>Still looking forward to a simple solution for
-                        automated Page updates for non-spammy metadata like hours of operation (yes, I
-                        was the guy who asked that question). Maybe we could teach G+ to scrape some
-                        selected microdata from an authoritative linked Web site, if pushing seems too
-                        dangerous?</blockquote>
-                    </section>
-
-                    <section>
-                        <img src="images/library-info-raleigh-google.png">
-                    </section>
-
-                    <section>
-                        <img src="images/library-info-raleigh-bing.png">
                     </section>
 
                     <section>
