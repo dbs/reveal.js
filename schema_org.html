@@ -99,53 +99,34 @@
                     </aside>
                 </section>
 
-                <section data-background="images/double_rainbow.jpg">
-                        <h2>But what does it <em>mean</em>?</h2>
-                </section>
-
                 <section>
-                    <h2>Better than a bag of words</h2>
+                    <h2>Structured data in HTML: RDFa</h2>
                     <ul>
-                        <li class="fragment"><strong>Challenge</strong>: derive meaning from a (largely) presentation-oriented medium</li>
-                        <li class="fragment">Search engines use font size, font weight, above-the-fold content, etc for relevance</li>
-                        <li class="fragment">Early attempts to embed metadata via <code>&lt;meta&gt;</code> tags were quickly gamed: see <em>"spider food"</em></li>
-                        <li class="fragment">Early efforts to build a parallel semantic web based on RDF/XML were... complex and largely academic</li>
+                        <li>The semantic web's Resource Description Framework (<em>RDF</em>) started with a focus on XML triples,
+                            resulting in complexity like:
+                          <ul>
+                            <li>Content negotiation (to get different representations of the same data from the same URL)</li>
+                            <li>Building an entirely separate semantic web</li>
+                          </ul>
+                        </li>
+                        <li>Geniuses then figured out how to decorate HTML using attributes to represent types, properties, and relationships</li>
+                        <li>The semantic web and the document web can therefore be united!</li>
+                        <li>Consumers can derive direct relationships between the properties and the text that is displayed to actual humans with much more certainty</li>
                     </ul>
-                </section>
-
-                <section>
-                    <h2>Semantic fail! (Via <a href="http://inkdroid.org/journal/2013/01/30/genealogy-of-a-braeburn/">Ed Summers</a>)</h2>
-                    <img src="images/braeburn_google_header.png">
-                    <img src="images/braeburn_google.png">
-                </section>
-
-                <section>
-                    <h2>Structured data in HTML</h2>
-                    <p style="text-align: left">If you love OO, and you love HTML, you're going to love structured data!</p>
-                    <ul>
-                        <li>Geniuses<a href="#genius_footnote">*</a> figured out how to decorate HTML using attributes to represent types, properties, and relationships</li>
-                        <li>The semantic web and the document web can be united!</li>
-                        <li>Search engines can derive direct relationships between the properties and the text that is displayed to actual humans with much more certainty</li>
-                    </ul>
-                    <p id="genius_footnote" style="text-align: left"><br /><small>* <em>Not me. Very much not me.</em></small></p>
-                    
-                </section>
-
-                <section>
-                <h2>RDFa Lite: basic concepts</h2>
-                <p>Delineate structured data in HTML using attributes.</p>
                 </section>
 
                 <section>
                 <h2>RDFa Lite: HTML attributes</h2>
+                <p>Delineating structured data in HTML using attributes.</p>
                 <ul>
                     <li><code><strong>vocab</strong></code>: the vocabulary that defines the referenced types and their properties</li>
                     <li><code><strong>typeof</strong></code>: the type of the thing being described</li>
                     <li><code><strong>property</strong></code>: the property of the described thing</li>
                     <li><code><strong>resource</strong></code>: an identifier for a given thing on the page</li>
-                    <li><code><strong>prefix</strong></code>: if you have to mix multiple vocabularies, you can</li>
+                    <li><code><strong>prefix</strong></code>: you can mix multiple vocabularies, if you have to</li>
                 </ul>
                 </section>
+
                 <section>
                 <h2>Scope</h2>
                 <p>The <code><strong>typeof</strong></code> property creates a new scope, which is (normally) limited to the HTML element on which it is defined, and children of that element.</p>
