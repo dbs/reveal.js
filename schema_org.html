@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Structuring data on the web with schema.org</title>
+		<title>Structured data for libraries: RDFa and schema.org</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Quick introduction to RDFa and schema.org for library web pages and applications">
+		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="css/theme/custom.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,54 +44,50 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1 property="name">Structuring data on the web with schema.org</h1>
-					<h3><span typeof="EducationEvent" url="https://www.atendy.com/event/gdg-waterloo-devfest-80954845">GDG DevFest Can-Am</span> <span property="copyrightYear">2013</span></h3>
+					<h1 property="name">Structured data for libraries: RDFa and schema.org</h1>
+					<h3><span typeof="EducationEvent" url="http://ala14.ala.org/node/14524">Practical Linked Data with Open Source</span></h3>
+                    <h4>ALA <span property="copyrightYear">2014</span></h4>
 					<p property="author creator" typeof="Person">
-						<small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://plus.google.com/116747292129029460979?rel=author">+Dan Scott</a></small>
+						<small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://google.com/+DanScottCAN?rel=author">+Dan Scott</a></small>
 					</p>
                     <p><small><span property="jobTitle">Systems Librarian</span>, <span property="affiliation worksFor">Laurentian University</span></small></p>
 				</section>
 
                 <section>
-                <h2>By “web”, I mean HTML documents</h2>
-                <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;h1&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by Kevin Spacey
-   and released in 2013 directly to Netflix, starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Kevin Spacey&lt;/li&gt;
-  &lt;li&gt;Robin Wright&lt;/li&gt;
-  &lt;li&gt;Kate Mara&lt;/li&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+                <h2>We publish plenty of Web pages</h2>
+                <pre><code data-trim contenteditable>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  <div><strong>Blood ties</strong> / Garth Nix and Sean Williams.
+    <div><em>Author</em>: Nix, Garth.</div>
+    <div><em>Publication Info</em>:
+      New York, NY : Scholastic Inc., 2014.</div>
+    <div><em>Edition</em>: First edition.</div>
+  </div>
+&lt;/html&gt;</code></pre>
                 </section>
 
                 <section>
                     <h2>HTML as presentation</h2>
                     <p>The above code renders in normal browsers roughly as:</p>
-<div style="text-align: left; border: thin solid white; padding: 1em;">
-<p><strong>House of Cards</strong></p>
-<p>A political drama produced by Kevin Spacey and released in 2013 directly to Netflix, starring:</p>
-<ul>
-<li>Kevin Spacey</li>
-<li>Robin Wright</li>
-<li>Kate Mara</li>
-<li>...</li>
-</ul>
+<div style="text-align: left; border: thin solid black; padding: 1em;">
+  <div><strong>Blood ties</strong> / Garth Nix and Sean Williams.
+    <div><em>Author</em>: Nix, Garth.</div>
+    <div><em>Publication Info</em>:
+      New York, NY : Scholastic Inc., 2014.</div>
+    <div><em>Edition</em>: First edition.</div>
+  </div>
 </div>
                 </section>
 
                 <section>
                     <h2>HTML as a linked web of documents</h2>
                     <p>For example:</p>
-					<pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-<li>
-  <a href="http://example.com/id/kspacey">
-    Kevin Spacey
-  </a>
-</li>
+					<pre><code data-trim contenteditable>
+<a href="http://example.com/id/Garth_Nix">
+  Nix, Garth
+</a>
 </code></pre>
-                    <p>In this case, pointing off to some other web page, presumably about <strong>Kevin Spacey</strong>.</p>
+                    <p>In this case, pointing off to some other web page, presumably about <strong>Garth Nix</strong>.</p>
 
                     <aside class="notes">
                         <p>
@@ -153,103 +150,102 @@
                 <h2>Scope</h2>
                 <p>The <code><strong>typeof</strong></code> property creates a new scope, which is (normally) limited to the HTML element on which it is defined, and children of that element.</p>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;div typeof="Example"&gt;The scope starts here
-    &lt;p&gt;and continues
-        &lt;span&gt;through all of the nested
-            &lt;em&gt;child&lt;/em&gt;
-        &lt;/span&gt;
-        &lt;span&gt;elements&lt;/span&gt;
-    &lt;/p&gt;
-&lt;/div&gt;</code></pre>
+<div typeof="Example">The scope starts here
+    <p>and continues
+        <span>through all of the nested
+            <em>child</em>
+        </span>
+        <span>elements</span>
+    </p>
+</div></code></pre>
                 </section>
 
                 <section>
-                <h2>House of Cards: Plain HTML</h2>
+                <h2>Blood ties: Plain HTML</h2>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;h1&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by Kevin Spacey
-   and released in 2013 directly to Netflix, starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Kevin Spacey&lt;/li&gt;
-  &lt;li&gt;Robin Wright&lt;/li&gt;
-  &lt;li&gt;Kate Mara&lt;/li&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+<div><strong>Blood ties</strong> / Garth Nix and Sean Williams.
+  <div><em>Author</em>: Nix, Garth.</div>
+  <div><em>Publication Info</em>:
+    New York, NY : Scholastic Inc., 2014.
+  </div>
+  <div><em>Edition</em>: First edition.</div>
+</div>
+</code></pre>
                 </section>
 
                 <section>
                     <h2>HTML + RDFa (basic)</h2>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;div vocab="http://schema.org/" typeof="TVSeries"&gt;
-&lt;h1 property="name"&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by 
-  &lt;span property="producer"&gt;Kevin Spacey&lt;/span&gt; and released in
-  &lt;span property="copyrightYear"&gt;2013&lt;/span&gt; directly to Netflix,
-  starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li property="actor"&gt;Kevin Spacey&lt;/li&gt;
-  &lt;li property="actor"&gt;Robin Wright&lt;/li&gt;
-  &lt;li property="actor"&gt;Kate Mara&lt;/li&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+<div vocab="http://schema.org/" typeof="Book">
+  <strong property="name">Blood ties</strong> / Garth Nix and Sean Williams.
+  <div><em>Author</em>:
+    <span property="author">Nix, Garth.</span>
+  </div>
+  <div><em>Publication Info</em>:
+    <span property="publisher">New York, NY : Scholastic Inc.</span>,
+    <span property="datePublished">2014</span>.
+  </div>
+  <div><em>Edition</em>:
+    <span property="bookEdition">First edition.</span>
+  </div>
+</div>
 </code></pre>
-                    <p>A <code>TVSeries</code> and its attributes</p>
+                    <p>A <code>Book</code> and a few of its attributes as plain text.</p>
                 </section>
 
                 <section>
                     <h2>HTML + RDFa (nested types)</h2>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;div vocab="http://schema.org/" typeof="TVSeries"&gt;
-&lt;h1 property="name"&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by
-  &lt;span property="producer" typeof="Person"&gt;
-    &lt;span property="name"&gt;Kevin Spacey&lt;/span&gt;
-  &lt;/span&gt; and released in
-  &lt;span property="copyrightYear"&gt;2013&lt;/span&gt;
-  directly to Netflix, starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li property="actor" typeof="Person"&gt;
-    &lt;span property="name"&gt;Kevin Spacey&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li property="actor" typeof="Person"&gt;
-    &lt;span property="name"&gt;Robin Wright&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+<div vocab="http://schema.org/" typeof="Book">
+  <strong property="name">Blood ties</strong> / Garth Nix and Sean Williams.
+  <div><em>Author</em>:
+    <span property="author" typeof="Person">
+      <span property="familyName">Nix</span>,
+      <span property="givenName">Garth</span>.
+    </span>
+  </div>
+  <div><em>Publication Info</em>:
+    <span property="publisher">New York, NY : Scholastic Inc.</span>,
+    <span property="datePublished">2014</span>.
+  </div>
+</div>
 </code></pre>
-                    <p>A <code>Person</code> can have attributes other than just <code>name</code></p>
+                    <p>A <code>Person</code> can have attributes other than just <code>familyName</code> and <code>givenName</code></p>
                 </section>
 
                 <section>
                     <h2>HTML + RDFa (@resource)</h2>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;div vocab="http://schema.org/" typeof="TVSeries"
-     resource="#house_of_cards"&gt;
-&lt;h1 property="name"&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by
-  &lt;span property="producer" typeof="Person" resource="#kspacey"&gt;
-    &lt;span property="name"&gt;Kevin Spacey&lt;/span&gt;
-  &lt;/span&gt; and released in
-  &lt;span property="copyrightYear"&gt;2013&lt;/span&gt;
-  directly to Netflix, starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li property="actor" resource="#kspacey"&gt;Kevin Spacey&lt;/li&gt;
-  &lt;li property="actor" typeof="Person"&gt;
-    &lt;span property="name"&gt;Robin Wright&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+<div vocab="http://schema.org/" typeof="Book">
+  <strong property="name">Blood ties</strong> /
+    <span property="author" typeof="Person" resource="#author1">
+      <span property="name">Garth Nix</span>
+    </span> and Sean Williams.
+  <div><em>Author</em>:
+    <span property="author" typeof="Person" resource="#author1">
+      <span property="familyName">Nix</span>,
+      <span property="givenName">Garth</span>.
+    </span>
+  </div>
+  <div><em>Publication Info</em>:
+    <span property="publisher">New York, NY : Scholastic Inc.</span>,
+    <span property="datePublished">2014</span>.
+  </div>
+  <div><em>Edition</em>:
+    <span property="bookEdition">First edition.</span>
+  </div>
+</div>
 </code></pre>
                     <p>Avoiding redundant redundancies!</p>
 
                     <aside class="notes">
                     <p>
                         Defining two separate <strong>Person</strong> types for
-                        the identical Kevin Spacey is unnecessary. Using
-                        <code>@resource</code> to set an identifier for the
-                        first instance enables us to simply reference it the
-                        second time it comes up.
+                        the identical Garth Nix is unnecessary. Using
+                        <code>@resource</code> to set an identifier for one
+                        instance enables us to simply reference it any other
+                        time it comes up, as well as to add statements about
+                        the subject from either instance.
                     </p>
                     <p>
                         Note that <code>@resource</code> can point at external
@@ -262,31 +258,37 @@
                 <section>
                     <h2>HTML + RDFa (@prefix)</h2>
                 <pre><code data-trim contenteditable>&lt;!DOCTYPE html>
-&lt;div vocab="http://schema.org/" prefix="foaf: http://xmlns.com/foaf/0.1/"
-     typeof="TVSeries" resource="#house_of_cards"&gt;
-&lt;h1 property="name"&gt;House of Cards&lt;/h1&gt;
-&lt;p&gt;A political drama produced by
-  &lt;span property="producer" typeof="Person" resource="#kspacey"&gt;
-    &lt;span property="name foaf:account"&gt;
-        &lt;a href="https://plus.google.com/+KevinSpacey"
-           typeof="foaf:OnlineAccount"&gt;Kevin Spacey&lt;/a&gt;
-    &lt;/span&gt;
-  &lt;/span&gt; and released in
-  &lt;span property="copyrightYear"&gt;2013&lt;/span&gt;
-  directly to Netflix, starring:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li property="actor" resource="#kspacey"&gt;Kevin Spacey&lt;/li&gt;
-  &lt;li property="actor" typeof="Person"&gt;
-    &lt;span property="name"&gt;Robin Wright&lt;/span&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
+&lt;div vocab="http://schema.org/" prefix="foaf: http://xmlns.com/foaf/0.1/">
+  <div typeof="Book">
+    <strong property="name">Blood ties</strong> /
+      <span property="author" typeof="Person foaf:Person" resource="#author1">
+        <span property="name">Garth Nix</a></span>
+        <link property="foaf:account" href="http://goo.gl/aaJejH">
+      </span> and Sean Williams.
+    <div><em>Author</em>:
+      <span property="author" typeof="Person" resource="#author1">
+        <span property="familyName">Nix</span>,
+        <span property="givenName">Garth</span>.
+      </span>
+    </div>
+    <div><em>Publication Info</em>:
+      <span property="publisher" typeof="Corporation">
+        <span property="location" typeof="PostalAddress">
+          <span property="addressLocality">New York</span>, <span property="addressRegion">NY</span>
+        </span> : <span property="name">Scholastic Inc.</span></span>,
+      <span property="datePublished">2014</span>.
+    </div>
+    <div><em>Edition</em>:
+      <span property="bookEdition">First edition.</span>
+    </div>
+  </div>
+&lt;/div>
 </code></pre>
                 <p>Because the world is described by more than one ontology.</p>
 
                 <aside class="notes">
                     <p>
-                        Here we want to provide a link to Kevin Spacey's Google+ account.
+                        Here we want to provide a link to Garth Nix's Google+ account.
                         schema.org does not provide a clear method of identifying specific
                         online accounts, while FOAF (Friend of a Friend) was designed to
                         do exactly that. While the <code>foaf</code> prefix is built into
