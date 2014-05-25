@@ -43,73 +43,193 @@
 
 			<div class="slides">
 				<section>
-					<h1>Structured data in open source library systems</h1>
+					<h2>Seeding structured data by default in open source library systems</h2>
 					<h3>ESWC 2014</h3>
 					<p>
-						<small><a href="https://coffeecode.net">Dan Scott</a> / <a href="https://google.com/+DanScottCAN">+DanScott</a></small>
+						<small><a href="https://coffeecode.net">Dan Scott</a>, <a href="http://laurentian.ca">Laurentian University</a></small>
 					</p>
+					<p><small><a href="https://coffeecode.net">https://coffeecode.net</a> / <a href="https://google.com/+DanScottCAN">+DanScott</a></small></p>
+					<p><small><a href="http://www.google.com/search?q=%23eswc2014Scott">#eswc2014Scott</a></small></p>
 				</section>
 
 				<section>
                     <section>
-                        <h1>Libraries</h1>
-                    </section>
-
-                    <section>
-                        <h2>Early adopters</h2>
-                    </section>
-
-                    <section>
-                        <h2>Metadata</h2>
-                    </section>
-
-                    <section>
-                        <h2>Sharing</h2>
-                    </section>
-
-                    <section>
-                        <h2>Semantic web?</h2>
-                    </section>
-
-                    <section>
-                        <h2>National scale</h2>
+                        <h2>Libraries and the Semantic Web</h2>
                         <ul>
-                            <li>LIBRIS - Swedish Union Catalogue</li>
-                            <li>BNF - French national library</li>
-                            <li>DNB - German national library</li>
-                            <li>OCLC - international co-operative</li>
+                            <li>Nardi and O'Day (1996) classified information seeking behaviour as:
+                                <ul>
+                                    <li>monitoring searches</li>
+                                    <li>planned searches</li>
+                                    <li>exploratory searches</li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Lots of overlap with TBL's vision of the Semantic Web</li>
+                            <li class="fragment">Q&amp;A over LOD workshop (Freitas, Unger)</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Structured data</h2>
+                        <h2>Traditional library systems</h2>
                         <ul>
-                            <li>Low barrier to participation</li>
-                            <li>Direct return on investment</li>
+                            <li>Organizational systems for indexing and locating resources</li>
+                            <li>Inventory back end, with a catalogue front end</li>
+                            <li>Typically built with <strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloguing (<em>MARC</em>) as the metadata container</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Minimal small scale adoption</h2>
-                        <p>Fewer than 10,000 schema.org instances across American academic libraries (Ronallo, 2013)</p>
+                        <h3>Libraries as early technology adopters</h3>
+                        <ul>
+                            <li>Telnet access to catalogues</li>
+                            <li>Z39.50 protocol for sharing records</li>
+                            <li>SIP protocol for circulation transactions</li>
+                            <li>OpenURL protocol for resolving article requests</li>
+                            <li>COinS microformat for embedding citations in HTML</li>
+                            <li>unAPI for offering different metadata representations</li>
+                        </ul>
                     </section>
+
+                    <section>
+                        <h2>Themes</h2>
+                        <ul>
+                            <li>Mission: to satisfy a broad range of user queries</li>
+                            <li>Machine-readable metadata</li>
+                            <li>Culture of sharing</li>
+                            <li>Technology adoption and innovation</li>
+                            <li class="fragment">...</li>
+                            <li class="fragment">So traditional library systems are all over the Semantic Web, right?</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>No.</h1>
+                    </section>
+
                 </section>
 
-				<section>
+                <section>
                     <section>
-                        <h1>Barriers</h1>
+                        <h2>Libraries at an impasse</h2>
                     </section>
 
                     <section>
-                        <h2>Legacy formats</h2>
+                        <h3>Enduring technology</h3>
+                        <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
+                        <ul>
+                            <li>Binary format designed for record sharing and tape storage in the 1960s</li>
+                            <li>Mixture of position-dependent data in "fixed fields" and fields with variable-length subfields</li>
+                            <li>Combined with cataloguing rules to create conventions like: <code>245 $a $b $c = Title</code></li>
+                        </ul>
+<pre><code>
+02199cam a22004698i 4500
+001 123456
+005 20131223124722.0
+008 130924s2013    nyu      b    001 0 eng  
+020    $a 9780804139571
+100 1  $a Burgundy, Ron
+245 10 $a Let me off at the top! $b my classy life and other musings
+264  1 $a New York : $b Crown Archetype, $c [2013].
+300    $a 223 pages, 16 unnumbered pages of plates : $b illustrations ; $c 22 cm 
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>MARC: XML serialization</h3>
+                        <p>Same inscrutable semantics, more verbose, but usable with standard tools</p>
+<pre><code><record>
+  <leader>02199cam a22004698i 4500</leader>
+  <controlfield tag="001">123456</controlfield>
+  <controlfield tag="005">20131223124722.0</controlfield>
+  <controlfield tag="008">130924s2013    nyu      b    001 0 eng  </controlfield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9780804139571</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Burgundy, Ron.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Let me off at the top!</subfield>
+    <subfield code="b">my classy life and other musings</subfield>
+  </datafield>
+</code></pre>
                     </section>
 
                     <section>
                         <h2>Boutique innovation</h2>
+                        <blockquote>
+                            the use of HTML5 Microdata and schema.org by Google, Bing
+                            and Yahoo, and the use of RDFa by Facebook are [...] good reminders that the
+                            library software development community is best served by paying attention to
+                            mainstream solutions, as they become available, even if they eclipse homegrown
+                            stopgap solutions
+                        </blockquote><span>Summers (2011)</span>
                     </section>
 
                     <section>
-                        <h2>Proprietary software</h2>
+                        <h2>Proprietary library software</h2>
+                        <ul>
+                            <li>Generally unmotivated vendors</li>
+                            <li>Barriers to customizing for customers
+                                <ul>
+                                    <li>Non-persistent URIs(!)</li>
+                                    <li>Restricted (or non-existent!) APIs or raw data access</li>
+                                    <li>Non-standard templating systems</li>
+                                    <li>Walled garden for customizations</li>
+                                    <li>Limited skilled resources to apply to the problem</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Linked data library institutions</h3>
+                        <ul>
+                            <li>Some library institutions <em>have</em> successfully implemented linked data models:</li>
+                                <ul>
+                                    <li>Swedish Union Catalog</li>
+                                    <li>German National Library</li>
+                                    <li>Bibliothèque nationale de France</li>
+                                    <li>OCLC - international co-operative</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Common attributes</h3>
+                            <ul>
+                                <li>Large institutions</li>
+                                <li>Resources to sustain multi-year development efforts with concurrent systems</li>
+                                <li>Ability to mandate significant changes to established practices</li>
+                            </ul>
+                        <p>Not a model that can be followed by most resource-constrained libraries today</p>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Structured data</h2>
+                        <ul>
+                            <li>Evangelized by Google in 2010 and 2011 for <em>Rich Snippets</em></li>
+                            <li>Standardized by Google, Microsoft, and Yahoo! in 2011 with <a href="http://schema.org">schema.org</a> vocabulary</li>
+                            <li>Search engine sales pitch:
+                            <ul>
+                                <li>Low barrier to participation (just mark up what's already there!)</li>
+                                <li>Direct return on investment (enhanced search results)</li>
+                                <li>Documentation filled with examples using microdata</li>
+                            </li></ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Library adoption of schema.org (2012)</h2>
+                        <ul>
+                            <li>Ronallo (2013) analyzed American academic libraries' presence in the 2012 Common Crawl</li>
+                            <li class="fragment"><em>Results</em>: fewer than 10,000 schema.org instances across American academic libraries</li>
+                        </ul>
                     </section>
                 </section>
 
