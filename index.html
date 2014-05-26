@@ -41,6 +41,14 @@
 
 		<div class="reveal">
 
+<!--
+Motivation
+Proof of concept
+Approach
+Evaluation
+Conclusion
+-->
+
 			<div class="slides">
 				<section>
 					<h2>Seeding structured data by default in open source library systems</h2>
@@ -113,7 +121,7 @@
                     </section>
 
                     <section>
-                        <h3>Enduring technology</h3>
+                        <h3>Strings, not things</h3>
                         <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
                         <ul>
                             <li>Binary format designed for record sharing and tape storage in the 1960s</li>
@@ -206,10 +214,6 @@
                         <p>Not a model that can be followed by most resource-constrained libraries today</p>
                     </section>
 
-                </section>
-
-                <section>
-
                     <section>
                         <h2>Structured data</h2>
                         <ul>
@@ -237,8 +241,7 @@
                     <section>
                         <h2>Change the things you can</h2>
                         <ul>
-                            <li>Teach open source library systems to express data using schema.org vocabulary</li>
-                            <li>Participate in W3C Schema.org Bibliographic Extension community group</li>
+                            <li>Proposal: library systems should express structured data using schema.org</li>
                         </ul>
                     </section>
 
@@ -253,16 +256,17 @@
                     </section>
 
                     <section>
-                        <h2>Open source library systems</h2>
+                        <h3>Open source library systems</h3>
                         <ul>
                             <li>Native to the web: persistent URIs!</li>
-                            <li>Rapid, iterative development</li>
-                            <li>Built on standard components - transferrable knowledge</li>
+                            <li>Rapid, iterative community development</li>
+                            <li>Built on standard components == transferrable knowledge for contributors</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Target implementations</h2>
+                        <h3>Proof of concept: target implementations</h3>
+                        <p>Multiple systems to ensure general applicability of approach</p>
                         <ul>
                             <li><a href="http://koha-community.org">Koha</a>
                                 <ul>
@@ -282,15 +286,61 @@
                                     <li>~150 live instances</li>
                                 </ul>
                             </li>
+                            <li>10,000 - 1,000,000 records per instance</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Planting the seeds of structured data</h2>
+                        <h2>schema.org vocabulary development</h2>
                         <ul>
-                            <li>Incentivizes proprietary software</li>
+                            <li><a href="https://www.w3.org/wiki/WebSchemas">W3C WebSchemas group</a></li>
+                            <li><a href="https://www.w3.org/community/schemabibex">W3C Schema.org Bibliographic Extension community group</a> (SchemaBibEx)
+                                <ul>
+                                    <li>Open source library systems as reference implementation</li>
+                                </ul>
+                            </li>
                         </ul>
                     </section>
+
+                    <section>
+                        <h3>Approach</h3>
+                        <ol>
+                            <li>Map MARC21 record types to schema.org types:
+                                <ul>
+                                    <li>High confidence in <code>schema:Book</code>, <code>schema:Map</code>, <code>schema:MusicAlbum</code></li>
+                                    <li>Fallback to <code>schema:CreativeWork</code></li>
+                                </ul>
+                            </li>
+                            <li>Map MARC21 record elements to schema.org properties:
+                                <ul>
+                                    <li>Respect <code>schema</code> range and embedded entities (<code>schema:Person</code> for <code>schema:author</code> rather than just literals</li>
+                                    <li>Focus on <code>schema:CreativeWork</code> properties, as more specific types inherit from it</li>
+                                </ul>
+                            </li>
+                            <li>Link resources to the described object:
+                                <ul>
+                                    <li>Adopt the GoodRelations agent-promise-object model</li>
+                                </ul>
+                            </li>
+                            <li>Describe libraries themselves with linked data 
+                                <ul>
+                                    <li>Use <code>schema:Library</code> to supply address, operating hours, contact information</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h2>Evaluation</h2>
+                        <ul>
+                            <li>Linked data silo</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Conclusion</h2>
+                    </section>
+
                 </section>
 
 			</div>
