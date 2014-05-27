@@ -18,3 +18,16 @@ p.citation {
     width: 70%;
     text-align: right;
 }
+
+div.backgrounds {
+    background-image: url("/images/laurentian-logo.png");
+    background-position: top 1% left 1%;
+    background-repeat: no-repeat;
+}
+
+.footer {
+  position: absolute;
+  bottom: 50%;
+  left: -50%;
+  font-size: 40% !important ;
+}
