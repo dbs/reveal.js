@@ -47,9 +47,7 @@ Proof of concept
 Approach
 Evaluation
 Conclusion
-
 -->
-
 			<div class="slides">
 				<section>
 					<h2>Seeding structured data by default in open source library systems</h2>
@@ -57,7 +55,8 @@ Conclusion
 					<p>
 						<small><a href="https://coffeecode.net">Dan Scott</a>, <a href="http://laurentian.ca">Laurentian University</a></small>
 					</p>
-					<p><small><a href="https://coffeecode.net">https://coffeecode.net</a> / <a href="https://google.com/+DanScottCAN">+DanScott</a></small></p>
+					<p><small><a href="https://coffeecode.net">https://coffeecode.net</a></small></p>
+                    <p><small><a href="https://google.com/+DanScottCAN">+DanScott</a></small></p>
 					<p><small><a href="http://www.google.com/search?q=%23eswc2014Scott">#eswc2014Scott</a></small></p>
 				</section>
 
@@ -65,7 +64,7 @@ Conclusion
                     <section>
                         <h2>Libraries and the Semantic Web</h2>
                         <ul>
-                            <li>Nardi and O'Day (1996) classified information seeking behaviour as:
+                            <li>Nardi and O'Day (1996) classified information seeking behaviour of library patrons as:
                                 <ul>
                                     <li>monitoring searches</li>
                                     <li>planned searches</li>
@@ -103,7 +102,7 @@ Conclusion
                         <ul>
                             <li><em>Mission</em>: to satisfy a broad range of user queries</li>
                             <li>Machine-readable metadata</li>
-                            <li>Culture of sharing</li>
+                            <li>Culture of sharing and openness</li>
                             <li>Technology adoption and innovation</li>
                             <li class="fragment">...</li>
                             <li class="fragment">So traditional library systems are all over the Semantic Web, right?</li>
@@ -131,7 +130,7 @@ Conclusion
 001 123456
 005 20131223124722.0
 008 130924s2013    nyu      b    001 0 eng  
-020    $a 9780804139571
+020    $a 9780804139571 (pbk).
 100 1  $a Burgundy, Ron
 245 10 $a Let me off at the top! $b my classy life and other musings
 264  1 $a New York, NY : $b Crown Archetype, $c [2013].
@@ -234,7 +233,9 @@ Conclusion
                             the best information about their value [and] are
                             best equipped to carry them out
                         </blockquote>
-                        <p class="citation">Schwarz and Takhteyev (2010)</p>
+                        <p class="citation">Schwarz and Takhteyev (2010)<br />
+                        Journal of Public Economic Theory 
+                        </p>
                     </section>
 
                     <section>
@@ -252,8 +253,9 @@ Conclusion
                         getting the default “right” could have a tremendous impact on
                         the distribution of retirement savings available to individuals
                         </blockquote>
-                        <p class="citation">Madrian &amp; Shea (2001)</p>
-                        </ul>
+                        <p class="citation">Madrian &amp; Shea (2001)<br />
+                        The Quarterly Journal of Economics
+                        </p>
                     </section>
 
                     <section>
@@ -307,17 +309,21 @@ Conclusion
                     <section>
                         <h3>1. Map MARC types to schema.org types</h3>
                             <ul>
-                                <li>High confidence in <code>schema:Book</code>, <code>schema:Map</code>, <code>schema:MusicAlbum</code></li>
+                                <li>Highest confidence in <code>schema:Book</code>, <code>schema:Map</code>, <code>schema:MusicAlbum</code></li>
                                 <li>Fallback to <code>schema:CreativeWork</code></li>
+                            </ul>
+                            <ul style="margin-top: 1em">
+                                <li><em>Note</em>: Complexity and over-generalization of MARC21 hampers mapping efforts</li>
+                                <li class="fragment">... is a "Projected medium - Videorecording - Electronic" a <code>schema:Movie</code> or <code>schema:TVSeries</code>?</li>
                             </ul>
                     </section>
 
                     <section>
                         <h3>2. Map MARC21 record elements to schema.org properties</h3>
                             <ul>
-                                <li>Respect <code>schema</code> range and embedded entities (<code>schema:Person</code> for <code>schema:author</code> rather than just literals</li>
-                                <li>Focus on <code>schema:CreativeWork</code> properties, as more specific types inherit from it</li>
-                                <li><code>XPath</code> against an XML serialization of MARC, with regular expressions where necessary
+                                <li>Respect <code>schema</code> range and embedded entities (<code>schema:Person</code> for <code>schema:author</code> rather than just literals)</li>
+                                <li>Focus on <code>schema:CreativeWork</code> properties, as more specific types inherit without adding many properties</li>
+                                <li><em>Implementation</em>: <code>XPath</code> against an XML serialization of MARC, with regular expressions where necessary
                             </ul>
                     </section>
 
@@ -338,7 +344,55 @@ Conclusion
                     </section>
 
                     <section>
-                        <h3>XXX graphical image of record display here, broken down into types and properties</h3>
+                        <img src="images/final_jeopardy_1.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_2.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_3.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_4.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_5.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_6.png">
+                    </section>
+
+                    <section>
+                        <img src="images/final_jeopardy_7.png">
+                    </section>
+
+                    <section>
+                        <h3>Library structured data</h3>
+<pre><code>[] a ns1:Library ;
+    schema:address _:N636dfc60d58348a6abfe137cedde470a ;
+    schema:branchOf <http://example.org/library/AMESBURY> ;
+    schema:location _:N636dfc60d58348a6abfe137cedde470a ;
+    schema:name "Example Public Library"@en-us ;
+    schema:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+            schema:closes "8:00 PM"@en-us ;
+            schema:dayOfWeek <http://purl.org/goodrelations/v1#Monday> ;
+            schema:opens "10:00 AM"@en-us ], ... ;
+    schema:telephone <tel:555-555-5555> ;
+    schema:url <http://example.org/> .
+
+_:N636dfc60d58348a6abfe137cedde470a a schema:PostalAddress ;
+    schema:addressCountry "US"@en-us ;
+    schema:addressLocality "Example"@en-us ;
+    schema:addressRegion "MA"@en-us ;
+    schema:contactType "Mailing address"@en-us ;
+    schema:postalCode "90210"@en-us ;
+    schema:streetAddress "149 Main St."@en-us .
+</pre></code>
                     </section>
                 </section>
 
