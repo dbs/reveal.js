@@ -152,7 +152,9 @@ Conclusion
                             mainstream solutions, as they become available, even if they eclipse homegrown
                             stopgap solutions
                         </blockquote>
-                        <p class="citation">Summers (2011)</p>
+                        <p class="citation">Summers (2011)<br />
+                            <a href="http://inkdroid.org/journal/2011/09/22/stepping-backwards/">stepping backwards</a>
+                        </p>
                     </section>
 
                     <section>
@@ -226,6 +228,7 @@ Conclusion
                         </ul>
                     </section>
 
+<!--
                     <section>
                         <h3>"Open Source as a Solution to HoldUp Problem"</h3>
                         <blockquote>
@@ -238,6 +241,8 @@ Conclusion
                         </p>
                     </section>
 
+-->
+
                     <section>
                         <h3>Open source library systems</h3>
                         <ul>
@@ -247,6 +252,7 @@ Conclusion
                         </ul>
                     </section>
 
+<!--
                     <section>
                         <h3>Power of the default</h3>
                         <blockquote>
@@ -257,7 +263,7 @@ Conclusion
                         The Quarterly Journal of Economics
                         </p>
                     </section>
-
+-->
                     <section>
                         <h3>Proof of concept: target implementations</h3>
                         <p>Multiple systems to ensure general applicability of approach</p>
@@ -373,12 +379,12 @@ Conclusion
 
                     <section>
                         <h3>Library structured data</h3>
-<pre><code>[] a ns1:Library ;
+<pre><code>[] a schema:Library ;
     schema:address _:N636dfc60d58348a6abfe137cedde470a ;
     schema:branchOf &lt;http://example.org/library/AMESBURY&gt; ;
     schema:location _:N636dfc60d58348a6abfe137cedde470a ;
     schema:name "Example Public Library"@en-us ;
-    schema:openingHoursSpecification [ a ns1:OpeningHoursSpecification ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
             schema:closes "8:00 PM"@en-us ;
             schema:dayOfWeek &lt;http://purl.org/goodrelations/v1#Monday&gt; ;
             schema:opens "10:00 AM"@en-us ], ... ;
