@@ -47,6 +47,7 @@ Proof of concept
 Approach
 Evaluation
 Conclusion
+
 -->
 
 			<div class="slides">
@@ -100,7 +101,7 @@ Conclusion
                     <section>
                         <h2>Themes</h2>
                         <ul>
-                            <li>Mission: to satisfy a broad range of user queries</li>
+                            <li><em>Mission</em>: to satisfy a broad range of user queries</li>
                             <li>Machine-readable metadata</li>
                             <li>Culture of sharing</li>
                             <li>Technology adoption and innovation</li>
@@ -111,15 +112,12 @@ Conclusion
 
                     <section>
                         <h1>No.</h1>
+                        <h2 class="fragment">Libraries at an impasse</h2>
                     </section>
 
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Libraries at an impasse</h2>
-                    </section>
-
                     <section>
                         <h3>Strings, not things</h3>
                         <p><strong>MA</strong>chine <strong>R</strong>eadable <strong>C</strong>ataloging (MARC)</p>
@@ -136,29 +134,14 @@ Conclusion
 020    $a 9780804139571
 100 1  $a Burgundy, Ron
 245 10 $a Let me off at the top! $b my classy life and other musings
-264  1 $a New York : $b Crown Archetype, $c [2013].
+264  1 $a New York, NY : $b Crown Archetype, $c [2013].
 300    $a 223 pages, 16 unnumbered pages of plates : $b illustrations ; $c 22 cm 
 </code></pre>
-                    </section>
-                    <section>
-                        <h3>MARC: XML serialization</h3>
-                        <p>Same inscrutable semantics, more verbose, but usable with standard tools</p>
-<pre><code><record>
-  <leader>02199cam a22004698i 4500</leader>
-  <controlfield tag="001">123456</controlfield>
-  <controlfield tag="005">20131223124722.0</controlfield>
-  <controlfield tag="008">130924s2013    nyu      b    001 0 eng  </controlfield>
-  <datafield tag="020" ind1=" " ind2=" ">
-    <subfield code="a">9780804139571</subfield>
-  </datafield>
-  <datafield tag="100" ind1="1" ind2=" ">
-    <subfield code="a">Burgundy, Ron.</subfield>
-  </datafield>
-  <datafield tag="245" ind1="1" ind2="0">
-    <subfield code="a">Let me off at the top!</subfield>
-    <subfield code="b">my classy life and other musings</subfield>
-  </datafield>
-</code></pre>
+                        <aside class="notes">
+                            MARC records are frequently exchanged in bulk to create "union catalogues".
+                            Alternately, federated Z39.50 queries.
+                            Both approaches are cumbersome and error prone.
+                        </aside>
                     </section>
 
                     <section>
@@ -175,14 +158,14 @@ Conclusion
                     <section>
                         <h2>Proprietary library software</h2>
                         <ul>
-                            <li>Generally unmotivated vendors</li>
-                            <li>Barriers to customizing for customers
+                            <li>Vendors are generally unmotivated to invest in enhancements</li>
+                            <li>Barriers to customizing for customers:
                                 <ul>
                                     <li>Non-persistent URIs(!)</li>
                                     <li>Restricted (or non-existent!) APIs or raw data access</li>
                                     <li>Non-standard templating systems</li>
                                     <li>Walled garden for customizations</li>
-                                    <li>Limited skilled resources to apply to the problem</li>
+                                    <li>Lack of skilled resources to apply to the problem</li>
                                 </ul>
                             </li>
                         </ul>
@@ -202,30 +185,15 @@ Conclusion
                                 </ul>
                             </li>
                         </ul>
-                    </section>
-
-                    <section>
-                        <h3>Common attributes</h3>
+                        <aside class="notes">
+                            <h3>Common attributes</h3>
                             <ul>
                                 <li>Large institutions</li>
                                 <li>Resources to sustain multi-year development efforts with concurrent systems</li>
                                 <li>Ability to mandate significant changes to established practices</li>
                             </ul>
-                        <p>Not a model that can be followed by most resource-constrained libraries today</p>
-                    </section>
-
-                    <section>
-                        <h2>Structured data</h2>
-                        <ul>
-                            <li>Evangelized by Google in 2010 and 2011 for <em>Rich Snippets</em></li>
-                            <li>Standardized by Google, Microsoft, and Yahoo! in 2011 with <a href="http://schema.org">schema.org</a> vocabulary</li>
-                            <li>Search engine sales pitch:
-                            <ul>
-                                <li>Low barrier to participation (just mark up what's already in your HTML!)</li>
-                                <li>Direct return on investment (enhanced search results)</li>
-                                <li>Documentation filled with examples using microdata</li>
-                           </ul></li>
-                        </ul>
+                            <p>Not a model that can be followed by most resource-constrained libraries today</p>
+                        </aside>
                     </section>
 
                     <section>
@@ -240,8 +208,21 @@ Conclusion
                 <section>
                     <section>
                         <h2>Change the things you can</h2>
+<!--
                         <ul>
-                            <li>Proposal: library systems should express structured data using schema.org</li>
+                            <li>Libraries are a natural fit for the Semantic Web</li>
+                            <li>Open source enables actors closest to the domain</li>
+                            <li>Proprietary software is stalled</li>
+                            <li>Library software tethered to legacy protocols and standards</li>
+                            <li>Change at an institutional level requires resources and will beyond that of most libraries</li>
+                            <li>schema.org offers pragmatic reasons and "good enough" vocabulary (mostly)</li>
+                        </ul>
+-->
+                        <ul>
+                            <li>Teach open source library systems</li>
+                            <li class="fragment">... to express structured data in RDFa</li>
+                            <li class="fragment">... by default</li>
+                            <li class="fragment">... using the schema.org vocabulary</li>
                         </ul>
                     </section>
 
@@ -261,6 +242,18 @@ Conclusion
                             <li>Native to the web: persistent URIs!</li>
                             <li>Rapid, iterative community development</li>
                             <li>Built on standard components == transferrable knowledge for contributors</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Power of the default</h3>
+                        <ul>
+                            <li>Madrian &amp; Shea (2001) found that:
+                                <blockquote>
+                                getting the default “right” could have a tremendous impact on
+                                the distribution of retirement savings available to individuals
+                                </blockquote>
+                            </li>
                         </ul>
                     </section>
 
@@ -305,42 +298,82 @@ Conclusion
                     <section>
                         <h3>Approach</h3>
                         <ol>
-                            <li>Map MARC21 record types to schema.org types:
-                                <ul>
-                                    <li>High confidence in <code>schema:Book</code>, <code>schema:Map</code>, <code>schema:MusicAlbum</code></li>
-                                    <li>Fallback to <code>schema:CreativeWork</code></li>
-                                </ul>
-                            </li>
-                            <li>Map MARC21 record elements to schema.org properties:
-                                <ul>
-                                    <li>Respect <code>schema</code> range and embedded entities (<code>schema:Person</code> for <code>schema:author</code> rather than just literals</li>
-                                    <li>Focus on <code>schema:CreativeWork</code> properties, as more specific types inherit from it</li>
-                                </ul>
-                            </li>
-                            <li>Link resources to the described object:
-                                <ul>
-                                    <li>Adopt the GoodRelations agent-promise-object model</li>
-                                </ul>
-                            </li>
-                            <li>Describe libraries themselves with linked data 
-                                <ul>
-                                    <li>Use <code>schema:Library</code> to supply address, operating hours, contact information</li>
-                                </ul>
-                            </li>
+                            <li>Map MARC21 record types to schema.org types</li>
+                            <li>Map MARC21 record elements to schema.org properties</li>
+                            <li>Link resources to the described object</li>
+                            <li>Describe libraries themselves with linked data</li>
                         </ol>
                     </section>
 
                     <section>
-                        <h2>Evaluation</h2>
+                        <h3>1. Map MARC types to schema.org types</h3>
+                            <ul>
+                                <li>High confidence in <code>schema:Book</code>, <code>schema:Map</code>, <code>schema:MusicAlbum</code></li>
+                                <li>Fallback to <code>schema:CreativeWork</code></li>
+                            </ul>
+                    </section>
+
+                    <section>
+                        <h3>2. Map MARC21 record elements to schema.org properties</h3>
+                            <ul>
+                                <li>Respect <code>schema</code> range and embedded entities (<code>schema:Person</code> for <code>schema:author</code> rather than just literals</li>
+                                <li>Focus on <code>schema:CreativeWork</code> properties, as more specific types inherit from it</li>
+                                <li><code>XPath</code> against an XML serialization of MARC, with regular expressions where necessary
+                            </ul>
+                    </section>
+
+                    <section>
+                        <h3>3. Link resources to the described object</h3>
                         <ul>
-                            <li>Linked data silo</li>
+                            <li>Adopt the GoodRelations agent-promise-object model</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Conclusion</h2>
+                        <h3>4. Describe libraries themselves with linked data</h3>
+                            <ul>
+                                <li>Use <code>schema:Library</code> to supply address, operating hours, contact information</li>
+                                <li><em>Note</em>: Currently only implemented by Evergreen</li>
+                            </ul>
+                        </li>
                     </section>
 
+                    <section>
+                        <h3>XXX graphical image of record display here, broken down into types and properties</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Results</h2>
+                    <ul>
+                        <li>Successfully implemented approach in all three target systems
+                            <ul>
+                                <li>Currently expresses 10 schema.org types and 37 properties</li>
+                                <li>Code contributions were reviewed and accepted by upstream projects for release</li>
+                            </ul>
+                        <li>
+                        <li>schema.org was able to express most common library resources (<code>Periodicals</code> excepted)</li>
+                        <li>Proof-of-concept union catalogue using Google Custom Search Engine
+                            <ul><li>5 minutes to combine arbitrary library systems</li></ul>
+                        </li>
+                        <li>~5,000 libraries worldwide will publish linked data, with no effort, as they upgrade to the latest release</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Conclusion</h2>
+                    <ul>
+                        <li>Contributions:
+                        <ul>
+                            <li><em>In-use</em>: two most prominent open source library systems, and one discovery system, now express structured data</li>
+                            <li>Patterns and code for publishing structured data in library systems</li>
+                            <li>Overhauled GoodRelations comments to reduce commercial focus</li>
+                            <li>Proposed extensions to schema.org vocabulary to support Periodicals and multi-volume CreativeWorks</li>
+                        </ul>
+                        </li>
+                        <li>schema.org structured data offers a useful, lightweight transitional approach for libraries</li>
+                        <li>Standard Web technologies such as RDFa and sitemaps offer viable alternatives to legacy library protocols and standards</li>
+                    </ul>
                 </section>
 
 			</div>
