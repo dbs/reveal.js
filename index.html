@@ -14,12 +14,12 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
-		<link rel="stylesheet" href="css/theme/custom.css">
+		<link rel="stylesheet" href="../rdfa_intro/css/reveal.min.css">
+		<link rel="stylesheet" href="../rdfa_intro/css/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="../rdfa_intro/css/theme/custom.css">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="../rdfa_intro/lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -33,7 +33,7 @@
 		</script>
         <style>
             img.logo { border: 0 !important; }
-            p, ul, li { text-align: left; }
+            /* p, ul, li { text-align: left; } */
         </style>
 
 		<!--[if lt IE 9]>
@@ -61,6 +61,7 @@
 				<section>
                     <section>
                         <h2>Library systems</h2>
+                        <p>Publishing structured data, out of the box, by default!</p>
                     </section>
 
                     <section>
@@ -71,7 +72,7 @@
                             <li>Holdings</li>
                             <li>Libraries (opening hours, contacts, locations, branch relationships)</li>
                         </ul>
-                        <p><img class="logo" src="images/evergreen.jpg"></p>
+                        <p><a href="http://evergreen-ils.org/"><img class="logo" src="images/evergreen.jpg"></a></p>
                     </section>
 
                     <section>
@@ -81,7 +82,7 @@
                             <li>Bibliographic records</li>
                             <li>Holdings</li>
                         </ul>
-                        <p><img class="logo" src="images/koha.jpg"></p>
+                        <p><a href="http://koha-community.org"><img class="logo" src="images/koha.jpg"></a></p>
                     </section>
                 </section>
 
@@ -96,7 +97,7 @@
                             <li>Bibliographic records</li>
                             <li>Holdings</li>
                         </ul>
-                        <p><img class="logo" src="images/vufind_logo.jpg"></p>
+                        <p><a href="http://vufind.org"><img class="logo" src="images/vufind_logo.jpg"></a></p>
                     </section>
 
                     <section>
@@ -105,7 +106,7 @@
                         <ul>
                             <li>Bibliographic records</li>
                         </ul>
-                        <p><img class="logo" src="images/blacklight.png"></p>
+                        <p><a href="http://projectblacklight.org"><img class="logo" src="images/blacklight.png"></a></p>
                     </section>
 
                     <section>
@@ -114,21 +115,26 @@
                         <ul>
                             <li>Bibliographic records</li>
                         </ul>
-                        <p><img class="logo" src="images/Islandora.png"></p>
+                        <p><a href="http://islandora.ca"><img class="logo" src="images/Islandora.png"></a></p>
                     </section>
                 </section>
 
                 <section>
                     <h2>The future...</h2>
-                    <p>May be up to you!</p>
+                    <ul>
+                        <li>May be up to you!</li>
+                        <li>When you change HTML pages, check for structured data before/after</li>
+                        <li>Consider linked data support when you adopt new systems</li>
+                        <li>Build linked data into website redesigns</li>
+                    </ul>
                 </section>
 
 			</div>
 
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="../rdfa_intro/lib/js/head.min.js"></script>
+		<script src="../rdfa_intro/js/reveal.min.js"></script>
 
 		<script>
 
@@ -149,12 +155,12 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../rdfa_intro/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../rdfa_intro/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../rdfa_intro/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../rdfa_intro/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../rdfa_intro/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../rdfa_intro/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
