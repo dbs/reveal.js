@@ -1,0 +1,14 @@
+.reveal table {
+    border-spacing: 0em;
+}
+
+.reveal table tr, .reveal table td {
+    border: 2px solid white;
+    padding-left: 0.5em;
+}
+
+blockquote { text-align: left; }
+
+blockquote p { padding-top: 1em !important; }
+
+h1, h2, h3 { text-transform: none !important; }
