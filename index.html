@@ -41,7 +41,6 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
 					<h1 property="name">Cataloguing for the open web</h1>
@@ -56,11 +55,18 @@
 				<section>
                     <h2>The saddest robots.txt a library catalog can offer</h2>
 <pre><code>User-Agent: *
-Disallow /
+Disallow: /
 </code></pre>
+                    <p class="fragment"><em>AKA</em> "Machines are not welcome here."</p>
+                    <aside class="notes">
+                        While I expect this sort of nonsense from web-hostile
+                        proprietary library systems, it was surprising to me to
+                        find that even many of the free-as-in-freedom library
+                        systems use an absolutely restrictive <code>robots.txt</code> file.
+                    </aside>
 				</section>
 
-				<section>
+				<section property="description">
 					<section>
 						<h3>Libraries provide multiple access points for resources in catalogues</h3>
 					</section>
@@ -69,13 +75,54 @@ Disallow /
                     </section>
                     <section>
                         <h3>Google, Bing, Yahoo are the ready-at-hand search tools</h3>
+                        <aside class="notes">
+                            Obligatory Heidegger reference. Library catalogues and
+                            other such specialized search tools are, in comparison,
+                            present-at-hand: the general user needs to consciously think
+                            about using them.
+                        </aside>
                     </section>
                     <section>
                         <h3>To expand access to our resources ... </h3>
                         <h3 class="fragment">We need to expose our access points to third-party search engines</h3>
+                        <aside class="notes">
+                            Thus the sadness about absolutely restrictive <code>robots.txt</code>
+                            files...
+                        </aside>
                     </section>
                     <section>
                         <h3>and schema.org is the vocabulary initiated by the search engines</h3>
+                    </section>
+                    <section>
+                        <h3>We must not let the perfect be the enemy of the good</h3>
+                        <aside class="notes">
+                          <p>
+                            While I appreciate the sentiment expressed by Gordon Dunsire about
+                            the importance of RDA as a vocabulary being able to provide labels
+                            for developers in any possible language without privileging any
+                            particular language, in practice this makes it incredibly difficult
+                            for most developers to actually work with.
+                          </p>
+                          <p>
+                            Similarly, designing a vocabulary that can respect all cultures
+                            globally, for example audience ratings systems that classify content
+                            as suitable not just by different age ranges but also by gender,
+                            is (possibly) noble, but realistically an impossible requirement.
+                          </p>
+                          <p>
+                            If you want employment for life as a vocabulary developer for a single
+                            vocabulary, RDA might be a good choice.
+                          </p>
+                          <p>
+                            If you want to get things done now, and then progressively improve
+                            them, then schema.org is a good choice.
+                          </p>
+                          <p>
+                            Of course they are not mutually exclusive: you will be able to
+                            publish schema.org from RDA-sourced linked data, whenever (or if)
+                            general library systems get around to offering RDA as a source.
+                          </p>
+                        </aside>
                     </section>
 				</section>
 
@@ -94,10 +141,10 @@ Disallow /
                     <section>
                         <h3>Recipe for schema.org catalogue success</h3>
                         <ol>
-                            <li class="fragment">Embed machine-readable schema.org metadata into ordinary catalogue pages</li>
-                            <li class="fragment">Generate sitemaps for our record detail pages</li>
-                            <li class="fragment">Tell the search engines about the sitemaps!</li>
-                            <li class="fragment">Bonus: ensure the sanity of your <code>robots.txt</code> file</li>
+                            <li class="fragment">Allow machines to crawl your pages: <code>robots.txt</code> and persistent URIs</li>
+                            <li class="fragment">Embed machine-readable <code>schema.org</code> metadata into ordinary catalogue pages</li>
+                            <li class="fragment">Generate sitemaps for your record detail pages</li>
+                            <li class="fragment">Tell the search engines about the sitemaps</li>
                         </ol>
                     </section>
                     <section>
@@ -120,19 +167,53 @@ Disallow /
                             </li>
                         </ul>
                     </section>
-                    <section data-background="images/evergreen_catalog_schema.png"></section>
-                    <section data-background="images/library_info.png"></section>
+                    <section data-background="images/evergreen_catalog_schema.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                    <section data-background="images/library_info.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a library page taken from an
+                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
+                          </p>
+                          <p>
+                            The library page is linked from the Holdings-as-Offer entities on the record details page;
+                            Evergreen enables you to link to your own library web site instead. But of course you can
+                            use the Evergreen-generated page as a template for ensuring that your own site contains
+                            the appropriate schema.org data.
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
                     <section>
                         <h3>Teach your systems to speak RDFa + schema.org</h3>
                         <ul>
                             <li><em>Practical linked data for open source</em> preconference</li>
-                            <li>My portion was a hands-on, self-guided tutorial teaching RDFa + schema.org
+                            <li>My portion was a hands-on, self-guided tutorial teaching RDFa + schema.org in library systems, covering:
                                 <ul>
-                                    <li>All materials available for free under a CC-BY-SA license!</li>
-                                    <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
-                                    <li class="fragment">You might need to wade through a blog post or two</li>
+                                    <li>Marking up bibliographic record detail pages</li>
+                                    <li>Expressing library holdings as schema.org <code>Offer</code> entities</li>
+                                    <li>Marking up library pages with opening hours, contact info, etc</li>
+                                    <li>Building a simple union catalogue in five minutes using Google Custom Search Engine</li>
+                                    <li>Building a proof of concept sitemap crawler / RDFa extractor</li>
                                 </ul>
                             </li>
+                        </ul>
+                        <ul>
+                            <li>All materials available for free under a CC-BY-SA license!</li>
+                            <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
+                            <li class="fragment">You might need to wade through a blog post or two</li>
+                        </ul>
                     </section>
                 </section>
                 <section>
@@ -144,9 +225,16 @@ Disallow /
                     </section>
                     <section>
                         <h3>Enter the W3C schema.org Bibliographic Extension Community Group</h3>
-                        <br>
-                        <h3 class="fragment"><q>schemabibex</q></h3>
-                        <p class="fragment">A rag-tag group of linked data bibliographic enthusiasts trying to establish consensus</p>
+                        <ul>
+                            <li class="fragment"><em>AKA</em> <q>SchemaBibEx</q></li>
+                            <li class="fragment">A rag-tag group of linked data bibliographic enthusiasts trying to establish consensus</li>
+                            <li class="fragment">Using open source library systems (Evergreen, Koha, VuFind) as proofs of concept / reference implementations</li>
+                        <ul>
+                        <aside class="notes">
+                            It was nice to participate in a group in which the discussions were not
+                            purely theoretical, but grounded in practice (even if I was the one doing
+                            most of the grounding at the time).
+                        </aside>
                     </section>
                     <section>
                         <h3>Some schemabibex wins</h3>
