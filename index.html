@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Understanding schema.org: cataloguing for the open web</title>
+		<title>A deeper research bench</title>
 
-		<meta name="description" content="A session on understanding schema.org in the context of libraries">
+		<meta name="description" content="If you're a sports administration student, keep the library in mind.">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -43,225 +43,132 @@
 
 			<div class="slides">
 				<section>
-					<h1 property="name">Cataloguing for the open web</h1>
-					<h3><span typeof="EducationEvent" url="http://ala14.ala.org/node/14382">ALA 2014: Understanding schema.org</span></h3>
-                    <h4>ALA <span property="copyrightYear">2014</span></h4>
+					<h1 property="name">A deeper research bench</h1>
+                    <h3>SPAD 0100</h3>
+                    <h4><time property="datePublished" datetime="2014-09-15">September 15, 2014</time></h4>
 					<p property="author creator" typeof="Person">
 						<small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://google.com/+DanScottCAN?rel=author">+Dan Scott</a></small>
 					</p>
                     <p><small><span property="jobTitle">Systems Librarian</span>, <span property="affiliation worksFor">Laurentian University</span></small></p>
 				</section>
 
-				<section>
-                    <h2>The saddest robots.txt a library catalog can offer</h2>
-<pre><code>User-Agent: *
-Disallow: /
-</code></pre>
-                    <p class="fragment"><em>AKA</em> "Machines are not welcome here."</p>
+				<section property="description">
+                    <h2>Sports enthusiasts know the value of teams</h2>
+                    <ul>
+                        <li>Football, baseball, hockey, obviously...</li>
+                        <li>but even individual sports have teams behind them.</li>
+                        <li class="fragment">Add the library to your personal team!</li>
+                    </ul>
                     <aside class="notes">
-                        While I expect this sort of nonsense from web-hostile
-                        proprietary library systems, it was surprising to me to
-                        find that even many of the free-as-in-freedom library
-                        systems use an absolutely restrictive <code>robots.txt</code> file.
+                        Your courses will have a mix of solo and group assignments.
+                        Your career will have a mix of solo and group work.
+                        Success depends on your ability to weigh the information to
+                        which you have access.
                     </aside>
 				</section>
 
-				<section property="description">
+				<section>
 					<section>
-						<h3>Libraries provide multiple access points for resources in catalogues</h3>
+						<h3>Elements of administrative success</h3>
+                        <ul>
+                            <li>Gathering information</li>
+                            <li>Evaluating information</li>
+                            <li>Forming a decision</li>
+                            <li>Communicating the decision</li>
+                        </ul>
+                        <p class="fragment" style="margin-top: 1em"><em>Q:</em> Where does the library fit in?</p>
+                        <aside class="notes">
+                            Gathering information, obviously.
+                            Evaluating the authority of sources, but also crunching data.
+                            Communicating via visualizations (GIS).
+                        </aside>
 					</section>
                     <section>
-                        <h3>Users need to know that catalogues exist</h3>
+                        <h3>Gathering information</h3>
+                        <ul>
+                            <li><em>Print collection</em>: books and journals</li>
+                            <li><em>Archives</em>: including digitized student newspapers</li>
+                            <li><em>Electronic resources</em>: way beyond Google</li>
+                            <li>... and almost anything else via inter-library loan (RACER)</li>
+                        </ul>
                     </section>
+
                     <section>
-                        <h3>Google, Bing, Yahoo are the ready-at-hand search tools</h3>
+                        <h3>Business Source Complete</h3>
+                        <img src="images/pittsburgh_steelers_bsc.png" alt="Pittsburgh Steelers Sports, Inc business information">
+                    </section>
+
+                    <section>
+                        <h3>Evaluating information</h3>
+                        <ul>
+                            <li>Determining the authority of a source</li>
+                            <li>Crunching statistical data</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Communicating the decision</h3>
+                        <blockquote>
+                            The population-dense section of downtown Toronto bounded on the west by
+                            Bathurst Street, to the east by Simcoe Street, to the north by Queen
+                            Street, and to the south by the Lake Ontario waterfront lacks both library
+                            facilities and sports facilities...
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h3><em>YAWN</em></h3>
+                    </section>
+
+                    <section>
+                        <h3>Communicating the decision</h3>
+                        <img src="images/toronto_map.png" alt="Map of downtown Toronto showing population density, sports facilities, and libraries.">
                         <aside class="notes">
-                            Obligatory Heidegger reference. Library catalogues and
-                            other such specialized search tools are, in comparison,
-                            present-at-hand: the general user needs to consciously think
-                            about using them.
+                            One of our librarians, Tomasz Mrozewski, specializes in data, statistics,
+                            and geographic information systems (GIS)--a go-to person for
+                            assistance plotting the statistical data on maps in a meaningful way.
                         </aside>
                     </section>
-                    <section>
-                        <h3>To expand access to our resources ... </h3>
-                        <h3 class="fragment">We need to expose our access points to third-party search engines</h3>
-                        <aside class="notes">
-                            Thus the sadness about absolutely restrictive <code>robots.txt</code>
-                            files...
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>and schema.org is the vocabulary initiated by the search engines</h3>
-                    </section>
-                    <section>
-                        <h3>We must not let the perfect be the enemy of the good</h3>
-                        <aside class="notes">
-                          <p>
-                            While I appreciate the sentiment expressed by Gordon Dunsire about
-                            the importance of RDA as a vocabulary being able to provide labels
-                            for developers in any possible language without privileging any
-                            particular language, in practice this makes it incredibly difficult
-                            for most developers to actually work with.
-                          </p>
-                          <p>
-                            Similarly, designing a vocabulary that can respect all cultures
-                            globally, for example audience ratings systems that classify content
-                            as suitable not just by different age ranges but also by gender,
-                            is (possibly) noble, but realistically an impossible requirement.
-                          </p>
-                          <p>
-                            If you want employment for life as a vocabulary developer for a single
-                            vocabulary, RDA might be a good choice.
-                          </p>
-                          <p>
-                            If you want to get things done now, and then progressively improve
-                            them, then schema.org is a good choice.
-                          </p>
-                          <p>
-                            Of course they are not mutually exclusive: you will be able to
-                            publish schema.org from RDA-sourced linked data, whenever (or if)
-                            general library systems get around to offering RDA as a source.
-                          </p>
-                        </aside>
-                    </section>
-				</section>
+                </section>
 
                 <section>
                     <section>
-                        <h3>This is what I have been doing!</h3>
+                        <h3>Reaching the library</h3>
                         <ul>
-                            <li class="fragment">In <a href="http://evergreen-ils.org">Evergreen</a><br>
-                                <img style="border: 0" src="images/evergreen_smaller.jpg"></li>
-                            <li class="fragment"><a href="http://koha-community.org">Koha</a><br>
-                                <img style="border: 0" src="images/koha_smaller.jpg"></li>
-                            <li class="fragment">and <a href="http://vufind.org">VuFind</a><br>
-                                <img style="border: 0" src="images/vufind_smaller.jpg"></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Recipe for schema.org catalogue success</h3>
-                        <ol>
-                            <li class="fragment">Allow machines to crawl your pages: <code>robots.txt</code> and persistent URIs</li>
-                            <li class="fragment">Embed machine-readable <code>schema.org</code> metadata into ordinary catalogue pages</li>
-                            <li class="fragment">Generate sitemaps for your record detail pages</li>
-                            <li class="fragment">Tell the search engines about the sitemaps</li>
-                        </ol>
-                    </section>
-                    <section>
-                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
-                        <ul>
-                            <li class="fragment">Bibliographic records
+                            <li><strong>In person</strong>:
                                 <ul>
-                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
+                                    <li>Quick reference available during all library hours</li>
+                                    <li>Random librarians available Monday - Thursday from 9:00 am - 5:00 pm</li>
+                                    <li>Specific librarians available by appointment</li>
                                 </ul>
                             </li>
-                            <li class="fragment">Holdings, using the Product/Offer model</li>
-                            <li class="fragment">Libraries
+                            <li><strong>Email</strong>: at <a href="mailto:reference@laurentian.ca">reference@laurentian.ca</a>
+                                (matching "random librarian" hours)
+                            </li>
+                            <li><strong>Online chat</strong>: for immediate, general research help
                                 <ul>
-                                    <li>Hours of operation</li>
-                                    <li>Web site</li>
-                                    <li>Location</li>
-                                    <li>Contact information</li>
-                                    <li>Branch relationships</li>
+                                    <li>Monday - Friday: 10:00 am - 10:00 pm</li>
+                                    <li>Weekends: 10:00 am - 5:00 pm</li>
                                 </ul>
                             </li>
                         </ul>
                     </section>
-                    <section data-background="images/evergreen_catalog_schema.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a record detail page taken from an
-                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
-                    </section>
-                    <section data-background="images/library_info.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a library page taken from an
-                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
-                          </p>
-                          <p>
-                            The library page is linked from the Holdings-as-Offer entities on the record details page;
-                            Evergreen enables you to link to your own library web site instead. But of course you can
-                            use the Evergreen-generated page as a template for ensuring that your own site contains
-                            the appropriate schema.org data.
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
-                    </section>
+
                     <section>
-                        <h3>Teach your systems to speak RDFa + schema.org</h3>
+                        <h3>Add us to your team</h3>
                         <ul>
-                            <li><em>Practical linked data for open source</em> preconference</li>
-                            <li>My portion was a hands-on, self-guided tutorial teaching RDFa + schema.org in library systems:
-                                <ul>
-                                    <li>Mark up bibliographic record detail pages</li>
-                                    <li>Express library holdings as schema.org <code>Offer</code> entities</li>
-                                    <li>Mark up library pages with opening hours, contact info, etc</li>
-                                    <li>Build a simple union catalogue in five minutes using Google Custom Search Engine</li>
-                                    <li>Build a proof of concept sitemap crawler / RDFa extractor</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>All materials available for free under a CC-BY-SA license!</li>
-                            <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
-                            <li class="fragment">You might need to wade through a blog post or two</li>
+                            <li>We'll help you make the most of your <em>Sports Business Journal</em> subscription</li>
+                            <li>We'll help you create some awesome visualizations of your data</li>
+                            <li>We'll ensure you have high quality sources of information</li>
+                            <li>We'll save you time</li>
                         </ul>
                     </section>
-                </section>
-                <section>
                     <section>
-                        <h2>Addressing gaps in schema.org</h2>
+                        <h3><a href="http://laurentian.ca/library">laurentian.ca/library</a></h3>
                     </section>
-                    <section>
-                        <h3>In 2013 schema.org moved to W3C WebSchemas as the public forum for enhancement proposals</h3>
-                    </section>
-                    <section>
-                        <h3>Enter the W3C schema.org Bibliographic Extension Community Group</h3>
-                        <ul>
-                            <li class="fragment"><em>AKA</em> <q>SchemaBibEx</q></li>
-                            <li class="fragment">A rag-tag group of linked data bibliographic enthusiasts trying to establish consensus</li>
-                            <li class="fragment">Using open source library systems (Evergreen, Koha, VuFind) as proofs of concept / reference implementations</li>
-                        <ul>
-                        <aside class="notes">
-                            It was nice to participate in a group in which the discussions were not
-                            purely theoretical, but grounded in practice (even if I was the one doing
-                            most of the grounding at the time).
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Some schemabibex wins</h3>
-                        <ul>
-                            <li><em>Early</em>: moving "citation" from MedicalScholarlyArticle to CreativeWork</li>
-                            <li><em>Middle</em>: Holdings-as-Offers as a best practice, with decommercialized descriptions</li>
-                            <li><em>So close we can taste it</em>: Periodicals and CreativeWork relationships</li>
-                        </ul>
-                    </section>
-                </section>
-                <section>
-                    <h3>The future is now</h3>
-                    <ul>
-                        <li class="fragment">Linked data is happening,
-                            <ul>
-                                <li class="fragment">for real,</li>
-                                <li class="fragment">en masse,</li>
-                                <li class="fragment">thanks in no small part to schema.org</li>
-                            </ul>
-                         </li>
-                        <li class="fragment">But Jason is bringing more of the future to you...</li>
-                        <li class="fragment">JSON-LD and Actions and more, oh my!</li>
-                    </ul>
                 </section>
 
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
