@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Research guides at Laurentian</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="A workshop on creating amazing content with Research Guides">
+		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -43,315 +43,333 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h1>Research Guides</h1>
+					<h3>A workshop on the core mechanics</h3>
+                    <p>October 2, 2014</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+                    <section>
+                        <h2>History (for context)</h2>
+                        <p>Long ago, we had "Subject guides"</p>
+                        <aside class="notes">
+                            Just lists of links to databases, e-books, and assorted web sites,
+                            and contact info for the liason librarian
+                        </aside>
+                    </section>
+                    <section data-background="images/old_school_subject_guide.png">
+                        <aside class="notes">
+                            Notice the multidisciplinary databases, trials, new databases, and alphabetical listing?
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Thesis</h2>
+                        <h3>Subject guides</h3>
+                        <ul>
+                            <li>Manually maintained (lots of copy-pasta links)</li>
+                            <li>Constrained by Web guidelines and CMS technology</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Anti-thesis</h2>
+                        <h3>From subject guides to research guides</h3>
+                        <ul>
+                            <li>Centralize electronic resource info: edit once to fix everywhere</li>
+                            <li>Offer guidance beyond lists of links</li>
+                            <li>Support content editing directly by liaison librarians</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Synthesis</h2>
+                        <h3>From research guides to almost a full site</h3>
+                        <ul>
+                            <li>Never meant to be a full web CMS
+                                <ul>
+                                    <li class="fragment">but "LU Web as brochure" forced our hand</li>
+                                </ul>
+                            </li>
+                            <li>Never meant to be split across two sites
+                                <ul>
+                                    <li class="fragment">but we have laurentian.ca/library vs. biblio.laurentian.ca</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Goals for this session</h2>
+                        <ul>
+                            <li>Learn to do the best you can with what we have</li>
+                            <li>Get hands-on with the core functionality</li>
+                            <li><abbr title="Wouldn't it be nice if...">WIBNI</abbr> thoughts about the research guides are welcome
+                                <ul><li>... but need to be balanced against all of our library's other goals</li></ul>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h2>Getting started: the test server</h2>
+                        <ul>
+                            <li>We have two research guide servers:
+                                <ul>
+                                    <li><strong>Production</strong>: What our users see, at <a href="http://biblio.laurentian.ca/research">http://biblio.laurentian.ca/research</a></li>
+                                    <li><strong>Test/training</strong>: What we can use to practice with, at <a href="http://biblio-dev.laurentian.ca/research/">http://biblio<strong>-dev</strong>.laurentian.ca/research</a></li>
+                                </ul>
+                            </li>
+                            <li>Open up the <strong>Test</strong> server in a browser tab now</li>
+                            <li>Notice <strong>- TEST SERVER</strong> in the banner!</li>
+                        </ul>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
+						<h2>Learn on <strong>Test</strong></h2>
+                        <h3>But work on <strong>Production</strong></h3>
+                        <ul>
+                            <li>Copying from test to production is <strong>not</strong> recommended</li>
+                            <li>Links get confused and lead users to the test system</li>
+                            <li>Images get uploaded to test; links lead to test; then test gets refreshed and the images are broken</li>
+                        </ul>
+                        <aside class="notes">
+                            Test/training gets refreshed occasionally, so anything you work on there will get blown away.
+                        </aside>
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Exercise 1: Log on</h2>
+                        <ul>
+                            <li><strong>Production</strong>: <a href="http://biblio.laurentian.ca/research/user">http://biblio.laurentian.ca/research/user</a></li>
+                            <li><strong>Test/training</strong>: <a href="http://biblio-dev.laurentian.ca/research/user/">http://biblio<strong>-dev</strong>.laurentian.ca/research/user</a></li>
+                        </ul>
+                        <p>Use your Laurentian ID to log in.</p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
+                    <section>
+                        <h2>Databases</h2>
+                        <ul>
+                            <li>"Database" is a pretty broad definition at this point:
+                                <ul>
+                                    <li>Ebook collections</li>
+                                    <li>TERMIUM Plus</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2: Create a new database</h2>
+                        <p>See the <a href="exercises.html">Exercise sheet</a></p>
+                        <aside class="notes">
+                            <ol>
+                                <li>At the bottom of your page, click <strong>Add content -&gt; Database</strong></li>
+                                <li>Select a language:
+                                    <ul>
+                                        <li><code>Language Neutral</code> appears in both English and French database lists, but untranslated; this is probably never what you want</li>
+                                        <li><code>English</code>: only appears in English database lists</li>
+                                        <li><code>French</code> only appears in French database lists</li>
+                                    </ul>
+                                </li>
+                                <li>Enter a title for your database: <code>Social media - <em>Name</em></code></li>
+                                <li>Enter the URL for the database in the <strong>URL</strong> field. Ensure the URL doesn't have a session ID / won't time out in 24 hours, etc.</li>
+                                <li>Enter a description for the database in the language you chose. This description gets displayed when a user clicks on the <strong>?</strong> icon next to the database.</li>
+                                <li>Check the <strong>Proxied?</strong> checkbox if it is a licensed database.</li>
+                                <li>Click <strong>Save</strong>.</li>
+                                <li>Check to see if it shows up on the database A-Z list.
+                                    <ul>
+                                      <li><em>Note</em>: it takes an awfully long time to display when you're logged in, but is snappy for regular users</li>
+                                    </ul>
+                                <li>Go back and edit your database</li>
+                            </ol>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Exercise 3: Find existing content</h2>
+                        <ol>
+                            <li>Click <strong>My Account</strong>. Your user account page displays.</li>
+                            <li>Click <strong>Search content in research guides</strong>. The content search page appears.</li>
+                            <li>Use the <code>Type</code>, <code>Language</code>, <code>Published</code> filters to narrow down your search.
+                                <ul>
+                                    <li><em>Note</em>: Searching by typing in the name sometimes works.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Exercise 4: Trial databases</h2>
+                        <p>Turn your database entry into a trial database that times out next week.</p>
+                        <ol>
+                            <li>Find your database.</li>
+                            <li>Edit the database by entering a start and end date for the trial.</li>
+                            <li>Save your changes and ensure your database shows up on the <strong>Resources -&gt; Electronic resources -&gt; Free trials</strong> page.</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Exercise 5: Multidisciplinary databases</h2>
+                        <p>Add your database to the multidisciplinary list.</p>
+                        <ol>
+                            <li>Find your database.</li>
+                            <li>Edit the database by checking the <strong>Multidisciplinary</strong> checkbox.</li>
+                            <li>Save your changes and ensure your database shows up on the <strong>Resources -&gt; Electronic resources -&gt; Multidisciplinary databases</strong> page.</li>
+                        </ol>
+                    </section>
 				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+                <section>
+                    <section>
+                        <h2>Custom database lists</h2>
+                        <img src="images/research_guide_database_list.png">
+                    </section>
+                    <section>
+                        <h2>Custom database lists</h2>
+                        <ul>
+                            <li>Contain any entries you want from the database A-Z list</li>
+                            <li>Can be ordered <em class="fragment">(but it's painful)</em></li>
+                            <li>Are not translated, because some resources may be suitable for one language and not the other</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 6: Create a custom database list</h2>
+                        <ol>
+                            <li>Click <strong>Add Content -&gt; Database list</strong>.</li>
+                            <li>Enter the title of the database list.</li>
+                            <li>Use the slushbox widget to move entries to the right.</li>
+                            <li>Save your work.</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Caution: Preview considered harmful</h2>
+                        <ul>
+                            <li>Don't use <strong>Preview</strong> to look at your database list.</li>
+                            <li>If you have not saved your work, you will lose all of the entries in the list.</li>
+                            <li>If you then click <strong>Save</strong>, you will turn your list into an empty list.</li>
+                        </ul>
+                        <p class="fragment">Yes, it's a bug.</p>
+                    </section>
+                    <section>
+                        <h2>About Revisions</h2>
+                        <ul>
+                            <li>Consider creating a <strong>New revision</strong> when saving edits.</li>
+                            <li>For databases and database lists, you can revert to previous versions if something bad happens.</li>
+                            <li>Sadly, doesn't work for all research guide content. WIBNI...?</li>
+                        </ul>
+                    </section>
 				</section>
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+                <section>
+                    <section>
+                        <h2>Translations</h2>
+                    </section>
+                    <section>
+                        <img src="images/research_guide_untranslated.png">
+                        <h2>What's wrong here?</h2>
+                    </section>
+                    <section>
+                        <h2>Exercise 7: Add a new translation</h2>
+                        <ol>
+                            <li>Find your database. If you set the language of your database, there is a <strong>Translate</strong> tab.</li>
+                            <li>Click <strong>Translate -&gt; Add translation</strong>. A copy of the database edit page opens.</li>
+                            <li>The language will be set correctly, but you may have to edit the title, description, URL, etc.</li>
+                            <li>Click <strong>Save</strong>.</li>
+                            <li>Click <strong>Translate</strong> and notice that there is now a <em>translation set</em>.</li>
+                        </ol>
+                    </section>
+                    <section>
+                            <img src="images/research_guide_translated.png">
+                            <h2>Ahh, much better.</h2>
+                    </section>
+                </section>
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
-
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+                <section>
+                    <section>
+                        <h2>Research Guides</h2>
+                        <p><em>Finally...</em></p>
+                    </section>
+                    <section>
+                        <h2>Design philosophy</h2>
+                        <ul>
+                            <li>One web page per guide</li>
+                            <li>Unlimited tabs per guide</li>
+                            <li>Up to three columns per tab</li>
+                            <li>One or more panels of HTML content per column</li>
+                            <li>Unlimited panels per column</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="images/research_guides_too_many_tabs.png">
+                        <h2>A little less than chaos</h2>
+                    </section>
+                    <section>
+                        <h2>Recommendations: structure</h2>
+                        <ul>
+                            <li>First tab should have the critical content:
+                                <ul><li>Mobile experience</li>
+                                    <li>Scannable content</li>
+                                </ul>
+                            </li>
+                            <li>Move towards one or two columns
+                                <ul><li>Mobile experience</li>
+                                    <li>Scannable content</li>
+                                </ul>
+                            </li>
+                            <li>Too many tabs? Your guide is pregnant! Split it up.
+                                <ul><li>Mobile experience</li>
+                                    <li>Scannable content</li>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Mobile experience</h2>
+                        <img src="images/research_guide_mobile.png">
+                    </section>
+                    <section>
+                        <h2>Exercise 8: Create a new research guide</h2>
+                        <ol>
+                            <li>Click <strong>Add content -&gt; Subject guide</strong>.</li>
+                            <li>Enter the title of the guide.</li>
+                            <li>Select the faculty, school, or department to which it belongs (or <code>Service</code> for a library service).</li>
+                            <li>Select the language of the guide.</li>
+                            <li>In <strong>Subject Guide Pages</strong>, add the list of tabs your guide needs.</li>
+                            <li>By default, the guide is not published. Click <strong>Save</strong>.</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Exercise 9: Set the layout for a tab of your research guide</h2>
+                        <ol>
+                            <li>Find your research guide. <em>(Hint: <strong>My account</strong>)</em></li>
+                            <li>The name of the active tab appears as a main heading on the page. Click the heading. The panel editing page opens.</li>
+                            <li>Select a layout for your tab by clicking <strong>Panel layout</strong>.
+                                <ul>
+                                    <li>The default is a single column layout.</li>
+                                    <li>Click the radio button above the layout you want, even if there is only one choice.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>You have to set the layour for each tab in your guide. I know, right?</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 10: Set the display style of a tab</h2>
+                        <ol>
+                            <li>From the panel editing page, click <strong>Panel content</strong> to add content.</li>
+                            <li>Click <strong>Display settings</strong> in the top left corner and select <code>Rounded corners</code>.</li>
+                            <li>Click <strong>Next</strong>.</li>
+                            <li>Select <code>Each pane</code> from the drop-down list to apply the style to all panels on the tab.</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h2>Exercise 11: Add panels to a column</h2>
+                        <ol>
+                            <li>From the panel editing page, click <strong>Panel content</strong> to add content.</li>
+                            <li>At the top left corner of each column header is a gear icon. Click <strong>gear icon -&gt; Add content</strong> to add a panel. The <strong>Add content</strong> window opens.</li>
+                            <li>Click <strong>New custom content</strong> to create a new panel. The <strong>Configure new custom content</strong> window opens.</li>
+                            <li>Enter an administrative title: this distinguishes the panel from any other panel in search. Use <em>Research guide name - Tab name - Panel name</em>.</li>
+                            <li>Enter a title: this is displayed to the user as the heading for the panel.</li>
+                            <li>Add your HTML content using the <abbr title="What you see is what you get">WYSIWYG</abbr> editor.</li>
+                            <li>Clear the <strong>Use context keywords</strong> checkbox.</li>
+                            <li>Click <strong>Finish</strong>. The <strong>Configure new custom content</strong> window closes. You are not yet finished.</li>
+                            <li>Click <strong>Save</strong> to actually save your work.</li>
+                        </ol>
+                    </section>
+                </section>
 
 			</div>
 
