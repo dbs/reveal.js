@@ -43,9 +43,9 @@
 
 			<div class="slides">
 				<section>
-					<h1 property="name">Cataloguing for the open web</h1>
-					<h3><span typeof="EducationEvent" url="http://ala14.ala.org/node/14382">ALA 2014: Understanding schema.org</span></h3>
-                    <h4>ALA <span property="copyrightYear">2014</span></h4>
+					<h1 property="name">schema.org in the wild</h1>
+					<h3><span typeof="EducationEvent" url="http://dcevents.dublincore.org/IntConf/dc-2014#schema">Schema.org, SchemaBibExtend - Structured Data on the Web</span></h3>
+                    <h4>DCMI <span property="copyrightYear">2014</span></h4>
 					<p property="author creator" typeof="Person">
 						<small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://google.com/+DanScottCAN?rel=author">+Dan Scott</a></small>
 					</p>
@@ -97,30 +97,14 @@ Disallow: /
                         <h3>We must not let the perfect be the enemy of the good</h3>
                         <aside class="notes">
                           <p>
-                            While I appreciate the sentiment expressed by Gordon Dunsire about
-                            the importance of RDA as a vocabulary being able to provide labels
-                            for developers in any possible language without privileging any
-                            particular language, in practice this makes it incredibly difficult
-                            for most developers to actually work with.
-                          </p>
-                          <p>
-                            Similarly, designing a vocabulary that can respect all cultures
-                            globally, for example audience ratings systems that classify content
-                            as suitable not just by different age ranges but also by gender,
-                            is (possibly) noble, but realistically an impossible requirement.
-                          </p>
-                          <p>
-                            If you want employment for life as a vocabulary developer for a single
-                            vocabulary, RDA might be a good choice.
-                          </p>
-                          <p>
                             If you want to get things done now, and then progressively improve
                             them, then schema.org is a good choice.
                           </p>
                           <p>
-                            Of course they are not mutually exclusive: you will be able to
-                            publish schema.org from RDA-sourced linked data, whenever (or if)
-                            general library systems get around to offering RDA as a source.
+                            Vocabularies are not mutually exclusive: you will be able to
+                            publish schema.org from RDA-sourced linked data, for example,
+                            whenever (or if) general library systems get around to offering
+                            RDA as a source.
                           </p>
                         </aside>
                     </section>
@@ -196,6 +180,14 @@ Disallow: /
                         </aside>
                     </section>
                     <section>
+                        <h3>Next steps</h3>
+                        <ul>
+                            <li>Express relator codes, controlled headings as linked data</li>
+                            <li>Use <a href="http://schema.org/Role">schema:Role</a> for relator terms</li>
+                            <li>Extend Koha and VuFind's support for expressing library metadata</li>
+                        </ul>
+                    </section>
+                    <section>
                         <h3>Teach your systems to speak RDFa + schema.org</h3>
                         <ul>
                             <li><em>Practical linked data for open source</em> preconference</li>
@@ -213,6 +205,43 @@ Disallow: /
                             <li>All materials available for free under a CC-BY-SA license!</li>
                             <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
                             <li class="fragment">You might need to wade through a blog post or two</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Beyond library systems</h2>
+                    </section>
+                    <section>
+                        <h3>Bryn Mawr Classical Review</h3>
+                        <ul>
+                            <li><a href="http://bmcr.brynmawr.edu/about.html">Second oldest online scholarly journal in the humanities</a> (1990)</li>
+                            <li>Currently implemented in SGML and Tcl</li>
+                            <li>Proof of concept: reviews expressed as <a href="http://schema.org/Review">schema:Review</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>BMCR: schema:Review and schema:Book</h3>
+<pre><code>&lt;http://example.org/2011/2011-01-03#review_text> a schema:Review ;
+    schema:author "Andreas Markantonatos" ;
+    schema:itemReviewed &lt;http://example.org/2011/2011-01-03#review_item> ;
+    schema:name "Bryn Mawr Classical Review 2011.01.03" ;
+    schema:reviewBody """Ipsem lorum...""" .
+
+&lt;http://example.org/2011/2011-01-03#review_item> a schema:Book ;
+    schema:author "Adrian Kelly" ;
+    schema:datePublished "2009" ;
+    schema:isbn "9780715637135" ;
+    schema:name "Sophocles: Oedipus at Colonus." ;
+    schema:numberOfPages "176" ;
+    schema:publisher "Duckworth" .
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Bryn Mawr Classical Review</h3>
+                        <ul>
+                            <li><em>Next phase</em>: authors, places as entities</li>
+                            <li>Collaboration with Karen Coyle and Camilla XXX</li>
                         </ul>
                     </section>
                 </section>
@@ -241,7 +270,7 @@ Disallow: /
                         <ul>
                             <li><em>Early</em>: moving "citation" from MedicalScholarlyArticle to CreativeWork</li>
                             <li><em>Middle</em>: Holdings-as-Offers as a best practice, with decommercialized descriptions</li>
-                            <li><em>So close we can taste it</em>: Periodicals and CreativeWork relationships</li>
+                            <li><em>Most recently</em>: Periodicals and CreativeWork relationships</li>
                         </ul>
                     </section>
                 </section>
@@ -255,8 +284,6 @@ Disallow: /
                                 <li class="fragment">thanks in no small part to schema.org</li>
                             </ul>
                          </li>
-                        <li class="fragment">But Jason is bringing more of the future to you...</li>
-                        <li class="fragment">JSON-LD and Actions and more, oh my!</li>
                     </ul>
                 </section>
 
