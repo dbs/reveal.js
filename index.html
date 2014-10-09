@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Understanding schema.org: cataloguing for the open web</title>
+		<title>schema.org in the (open source) wild: open source libraries++</title>
 
-		<meta name="description" content="A session on understanding schema.org in the context of libraries">
+		<meta name="description" content="Using schema.org in open source library (and other) systems">
 		<meta name="author" content="Dan Scott">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -43,7 +43,7 @@
 
 			<div class="slides">
 				<section>
-					<h1 property="name">schema.org in the wild</h1>
+					<h1 property="name">schema.org in the wild: libraries++</h1>
 					<h3><span typeof="EducationEvent" url="http://dcevents.dublincore.org/IntConf/dc-2014#schema">Schema.org, SchemaBibExtend - Structured Data on the Web</span></h3>
                     <h4>DCMI <span property="copyrightYear">2014</span></h4>
 					<p property="author creator" typeof="Person">
@@ -52,8 +52,8 @@
                     <p><small><span property="jobTitle">Systems Librarian</span>, <span property="affiliation worksFor">Laurentian University</span></small></p>
 				</section>
 
-				<section>
-                    <h2>The saddest robots.txt a library catalog can offer</h2>
+                <section>
+                    <h3>The saddest robots.txt a library catalog can offer</h3>
 <pre><code>User-Agent: *
 Disallow: /
 </code></pre>
@@ -64,9 +64,12 @@ Disallow: /
                         find that even many of the free-as-in-freedom library
                         systems use an absolutely restrictive <code>robots.txt</code> file.
                     </aside>
-				</section>
+                </section>
 
 				<section property="description">
+                    <section>
+                        <h3>Library catalogs: first principles</h3>
+                    </section>
 					<section>
 						<h3>Libraries provide multiple access points for resources in catalogues</h3>
 					</section>
@@ -209,6 +212,14 @@ Disallow: /
                     </section>
                 </section>
                 <section>
+                    <h2>Other open source library systems of note</h2>
+                    <ul>
+                        <li>Blacklight</li>
+                        <li>Islandora</li>
+                        <li>... ?</li>
+                    </ul>
+                </section>
+                <section>
                     <section>
                         <h2>Beyond library systems</h2>
                     </section>
@@ -216,7 +227,7 @@ Disallow: /
                         <h3>Bryn Mawr Classical Review</h3>
                         <ul>
                             <li><a href="http://bmcr.brynmawr.edu/about.html">Second oldest online scholarly journal in the humanities</a> (1990)</li>
-                            <li>Currently implemented in SGML and Tcl</li>
+                            <li>Currently implemented in SGML and Tcl <strong><span class="fragment">(!)</span></strong></li>
                             <li>Proof of concept: reviews expressed as <a href="http://schema.org/Review">schema:Review</a></li>
                         </ul>
                     </section>
@@ -240,8 +251,26 @@ Disallow: /
                     <section>
                         <h3>Bryn Mawr Classical Review</h3>
                         <ul>
-                            <li><em>Next phase</em>: authors, places as entities</li>
+                            <li><em>Next steps</em>:
+                                <ul>
+                                    <li>Express authors, places as entities</li>
+                                    <li>Add external identifiers to reviewed works</li>
+                                </ul>
+                            </li>
                             <li>Collaboration with Karen Coyle and Camilla MacKay</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>code4lib journal</h3>
+                        <ul>
+                            <li>Online journal; customized <a href="http://wordpress.org">WordPress</a> instance</li>
+                            <li>Patches to add:
+                                <ul>
+                                    <li>Expressing articles as <a href="http;//schema.org/Article">schema:Article</a></li>
+                                    <li>Authors as full <a href="http;//schema.org/Person">Person</a> entities with a customized Co-Authors Plus</li>
+                                    <li><em>(Soon)</em>: Issues listed as <a href="http://schema.org/Periodical">Periodical</a> and <a href="http://schema.org/PublicationIssue">PublicationIssue</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </section>
                 </section>
