@@ -129,6 +129,96 @@ Disallow: /
                         <blockquote style="margin-top: 1em">From eric miller to Everyone(04:28:44 PM)<br /><br /> 
 i used products only to make the point that what schema.org is focused on really is about helping accelate more effective discovery of things that can be bought / sold. We (in the library community) can recognize this and leverage this direction to support our (more content focused) requirements.</blockquote>
                     </section>
+                    <section>
+                        <h3>Time for a syllogism</h3>
+                        <ol>
+                            <li>Search engines want to connect people to products</li>
+                            <li class="fragment">Libraries want to provide useful resources to people
+                                <br />... ergo ...
+                            </li>
+                            <li class="fragment">Libraries should present their resources as products that search engines can offer to people</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>GoodRelations e-commerce vocabulary</h3>
+                        <ol>
+                            <li>An <strong>agent</strong> (e.g. a person or an organization),</li>
+                            <li>An <strong>object</strong> (e.g. a camcorder, a house, a car,...) or service (e.g. a haircut),</li>
+                            <li>A <strong>promise</strong> (offer) to transfer some rights (ownership, temporary usage, a certain license, ...) on the object or to provide the service for a certain compensation (e.g. an amount of money), made by the agent and related to the object or service, and</li>
+                            <li>A <strong>location</strong> from which this offer is available (e.g. a store, a bus stop, a gas station,...).</li>
+
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Library holdings-as-schema.org vocabulary</h3>
+                        <ol>
+                            <li>A <del>agent</del> <strong>schema:Library</strong> that offers goods, </li>
+                            <li>A <del>object</del> <strong>schema:Product</strong> (e.g. a book, DVD, vinyl record, map),</li>
+                            <li>A <del>promise</del> <strong>schema:Offer</strong> to provide the product, usually for free, made by the library</li>
+                            <li>A <del>location</del> <strong>schema:availableAtOrFrom</strong> from which this offer is available (e.g. a section of the library).</li>
+
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Hey, it turns out AbeBooks.com uses Product / Offer!</h3>
+                    </section>
+                    <section>
+                        <h3>Tested against Karen Coyle's holdings gallery</h3>
+                        <a href="http://kcoyle.net/holdings.html"><img src="images/kcoyle_holdings.png"></a>
+                    </section>
+                    <section>
+                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
+                        <ul>
+                            <li class="fragment">Bibliographic records
+                                <ul>
+                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Holdings, using the <a href="http://schema.org/Product">schema:Product</a> / <a href="http://schema.org/Offer">schema:Offer</a> model</li>
+                            <li class="fragment">Libraries
+                                <ul>
+                                    <li>Hours of operation</li>
+                                    <li>Web site</li>
+                                    <li>Location</li>
+                                    <li>Contact information</li>
+                                    <li>Branch relationships</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-background="images/evergreen_catalog_human.png">
+                    </section>
+                    <section data-background="images/evergreen_catalog_schema.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                    <section data-background="images/library_info_human.png">
+                    </section>
+                    <section data-background="images/library_info.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
+                          </p>
+                          <p>
+                            The library page is linked from the Holdings-as-Offer entities on the record details page;
+                            Evergreen enables you to link to your own library web site instead. But of course you can
+                            use the Evergreen-generated page as a template for ensuring that your own site contains
+                            the appropriate schema.org data.
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <section>
