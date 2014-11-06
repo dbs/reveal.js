@@ -53,7 +53,30 @@
 				</section>
 
 				<section>
-                    <section><h2>Rant</h2></section>
+                    <section>
+                        <h2>Getting from here to there</h2>
+                        <p>Where "here" is MARC21 and "there" is an RDA / BIBFRAME / glorious linked open data world</p>
+                        <aside class="notes">
+                            Does anyone have a solid answer?
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Why we can't just wait for it to happen</h3>
+                        <ul>
+                            <li>Discovery layers solved all of our users' problems, right?</li>
+                            <li>Well... no.</li>
+                        </ul>
+                    </section>
+                    <section data-background="images/usability_vs_discoverability.png"></section>
+                    <section>
+                        <h3>Rushing headlong towards closed, unlinkable data</h3>
+                        <ul>
+                            <li><strong>Primo</strong>: <a href="http://primo.tug-libraries.on.ca/robots.txt">http://primo.tug-libraries.on.ca/robots.txt</a></li>
+                            <li><strong>Encore</strong>: <a href="http://encore.sudbury.library.on.ca/robots.txt">http://encore.sudbury.library.on.ca/robots.txt</a></li>
+                            <li><strong>EBSCOHost Discovery Service</strong>: authentication required</li>
+                            <li><strong>WorldShare Management Services</strong>: <a href="http://unm.worldcat.org/robots.txt">http://unm.worldcat.org/robots.txt</a> (better, but generic: WorldCat is the primary beneficiary)</li>
+                        </ul>
+                    </section>
                     <section>
                         <h3>The saddest robots.txt a library catalog can offer</h3>
 <pre><code>User-Agent: *
@@ -66,9 +89,24 @@ Disallow: /
                            find that even many of the free-as-in-freedom library
                            systems use an absolutely restrictive <code>robots.txt</code> file.
                        </aside>
-                   </section>
+                    </section>
+                    <section>
+                        <h3>So why should we trust them to get us to a working linked open data world?</h3>
+                    </section>
+                    <section>
+                        <h3>Some destinations may be unreachable</h3>
+                        <p>From Jon Phipps on <a
+                        href="https://github.com/RDARegistry/RDA-Vocabularies/issues/42">RDA issue #42,
+                        2014-11-05</a></p>
+                        <blockquote style="margin-top: 1em">
+This [...] revolves around specifically understanding the extended meaning of each attribute in a bibliographic context, and within that context the bibliographic culture of the community using a particular language to convey that meaning.
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h3>Instead, iterate on what we already have</h3>
+                    </section>
+<!--
                    <section>
-
                         <h3>Library catalogs: first principles</h3>
                     </section>
 					<section>
@@ -112,22 +150,12 @@ Disallow: /
                           </p>
                         </aside>
                     </section>
+-->
                 </section>
 
                 <section>
                     <section>
                         <h2>Library holdings as schema:Product + schema:Offer</h2>
-                    </section>
-                    <section>
-                        <p>Blame <a href="http://lists.w3.org/Archives/Public/public-schemabibex/2012Nov/0035.html">Richard
-                        Wallis</a> (Nov 2012 - integration of GoodRelations). Or 
-                        <a href="http://lists.w3.org/Archives/Public/public-schemabibex/2013Jun/0025.html">Jeff
-                        Young</a> (June 2013 - investigation of IndividualProduct).</p>
-                    </section>
-                    <section>
-                        <p>Or maybe <a href="http://www.w3.org/community/schemabibex/wiki/Meet_20121017">Eric Miller</a> (Oct. 2012):</p>
-                        <blockquote style="margin-top: 1em">From eric miller to Everyone(04:28:44 PM)<br /><br /> 
-i used products only to make the point that what schema.org is focused on really is about helping accelate more effective discovery of things that can be bought / sold. We (in the library community) can recognize this and leverage this direction to support our (more content focused) requirements.</blockquote>
                     </section>
                     <section>
                         <h3>Time for a syllogism</h3>
@@ -223,18 +251,106 @@ i used products only to make the point that what schema.org is focused on really
 
                 <section>
                     <section>
-                        <h2>Liberating library data via software freedom</h2>
+                        <h2>Iterating towards a more open, linked future</h2>
                         <ul>
-                            <li class="fragment">In <a href="http://evergreen-ils.org">Evergreen</a><br>
-                                <img style="border: 0" src="images/evergreen_smaller.jpg" alt=" "></li>
-                            <li class="fragment"><a href="http://koha-community.org">Koha</a><br>
-                                <img style="border: 0" src="images/koha_smaller.jpg" alt=" "></li>
-                            <li class="fragment">and <a href="http://vufind.org">VuFind</a><br>
-                                <img style="border: 0" src="images/vufind_smaller.jpg" alt=" "></li>
+                            <li class="fragment">In <a href="http://evergreen-ils.org">Evergreen</a>
+                                <img style="border: 0; vertical-align: middle" src="images/evergreen_smaller.jpg" alt=" "></li>
+                            <li class="fragment"><a href="http://koha-community.org">Koha</a>
+                                <img style="border: 0; vertical-align: middle" src="images/koha_smaller.jpg" alt=" "></li>
+                            <li class="fragment">and <a href="http://vufind.org">VuFind</a>
+                                <img style="border: 0; vertical-align: middle" src="images/vufind_smaller.jpg" alt=" "></li>
+                        </ul>
+                        <aside class="notes">
+Evergreen, VuFind, Koha, for example, already expose structured data and
+generate sitemaps out of the box using the same old MARC21 data.
+Evergreen even exposes information about libraries (locations, contact
+information, hours of operation) so that you can connect its holdings to
+specific locations.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Why schema.org?</h3>
+                        <ul>
+                            <li>It is a de-facto generalized vocabulary</li>
+                            <li>It is available now, and already widely used</li>
+                            <li>It is relatively simple to embed into existing HTML</li>
+                            <li>It can co-exist with much more specialized vocabularies</li>
                         </ul>
                     </section>
                     <section>
-                        <h3>Making catalogues "of the web"</h3>
+                        <h3>Adding schema.org to an existing HTML page</h3>
+                        <ul>
+                            <li>Stored data -&gt; transform/template -&gt; human readable HTML page</li>
+                            <li>Stored data -&gt; transform/template -&gt; machine and human readable HTML page</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Human readable page</h3>
+                        <img src="images/evergreen_catalog_human.png">
+                    </section>
+                    <section>
+                        <h3>Machine readable page</h3>
+                        <img src="images/evergreen_catalog_human.png">
+                    </section>
+                    <section>
+                        <h3>Human readable page (HTML)</h3>
+<pre><code>&lt;div&gt;
+  &lt;h1&gt;The findability formula : the easy, non-technical approach
+    to search engine marketing / Heather Lutze.&lt;/h1&gt;
+  &lt;div&gt;
+    Lutze, Heather, 1969- (Author).
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </section>
+                    <section>
+                        <h3>Machine readable page (HTML)</h3>
+<pre><code>&lt;div vocab="http://schema.org/" typeof="Book Product"
+    resource="#schemarecord"&gt;
+  &lt;h1 property="name"&gt;The findability formula : the easy, non-technical
+    approach to search engine marketing / Heather Lutze.&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;span typeof="Person" property="author" resource="#schemacontrib1"&gt;
+      &lt;span resource="#schemacontrib1"&gt;
+        &lt;span property="name"&gt;Lutze, Heather,&lt;/span&gt;
+        &lt;span property="birthDate"&gt;1969&lt;/span&gt;-
+      &lt;/span&gt; (&lt;span property="description"&gt;Author&lt;/span&gt;).
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </section>
+
+                    <section data-background="images/evergreen_catalog_schema.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                    <section data-background="images/library_info.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a library page taken from an
+                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
+                          </p>
+                          <p>
+                            The library page is linked from the Holdings-as-Offer entities on the record details page;
+                            Evergreen enables you to link to your own library web site instead. But of course you can
+                            use the Evergreen-generated page as a template for ensuring that your own site contains
+                            the appropriate schema.org data.
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Making catalogues "of the web"</h2>
                         <ol>
                             <li class="fragment">Allow machines to crawl your pages: <code>robots.txt</code> and persistent URIs</li>
                             <li class="fragment">Embed machine-readable <code>schema.org</code> metadata into ordinary catalogue pages</li>
@@ -261,34 +377,6 @@ i used products only to make the point that what schema.org is focused on really
                                 </ul>
                             </li>
                         </ul>
-                    </section>
-                    <section data-background="images/evergreen_catalog_schema.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a record detail page taken from an
-                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
-                    </section>
-                    <section data-background="images/library_info.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a library page taken from an
-                            Evergreen catalogue in the wild, as hosted by Bibliomation in Connecticut. 
-                          </p>
-                          <p>
-                            The library page is linked from the Holdings-as-Offer entities on the record details page;
-                            Evergreen enables you to link to your own library web site instead. But of course you can
-                            use the Evergreen-generated page as a template for ensuring that your own site contains
-                            the appropriate schema.org data.
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
                     </section>
                     <section>
                         <h3>Next steps</h3>
@@ -332,6 +420,9 @@ i used products only to make the point that what schema.org is focused on really
                 <section>
                     <section>
                         <h2>Beyond library systems</h2>
+                        <aside class="notes">
+And what about all of our resources outside of the catalogue? Research guides, fonds descriptions, institutional repositories, publications...
+                        </aside>
                     </section>
                     <section>
                         <h3>Bryn Mawr Classical Review</h3>
@@ -344,20 +435,28 @@ i used products only to make the point that what schema.org is focused on really
                     </section>
                     <section>
                         <h3>BMCR: schema:Review and schema:Book</h3>
-<pre><code>&lt;http://example.org/2011/2011-01-03#review_text&gt; a schema:Review ;
-    schema:author "Andreas Markantonatos" ;
-    schema:itemReviewed &lt;http://example.org/2011/2011-01-03#review_item&gt; ;
-    schema:name "Bryn Mawr Classical Review 2011.01.03" ;
-    schema:reviewBody """Ipsem lorum...""" .
+<pre><code>&lt;http://example.org/2014-01-02#review_text&gt; a schema:Review ;
+    schema:author &lt;http://example.org/2014-01-02#review_author&gt; ;
+    schema:itemReviewed &lt;http://example.org/2014-01-02#review_item1&gt; ;
+    schema:name "Bryn Mawr Classical Review 2014.01.02" ;
+    schema:reviewBody """The temple dedicated to Castor and Pollux...""" .
 
-&lt;http://example.org/2011/2011-01-03#review_item&gt; a schema:Book ;
-    schema:author "Adrian Kelly" ;
+&lt;http://example.org/2014-01-02#review_author&gt; a schema:Person ;
+    schema:address "Royal Holloway, University of London" ;
+    schema:familyName "Withycombe-Taperell" ;
+    schema:givenName "Lily" ;
+    schema:name "Lily Withycombe-Taperell" .
+
+&lt;http://example.org/2014-01-02#review_item1&gt; a schema:Book ;
+    schema:author "Claes B. Persson",
+        "Jan Zahle",
+        "Kjell Aage Nilson",
+        "Siri Sande" ;
     schema:datePublished "2009" ;
-    schema:isbn "9780715637135" ;
-    schema:name "Sophocles: Oedipus at Colonus." ;
-    schema:numberOfPages "176" ;
-    schema:publisher "Duckworth" .
-</code></pre>
+    schema:isbn "9788882654979" ;
+    schema:name "The Temple of Castor and Pollux III: ..." ;
+    schema:numberOfPages "285" ;
+    schema:publisher "\"L'Erma\" di Bretschneider" .</code></pre>
                     </section>
                     <section>
                         <h3>Bryn Mawr Classical Review</h3>
@@ -486,18 +585,30 @@ i used products only to make the point that what schema.org is focused on really
                     </section>
                 </section>
                 <section>
-                    <h3>The future is now</h3>
+                    <h3>From static structured data to APIs?</h3>
                     <ul>
-                        <li class="fragment">Linked data is happening,
+                        <li>schema.org Actions provide directly actionable links (Gmail for example)</li>
+                        
+                        <li>Many action types could be adopted by libraries:
                             <ul>
-                                <li class="fragment">for real,</li>
-                                <li class="fragment">en masse,</li>
-                                <li class="fragment">thanks in no small part to schema.org</li>
+                                <li><a href="http://schema.org/SearchAction">SearchAction</a></li>
+                                <li><a href="http://schema.org/ReadAction">ReadAction</a></li>
+                                <li><a href="http://schema.org/WatchAction">WatchAction</a></li>
+                                <li><a href="http://schema.org/ListenAction">ListenAction</a></li>
+                                <li><a href="http://schema.org/ViewAction">ViewAction</a></li>
+                                <li><a href="http://schema.org/OrderAction">OrderAction</a> (Request)</li>
+                                <li><a href="http://schema.org/BorrowAction">BorrowAction</a> (Borrow or Renew)</li>
                             </ul>
-                         </li>
+                        </li>
                     </ul>
+<aside class="notes">
+And schema.org offers much more than just static structured data;
+schema.org Actions are surfacing in applications like Gmail as a way of
+providing directly actionable links. These could be a truly standardized
+API that exists well beyond libraries (see Hydra for a developing
+approach to this problem).
+</aside>
                 </section>
-
 			</div>
 
 		</div>
