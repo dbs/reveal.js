@@ -41,16 +41,16 @@
 
 		<div class="reveal">
 
-			<div class="slides">
-				<section>
-					<h1 property="name">schema.org in the wild</h1>
-					<h3>Schema.org: what it means for you and your library!</h3>
-                    <h4><span typeof="EducationEvent" url="http://www.ala.org/lita/conferences/forum/2014">LITA Forum</span> <span property="copyrightYear">2014</span></h4>
-					<p property="author creator" typeof="Person">
-						<small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://google.com/+DanScottCAN?rel=author">+Dan Scott</a></small>
-					</p>
-                    <p><small><span property="jobTitle">Systems Librarian</span>, <span property="affiliation worksFor">Laurentian University</span></small></p>
-				</section>
+            <div class="slides">
+                 <section>
+                     <h1 property="name">schema.org in the wild</h1>
+                     <h3>Schema.org: what it means for you and your library!</h3>
+                     <h4><span typeof="EducationEvent" url="http://www.ala.org/lita/conferences/forum/2014">LITA Forum</span> <span property="copyrightYear">2014</span></h4>
+                     <p property="author creator" typeof="Person">
+                         <small><a href="http://coffeecode.net" property="url">Dan Scott</a> / <a href="https://google.com/+DanScottCAN?rel=author">+Dan Scott</a></small>
+                     </p>
+                     <p><small><span property="jobTitle">Systems Librarian</span>, <span property="affiliation worksFor">Laurentian University</span></small></p>
+                 </section>
 
 				<section>
                     <section>
@@ -153,101 +153,6 @@ This [...] revolves around specifically understanding the extended meaning of ea
 -->
                 </section>
 
-                <section>
-                    <section>
-                        <h2>Library holdings as schema:Product + schema:Offer</h2>
-                    </section>
-                    <section>
-                        <h3>Time for a syllogism</h3>
-                        <ol>
-                            <li>Search engines want to connect people to products</li>
-                            <li class="fragment">Libraries want to provide useful resources to people
-                                <br />... ergo ...
-                            </li>
-                            <li class="fragment">Libraries should present their resources as products that search engines can offer to people</li>
-                        </ol>
-                    </section>
-                    <section>
-                        <h3>GoodRelations e-commerce vocabulary</h3>
-                        <ol>
-                            <li>An <strong>agent</strong> (e.g. a person or an organization),</li>
-                            <li>An <strong>object</strong> (e.g. a camcorder, a house, a car,...) or service (e.g. a haircut),</li>
-                            <li>A <strong>promise</strong> (offer) to transfer some rights (ownership, temporary usage, a certain license, ...) on the object or to provide the service for a certain compensation (e.g. an amount of money), made by the agent and related to the object or service, and</li>
-                            <li>A <strong>location</strong> from which this offer is available (e.g. a store, a bus stop, a gas station,...).</li>
-
-                        </ol>
-                    </section>
-                    <section>
-                        <h3>Library holdings-as-schema.org vocabulary</h3>
-                        <ol>
-                            <li>A <del>agent</del> <strong>schema:Library</strong> that offers goods, </li>
-                            <li>A <del>object</del> <strong>schema:Product</strong> (e.g. a book, DVD, vinyl record, map),</li>
-                            <li>A <del>promise</del> <strong>schema:Offer</strong> to provide the product, usually for free, made by the library</li>
-                            <li>A <del>location</del> <strong>schema:availableAtOrFrom</strong> from which this offer is available (e.g. a section of the library).</li>
-
-                        </ol>
-                    </section>
-                    <section>
-                        <h3>Hey, it turns out AbeBooks.com uses Product / Offer!</h3>
-                    </section>
-                    <section>
-                        <h3>Tested against Karen Coyle's holdings gallery</h3>
-                        <a href="http://kcoyle.net/holdings.html"><img src="images/kcoyle_holdings.png"></a>
-                    </section>
-                    <section>
-                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
-                        <ul>
-                            <li class="fragment">Bibliographic records
-                                <ul>
-                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
-                                </ul>
-                            </li>
-                            <li class="fragment">Holdings, using the <a href="http://schema.org/Product">schema:Product</a> / <a href="http://schema.org/Offer">schema:Offer</a> model</li>
-                            <li class="fragment">Libraries
-                                <ul>
-                                    <li>Hours of operation</li>
-                                    <li>Web site</li>
-                                    <li>Location</li>
-                                    <li>Contact information</li>
-                                    <li>Branch relationships</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                    <section data-background="images/evergreen_catalog_human.png">
-                    </section>
-                    <section data-background="images/evergreen_catalog_schema.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a record detail page taken from an
-                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
-                    </section>
-                    <section data-background="images/library_info_human.png">
-                    </section>
-                    <section data-background="images/library_info.png">
-                        <aside class="notes">
-                          <p>
-                            This is the schema.org data from a record detail page taken from an
-                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
-                          </p>
-                          <p>
-                            The library page is linked from the Holdings-as-Offer entities on the record details page;
-                            Evergreen enables you to link to your own library web site instead. But of course you can
-                            use the Evergreen-generated page as a template for ensuring that your own site contains
-                            the appropriate schema.org data.
-                          </p>
-                          <p>
-                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
-                          </p>
-                        </aside>
-                    </section>
-
-                </section>
 
                 <section>
                     <section>
@@ -347,76 +252,16 @@ specific locations.
                           </p>
                         </aside>
                     </section>
-                </section>
-                <section>
                     <section>
-                        <h2>Making catalogues "of the web"</h2>
-                        <ol>
-                            <li class="fragment">Allow machines to crawl your pages: <code>robots.txt</code> and persistent URIs</li>
-                            <li class="fragment">Embed machine-readable <code>schema.org</code> metadata into ordinary catalogue pages</li>
-                            <li class="fragment">Generate sitemaps for your record detail pages</li>
-                            <li class="fragment">Tell search engines and aggregators about the sitemaps</li>
-                        </ol>
-                    </section>
-                    <section>
-                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
+                        <h2>Other open source library systems of note</h2>
                         <ul>
-                            <li class="fragment">Bibliographic records
-                                <ul>
-                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
-                                </ul>
-                            </li>
-                            <li class="fragment">Holdings, using the <a href="http://schema.org/Product">schema:Product</a> / <a href="http://schema.org/Offer">schema:Offer</a> model</li>
-                            <li class="fragment">Libraries
-                                <ul>
-                                    <li>Hours of operation</li>
-                                    <li>Web site</li>
-                                    <li>Location</li>
-                                    <li>Contact information</li>
-                                    <li>Branch relationships</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Next steps</h3>
-                        <ul>
-                            <li class="fragment">Things, not strings: express relator codes and controlled headings as linked data</li>
-                            <li class="fragment"><em>But strings are better than nothing</em>: use <a href="http://schema.org/Role">schema:Role</a> for relator terms</li>
-                            <li class="fragment">Extend Koha and VuFind's support for expressing library metadata</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Teach your systems to speak RDFa + schema.org</h3>
-                        <ul>
-                            <li><em>Practical linked data for open source</em> preconference</li>
-                            <li>My portion was a hands-on, self-guided tutorial teaching RDFa + schema.org in library systems:
-                                <ul>
-                                    <li>Mark up bibliographic record detail pages</li>
-                                    <li>Express library holdings as schema.org <code>Offer</code> entities</li>
-                                    <li>Mark up library pages with opening hours, contact info, etc</li>
-                                    <li>Build a simple union catalogue in five minutes using Google Custom Search Engine</li>
-                                    <li>Build a proof of concept sitemap crawler / RDFa extractor</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>All materials available for free under a CC-BY-SA license!</li>
-                            <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
-                            <li class="fragment">You might need to wade through a blog post or two</li>
+                            <li>Blacklight <img style="border: 0; background: white; vertical-align: middle" src="images/blacklight.png" alt=" "></li>
+                            <li>Islandora  <img style="border: 0; background: white; vertical-align: middle" src="images/Islandora.png" alt=" "></li>
+                            <li>... ?</li>
                         </ul>
                     </section>
                 </section>
-                <section>
-                    <h2>Other open source library systems of note</h2>
-                    <ul>
-                        <li>Blacklight <br>
-                            <img style="border: 0; background: white" src="images/blacklight.png" alt=" "></li>
-                        <li>Islandora  <br>
-                            <img style="border: 0; background: white" src="images/Islandora.png" alt=" "></li>
-                        <li>... ?</li>
-                    </ul>
-                </section>
+
                 <section>
                     <section>
                         <h2>Beyond library systems</h2>
@@ -484,35 +329,7 @@ And what about all of our resources outside of the catalogue? Research guides, f
                         </ul>
                     </section>
                 </section>
-                <section>
-                    <section>
-                        <h2>Addressing gaps in schema.org</h2>
-                    </section>
-                    <section>
-                        <h3>In 2013 schema.org moved to W3C WebSchemas as the public forum for enhancement proposals</h3>
-                    </section>
-                    <section>
-                        <h3>Enter the W3C schema.org Bibliographic Extension Community Group</h3>
-                        <ul>
-                            <li class="fragment"><em>AKA</em> <q>SchemaBibEx</q></li>
-                            <li class="fragment">A rag-tag group of linked data bibliographic enthusiasts trying to establish consensus</li>
-                            <li class="fragment">Using open source library systems (Evergreen, Koha, VuFind) as proofs of concept / reference implementations</li>
-                        <ul>
-                        <aside class="notes">
-                            It was nice to participate in a group in which the discussions were not
-                            purely theoretical, but grounded in practice (even if I was the one doing
-                            most of the grounding at the time).
-                        </aside>
-                    </section>
-                    <section>
-                        <h3>Some schemabibex wins</h3>
-                        <ul>
-                            <li><em>Early</em>: moving "citation" from MedicalScholarlyArticle to CreativeWork</li>
-                            <li><em>Middle</em>: Holdings-as-Offers as a best practice, with decommercialized descriptions</li>
-                            <li><em>Most recently</em>: Periodicals and CreativeWork relationships</li>
-                        </ul>
-                    </section>
-                </section>
+
                 <section>
                     <section>
                         <h2>Role-playing</h2>
@@ -608,6 +425,192 @@ providing directly actionable links. These could be a truly standardized
 API that exists well beyond libraries (see Hydra for a developing
 approach to this problem).
 </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Making catalogues "of the web"</h2>
+                        <ol>
+                            <li class="fragment">Allow machines to crawl your pages: <code>robots.txt</code> and persistent URIs</li>
+                            <li class="fragment">Embed machine-readable <code>schema.org</code> metadata into ordinary catalogue pages</li>
+                            <li class="fragment">Generate sitemaps for your record detail pages</li>
+                            <li class="fragment">Tell search engines and aggregators about the sitemaps</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
+                        <ul>
+                            <li class="fragment">Bibliographic records
+                                <ul>
+                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Holdings, using the <a href="http://schema.org/Product">schema:Product</a> / <a href="http://schema.org/Offer">schema:Offer</a> model</li>
+                            <li class="fragment">Libraries
+                                <ul>
+                                    <li>Hours of operation</li>
+                                    <li>Web site</li>
+                                    <li>Location</li>
+                                    <li>Contact information</li>
+                                    <li>Branch relationships</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Next steps</h3>
+                        <ul>
+                            <li class="fragment">Things, not strings: express relator codes and controlled headings as linked data</li>
+                            <li class="fragment"><em>But strings are better than nothing</em>: use <a href="http://schema.org/Role">schema:Role</a> for relator terms</li>
+                            <li class="fragment">Extend Koha and VuFind's support for expressing library metadata</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Teach your systems to speak RDFa + schema.org</h3>
+                        <ul>
+                            <li><em>Practical linked data for open source</em> preconference</li>
+                            <li>My portion was a hands-on, self-guided tutorial teaching RDFa + schema.org in library systems:
+                                <ul>
+                                    <li>Mark up bibliographic record detail pages</li>
+                                    <li>Express library holdings as schema.org <code>Offer</code> entities</li>
+                                    <li>Mark up library pages with opening hours, contact info, etc</li>
+                                    <li>Build a simple union catalogue in five minutes using Google Custom Search Engine</li>
+                                    <li>Build a proof of concept sitemap crawler / RDFa extractor</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>All materials available for free under a CC-BY-SA license!</li>
+                            <li>Go to <a href="https://coffeecode.net">https://coffeecode.net</a></li>
+                            <li class="fragment">You might need to wade through a blog post or two</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Library holdings as schema:Product + schema:Offer</h2>
+                    </section>
+                    <section>
+                        <h3>Time for a syllogism</h3>
+                        <ol>
+                            <li>Search engines want to connect people to products</li>
+                            <li class="fragment">Libraries want to provide useful resources to people
+                                <br />... ergo ...
+                            </li>
+                            <li class="fragment">Libraries should present their resources as products that search engines can offer to people</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>GoodRelations e-commerce vocabulary</h3>
+                        <ol>
+                            <li>An <strong>agent</strong> (e.g. a person or an organization),</li>
+                            <li>An <strong>object</strong> (e.g. a camcorder, a house, a car,...) or service (e.g. a haircut),</li>
+                            <li>A <strong>promise</strong> (offer) to transfer some rights (ownership, temporary usage, a certain license, ...) on the object or to provide the service for a certain compensation (e.g. an amount of money), made by the agent and related to the object or service, and</li>
+                            <li>A <strong>location</strong> from which this offer is available (e.g. a store, a bus stop, a gas station,...).</li>
+
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Library holdings-as-schema.org vocabulary</h3>
+                        <ol>
+                            <li>A <del>agent</del> <strong>schema:Library</strong> that offers goods, </li>
+                            <li>A <del>object</del> <strong>schema:Product</strong> (e.g. a book, DVD, vinyl record, map),</li>
+                            <li>A <del>promise</del> <strong>schema:Offer</strong> to provide the product, usually for free, made by the library</li>
+                            <li>A <del>location</del> <strong>schema:availableAtOrFrom</strong> from which this offer is available (e.g. a section of the library).</li>
+
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Hey, it turns out AbeBooks.com uses Product / Offer!</h3>
+                    </section>
+                    <section>
+                        <h3>Tested against Karen Coyle's holdings gallery</h3>
+                        <a href="http://kcoyle.net/holdings.html"><img src="images/kcoyle_holdings.png"></a>
+                    </section>
+                    <section>
+                        <h3>Unstructured -&gt; structured -&gt; linked data</h3>
+                        <ul>
+                            <li class="fragment">Bibliographic records
+                                <ul>
+                                    <li>Record types: <a href="http://schema.org/Book">Book</a>, <a href="http://schema.org/Map">Map</a>, <a href="http://schema.org/MusicRecording">MusicRecording</a>, fallback to <a href="http://schema.org/CreativeWork">CreativeWork</a></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Holdings, using the <a href="http://schema.org/Product">schema:Product</a> / <a href="http://schema.org/Offer">schema:Offer</a> model</li>
+                            <li class="fragment">Libraries
+                                <ul>
+                                    <li>Hours of operation</li>
+                                    <li>Web site</li>
+                                    <li>Location</li>
+                                    <li>Contact information</li>
+                                    <li>Branch relationships</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-background="images/evergreen_catalog_human.png">
+                    </section>
+                    <section data-background="images/evergreen_catalog_schema.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                    <section data-background="images/library_info_human.png">
+                    </section>
+                    <section data-background="images/library_info.png">
+                        <aside class="notes">
+                          <p>
+                            This is the schema.org data from a record detail page taken from an
+                            Evergreen catalogue in the wild, as hosted by MVLC in Massachusetts. 
+                          </p>
+                          <p>
+                            The library page is linked from the Holdings-as-Offer entities on the record details page;
+                            Evergreen enables you to link to your own library web site instead. But of course you can
+                            use the Evergreen-generated page as a template for ensuring that your own site contains
+                            the appropriate schema.org data.
+                          </p>
+                          <p>
+                            The rendering is courtesy of <a href="http://rdfa.info/play">RDFa Playground</a>.
+                          </p>
+                        </aside>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Addressing gaps in schema.org</h2>
+                    </section>
+                    <section>
+                        <h3>In 2013 schema.org moved to W3C WebSchemas as the public forum for enhancement proposals</h3>
+                    </section>
+                    <section>
+                        <h3>Enter the W3C schema.org Bibliographic Extension Community Group</h3>
+                        <ul>
+                            <li class="fragment"><em>AKA</em> <q>SchemaBibEx</q></li>
+                            <li class="fragment">A rag-tag group of linked data bibliographic enthusiasts trying to establish consensus</li>
+                            <li class="fragment">Using open source library systems (Evergreen, Koha, VuFind) as proofs of concept / reference implementations</li>
+                        <ul>
+                        <aside class="notes">
+                            It was nice to participate in a group in which the discussions were not
+                            purely theoretical, but grounded in practice (even if I was the one doing
+                            most of the grounding at the time).
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Some schemabibex wins</h3>
+                        <ul>
+                            <li><em>Early</em>: moving "citation" from MedicalScholarlyArticle to CreativeWork</li>
+                            <li><em>Middle</em>: Holdings-as-Offers as a best practice, with decommercialized descriptions</li>
+                            <li><em>Most recently</em>: Periodicals and CreativeWork relationships</li>
+                        </ul>
+                    </section>
                 </section>
 			</div>
 
