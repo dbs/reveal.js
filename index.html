@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>schema.org in the (open source) wild</title>
+		<title>schema.org out in the open (data|source)</title>
 
 		<meta name="description" content="Using schema.org in open source library (and other) systems">
 		<meta name="author" content="Dan Scott">
@@ -43,7 +43,7 @@
 
             <div class="slides">
                  <section>
-                     <h1 property="name">schema.org in the wild</h1>
+                     <h1 property="name">Out in the open (data|source)</h1>
                      <h3>Schema.org: what it means for you and your library!</h3>
                      <h4><span typeof="EducationEvent" url="http://www.ala.org/lita/conferences/forum/2014">LITA Forum</span> <span property="copyrightYear">2014</span></h4>
                      <p property="author creator" typeof="Person">
@@ -95,12 +95,11 @@ Disallow: /
                     </section>
                     <section>
                         <h3>Some destinations may be unreachable</h3>
-                        <p>From Jon Phipps on <a
-                        href="https://github.com/RDARegistry/RDA-Vocabularies/issues/42">RDA issue #42,
-                        2014-11-05</a></p>
                         <blockquote style="margin-top: 1em">
 This [...] revolves around specifically understanding the extended meaning of each attribute in a bibliographic context, and within that context the bibliographic culture of the community using a particular language to convey that meaning.
                         </blockquote>
+                        <p style="float: right; margin-top: 1em;" typeof="Person"><span property="name">Jon Phipps</span> &lt;<span property="email">jphipps@madcreek.com</span>&gt;</p>
+                        <p style="float: right"><a href="https://github.com/RDARegistry/RDA-Vocabularies/issues/42">RDA issue #42, 2014-11-05</a></p>
                     </section>
                     <section>
                         <h3>Instead, iterate on what we already have</h3>
@@ -402,29 +401,43 @@ And what about all of our resources outside of the catalogue? Research guides, f
                     </section>
                 </section>
                 <section>
-                    <h3>From static structured data to APIs?</h3>
-                    <ul>
-                        <li>schema.org Actions provide directly actionable links (Gmail for example)</li>
-                        
-                        <li>Many action types could be adopted by libraries:
-                            <ul>
-                                <li><a href="http://schema.org/SearchAction">SearchAction</a></li>
-                                <li><a href="http://schema.org/ReadAction">ReadAction</a></li>
-                                <li><a href="http://schema.org/WatchAction">WatchAction</a></li>
-                                <li><a href="http://schema.org/ListenAction">ListenAction</a></li>
-                                <li><a href="http://schema.org/ViewAction">ViewAction</a></li>
-                                <li><a href="http://schema.org/OrderAction">OrderAction</a> (Request)</li>
-                                <li><a href="http://schema.org/BorrowAction">BorrowAction</a> (Borrow or Renew)</li>
-                            </ul>
-                        </li>
-                    </ul>
-<aside class="notes">
-And schema.org offers much more than just static structured data;
-schema.org Actions are surfacing in applications like Gmail as a way of
-providing directly actionable links. These could be a truly standardized
-API that exists well beyond libraries (see Hydra for a developing
-approach to this problem).
-</aside>
+                    <section>
+                        <h3>From static structured data to APIs?</h3>
+                        <ul>
+                            <li>schema.org Actions provide directly actionable links (Gmail for example)</li>
+                            
+                            <li>Many existing action types could be adopted by libraries:
+                                <ul>
+                                    <li><a href="http://schema.org/SearchAction">SearchAction</a></li>
+                                    <li><a href="http://schema.org/ReadAction">ReadAction</a></li>
+                                    <li><a href="http://schema.org/WatchAction">WatchAction</a></li>
+                                    <li><a href="http://schema.org/ListenAction">ListenAction</a></li>
+                                    <li><a href="http://schema.org/ViewAction">ViewAction</a></li>
+                                    <li><a href="http://schema.org/OrderAction">OrderAction</a> (Request)</li>
+                                    <li><a href="http://schema.org/BorrowAction">BorrowAction</a> (Borrow or Renew)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                        And schema.org offers much more than just static structured data;
+                        schema.org Actions are surfacing in applications like Gmail as a way of
+                        providing directly actionable links.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>JSON-LD actions as APIs?</h3>
+<pre><code>{
+  "@context": "http://schema.org",
+  "@type": "Book",
+  "@id" : "https://example.org/record/42",
+  "name": "RESTful Web APIs",
+  "potentialAction" : {
+    "@type": "BorrowAction",
+    "target" : "https://example.org/borrow"
+  }
+}</code></pre>
+                        <p>See also <a href="http://www.hydra-cg.com/">Hydra</a> for defining self-documenting machine-actionable RESTful APIs.</p>
+                    </section>
                 </section>
 
                 <section>
@@ -581,7 +594,6 @@ approach to this problem).
                         </aside>
                     </section>
                 </section>
-
 
                 <section>
                     <section>
