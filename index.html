@@ -54,6 +54,12 @@
                 <section>
                     <section>
                         <h2>Web-oriented cataloguing</h2>
+                        <ul>
+                            <li>Cataloguers provide access points to resources to enable discovery</li>
+                            <li>Books / library resources are for use</li>
+                            <li>Most discovery starts at a major search engine on the web</li>
+                            <li>Thus we must optimize discovery for the web</li>
+                        </ul>
                         <aside class="notes">
                             Does anyone dispute that the bulk of our discovery
                             efforts are currently oriented towards and mediated by the web?
@@ -73,6 +79,41 @@
                         </aside>
                     </section>
                     <section>
+                        <h3>Foundations of open web discovery</h3>
+                        <ul>
+                            <li><a href="http://www.sitemaps.org/">Persistent URIs</a> <span class="fragment" style="font-weight: bold">- MUST</span></li>
+                            <li><a href="http://www.robotstxt.org">robots.txt</a>: restrict pages not of interest <span class="fragment" style="font-weight: bold">- SMART</span></li>
+                            <li><a href="http://www.sitemaps.org">Sitemaps</a>: list pages of interest + updates <span class="fragment" style="font-weight: bold">- ALMOST MUST</span></li>
+                            <li><a href="http://rdfa.info">RDFa, Microdata, JSON-LD</a> <span class="fragment" style="font-weight: bold">- NICE TO HAVE</span></li>
+                        </ul>
+                        <aside class="notes">
+                            If you can't access a resource at a persistent URI, then you are lost.
+                            A surprising number of library web applications today still fail at this step!
+
+                            Discovery of the open web actually does pretty well with plain old HTML, as
+                            long as you guide the robots correctly.
+
+                            What embedded metadata can do is help disambiguate entities (from as simple
+                            as "What image on this page goes with the news article--the bottle of multivitamins,
+                            or the politician?" to "Which Dan Scott is this article talking about?"
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Evergreen and Google, ca. 2009</h3>
+                        <ul>
+                            <li>Googlers wanted to help in their 20% time</li>
+                            <li>Evergreen's Ajax catalogue could not be crawled</li>
+                            <li class="fragment">Opportunity lost, painful lesson learned</li>
+                            <li class="fragment">Solid motivation</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Semantic Web</h2>
+                    </section>
+                    <section>
                         <blockquote>
                         The Semantic Web is an extension of the current web in
                         which information is given well-defined meaning, better
@@ -81,28 +122,69 @@
                         <cite style="float:right">Tim Berners-Lee, Scientific American, 2001</cite>
                     </section>
                     <section>
-                        <h3>Evergreen and Google, ca. 2009</h3>
+                        <h3>"an extension of the current web"</h3>
                         <ul>
-                            <li>Googlers wanted to help in their 20% time</li>
-                            <li>Ajax catalogue to the max - bots could not crawl</li>
-                            <li class="fragment">An opportunity lost</li>
-                            <li class="fragment">One of my primary motivators!</li>
+                            <li class="fragment">Not something separate from the current web.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>"in which information is given well-defined meaning"</h3>
+                        <ul>
+                            <li class="fragment">Like, adding RDFa or microdata to a web page?</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>"enabling computers and people to work in cooperation"</h3>
+                        <ul>
+                            <li class="fragment">"<em>work</em>" - oriented towards getting things done</li>
+                        </ul>
+                        <aside class="notes">
+                            It's not about generating billions of triples, or feeling
+                            good about having described something in a perfectly granular
+                            vocabulary; it's about achieving practical results.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Thus the uptake of schema.org</h3>
+                        <ul>
+                            <li>Far from a perfect or complete vocabulary at launch in 2011, but:</li>
+                                <ul>
+                                    <li>It was understandable to normals (examples!)</li>
+                                    <li>Had practical uses</li>
+                                    <li>Offered compelling results</li>
+                                </ul>
+                            </li>
+                            <li>And the closed process opened up in 2013:
+                                <ul>
+                                    <li><a href="http://www.w3.org/wiki/WebSchemas">W3C WebSchemas WG</a></li>
+                                    <li><a href="https://github.com/rvguha/schemaorg/">git repository</a> with
+                                        <a href="https://github.com/rvguha/schemaorg/graphs/contributors">5 community contributors</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>schema.org seized the moment</h3>
+                        <ul>
+                            <li>Libraries had a decade to do things "the right way"</li>
+                            <li class="fragment">Opportunity lost, painful lesson learned (hopefully)</li>
+                            <li class="fragment">Solid motivation!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Therefore, be it resolved that library systems</h3>
+                        <ul>
+                            <li>Offer persistent URIs</li>
+                            <li>Publish sitemaps for the pages of interest</li>
+                            <li>Gracefully adopt schema.org as their first embedded vocabulary</li>
+                            <li>Use that vocabulary to build library-specific applications</li>
                         </ul>
                     </section>
                 </section>
 
-                
                 <section>
                     <section>
-                        <h2>Standards</h2>
-                    </section>
-                    <section>
-                        <h3>Discovery building blocks</h3>
-                        <ul>
-                            <li>Persistent URIs</li>
-                            <li>Sitemaps - list pages of interest + updates</li>
-                            <li>robots.txt - restrict pages not of interest</li>
-                        </ul>
+                        <h2>De-facto standards: GoodRelations</h2>
                     </section>
                     <section>
                         <h3>Best Buy</h3>
@@ -143,6 +225,48 @@ schema:offers [ a schema:Offer ;
         schema:seller &lt;http://acorn.biblio.org/eg/opac/library/NMLFRD&gt; ;
         schema:serialNumber "34021116328218"@en-us ;
         schema:sku "658.8072 SIE "@en-us ] .</code></pre>
+                    </section>
+                    <section>
+                        <h3>Koha library system</h3>
+                        <pre><code>&lt;http://catalog.bywatersolutions.com/cgi-bin/koha/opac-detail.pl?biblionumber=47958#record&gt; a schema:Book,
+        schema:Product ;
+    schema:name "The cathedral and the bazaar : musings on Linux and Open Source by an accidental revolutionary / "@en .
+
+[] a schema:Offer ;
+    schema:availability schema:OutOfStock ;
+    schema:businessFunction &lt;http://purl.org/goodrelations/v1#LeaseOut&gt; ;
+    schema:itemOffered &lt;http://catalog.bywatersolutions.com/cgi-bin/koha/opac-detail.pl?biblionumber=47958#record&gt; ;
+    schema:seller "East Branch"@en ;
+    schema:serialNumber "M12087334"@en ;
+    schema:sku "005.4/32 (Browse shelf)"@en .</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Vufind discovery system</h3>
+                        <pre><code>
+&lt;http://vufind.org/demo/Record/946330#record&gt; a schema:Book,
+        schema:Product ;
+    schema:name "LinKnot : knot theory by computer / "@en .
+
+[] a schema:Offer ;
+    schema:availability schema:InStock ;
+    schema:businessFunction &lt;http://purl.org/goodrelations/v1#LeaseOut&gt; ;
+    schema:itemOffered &lt;http://vufind.org/demo/Record/946330#record&gt; ;
+    schema:seller "Campus B"@en ;
+    schema:serialNumber "00020739"@en ;
+    schema:sku "S482.8110"@en .
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Rich library metadata</h2>
+                    </section>
+                    
+                    <section data-background="images/evergreen_catalog_schema.png">
+                    </section>
+                    <section data-background="images/library_info.png">
                     </section>
                 </section>
 
