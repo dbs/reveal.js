@@ -53,7 +53,7 @@
 
                 <section>
                     <section>
-                        <h2>Web-oriented cataloguing</h2>
+                        <h2>First principles: modern cataloguing is web-oriented</h2>
                         <ul>
                             <li>Cataloguers provide access points to resources to enable discovery</li>
                             <li>Books / library resources are for use</li>
@@ -154,13 +154,6 @@
                                     <li>Offered compelling results</li>
                                 </ul>
                             </li>
-                            <li>And the closed process opened up in 2013:
-                                <ul>
-                                    <li><a href="http://www.w3.org/wiki/WebSchemas">W3C WebSchemas WG</a></li>
-                                    <li><a href="https://github.com/rvguha/schemaorg/">git repository</a> with
-                                        <a href="https://github.com/rvguha/schemaorg/graphs/contributors">5 community contributors</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </section>
                     <section>
@@ -179,6 +172,61 @@
                             <li>Gracefully adopt schema.org as their first embedded vocabulary</li>
                             <li>Use that vocabulary to build library-specific applications</li>
                         </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>schema.org myths</h2>
+                    </section>
+
+                    <section>
+                        <h3>Myth: schema.org is a coarse vocabulary</h3>
+                        <ul>
+                            <li>595 classes</li>
+                            <li>826 properties</li>
+                            <li>... and growing</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Myth: schema.org can't handle library complexity</h3>
+                        <ul>
+                            <li>Classes: <a href="http://schema.org/">CreativeWork</a>, <a href="http://schema.org/">Article</a>, <a href="http://schema.org/">Book</a>, <a href="http://schema.org/">Map</a>, <a href="http://schema.org/">Movie</a>, <a href="http://schema.org/">MusicRecording</a>, <a href="http://schema.org/">Periodical</a>, <a href="http://schema.org/">Photograph</a>, <a href="http://schema.org/">PublicationIssue</a>, <a href="http://schema.org/">PublicationVoume</a>, <a href="http://schema.org/">ScholarlyArticle</a></li>
+                            <li>... and <a href="http://schema.org/">Library</a>!
+                            <li>FRBR-ish properties: <a href="http://schema.org/">exampleOfWork</a>, <a href="http://schema.org/">workExample</a></li>
+                            <li>Collection properties: <a href="http://schema.org/">hasPart</a>, <a href="http://schema.org/">isPartOf</a></li>
+                        </ul>
+                    </section>
+
+                    <section data-background="images/evergreen_catalog_schema.png"></section>
+                    <section data-background="images/library_info.png"></section>
+
+                    <section>
+                        <h3>Myth: schema.org process is closed</h3>
+                        <ul>
+                            <li>Entirely closed process opened up in late 2011:
+                                <ul>
+                                    <li><a href="http://www.w3.org/wiki/WebSchemas">W3C WebSchemas WG</a></li>
+                                    <li><a href="http://lists.w3.org/Archives/Public/public-vocabs/">W3C public-vocabs</a> mailing list</li>
+                                </ul>
+                            </li>
+                            <li>Code repository opened up for contributions in 2014:
+                                <ul>
+                                    <li><a href="https://github.com/rvguha/schemaorg/">git repository</a></li>
+                                    <li><a href="https://github.com/rvguha/schemaorg/graphs/contributors">5 community contributors</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://www.w3.org/community/schemabibex/">W3C schema.org Bibliographic Extension Community Group</a>
+                                has used this openness effectively
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Linked data, not just structured data!</h3>
+                        <p>Progressively enrich RDFa + schema.org to break out of silos</p>
+                        <p class="fragment" style="margin-top: 1em">Use the <code>@resource</code>, Luke!</p>
                     </section>
                 </section>
 
@@ -325,20 +373,6 @@ schema:offers [ a schema:Offer ;
                         <ul>
                             <li>Bibliographic records</li>
                         </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Rich library metadata</h2>
-                    </section>
-                    
-                    <section data-background="images/evergreen_catalog_schema.png"></section>
-                    <section data-background="images/library_info.png"></section>
-                    <section>
-                        <h3>Linked data, not just structured data!</h3>
-                        <p>Progressively enrich RDFa + schema.org to break out of silos</p>
-                        <p class="fragment" style="margin-top: 1em">Use the <code>@resource</code>, Luke!</p>
                     </section>
                 </section>
 
