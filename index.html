@@ -185,6 +185,7 @@
                 <section>
                     <section>
                         <h2>De-facto standards: GoodRelations</h2>
+                        <em>aka</em> "How to tell the world what copies you have of things"
                     </section>
                     <section>
                         <h3>Best Buy</h3>
@@ -332,13 +333,40 @@ schema:offers [ a schema:Offer ;
                         <h2>Rich library metadata</h2>
                     </section>
                     
-                    <section data-background="images/evergreen_catalog_schema.png">
-                    </section>
-                    <section data-background="images/library_info.png">
+                    <section data-background="images/evergreen_catalog_schema.png"></section>
+                    <section data-background="images/library_info.png"></section>
+                    <section>
+                        <h3>Linked data, not just structured data!</h3>
+                        <p>Progressively enrich RDFa + schema.org to break out of silos</p>
+                        <p class="fragment" style="margin-top: 1em">Use the <code>@resource</code>, Luke!</p>
                     </section>
                 </section>
 
-
+                <section>
+                    <section>
+                        <h2>Semantic web workflows for old tasks</h2>
+                        <em>Key concept</em>: Your web of documents becomes your web of data.
+                    </section>
+                    <section>
+                        <h3>Creating a union catalogue</h3>
+                        <ul>
+                            <li><em>Old approach</em>: branches periodically push records to a central repository</li>
+                            <li class="fragment"><em>Semantic web approach</em>: central repository crawls branches intelligently using their sitemaps</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Checking item availability</h3>
+                        <ul>
+                            <li><em>Old approach</em>: Z39.50 query with custom mappings for each source</li>
+                            <li class="fragment"><em>Old approach (?)</em>: Z39.83 (NCIP) query with custom mappings for each source</li>
+                            <li class="fragment"><em>Semantic web approach</em>: request record URI, check availability of offerings</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <h2>Learn RDFa + schema.org today! For free!</h2>
+                    Use the <a href="https://coffeecode.net/swib14/preconference">self-guided tutorial</a>
+                    to work through a series of hands-on exercises with real library data
                 </section>
 
 			</div>
