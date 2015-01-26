@@ -1,408 +1,398 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+        <title>White hat SEO: Structured Web Data</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="description" content="How to add structured data to your library web site">
+        <meta name="author" content="Dan Scott">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/white.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    text-transform: none;
+} 
+        </style>
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>White hat SEO:</h1>
+                    <h2>Structured Web Data</h2>
+                    <p>
+                        <small><a href="https://coffeecode.net">Dan Scott</a> / <a href="http://google.com/+DanScottCAN">+DanScottCAN</a></small>
+                    </p>
+                </section>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+                <section>
+                    <section>
+                        <h2>Search engines vs. libraries</h2>
+                        <ul>
+                            <li><em>Goal</em>: Connect users with your resources using their search tool.
+                                <ul>
+                                    <li class="fragment">People are working on this problem!</li>
+                                    <li class="fragment">Ask me about Evergreen, Koha, or VuFind!</li>
+                                </ul>
+                            </li>
+                            <li class="fragment"><em>But first</em>: Connect users with your library using their search tool.</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                            It is still a matter of debate in some circles (AUTOCAT) as to whether
+                            trying to reach users through general search engines like Google, Bing,
+                            and Yahoo! is even a worthwhile goal. Information literacy classes,
+                            the splendors of advanced search interfaces, etc.
+                            </p>
+                            <p>
+                            A recurring topic in the library world is how we might get the
+                            contents of our catalogues to show up in search engines so that regular users
+                            could be pointed directly at our resources in the course of their general
+                            searches. (images of twitter threads, mailing list threads, etc)
+                            </p>
+                            <p>
+                            However, at a very basic level, if someone searches for "library" on their
+                            phone or laptop, you want your library to show up if they happen to be in the
+                            general vicinity.
+                            </p>
+                        </aside>
+                    </section>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
+                    <section>
+                        <h2>When you search for "library"...</h2>
+                    </section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                    <section data-background="images/library_search_bing.png">
+                        <aside class="notes">
+                            Toronto <em>is</em> the centre of the universe! But hey,
+                            the Greater Sudbury Public Libraries home page is second, not bad.
+                            Let's dig into the local results.
+                        </aside>
+                    </section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+                    <section data-background="images/library_search_bing_on_crack.png">
+                        <aside class="notes">
+                            By clicking on Local Results we can see just how local those results
+                            are, matching URLs from Ottawa and BC to Sudbury libraries. Much of
+                            the data seems to be driven by Foursquare data.
+                        </aside>
+                    </section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                    <section data-background="images/library_search_foursquare.png">
+                        <aside class="notes">
+                            Foursquare is user-driven information; you might want to become a user
+                            to try to sort things out about your library. Check the images for a
+                            fun unfiltered impression of your library!
+                        </aside>
+                    </section>
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+                    <section data-background="images/library_search_yahoo_local_fail.png">
+                        <aside class="notes">
+                            Searching Yahoo! via Firefox results in a complete unwillingness
+                            to acknowledge that Canada even exists.
+                        </aside>
+                    </section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+                    <section data-background="images/library_search_yahoo_local_fail_2.png">
+                        <aside class="notes">
+                            Searching Yahoo! via yahoo.ca leads me to their partner in crime,
+                            YellowPages, which shows me all the libraries around
+                            Sudbury, but not the ones actually <em>in</em> Sudbury.
+                        </aside>
+                    </section>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+                    <section data-background="images/library_search_google.png">
+                        <aside class="notes">
+                            Ah, Google. Toronto is still the centre of the world, but now
+                            we have a reasonably ordered set of local results with reasonably
+                            accurate information. Let's dig into those local results.
+                        </aside>
+                    </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+                
+                    <section data-background="images/library_search_click_map.png">
+                        <aside class="notes">
+                            Clicking on one of the icons on the Google result map gives us
+                            a quick overview of the library.
+                        </aside>
+                    </section>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+                    <section data-background="images/library_search_click_map_gplus.png">
+                        <aside class="notes">
+                            Another click takes you to the library's Google+ page, which
+                            may be driving the source of the data for search results.
+                        </aside>
+                    </section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+                    <section>
+                        <h2>Getting your library into search</h2>
+                        <ul>
+                            <li>Populate social media profiles with branch addresses, hours, contact info, pictures...
+                            <ul>
+                                <li>Google: create Google+ pages</li>
+                                <li>Bing: populate Foursquare</li>
+                                <li>Yahoo!: maybe take out a Yellow Pages ad?</li>
+                            </ul>
+                            </li>
+                            <li class="fragment">But that adds more places to maintain copies of data</li>
+                        </ul>
+                    </section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+                    <section>
+                        <h2>OCLC to the rescue?</h2>
+                        <ul>
+                            <li>The <a href="https://www.oclc.org/worldcat-registry.en.html">WorldCat Registry claims</a>
+                                <ul>
+                                <li>to be the <q>Authoritative single source for institutional metadata</q></li>
+                                <li>that <q>Built-in Web services distribute Registry data across the Web, enhancing Web discovery of your content and services</q></li>
+                                </ul>
+                            </li>
+                            <li class="fragment">Alas, the claims differ wildly from reality.</li>
+                        </ul>
+                        <aside class="notes">
+                            Despite these bold claims, even if a search engine ponied up for the commercial
+                            license needed to use the WorldCat Registry data, it would be very dirty data at
+                            best.
+                        </aside>
+                    </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+                    <section>
+                        <a href="http://www.worldcat.org/registry/Institutions/67970"><img src="images/library_search_worldcat_registry_gspl.png" alt="WorldCat Registry showing almost no data for Greater Sudbury Public Library"></a>
+                        <aside class="notes">
+                        GSPL shows up with almost no info--just a name and an address for the main
+                        branch--and no branch information.
+                        </aside>
+                    </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+                    <section>
+                        <a href="http://www.worldcat.org/registry/Institutions/87164"><img src="images/library_search_worldcat_registry_jnd.png" alt="WorldCat Registry showing some data for J.N. Desmarais Library"></a>
+                        <aside class="notes">
+                            Laurentian shows up with more information--largely because I updated it in the
+                            course of my research to point at the "new" catalogue we had migrated to 5
+                            years ago--but still no branch info and a bit of a conflict between ILL needs
+                            and general needs of the library.
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-				</section>
+                            But even relatively static data such as operating hours can be cumbersome to
+                            maintain across multiple social media sites. There has to be a better way.
+                        </aside>
+                    </section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+                    <section>
+                        <a href="http://www.worldcat.org/registry/Institutions/65081"><img src="images/library_search_worldcat_registry_tpl.png" alt="WorldCat Registry showing almost no data for Toronto Public Library"></a>
+                        <aside class="notes">
+                            Even TPL has very little information; two branches
+                            are listed, no phone number or email address, and almost certainly the wrong
+                            OpenURL resolver.
+                        </aside>
+                    </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+                    <section>
+                        <h2>Are you convinced we have a visibility challenge?</h2>
+                    </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                    <section>
+                        <h2>SEO is not a dirty word</h2>
+                        <blockquote cite="http://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a">
+                            [SEO] is a valid practice
+                            which seeks to improve technical and content aspects of a website, making the
+                            content easier to find, relevant, and more accessible to the search engine
+                            crawlers.
+                        </blockquote>
+                        <aside class="notes">
+                            <p>
+                            Search engine optimization (SEO) has acquired a dirty name, by association
+                            with spammers who want to sell you snake oil that will help your web site rise
+                            in the ranks of relevancy. Web rings, spammy comments on blogs, and all kinds
+                            of base tricks have slandered the perfectly valid pursuit of trying to make the
+                            fantastic content and services you have to offer discoverable to the people who
+                            might benefit from it.
+                            </p>
 
-    var nodes = document.querySelectorAll( selector );
+                            <p>
+                            Just like the term hackers was once a noble term associated with those who
+                            were interested in how technology works and how to make it work better, then
+                            spoiled by association with script kiddies and trolls who just wanted to make
+                            lives miserable, we started to reclaim the term by differentiating "white hat"
+                            hackers vs. "black hat" hackers. So, too, are we reclaiming the term SEO by
+                            differentiating "white hat" SEO vs. "black hat" SEO.
+                            </p>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                            <p>
+                            In this session, I'm going to walk through some of the basics that you need
+                            to look at from a white hat SEO perspective. If you have internet connectivity,
+                            I invite you to take a look at your own site as I work through some of the
+                            examples I've already prepared; if not, I'll do my best to make the examples
+                            come alive on the screen. If at any time you have a question, please fire away.
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Not just structured data</h2>
+                        <p>Take care of the basics first!</p>
+                        <ul>
+                            <li>Cool, persistent URLs</li>
+                            <li>Accessible HTML</li>
+                            <li><code>robots.txt</code></li>
+                            <li>Sitemaps</li>
+                        </ul>
+                        <aside class="notes">
+                            I know I specifically mentioned "structured data", and I'm going to get there,
+                            but having evaluated many different library websites since submitting the
+                            initial proposal for this session, there are a few prerequisites that we need
+                            to talk about first.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Cool, persistent URLs</h2>
+                        <ul>
+                            <li><a href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don't change</a></li>
+                            <li>Links to your web content increases its ranking</li>
+                            <li>Hide the publishing mechanisms and focus on the content!
+                                <ul>
+                                    <li><em>Bad:</em> http://example.ca/CMS-product/index.php?JSESSIONID=abc123;page=hours</li>
+                                    <li><em>Good:</em> http://example.ca/hours</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                            If your users can't get back to the same content using the same URL,
+                            then neither will search engines.
+                            </p>
+                            <p>
+                            Design for not just 6 months in the future, but six years.
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Accessible HTML</h2>
+                        <ul>
+                            <li>Cynthia Ng talks about <a href="https://cynng.wordpress.com/2015/01/22/making-web-services-accessible-with-universal-design/">accessibility as Universal Design</a>
+                            <ul>
+                                <li>Use meaningful HTML elements, <code>@class</code> attributes, and CSS.</li>
+                                <li>Don't use an image where text would do.</li>
+                                <li>ALT text, captions, and transcriptions help machines as well as humans.</li>
+                            </ul>
+                            </li>
+                            <li>But you're all <a href="http://www.mcss.gov.on.ca/en/mcss/programs/accessibility/info_sheets/info_comm/website.aspx">AODA-compliant</a>, right?</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                            This is where we talk a bit about the difference between information that
+                            humans can see and interpret, versus what machines can see and interpret. At a
+                            very basic level, there is a lot of overlap here with principles of information
+                            design and designing for accessibility: for example:
+                            </p>
+                            <p>
+                            Use meaningful HTML elements, such as headings, rather than forcing everything
+                            into tables or this decade's equivalent: div/span soup. And use those headings
+                            hierarchically; the H1 should be the title of the page, then H2 should be used
+                            to break out separate sections of the page into major topics; then H3 should
+                            subdivide the content of those major topics. If you find yourself using a lot
+                            of strong/bold tags or CSS styles, maybe you just need to carve up your content
+                            a little bit more.
+                            </p>
+                            <p>
+                            Don't use an image where text would do. For example, don't
+                            create a PNG or JPEG to use as a button that says "Enter the contest" as an
+                            image; even if you add alt="Enter the contest", that's less approachable than
+                            simply using "Enter the contest" as the actual text of the button.
+                            </p>
+                            <p>
+                            Again, accessible information design has been the subject of many other talks.
+                            Given that we're in Ontario and AODA legislation is in effect, you're all at
+                            least compliant with WCAG 2.0 level A, right? Good!
+                        </aside>
+                    </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                </section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+                <section>
+                    <section>
+                        <h2>Blocking the robots: robots.txt</h2>
+                    </section>
+                </section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                <section>
+                    <section>
+                        <h2>Guiding the machines: sitemaps</h2>
+                    </section>
+                </section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
+                <section>
+                    <h2>Structured data: why?</h2>
+                    <p>
+                        Even clean HTML is still just a bag of words and media to machines.
+                    </p>
+                    <aside class="notes">
+                        <p>
+                        However, there is only so much that machines can glean from well-structured
+                        HTML. It's still a bag of words to them, albeit with suggestions about what the
+                        titles of various sections might be, but it can be very challenging for them to
+                        determine (for example) what the right picture might be on a news page to
+                        associate with the event. Google News provides lots of amusing examples of
+                        machines guessing wrong.
+                        </p>
+                    </aside>
+                </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+            </div>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+        </div>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+        <script>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+        </script>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
-
-			</div>
-
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-
-		<script>
-
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-
-		</script>
-
-	</body>
+    </body>
 </html>
