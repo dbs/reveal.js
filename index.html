@@ -18,11 +18,15 @@
         <link rel="stylesheet" href="css/theme/white.css" id="theme">
 
         <!-- Code syntax highlighting -->
-        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <link rel="stylesheet" href="lib/css/googlecode.css">
         <style>
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
     text-transform: none;
 } 
+.reveal pre code {
+    background: inherit;
+    color: inherit;
+}
         </style>
 
         <!-- Printing and PDF exports -->
@@ -336,12 +340,149 @@
                 <section>
                     <section>
                         <h2>Blocking the robots: robots.txt</h2>
+                        <ul>
+                            <li><a href="http://www.robotstxt.org">Standard format</a> for telling robots what not to crawl.</li>
+                            <li>Always found at root of website (http://example.ca/robots.txt).</li>
+                            <li>Specifies web site directories to block; default is to allow everything.</li>
+                            <li>Obeyed by well-behaved robots (includes major search engines).</li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                                "robots" are the affectionate name for the scripts/processes/machines that
+                                crawl through websites to extract content and process it for some purpose.
+                                Search engines like Google and Bing use robots to grab content from sites so
+                                that they can serve up links to your pages/images/library resources in search
+                                results; other robots might be interested only in product information so that
+                                they can tell you the cheapest place to buy something online.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Do block:</h2>
+                        <p>Search results, facets, filters, etc</p>
+                        <pre><code data-trim>
+http://catalogue.example.com/search?term=fish 
+http://catalogue.example.com/search?term=fishes
+http://catalogue.example.com/search?term=fishing
+                        </code></pre>
+                        <p>Search engines will crawl variants of these forever.</p>
+                        <p class="fragment">Block them!</p>
+                        <pre class="fragment"><code data-trim>
+User-agent: *
+Disallow: /search/
+                        </code></pre>
+                        <aside class="notes">
+                            <p>
+                                Robots are pretty dumb and easily confused. For example, they'll find
+                                a search results page on your catalogue that lists thousands of results for the
+                                term "fish" and dutifully crawl through all of the links that they find; then
+                                if they find a search results page for the term "fishing" that (due to
+                                stemming) returns exactly the same results, they'll dutifully crawl through all
+                                of the links they find again.
+                            </p>
+                            <pre>
+                            http://catalogue.example.com/results?term=fish 
+                            http://catalogue.example.com/results?term=fishing 
+                            </pre>
+                            <p>
+                                often lead to results like:
+                            </p>
+                            <pre>
+                            http://catalogue.example.com/record/1?term=fish 
+                            http://catalogue.example.com/record/1?term=fishing
+                            </pre>
+                            <p>
+                                Even though you and I have no problem guessing that the page will display the
+                                same record, and that (if anything) the list of related search results might
+                                change on that page without affecting the substantive content on the page, a
+                                search engine has no way of being able to telling what it will find on the
+                                other end of these links without human intervention.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Don't block everything!</h2>
+                        <pre><code data-trim>
+User-agent: *
+Disallow: /
+                        </code></pre>
+                        <p>This is not a good thing to see on your site.</p>
+                        <aside class="notes">
+                            <p>
+                                That effectively tells every robot to just go away. If you don't want your
+                                content to show up in search engines, that's the right thing to do--but most of
+                                us are here because we wantsearch engines to expose users to the library
+                                resources that we have. Note that search engines have become much smarter over
+                                the past 20 years, and will dynamically adapt their crawl rate to avoid
+                                bringing down your web resources… because, after all, they want to connect
+                                users to the best resources on the web, and a web site that isn't running isn't
+                                very much use to them.
+                                </p>
+                                <p>
+                                One other note: robots.txt only affects well-behaved robots. Again, search
+                                engines like Google, Bing, and Yandex are interested in playing by the rules,
+                                so if you find that your site is constantly being brought down by too much
+                                traffic, it's unlikely that it's the well-behaved search engines causing the
+                                problem. Setting a highly restrictive robots.txt file is more likely to just
+                                block the good robots while doing nothing to prevent the bad robots from
+                                continuing to pound your site.
+                                </p>
+                        </aside>
                     </section>
                 </section>
 
                 <section>
                     <section>
                         <h2>Guiding the machines: sitemaps</h2>
+                        <ul>
+                            <li><a href="http://sitemaps.org">XML format</a> that lists every URL of interest for robots</li>
+                        </ul>
+                        <pre><code data-trim class="xml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://example.com/about</loc>
+      <lastmod>2015-01-29</lastmod>
+   </url>
+   <url>
+      <loc>http://example.com/hours</loc>
+      <lastmod>2015-01-25</lastmod>
+   </url>
+</urlset>
+                        </code></pre>
+                        <aside class="notes">
+                            If you're thinking "Wait, my catalogue has over a million items in it; and my
+                            web site has new pages added to it every couple of days; that sounds like a lot
+                            of work!", you're right--it's a lot of work for humans. But it's something that
+                            a machine can easily generate on a nightly basis. And many of the content
+                            management systems that websites run on either have the ability built-in, or
+                            have plugins available, that will take care of generating sitemaps for you.
+                            Similarly, library systems like Evergreen and VuFind offer the ability to
+                            generate sitemaps for you; you just need to set it up once and forget about it.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Advertise your sitemap</h2>
+                        <p>Just add a Sitemap: line to your <code>robots.txt</code> file:</p>
+                        <pre><code data-trim>
+Sitemap: https://example.ca/sitemapindex.xml
+                        </code></pre>
+                        <aside class="notes">
+                            <p>
+                            Most search engines will find and use that the next time they refresh their
+                            knowledge of your robots.txt file.
+                            </p>
+                            <p>
+                            However, you can also submit the location of your sitemap directly to Google,
+                            Bing, and Yandex; each offers a "Webmaster tools" site that you can use to
+                            track the status of the indexing of your sites, some insight into the usage of
+                            your site and potential errors found at your site, and potentially influence
+                            how the search engine interprets your content. Diving into those tools could be
+                            the subject of a whole different talk, though!
+                            </p>
+                        </aside>
                     </section>
                 </section>
 
