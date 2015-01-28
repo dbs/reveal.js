@@ -256,6 +256,17 @@
                             </p>
                         </aside>
                     </section>
+                </section>
+                    
+                <section>
+                    <section>
+                        <h2>Web site prayer</h2>
+                        <p>Grant me the serenity to accept the things I cannot change,</p>
+                        <p>Courage to change the things I can,</p>
+                        <p>And wisdom to know the difference.</p>
+                        <p style="float: right"><em>Reinhold Niebuhr via Sinead O'Connor</em></p>
+                    </section>
+                    
                     <section>
                         <h2>Not just structured data</h2>
                         <p>Take care of the basics first!</p>
@@ -359,14 +370,13 @@
                     </section>
 
                     <section>
-                        <h2>Do block:</h2>
-                        <p>Search results, facets, filters, etc</p>
+                        <h2>Search results, facets, filters, etc</h2>
                         <pre><code data-trim>
 http://catalogue.example.com/search?term=fish 
 http://catalogue.example.com/search?term=fishes
 http://catalogue.example.com/search?term=fishing
                         </code></pre>
-                        <p>Search engines will crawl variants of these forever.</p>
+                        <p>Search engines will repeatedly crawl variants of these.</p>
                         <p class="fragment">Block them!</p>
                         <pre class="fragment"><code data-trim>
 User-agent: *
@@ -409,6 +419,7 @@ User-agent: *
 Disallow: /
                         </code></pre>
                         <p>This is not a good thing to see on your site.</p>
+                        <p>You're telling search engines you don't want to be found.</p>
                         <aside class="notes">
                             <p>
                                 That effectively tells every robot to just go away. If you don't want your
@@ -465,7 +476,7 @@ Disallow: /
 
                     <section>
                         <h2>Advertise your sitemap</h2>
-                        <p>Just add a Sitemap: line to your <code>robots.txt</code> file:</p>
+                        <p>Just add a <code>Sitemap:</code> line to your <code>robots.txt</code> file:</p>
                         <pre><code data-trim>
 Sitemap: https://example.ca/sitemapindex.xml
                         </code></pre>
@@ -487,20 +498,176 @@ Sitemap: https://example.ca/sitemapindex.xml
                 </section>
 
                 <section>
-                    <h2>Structured data: why?</h2>
-                    <p>
-                        Even clean HTML is still just a bag of words and media to machines.
-                    </p>
-                    <aside class="notes">
+                    <section>
+                        <h2>Structured data: why?</h2>
                         <p>
-                        However, there is only so much that machines can glean from well-structured
-                        HTML. It's still a bag of words to them, albeit with suggestions about what the
-                        titles of various sections might be, but it can be very challenging for them to
-                        determine (for example) what the right picture might be on a news page to
-                        associate with the event. Google News provides lots of amusing examples of
-                        machines guessing wrong.
+                            Even clean HTML is still just a bag of words (and media) to machines.
                         </p>
-                    </aside>
+                        <aside class="notes">
+                            <p>
+                            There is only so much that machines can glean from well-structured
+                            HTML. It's still a bag of words to them, albeit with suggestions about what the
+                            titles of various sections might be, but it can be very challenging for them to
+                            determine (for example) what the right picture might be on a news page to
+                            associate with the event. Google News provides lots of amusing examples of
+                            machines guessing wrong.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="images/google_news_bad_description.png" alt="Social media sharing text instead of article text">
+                    </section>
+
+                    <section>
+                        <img src="images/google_news_text_size.png" alt="Article with title 'Change text size for the story'">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Enter schema.org</h2>
+                        <ul>
+                            <li><a href="http://googlewebmastercentral.blogspot.ca/2011/06/introducing-schemaorg-search-engines.html">In July 2011</a>, schema.org was announced by the major search engines; goals were:
+                                <ul>
+                                    <li>Offer a simple vocabulary for the most common entities on the web (events, products, people)</li>
+                                    <li>Enable normal webmasters to add schema.org markup without needing Semantic Web expertise</li>
+                                    <li>Help search engines aggregate data and apply finer-grained disambiguation and relevance strategies</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                            Recognizing that the world would benefit from a metadata vocabulary that we
+                            could embed inside of web pages to provide more meaning to the machines that
+                            digest those web pages, some of the major search engines (Google, Yahoo, Bing,
+                            and Yandex) collaborated in 2011 to bring forward such a vocabulary, called
+                            "schema.org".
+                            </p>
+                            <p>
+                            Using this vocabulary, you can unambiguously identify sections of
+                            your library home page that describe your library's name, address, phone
+                            number, email address, opening hours, upcoming events, etc. Then search engines
+                            or other automated crawlers could, when they come across this kind of markup,
+                            have much more authoritative data on which to build their services.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Library data of interest</h2>
+                        <p>My <a href="http://www.sudburylibraries.ca/en/aboutus/southendlibrary.asp">local library branch</a> page contains:</p>
+                        <ul>
+                            <li>Library name</li>
+                            <li>Address</li>
+                            <li>Home page</li>
+                            <li>Phone number</li>
+                            <li>Fax number</li>
+                            <li>Hours of operation</li>
+                            <li>Description of available services</li>
+                            <li>Picture</li>
+                            <li>Related branches</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>What's in schema.org for libraries?</h2>
+                        <ul>
+                            <li>Search <a href="http://schema.org">schema.org</a> for "Library"</li>
+                            <li><em>Boom</em>: <a href="http://schema.org/Library">http://schema.org/Library</a></li>
+                            <li>Conventions:
+                                <ul>
+                                <li><em>Types</em> start with a capital letter</li>
+                                <li><em>Properties</em> start with a lowercase letter</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            <p>
+                            First, we can use the handy "Search" box at http://schema.org/ to find out that
+                            there is, indeed, an http://schema.org/Library type. Quick rule of thumb in
+                            schema.org: types (that is, classes of objects that have properties to describe
+                            them) start with a capital letter, while properties (that is, attributes of
+                            objects) start with a lowercase letter.
+                            <p>
+                            </p>
+                            The documentation for types in schema.org list the most specific properties for
+                            a given type at the top, and then as you move down you get more generic
+                            properties. In the case of Library, it inherits properties from LocalBusiness,
+                            which inherits more general properties from Organization, which inherits the
+                            most general properties from the top-level Thing.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>On scope in HTML documents</h2>
+                        <p><em>Scope</em> refers to the contents of a given HTML element, including all of its child elements.</p>
+                        <pre><code data-trim>
+&lt;body>
+<!-- Scope includes the following <h1> and <p> tag -->
+    <h1> <!-- Scope is just the <h1> content --> </h1>
+    <p> <!-- Scope is just this <p> content --> </p>
+&lt;/body>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>RDFa vs. microdata vs. JSON-LD</h2>
+                        <ul>
+                            <li>RDFa and microdata are attributes that you add to your existing HTML</li>
+                            <li>JSON-LD is a more recent, complex option</li>
+                            <li>schema.org includes examples for all three types of markup</li>
+                            <li class="fragment">We're going to be using RDFa (a W3C standard) for our examples</li>
+                        </ul>
+                        <aside class="notes">
+                            The first thing we need to do is to tell the machines that we're going to
+                            describe a Library on this HTML page. To do so, we can use microdata, RDFa, or
+                            JSON-LD. Microdata and RDFa are competing but reasonably equivalent standards
+                            for adding simple properties to HTML to identify markup in context, while
+                            JSON-LD is JavaScript markup that appears in its own <code>script</code> tag. For now,
+                            we'll use RDFa, as it is a W3C standard and, along with microdata, is still
+                            most broadly recognized by search engines.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Say you're using schema.org</h2>
+                        <ul>
+                            <li>The <code>@vocab</code> attribute specifies the default vocabulary</li>
+                            <li>Default applies to the entire scope</li>
+                            <li>So specify it on the <code>&lt;body></code> element</li>
+                        </ul>
+                        <pre><code data-trim>
+&lt;body vocab="http://schema.org/">
+...
+&lt;/body>
+                        </code></pre>
+<aside class="notes">
+One convention is to use the <code>&lt;body></code> element to identify the
+main thing that we're marking up on an HTML page.
+
+With RDFa, you can identify the default vocabulary in the external scope using
+the @vocab attribute; and then after that, all types and properties are
+automatically appended to the vocabulary URL. You use the @typeof attribute to
+declare what type you are marking up. So our body tag should now look like:
+</aside>
+
+                    </section>
+                    <section>
+                        <h2>Say you're describing a Library</h2>
+                        <ul>
+                            <li>The <code>@typeof</code> element describes the type you're describing</li>
+                            <li>In general, properties in scope will be applied to that type</li>
+                            <li>Let's specify the type on the <code>&lt;body></code> element, too</li>
+                        </ul>
+                        <pre><code data-trim>
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+&lt;/body>
+                        </code></pre>
+                    </section>
+
                 </section>
 
             </div>
