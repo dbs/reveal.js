@@ -316,6 +316,7 @@
                             </ul>
                             </li>
                             <li>But you're all <a href="http://www.mcss.gov.on.ca/en/mcss/programs/accessibility/info_sheets/info_comm/website.aspx">AODA-compliant</a>, right?</li>
+                            <li>Check in <a href="http://wave.webaim.org">wave.webaim.org</a> - Web Accessibility Evaluation Tool</li>
                         </ul>
                         <aside class="notes">
                             <p>
@@ -603,7 +604,7 @@ Sitemap: https://example.ca/sitemapindex.xml
                     <section>
                         <h2>On scope in HTML documents</h2>
                         <p><em>Scope</em> refers to the contents of a given HTML element, including all of its child elements.</p>
-                        <pre><code data-trim>
+                        <pre><code data-trim class="html">
 &lt;body>
 <!-- Scope includes the following <h1> and <p> tag -->
     <h1> <!-- Scope is just the <h1> content --> </h1>
@@ -638,7 +639,7 @@ Sitemap: https://example.ca/sitemapindex.xml
                             <li>Default applies to the entire scope</li>
                             <li>So specify it on the <code>&lt;body></code> element</li>
                         </ul>
-                        <pre><code data-trim>
+                        <pre><code data-trim class="html">
 &lt;body vocab="http://schema.org/">
 ...
 &lt;/body>
@@ -661,11 +662,423 @@ declare what type you are marking up. So our body tag should now look like:
                             <li>In general, properties in scope will be applied to that type</li>
                             <li>Let's specify the type on the <code>&lt;body></code> element, too</li>
                         </ul>
-                        <pre><code data-trim>
+                        <pre><code data-trim class="html">
 &lt;body vocab="http://schema.org/" typeof="Library">
 ...
 &lt;/body>
                         </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Identify your library's name</h2>
+                        <ul>
+                            <li>http://schema.org/name is as part of Thing</li>
+                            <li><code>name</code> is used for everything: people, organizations, book and movie titles...</li>
+                            <li>To declare a property of a type in RDFa, use the <code>@property</code> attribute:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+  <h1 property="name">South End Library&nbsp;<em>&nbsp;</em></h1>
+...
+&lt;/body>
+                        </code></pre>
+                        <aside class="notes">
+                        As you start looking at your HTML to add structured markup to it, you will
+                        often find weird little problems that you otherwise wouldn't see in your
+                        browser (like the <code>&nbsp;&lt;em>&nbsp;&lt;/em></code> nonsense appended to the end of the library name).
+                        It's a great opportunity to clean up your HTML in general.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Picture this</h2>
+                        <ul>
+                            <li>http://schema.org/image identifies relevant images for the given entity</li>
+                            <li>Guides apps in choosing an image for social media posts, search results, etc</li>
+                            <li>In this case, the South End Library sign seems like the best choice:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+  <h1 property="name">South End Library</h1>
+  <p><img property="image"  
+          src="/en/aboutus/resources/Hours_South.jpg"
+          alt="Exterieur view of the South End Library" /></p>
+...
+&lt;/body>
+                        </code></pre>
+                        <aside class="notes">
+                        "Exterieur" is a typo / leftover from the French version of the page, we can fix that here. And we've fixed up the H1 as well.
+                        </aside>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Testing your work</h2>
+                        <ul>
+                            <li>Check your work after each change, using one or more tools:
+                            <ul>
+                                <li><a href="http://rdfa.info/play/">RDFa Playground</a> - great for visualizing RDFa markup</li>
+                                <li><a href="http://linter.structured-data.org/">Structured Data Linter</a> - Handles RDFa, microdata, microformats, and JSON-LD</li>
+                                <li><a href="https://developers.google.com/webmasters/structured-data/testing-tool/">Google Structured Data Testing Tool</a> - Google's latest testing tool, launched January 2015</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Standards vs. expectations</h2>
+                        <img src="images/google_sdtt_errors.png" alt="Google Structured Data Testing Tool shows missing logo and url properties">
+                        <p>schema.org does not require <code>logo</code> and <code>url</code> properties on <a href="http://schema.org/Library">Library</a>, but Google expects them</p>
+                        <aside class="notes">
+                        When we run our current example through these tools, one thing jumps out: the
+                        new Google tool complains that our Library type is missing the logo and url
+                        properties. This is a nice hint that they might actually do something useful
+                        with that information, out of the hundreds of possible properties that could be
+                        applied.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Declare the logo</h2>
+                        <ul>
+                            <li>There is a logo at the top of the page</li>
+                            <li>Order of properties does not matter to schema.org, so let's declare it:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+  <img property="logo" alt="Company Logo" src="/en/images/structure/company_logo.png" />
+  ...
+  <h1 property="name">South End Library</h1>
+  <p><img property="image" alt="Exterior view of the South End Library" src="/en/aboutus/resources/Hours_South.jpg" /></p>
+...
+&lt;/body>
+                        </code></pre>
+                        <aside class="notes">
+                        "Company Logo" looks like boilerplate text from the content management template
+                        that should be fixed to be more specific.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Declare the url</h2>
+                        <ul>
+                            <li><q>But the page lives at a URL!</q> you might be thinking</li>
+                            <li>There can be more than one entity described on a single page, so <code>url</code>
+                                helps uniquely identify them.</li>
+                            <li>The navigation links to this page, so we can reuse it:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+  <img property="logo" alt="Company Logo" src="/en/images/structure/company_logo.png" />
+  ...
+  <a property="url" href="/en/aboutus/southendlibrary.asp" title="Branch Hours &amp; Contacts::South End Library" class="current">South End Library</a>
+  ...
+  <h1 property="name">South End Library</h1>
+  <p><img property="image" alt="Exterior view of the South End Library" src="/en/aboutus/resources/Hours_South.jpg" /></p>
+...
+&lt;/body>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Wait; @property gets values how?</h2>
+                        <ul>
+                            <li>Usually <code>@property</code> takes the value of the child text nodes:
+                                <ul>
+                                <li><pre><code data-trim class="html"><span property="keywords"><span>One</span><span>Two</span></span></code></pre> <code>keywords</code> gets "OneTwo"</li>
+                                </ul>
+                            </li>
+                            <li>But if an <code>@href</code> or <code>@src</code> is on the same element, the property gets that value instead:
+                                <ul>
+                                <li><pre><code data-trim class="html"><a property="url" href="/example">Library name</a>
+<img property="image" src="/example.png">
+</code></pre> <code>url</code> gets "/example" and  <code>image</code> gets "/example.png"</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Locating the library</h2>
+                        <ul>
+                            <li>We want to help search engines know where our libraries are located</li>
+                            <li>An address is on the HTML page</li>
+                            <li><a href="http://schema.org/address">http://schema.org/address</a> is available to <a href="http://schema.org/Library">Library</a> through <a href="http://schema.org/Organization">Organization</a> and <a href="http://schema.org/Place">Place</a>; so let's mark it up:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+    <p property="address">1991 Regent Street <br />
+    Sudbury, ON P3E 5V3<br />
+    Phone: (705) 688-3950<br />
+    Fax: (705) 522-7788 </p>
+&lt;/body>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>A more precise address</h2>
+                        <ul>
+                            <li>Right now the value of our <a href="http://schema.org/address">address</a> includes the phone and fax numbers</li>
+                            <li>Create a more contained scope with a new <code>span</code> tag:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+    <p><span property="address">1991 Regent Street <br />
+    Sudbury, ON P3E 5V3</span><br />
+    Phone: (705) 688-3950<br />
+    Fax: (705) 522-7788 </p>
+&lt;/body>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Phone and fax numbers</h2>
+                        <ul>
+                            <li>Now that the phone and fax numbers are separate, we can identify those</li>
+                            <li>New <code>span</code> tags required again:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+    <p><span property="address">1991 Regent Street <br />
+    Sudbury, ON P3E 5V3</span><br />
+    Phone: <span property="telephone">(705) 688-3950</span><br />
+    Fax: <span property="faxNumber">(705) 522-7788</span></p>
+&lt;/body>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>address revisited</h2>
+                        <ul>
+                            <li><a href="http://schema.org/address">address</a> expects a specific type as a value: <a href="http://schema.org/PostalAddress">PostalAddress</a></li> 
+                            <li>Machines expect humans to get things wrong or be lazy</li>
+                            <li>Will do their best with plain Text values where structured types are expected</li>
+                            <li>But we're better than that! Add a <code>@typeof=</code><a href="http://schema.org/PostalAddress">PostalAddress</a> declaration:</li> 
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+    <p><span property="address" typeof="PostalAddress">
+    1991 Regent Street <br />
+    Sudbury, ON P3E 5V3</span><br />
+    Phone: <span property="telephone">(705) 688-3950</span><br />
+    Fax: <span property="faxNumber">(705) 522-7788</span></p>
+&lt;/body>
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>PostalAddress</h2>
+                        <ul>
+                            <li>Now add the constituent parts of <a href="http://schema.org/PostalAddress">PostalAddress</a>: 
+                            <ul>
+                            <li><a href="http://schema.org/streetAddress">streetAddress</a></li>
+                            <li><a href="http://schema.org/addressLocality">addressLocality</a></li>
+                            <li><a href="http://schema.org/addressRegion">addressRegion</a></li>
+                            <li><a href="http://schema.org/postalCode">postalCode</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+    <p><span property="address" typeof="PostalAddress">
+      <span property="streetAddress">1991 Regent Street</span><br />
+      <span property="addressLocality">Sudbury</span>, 
+      <span property="addressRegion">ON</span>
+      <span property="postalCode">P3E 5V3</span>
+    </span><br />
+    Phone: <span property="telephone">(705) 688-3950</span><br />
+    Fax: <span property="faxNumber">(705) 522-7788</span></p>
+&lt;/body>
+                        </code></pre>
+
+                        <aside class="notes">
+                        We're starting to get into some serious markup here! As you add more properties
+                        to your HTML, you might start realizing that instead of hard-coding <code>&lt;br /></code> tags
+                        to add line breaks, you might want to consider using CSS to control the
+                        display. Just a thought that might be more flexible for mobile web browsers,
+                        etc.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Hours of operation</h2>
+                        <ul>
+                            <li>Users need to know when you're open</li>
+                            <li>schema.org offers two different types of opening hours markup: <a href="http://schema.org/openingHours">openingHours</a> and <a href="http://schema.org/openingHoursSpecification">openingHoursSpecification</a></li>
+                            <li>We'll use <a href="http://schema.org/openingHoursSpecification">openingHoursSpecification</a> with the corresponding type <a href="http://schema.org/OpeningHoursSpecification">OpeningHoursSpecification</a></li>
+                            <li>Slightly more complex, but at the same time easier to mark up</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>OpeningHoursSpecification</h2>
+                        <ul>
+                            <li>Each instance takes <a href="http://schema.org/dayOfWeek">dayOfWeek</a>, <a href="http://schema.org/opens">opens</a>, and <a href="http://schema.org/closes">closes</a> properties</li>
+                            <li><a href="http://schema.org/dayOfWeek">dayOfWeek</a> expects an <em>enumerated value</em> supplied by <code>@href</code></li>
+                            <li><a href="http://schema.org/opens">opens</a> and <a href="http://schema.org/closes">closes</a> expect <code>hh:mm:ss</code> formatted times supplied by <code>@datetime</code></li>
+
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+&lt;tr property="openingHoursSpecification" typeof="OpeningHoursSpecification">
+  &lt;td property="dayOfWeek" href="http://purl.org/goodrelations/v1#Sunday">
+    Sunday<strong>**</strong>&lt;/td>
+  &lt;td><time property="opens" datetime="12:00:00">12 PM</time>
+    - <time property="closes" datetime="16:00:00">4 PM</time>&lt;/td>
+&lt;/tr>
+&lt;/body>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Related branches</h2>
+                        <ul>
+                            <li><a href="http://schema.org/Library">Library</a> offers a <a href="http://schema.org/branchOf">branchOf</a> property (via <a href="http://schema.org/LocalOrganization">LocalOrganization</a>)</li>
+                            <li>By linking to our parent branch, robots can reason that other Libraries that link to the same parent are related branches</li>
+                            <li>Simplest approach is to link to the overall home page for the organization:</li>
+                        </ul>
+                        <pre><code data-trim class="html">
+&lt;body vocab="http://schema.org/" typeof="Library">
+...
+  <a property="branchOf" href="/en/index.asp">
+    <img property="logo" alt="Company Logo" src="/en/images/structure/company_logo.png" />
+  </a>
+...
+&lt;/body>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Events</h2>
+                        <ul>
+                            <li>We all want more uptake of the events we offer</li>
+                            <li>The <a href="http://schema.org/Event">Event</a> type enables us to advertise these in a machine-readable way</li>
+                            <li>Aggregators can list events at a given date / time across organizations and help get the word out</li>
+                        </ul>
+                        <aside class="notes">
+                            Unfortunately Greater Sudbury Public Library uses a III events calendar, which has
+                            unfriendly URLs and a robots.txt that blocks access to the events list. So we'll take
+                            the information and pretend that we migrated to a system that is friendly to the web
+                            and interested in making your information openly available.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Sample event</h2>
+<pre><code data-trim class="html">
+<div>Family - Story Time @ South End Library</div>
+<div>Description: Develop your child's appreciation of language, rhythm and imagination through storytelling, puppetry, songs, finger plays and rhymes.</div>
+<div>Date: Thursday - January 15 2015</div>
+<div>Time: 10:30 AM - 11:30 AM</div>
+<div>Location: South Branch</div>
+<div>Program Type: Family</div>
+<div>Series: Thursdays, 09-18-2014 to 12-11-2014, 10:30AM - 11:30AM</div>
+<div>Public Note: Free! Children under 12 must be accompanied by a parent or guardian at all times while in the library.</div>
+<div> 30 Seats Remaining</div>
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Name and description</h2>
+                        <ul>
+                            <li><a href="http://schema.org/Event">Event</a> offers a more specific type, <a href="http://schema.org/ChildrensEvent">ChildrensEvent</a> - perfect!</li>
+                            <li>Declare the <code>@typeof</code> <a href="http://schema.org/ChildrensEvent">ChildrensEvent</a>, then add the basic <a href="http://schema.org/name">name</a> and <a href="http://schema.org/description">description</a> properties:</li>
+                        </ul>
+<pre><code data-trim class="html">
+<div vocab="http://schema.org/" typeof="Event">
+  <div property="name">Family - Story Time @ South End Library</div>
+  <div>Description: <span property="description">Develop your child's appreciation of language, rhythm and imagination through storytelling, puppetry, songs, finger plays and rhymes.</span></div>
+  <div>Date: Thursday - January 15 2015</div>
+  <div>Time: 10:30 AM - 11:30 AM</div>
+  <div>Location: South Branch</div>
+  <div>Program Type: Family</div>
+  <div property="description">Public Note: Free! Children under 12 must be accompanied by a parent or guardian at all times while in the library.</div>
+  <div property="description">30 Seats Remaining</div>
+</div>
+</code></pre>
+                        <aside class="notes">
+                            Note that we repeat "description". You can usually repeat properties, and robots will try to do the right thing.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Location and organizer</h2>
+                        <ul>
+                            <li>The <em>South Branch</em> is both the <a href="http://schema.org/organizer">organizer</a> and the <a href="http://schema.org/location">location</a> of the event</li>
+                            <li>We can link to the branch and include both properties (separated by a space) in the <code>@property</code> attribute</li> 
+                        </ul>
+<pre><code data-trim class="html">
+<div vocab="http://schema.org/" typeof="Event">
+  <div property="name">Family - Story Time @ South End Library</div>
+  <div>Description: <span property="description">Develop your child's appreciation of language, rhythm and imagination through storytelling, puppetry, songs, finger plays and rhymes.</span></div>
+  <div>Date: Thursday - January 15 2015</div>
+  <div>Time: 10:30 AM - 11:30 AM</div>
+  <div>Location: <a property="location organizer" href="/southendlibrary.asp">South Branch</a></div>
+  <div>Program Type: Family</div>
+  <div property="description">Public Note: Free! Children under 12 must be accompanied by a parent or guardian at all times while in the library.</div>
+  <div property="description">30 Seats Remaining</div>
+</div>
+</code></pre>
+                        <aside class="notes">
+                        <p>
+                        Now that we've marked up an address for the library, pointing there should enable the machines to figure out that the address for the library == the location of the event.
+                        </p>
+                        <p>We could have used @resource to make that unequivocal though.</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Start and end times</h2>
+                        <ul>
+                            <li>Events have a <a href="http://schema.org/startDate">startDate</a> and an <a href="http://schema.org/endDate">endDate</a></li>
+                            <li>These expect specifically formatted ISO-8601 date/time values; we'll use a <code>time</code> element with a <code>datetime</code> property to express them</li>
+                        </ul>
+<pre><code data-trim class="html">
+<div vocab="http://schema.org/" typeof="Event">
+  <div property="name">Family - Story Time @ South End Library</div>
+  <div>Description: <span property="description">Develop your child's appreciation of language, rhythm and imagination through storytelling, puppetry, songs, finger plays and rhymes.</span></div>
+  <div>Date: Thursday - January 15 2015</div>
+  <div>Time: 
+    <time property="startDate" datetime="2015-02-15T10:30">10:30 AM</time>
+    - <time property="endDate" datetime="2015-02-15T11:30">11:30 AM</time></div>
+  <div>Location: <a property="location organizer" href="/southendlibrary.asp">South Branch</a></div>
+  <div>Program Type: Family</div>
+  <div property="description">Public Note: Free! Children under 12 must be accompanied by a parent or guardian at all times while in the library.</div>
+  <div property="description">30 Seats Remaining</div>
+</div>
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Typical age range</h2>
+                        <ul>
+                            <li>The <a href="http://schema.org/typicalAgeRange">typicalAgeRange</a> property specifies a target audience</li>
+                            <li>It takes just a simple text range:</li>
+                        </ul>
+<pre><code data-trim class="html">
+<div vocab="http://schema.org/" typeof="Event">
+  <div property="name">Family - Story Time @ South End Library</div>
+  <div>Description: <span property="description">Develop your child's appreciation of language, rhythm and imagination through storytelling, puppetry, songs, finger plays and rhymes.</span></div>
+  <div>Date: Thursday - January 15 2015</div>
+  <div>Time: 
+    <time property="startDate" datetime="2015-02-15T10:30">10:30 AM</time>
+    - <time property="endDate" datetime="2015-02-15T11:30">11:30 AM</time></div>
+  <div>Location: <a property="location organizer" href="/southendlibrary.asp">South Branch</a></div>
+  <div>Program Type: <meta property="typicalAgeRange" content="1-5">Family</div>
+  <div property="description">Public Note: Free! Children under 12 must be accompanied by a parent or guardian at all times while in the library.</div>
+  <div property="description">30 Seats Remaining</div>
+</div>
+</code></pre>
                     </section>
 
                 </section>
