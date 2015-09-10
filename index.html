@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>DIALLED: Distributed Index of All(*) Library Location and Event Data</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="description" content="An exhortation to adopt schema.org opening hours and location data in library web pages">
 		<meta name="author" content="Hakim El Hattab">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -28,6 +28,10 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+        <style>
+            .reveal section img { border: none; }
+            .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
+        </style>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -41,340 +45,286 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h1>DIALLED</h1>
+					<h2>Distributed Index of All(*) Library Location and Event Data</h2>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+						<a href="https://coffeecode.net">Dan Scott</a> 
+                    <p>
+                    <footer>
+                        <a href="http://laurentian.ca"><img src="images/lu_logo.png" alt="Laurentian University logo" /></a>
+                    </footer>
+				</section>
+
+                <section>
+                    <h1 style="font-family: Helvetica,Arial,sans-serif; background-color: #900; color: white;">schema.org</h1>
+                    <p><img style="background-color: white; padding: 0.5em;" src="images/evergreen_logo.png" alt="Evergreen logo" /></p>
+                    <p><img src="images/koha_logo.png" alt="Koha logo" /></p>
+                    <p><img src="images/vufind_logo.png" alt="VuFind logo" /></p>
+                    <aside class="notes">
+As some of you may be aware, I was enthusiastic early on about the possibility of exposing our collections to the web in such a way that regular search engines could understand them.  
+
+Even if it meant digging into workgroups, defining some new terms, and bending some fairly commercially-oriented definitions to our will:
+
+* Product
+* Offer
+* seller
+                    </aside>
+                </section>
+
+				<section>
+                    <img src="images/dialled_full_book.png" alt="Visualization of RDFa for a book in Evergreen" />
+                </section>
+				<section>
+                    <img src="images/dialled_offer.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:Offer section" />
+                </section>
+				<section>
+                    <img src="images/dialled_seller.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:seller section of the offer" />
+                </section>
+
+				<section>
+                    <section>
+                        <h2>schema.org/seller</h2>
+                        <p>This was a sticking point...</p>
+                        <aside class="notes">
+And I got stuck on "seller". Not because the term was too commercial, but because it was supposed to link to a description of the organization that held the items in their collection.
+
+Even though schema.org defines the term "Library" as just such an organization, there weren't many using it.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <ul>
+                        <li class="fragment">schema.org/Library : A library. <em>Usage</em>: <span class="fragment">Between 100 and 1000 domains</span></li>
+                        <li class="fragment">schema.org/Museum : A museum. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
+                        <li class="fragment">schema.org/Archive : <em class="fragment">In the process of being defined.</em></li>
+                        <li class="fragment">schema.org/Cemetery : A graveyard. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
+                        <aside class="notes">
+
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Evergreen does this!</h2>
+                        <img src="images/dialled_library_info.png" alt="Visualization of RDFa for a library branch, including opening hours, contact info, and hours" />
+                        <aside class="notes">
+I was able to teach Evergreen how to generate the schema:Library information because, as an integrated library system, information like opening hours, addresses, and contact information are all built into the system.
+
+But how many other people here are running Evergreen?
+                        </aside>
+                    </section>
+                    
+                    <section>
+                        <h2>Most other ILSs do not</h2>
+                        <aside class="notes">
+However, other ILSes are less integrated and less customizable. Simply linking to a source of linked data about the library would suffice. If only there <em>was</em> such a source of data.
+                        </aside>
+                    </section>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Meta-institutional data</h2>
+                        <p>This should be in our wheelhouse!</p>
+                        <aside class="notes">
+We excel at metadata for our collections: MARC, Dublin Core, EAD, MODS, METS, RDA, BibFrame. We should be great at providing metadata for our institutions. Meta-institutional data. It's a thing, or it should be.
+
+But most library web pages don't offer linked open data about the library itself.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>WorldCat Registry</h2>
+                        <blockquote cite="https://www.oclc.org/worldcat-registry.en.html">authoritative single source for institutional metadata</blockquote>
+                        <ul>
+                            <li class="fragment">Problematic non-commercial license</li>
+                            <li class="fragment">Mostly missing or out-of-date data</li>
+                        </ul>
+                        <aside class="notes">
+The "authoritative single source for institutional metadata" that the WorldCat Registry claims to be is missing most institutions and out of date on most of the ones that are included, and is hampered by a license that prohibits non-commercial use.
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Why should you care?</h2>
+                        <ul>
+                            <li>Visibility <strong>and accuracy</strong> in common search engines</li>
+                            <li>Ease of building lightweight applications</li>
+                            <li>General linked open data use cases</li>
+                        </ul>
+                        <aside class="notes">
+Why does this matter, beyond the unfortunately abstract "linked open data enables others to build exciting new services!"? People increasingly search on mobile devices, meaning that they're getting funneled through Google, Bing, and Yahoo, and when they search for their local library they should get accurate information back.
+<p>Unfortunately, resources like Google Maps, Bing Maps, Yahoo Local, etc are a hodge-podge of data culled from social media properties like Google+ and FourSquare, drive-by edits, and attempted parses of the human-oriented markup on pages.
+</p>
+<p>Like it or not, this data is effectively considered authoritative; if Google Maps has the right name and location, but says your library is closed because it couldn't figure out the difference between your summer hours and your fall hours, then many people aren't going to make the extra effort to click through to double-check on your web page.</p>
+                        </aside>
+                    </section>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+                    <section>
+                        <h2>Inspired by CWRC</h2>
+                        <a href="http://cwrc.ca/rsc-src/"><img src="images/dialled_cwrc_map.png" alt="Screenshot of the CWRC map of libraries and archives in Canada" /></a>
+                        <aside class="notes">
+Thinking about the challenge of turning this around, and of convincing thousands of libraries and archives to adopt schema.org on just the most basic of all of their web pages, I *almost* gave up. That's a lot of inertia to overcome. But in January, members of the Royal Society of Canada expert panel report on the future of libraries in Canada presented their work at the OLA SuperConference--and part of that work included a map of almost 5,000 Canadian libraries and archives. That map was an effort contributed by the Canadian Writing Research Collaboratory (CWRC), and the work on the initial version wrapped up in June 2014.
+<p>
+I was impressed--every one had lat/long data, along with some related institutional data, including URL. For sure, there were problems: all of the lat/longs for Toronto were the same, perhaps for clustering purposes. But still!
+</p>
+<p>
+A challenge was that it was almost entirely a manual effort, dated June 2014. And the clock continues to tick, and things continue to change, and the data continues to get more out of sync.
+</p>
+<p>
+It drives me crazy that, despite more than 90% of the entries having URLs, we can't simply regularly crawl the sites and update and augment the data.
+</p>
+<p>
+Which is why this summer I was delighted to meet Susan Brown, who spearheaded the CWRC effort. She recognizes the problem, understands the value of linked open data, and wants to collaborate on solutions to keeping the data fresh and relevant.
+</p>
+                        </aside>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>"Leading an effort"</h2>
+                        <p class="fragment">In which I reveal I am not as persuasive as digital humanoids</p>
+                        <aside class="notes">
+You might have read in the session description that I "will have been leading an effort through the summer of 2015". I was all fired up about this back in January, and applied for a grant to support two full-time comp sci students in creating library website templates for Drupal, Joomla, and other popular CMS that incorporate metainstitutional data, creating a portal that aggregates and redistributes all of the data from across sites that adopted the approach, and associated education and advocacy efforts. Alas, in the end I only received a rejection (albeit with a signature from Michael Geist!). So I need to adjust your expectations. For now.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Education efforts</h2>
+                        <div style="text-align: left; padding-left: 2em; text-indent: -2em;">
+Scott, D. (2015). White Hat Search Engine Optimization (SEO): Structured Web Data for Libraries. <em>Partnership: The Canadian Journal of Library and Information Practice and Research</em>, 10(1). Retrieved from <a href="https://journal.lib.uoguelph.ca/index.php/perj/article/view/3328">https://journal.lib.uoguelph.ca/index.php/perj/article/view/3328</a>
+                        </div>
+                        <aside class="notes">
+Over the summer, I have made some progress. On the education front, for those who prefer crisply written prose (thanks editors!), my recent article in The Partnership Journal walks step by step through the augmentation of an actual library website (hello, Greater Sudbury Public Library South Branch!) to include schema.org linked data, including location, contact info, opening hours, and event information.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Education by demonstration</h2>
+                        <img src="images/dialled_onepager.png" alt="Screenshot of the Library One-Pager template for library websites" />
+                    </section>
+                    <section>
+                        <h2>Education by demonstration</h2>
+                        <ul>
+                            <li>An augmented Library One-Pager</li>
+                            <li>Live at <a href="http://dialled.ca/one_pager">dialled.ca/one_pager</a></li>
+                            <li>git branch at <a href="http://dialled.ca/one_pager">github.com/dbs/One-Pager/tree/schema.org</a></li>
+                        </ul>
+                        <aside class="notes">
+I also believe that examples lower the barrier to adoption. To that end, I've taken the Library One-Pager website that influx.us created a few years back (with Amanda Etches) and created a branch that, in a 16-line diff, adds schema.org RDFa markup. You can see that live at http://coffeecode.ca/onepager and the code is on github at https://github.com/One-Pager (see the schema.org branch).
+<p>
+My hope is you can see how little change was required to make the Library One-Pager a publisher of linked open meta-institutional data and apply the same tactics to your own page.
+</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Standard RDFa tactics</h2>
+<pre><code>@@ -14,14 +14,14 @@
+        &lt;link rel="stylesheet" href="deps/ie.css">
+        &lt;script src="//html5shiv.googlecode.com/svn/trunk/html5.js">&lt;/script>
+        &lt;![endif]-->
+-&lt;/head>&lt;body>&lt;div class="page">
++&lt;/head>&lt;body vocab="http://schema.org/" typeof="Library">&lt;div class="page">
+ 
+ &lt;header>
+        &lt;nav>
+                &lt;a href="#">Log in/Sign up&lt;/a>
+                &lt;a href="#footer">Location/Hours&lt;/a>
+        &lt;/nav>
+-       &lt;h1>&lt;a href="#">Niceville Library&lt;/a>&lt;/h1>
++       &lt;h1 property="name">&lt;a href="#">Niceville Library&lt;/a>&lt;/h1>
+        &lt;form id="search">&lt;fieldset>&lt;legend>Search Catalog&lt;/legend>
+                &lt;label for="searchText">&lt;a href="#">Catalog&lt;/a>&lt;/label>&lt;input id="searchText" placeholder="Search books and more" type="search">
+                &lt;input type="submit" value="Search">
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Reality check</h2>
+                        <ul>
+                            <li class="fragment">How many of you use a static HTML library web site?</li>
+                            <li class="fragment">How many use a CMS like Drupal?</li>
+                            <li class="fragment">How many of you want a deep knowledge of RDFa and HTML to be the minimum bar for someone to change the opening hours on your website?</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Drupal One-Pager</h2>
+                        <ul>
+                            <li>A theme with user-friendly widgets that hide any implementation details.</li>
+                            <li class="fragment">So easy, a University Librarian could use it!™</li>
+                        </ul>
+                        <aside class="notes">
+I've also taken that One-Pager and converted it into a Drupal theme, with a handful of associated modules (as is the Drupal way), that builds on standard modules such as Opening Hours and Addressfield to create a schema.org-enhanced website. My goal was to prove that it should be possible to build a CMS template based on something reasonably rational that normal humans can use to set opening hours, contact information, etc, without having to even think about what's happening with schema.org under the covers; it should just work.
+<p>
+And it does. It's not perfect; a Drupal expert could probably clean up a lot of the rough edges pretty quickly, and all of the "tailor to your specific users and environment" warnings apply, but as a proof of concept I think it's a damn fine start.
+</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Location and contact info</h2>
+                        <img src="images/dialled_drupal_contact_address.png" alt="Screenshot of standard Drupal form for entering telephone number, email, and address via the Addressfield widget" />
+                        <aside class="notes">
+Here you can see a fairly standard Drupal content type that has a few text fields and an Addressfield embedded in it. A custom module (schema_address) modifies the HTML generated by the Addressfield module, while theme functions make the email and telephone fields do the right thing.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>This really isn't hard!</h2>
+                        <ul>
+                            <li class="fragment"><strong>NO WEBSITE REDESIGN NECESSARY</strong></li>
+                            <li class="fragment">Nobody needs to know except you and the world of linked open data</li>
+                        </ul>
+                        <aside class="notes">
+Adding basic schema.org metainstitutional data to your library website DOES NOT require a website redesign. You can probably slide this right into your existing website. Don't worry about all of the warts and blemishes in your current site; just close your eyes and add the RDFa (or microdata, or JSON-LD).
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Incentives</h2>
+                        <ul>
+                            <li>Cleaner data for personal agents (Hi Siri! OK, Google?)</li>
+                            <li>Inclusion in OpenStreetMap, wikidata, and the LOD Cloud</li>
+                            <li>A more dynamic CWRC map</li>
+                            <li>Making <a href="http://dialled.ca">dialled.ca</a> a possibility</li>
+                        </ul>
+                        <aside class="notes">
+I think there are a few clear incentives; there's the very simple "cleaner data for consumption by search engines so that people will show up at the right place at the right time" argument.
+<p>Combine that with the possibilities for personal agents like Siri and Google Now to alert people who have never been to the library to events that might be of interest to them, and I think that's a winner right there.</p>
+<p>Then you add friendliness towards map-making applications like CartoDB, and the inclusion in OpenStreetMap and wikidata argument (and I guess the whole LOD cloud) for the linked / open data geeks.</p>
+<p>Back to more concrete examples, I believe that enabling sites like the CWRC map of all libraries and archives in Canada to be a living entity, rather than a snapshot, is pretty compelling. Towards that end, I've proposed the creation of "DIALLED"--the Distributed Index of All Library Location &amp; Event Data (or Distributed Index of Archives and Library Location &amp; Event Data) and picked up the domain name dialled.ca.</p>
+<p>Right now you'll just find this presentation and links to the git repositories and example websites, but I hope to build on CWRC's effort and to start generating data based on regular crawls of all of the library &amp; archives sites that incorporate markup.</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Advocacy</h2>
+                        <ul>
+                            <li class="fragment">Partnering with CWRC</li>
+                            <li class="fragment">Reaching out to co-operatives like SOLS, OLS North</li>
+                            <li class="fragment">Connecting with the smartest minds in library technology</li>
+                        </ul>
+                        <aside class="notes">
+Seriously, part of the effort is getting the word out to people who can magnify the impact, and what better place than Access?
+<p>I've talked with people at Ontario Library Services North and the Southern Ontario Library Service, who are collectively responsible for providing the basic infrastructure for hundreds of library websites, and I'm optimistic that they will be able to integrate meta-institutional data into their sites.
+</p>
+<p>Surely we have some people from the Toronto Public Library here who can roll this out--you've already got OpenGraph Protocol metadata on your library branch pages, presumably for the purposes of showing up nicely in Facebook, now how about focusing a little more on utility and providing hours and location?--that would be another 100 branches in one shot. I bet there are a number of people here who each could have an impact on dozens of libraries and archives at a time.
+</p>
+<p>Any BC Libraries Co-op people here? Let's talk!</p>
+                        </aside>
+                    </section>
+
+                    <section>
+<object type="image/svg+xml" data="images/avengers.svg">Access, assemble!</object><span style="font-size: 2em; color: white">ccess, assemble!</span>
+<p>
+<a href="https://commons.wikimedia.org/wiki/File:Symbol_from_Marvel's_The_Avengers_logo.svg" style="position: absolute; top: 0; left: 0;">©</a>
+</p>
+                        
+                        <aside class="notes">
+<p>
+You are my heroes. I hope you'll help make this happen. Spread the word, share your skills, and let's make meta-institutional data for libraries and archives a thing.
+</p>
+                        </aside>
+                    </section>
 				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
-
 			</div>
 
 		</div>
