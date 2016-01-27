@@ -38,17 +38,19 @@
 		<![endif]-->
 	</head>
 
-	<body>
+	<body vocab="http://schema.org/" typeof="CreativeWork" resource="#talk">
 
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>DIALLED</h1>
-					<h2>Distributed Index of All(*) Library Location and Event Data</h2>
+                    <div property="name">
+                        <h1>DIALLED</h1>
+                        <h2>Distributed Index of <s>All</s><em>some</em> Library Location and Event Data</h2>
+                    </div>
 					<p>
-						<a href="https://coffeecode.net">Dan Scott</a> 
+						<a property="creator" href="https://coffeecode.net" typeof="Person"><span property="name">Dan Scott</span></a>, <time about="#talk" property="datePublished" datetime="2016-01-29">January 29, 2016</time>
                     <p>
                     <footer>
                         <a href="http://laurentian.ca"><img src="images/lu_logo.png" alt="Laurentian University logo" /></a>
@@ -57,117 +59,10 @@
 
                 <section>
                     <section>
-                        <h1 style="font-family: Helvetica,Arial,sans-serif; background-color: #900; color: white;">schema.org</h1>
-                        <p><img style="background-color: white; padding: 0.5em;" src="images/evergreen_logo.png" alt="Evergreen logo" /></p>
-                        <p><img src="images/koha_logo.png" alt="Koha logo" /></p>
-                        <p><img src="images/vufind_logo.png" alt="VuFind logo" /></p>
-                        <aside class="notes">
-    As some of you may be aware, I was enthusiastic early on about the possibility of exposing our collections to the web in such a way that regular search engines could understand them.  
-
-    Even if it meant digging into workgroups, defining some new terms, and bending some fairly commercially-oriented definitions to our will:
-
-    * Product
-    * Offer
-    * seller
-                        </aside>
-                    </section>
-
-                    <section>
-                        <img src="images/dialled_full_book.png" alt="Visualization of RDFa for a book in Evergreen" />
-                    </section>
-                    <section>
-                        <img src="images/dialled_offer.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:Offer section" />
-                    </section>
-                    <section>
-                        <img src="images/dialled_seller.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:seller section of the offer" />
-                    </section>
-                </section>
-
-				<section>
-                    <section>
-                        <h2>schema.org/seller</h2>
-                        <p>This was a sticking point...</p>
-                        <aside class="notes">
-And I got stuck on "seller". Not because the term was too commercial, but because it was supposed to link to a description of the organization that held the items in their collection.
-
-Even though schema.org defines the term "Library" as just such an organization, there weren't many using it.
-                        </aside>
-                    </section>
-
-                    <section>
-                        <ul>
-                        <li class="fragment">schema.org/Library : A library. <em>Usage</em>: <span class="fragment">Between 100 and 1000 domains</span></li>
-                        <li class="fragment">schema.org/Museum : A museum. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
-                        <li class="fragment">schema.org/Archive : <em class="fragment">In the process of being defined.</em></li>
-                        <li class="fragment">schema.org/Cemetery : A graveyard. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
-                        <aside class="notes">
-
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Evergreen does this!</h2>
-                        <img src="images/dialled_library_info.png" alt="Visualization of RDFa for a library branch, including opening hours, contact info, and hours" />
-                        <aside class="notes">
-I was able to teach Evergreen how to generate the schema:Library information because, as an integrated library system, information like opening hours, addresses, and contact information are all built into the system.
-
-But how many other people here are running Evergreen?
-                        </aside>
-                    </section>
-                    
-                    <section>
-                        <h2>Most other ILSs do not</h2>
-                        <aside class="notes">
-However, other ILSes are less integrated and less customizable. Simply linking to a source of linked data about the library would suffice. If only there <em>was</em> such a source of data.
-                        </aside>
-                    </section>
-				</section>
-
-                <section>
-                    <section>
-                        <h2>Meta-institutional data</h2>
-                        <p>This should be in our wheelhouse!</p>
-                        <aside class="notes">
-We excel at metadata for our collections: MARC, Dublin Core, EAD, MODS, METS, RDA, BibFrame. We should be great at providing metadata for our institutions. Meta-institutional data. It's a thing, or it should be.
-
-But most library web pages don't offer linked open data about the library itself.
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>WorldCat Registry</h2>
-                        <blockquote cite="https://www.oclc.org/worldcat-registry.en.html">authoritative single source for institutional metadata</blockquote>
-                        <ul>
-                            <li class="fragment">Problematic non-commercial license</li>
-                            <li class="fragment">Mostly missing or out-of-date data</li>
-                        </ul>
-                        <aside class="notes">
-The "authoritative single source for institutional metadata" that the WorldCat Registry claims to be is missing most institutions and out of date on most of the ones that are included, and is hampered by a license that prohibits non-commercial use.
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Why should you care?</h2>
-                        <ul>
-                            <li>Visibility <strong>and accuracy</strong> in common search engines</li>
-                            <li>Ease of building lightweight applications</li>
-                            <li>General linked open data use cases</li>
-                        </ul>
-                        <aside class="notes">
-Why does this matter, beyond the unfortunately abstract "linked open data enables others to build exciting new services!"? People increasingly search on mobile devices, meaning that they're getting funneled through Google, Bing, and Yahoo, and when they search for their local library they should get accurate information back.
-<p>Unfortunately, resources like Google Maps, Bing Maps, Yahoo Local, etc are a hodge-podge of data culled from social media properties like Google+ and FourSquare, drive-by edits, and attempted parses of the human-oriented markup on pages.
-</p>
-<p>Like it or not, this data is effectively considered authoritative; if Google Maps has the right name and location, but says your library is closed because it couldn't figure out the difference between your summer hours and your fall hours, then many people aren't going to make the extra effort to click through to double-check on your web page.</p>
-                        </aside>
-                    </section>
-				</section>
-
-				<section>
-                    <section>
                         <h2>Inspired by CWRC</h2>
                         <a href="http://cwrc.ca/rsc-src/"><img src="images/dialled_cwrc_map.png" alt="Screenshot of the CWRC map of libraries and archives in Canada" /></a>
                         <aside class="notes">
-Thinking about the challenge of turning this around, and of convincing thousands of libraries and archives to adopt schema.org on just the most basic of all of their web pages, I *almost* gave up. That's a lot of inertia to overcome. But in January, members of the Royal Society of Canada expert panel report on the future of libraries in Canada presented their work at the OLA SuperConference--and part of that work included a map of almost 5,000 Canadian libraries and archives. That map was an effort contributed by the Canadian Writing Research Collaboratory (CWRC), and the work on the initial version wrapped up in June 2014.
+Thinking about the challenge of turning this around, and of convincing thousands of libraries and archives to adopt schema.org on just the most basic of all of their web pages, I *almost* gave up. That's a lot of inertia to overcome. But in January 2015, members of the Royal Society of Canada expert panel report on the future of libraries in Canada presented their work at the OLA SuperConference--and part of that work included a map of almost 5,000 Canadian libraries and archives. That map was an effort contributed by the Canadian Writing Research Collaboratory (CWRC), and the work on the initial version wrapped up in June 2014.
 <p>
 I was impressed--every one had lat/long data, along with some related institutional data, including URL. For sure, there were problems: all of the lat/longs for Toronto were the same, perhaps for clustering purposes. But still!
 </p>
@@ -182,17 +77,293 @@ Which is why this summer I was delighted to meet Susan Brown, who spearheaded th
 </p>
                         </aside>
                     </section>
-                </section>
-                <section>
+
                     <section>
-                        <h2>"Leading an effort"</h2>
-                        <p>In which I reveal I am not as persuasive as digital humanoids</p>
+                        <img src="images/dialled_full_book.png" alt="Visualization of RDFa for a book in Evergreen" />
                         <aside class="notes">
-You might have read in the session description that I "will have been leading an effort through the summer of 2015". I was all fired up about this back in January, and applied for a grant to support two full-time comp sci students in creating library website templates for Drupal, Joomla, and other popular CMS that incorporate metainstitutional data, creating a portal that aggregates and redistributes all of the data from across sites that adopted the approach, and associated education and advocacy efforts. Alas, in the end I only received a rejection (albeit with a signature from Michael Geist!). So I need to adjust your expectations. For now.
+                        This meshed perfectly with my drive to connect library resources with Canadians by exposing structured data in the web pages describing those resources.
                         </aside>
                     </section>
                     <section>
-                        <h2>Education efforts</h2>
+                        <img src="images/dialled_offer.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:Offer section" />
+                    </section>
+                    <section>
+                        <img src="images/dialled_seller.png" alt="Visualization of RDFa for a book in Evergreen, focusing on the schema:seller section of the offer" />
+                    </section>
+
+                    <section>
+                        <h2>Library linked data principles (?)</h2>
+                        <ul>
+                            <li>Every bibliographically described resource, its instances</li>
+                            <li>Every instance, its offering library</li>
+                            <li>Every library, its URL!</li>
+                        </ul>
+                    </section>
+
+               </section>
+
+                <section>
+                    <section>
+                        <h2>I started at the bottom</h2>
+                        <aside class="notes">
+                            Starting at the individual copies and instances is arguably starting at the most granular point.
+                            <p>
+                            But as I worked my way up, I realized it was not obvious where to find good library URLs to which I could link those resources.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>WorldCat Registry</h2>
+                        <blockquote cite="https://www.oclc.org/worldcat-registry.en.html">authoritative single source for institutional metadata</blockquote>
+                        <ul>
+                            <li class="fragment">Problematic non-commercial license</li>
+                            <li class="fragment">Mostly missing or out-of-date data</li>
+                        </ul>
+                        <aside class="notes">
+<p>
+The "authoritative single source for institutional metadata" that the WorldCat Registry claims to be is missing most institutions and out of date on most of the ones that are included, and is hampered by a license that prohibits non-commercial use.
+</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Library and Archives Canada</h2>
+                        <img class="fragment" src="images/lac-bac-union.png" alt="Screenshot of 4 results for type = Public and city = Toronto in LAC Union Catalogue" />
+                        <aside class="notes">
+                            The National Union Catalogue / Interlibrary Loan Symbols Directory offered by LAC-BAC is not a good source either.
+                            <p>
+                                I dig those retro sharing buttons though!
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>So, about that CWRC work...</h2>
+                        <a href="http://cwrc.ca/rsc-src/"><img src="images/dialled_cwrc_map.png" alt="Screenshot of the CWRC map of libraries and archives in Canada" /></a>
+                        <aside class="notes">
+                            So here was the plan. Absolutely nutty, hopelessly optimistic, but a plan nonetheless.
+                            <p>
+                                Rather than let CWRC's work suffer continued linkrot, why not pick up the torch and start running with it?
+                                I would rather be burned by acting with enthusiasm than go numb and do nothing.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>CWRC's dataset</h3>
+<pre><code>{
+    "community": "Sudbury",
+    "group": "Libraries",
+    "institutionType": "Library",
+    "label": "Laurentian University",
+    "latLng": "46.5011111,-80.9775",
+    "latitude": "46.5011111",
+    "libraryType": "Academic",
+    "longitude": "-80.9775",
+    "population": null,
+    "provCode": "ON",
+    "province": "Ontario",
+    "sort": "707",
+    "startDate": "1960",
+    "subGroup": "Academic libraries",
+    "url": "http://library.laurentian.ca/content/library"
+}</code></pre>
+
+                        <aside class="notes">
+                            <p>
+                                CWRC very generously made the data they had collected available to download on a province-by-province basis, in a simple JSON format.
+                            </p>
+                            <p>
+                                So here's a typical entry of what we're starting with. The granularity of the address info is low: we're working with the city level, so the latitude and longitude doesn't really help us if we want to see the distribution of branches across a given city, but it's a starting point.   
+                            </p>
+                            <p>
+                                The crucial piece is the URL. Given a URL, you can grab the HTML for the library's home page and (perhaps!) pull some current data from it.
+                            </p>
+                            <p>
+                                At the very least, you can find out if the URL is still current.
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Step 1. Crawl the URLs</h3>
+                        <ul>
+                            <li>4,798 entries in the CWRC dataset</li>
+                            <li class="fragment">4,250 with URLs</li>
+                            <li class="fragment">3,223 unique URLs</li>
+                            <li class="fragment">561 URLs redirected</li>
+                            <li class="fragment">3,141 URLs retrieved</li>
+                        </ul>
+                        <aside class="notes">
+                            Of the 4,798 entries for libraries, archives, and museums in CWRC's data set, 4,250 had URLs.
+                            <p>
+                                Of those, 3,223 URLs were unique; many of the entries had one main URL for a consortia.
+                            </p>
+                            <p>
+                                Of those, 561 were redirected to a different URL.
+                            </p>
+                            <p>
+                                Fewer than 100 errored out!
+                            </p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h3>Step 2. Update the CWRC dataset</h3>
+<pre><code>{
+    "...": "...",
+    "url": "http://laurentian.ca/library",
+    "urlPrevious": "http://library.laurentian.ca/content/library"
+}</code></pre>
+                        <aside class="notes">
+                            Here's where we start annotating the CWRC dataset so that we can improve for subsequent runs. In this case, adding a <code>urlPrevious</code> entry when we receive a redirect.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Step 3. Extract structured (or linked) data</h3>
+                        <ul>
+                            <li>Microdata (<code>itemscope, itemtype, itemprop</code>): 191 pages</li>
+                            <li>RDFa (<code>vocab, typeof, property</code>): 197 pages</li>
+                            <li>JSON-LD (<code>&lt;script type="application/ld+json"&gt;</code>) : 112 pages</li>
+                        </ul>
+                        <h3 class="fragment">Encouraging!</h3>
+                    </section>
+
+                    <section>
+                        <h3>Step 4. Evaluate the extracted data</h3>
+                        <p>Some of it is weaksauce...</p>
+<pre><code><a href="/node/1486">
+    <img typeof="foaf:Image" src="http://example.org/foo.png" />
+</a>
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Step 4. Evaluate the extracted data</h3>
+                        <p>Some of it rocks!</p>
+<pre><code class="json"><script TYPE="application/ld+json"> {
+    "@context" : "http://schema.org",
+    "@type" : "Organization",
+    "name" : "Viking Municipal Library ",
+    "url" : "http://www.vikinglibrary.ab.ca",
+    "contactPoint" : {
+        "@type" : "ContactPoint",
+        "contactType" : "Customer Service",
+        "telephone" : "+(780) 336-4992",
+        "faxNumber" : "+(780) 336-4992",
+        "areaServed" : "CA",
+        "availableLanguage" : "English",
+        "email" : "mailto:librarian@vikinglibrary.ab.ca"
+    },
+    "hasPOS" : {
+        "@type" : "Place",
+        "name" : "Viking Municipal Library",
+        "hasMap" : {
+            "@type" : "Map",
+            "url" : "http://www.townlife.com/customer/map/155"
+        },
+        "address" : {
+            "@type" : "PostalAddress",
+            "name" : "Viking Municipal Library",
+            "streetAddress" : "Box 300, 5120 - 45 Street ",
+            "addressLocality" : "Viking ",
+            "addressRegion" : "Alberta",
+            "postalCode" : "T0B 4N0",
+            "addressCountry" : "Canada"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "53.107869",
+            "longitude": "-111.8637219"
+          }
+     }
+}</script>
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Step 5. Publish the linked open data</h3>
+                        <p><a href="https://dialled.ca/all_libraries.ttl">One big Turtle file</a></p>
+<pre><code>&lt;http://biblio.uottawa.ca/en/morisset-library&gt; md:item ( [ a schema:Library ;
+        schema:branchOf [ a schema:Library ;
+                schema:address [ a schema:PostalAddress ;
+                        schema:addressCountry "Canada"@en ;
+                        schema:addressLocality "Ottawa"@en ;
+                        schema:addressRegion "ON"@en ;
+                        schema:postalCode "K1N 6N5"@en ;
+                        schema:streetAddress "65 University Private"@en ] ;
+                schema:alternateName "Bibliothèque Morisset"@en ;
+                schema:geo [ a schema:GeoCoordinates ;
+                        schema:latitude "45.423241"@en ;
+                        schema:longitude "-75.684126"@en ] ;
+                schema:name "Morisset Library"@en ;
+                schema:url &lt;https://biblio.uottawa.ca/en/morisset-library&gt; ] ;
+        schema:name "uOttawa Library"@en ] ) ;
+    rdfa:usesVocabulary schema: .</code></pre>
+                    </section>
+
+				</section>
+
+                <section>
+                    <section>
+                        <h2>We need to talk.</h2>
+                    </section>
+                    <section>
+                        <h3>We're not highly visible on the web of data</h3>
+                        <p>Global adoption numbers:</p>
+                        <ul>
+                            <li class="fragment"><a href="http://schema.org/Library">schema.org/Library</a> : A library. <em>Usage</em>: <span class="fragment">Between 100 and 1000 domains</span></li>
+                            <li class="fragment"><a href="http://schema.org/Museum">schema.org/Museum</a> : A museum. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
+                            <li class="fragment"><a href="http://schema.org/Archive">schema.org/Archive</a> : <em class="fragment">In the process of being defined.</em></li>
+                            <li class="fragment"><a href="http://schema.org/Cemetery">schema.org/Cemetery</a> : A graveyard. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>The picture in Canada</h3>
+                        <ul>
+                            <li class="fragment"><a href="http://schema.org/Library">schema.org/Library</a> <em>Usage</em>: <span class="fragment">3 libraries--one of which is an archives</span></li>
+                            <li class="fragment"><a href="http://schema.org/LocalBusiness">schema.org/LocalBusiness</a> <em>Usage</em>: <span class="fragment">47 statements</span></li>
+                            <li class="fragment"><a href="http://schema.org/Organization">schema.org/Organization</a> : <em>Usage</em>: <span class="fragment">15 statements</span></li>
+                            <li class="fragment"><a href="http://schema.org/Event">schema.org/Event</a> : <em>Usage</em>: <span class="fragment">44 statements</span></li>
+                            <li class="fragment"><a href="http://schema.org/PostalAddress">schema.org/PostalAddress</a> : <em>Usage</em>: <span class="fragment">103 statements</span></li>
+                        </ul>
+                        <p class="fragment">This should be in our wheelhouse!</p>
+                        <aside class="notes">
+We excel at metadata for our collections: MARC, Dublin Core, EAD, MODS, METS, RDA, BibFrame. We should also be great at providing metadata for our institutions. But most library web pages don't offer linked open data about the library itself.
+</p>
+<p>
+Some of the ultra-generic statements (LocalBusiness, Organization) might be a result of redirects that just point at the overall organizational page.
+</p>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Why should you care--really?</h2>
+                        <ul>
+                            <li>Visibility <strong>and accuracy</strong> in common search engines</li>
+                            <li class="fragment">Ease of building lightweight applications</li>
+                            <li class="fragment">General linked open data use cases</li>
+                        </ul>
+                        <aside class="notes">
+Why does this matter, beyond the unfortunately abstract "linked open data enables others to build exciting new services!"? People increasingly search on mobile devices, meaning that they're getting funneled through Google, Bing, and Yahoo, and when they search for their local library they should get accurate information back.
+<p>Unfortunately, resources like Google Maps, Bing Maps, Yahoo Local, etc are a hodge-podge of data culled from social media properties like Google+ and FourSquare, drive-by edits, and attempted parses of the human-oriented markup on pages.
+</p>
+<p>Like it or not, this data is effectively considered authoritative; if Google Maps has the right name and location, but says your library is closed because it couldn't figure out the difference between your summer hours and your fall hours, then many people aren't going to make the extra effort to click through to double-check on your web page.</p>
+<p>But we also want this data to be available to support applications that we haven't envisioned yet.</p>
+<p>And we want to be present in the web of data.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>What can you do?</h2>
+                        <ul>
+                            <li>Add linked data to your library home page</li>
+                            <li>Help manage the list of libraries</li>
+                            <li>Help build dialled.ca</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Adding linked data</h2>
                         <div style="text-align: left; padding-left: 2em; text-indent: -2em;">
 Scott, D. (2015). White Hat Search Engine Optimization (SEO): Structured Web Data for Libraries. <em>Partnership: The Canadian Journal of Library and Information Practice and Research</em>, 10(1). Retrieved from <a href="https://journal.lib.uoguelph.ca/index.php/perj/article/view/3328">https://journal.lib.uoguelph.ca/index.php/perj/article/view/3328</a>
                         </div>
@@ -201,11 +372,15 @@ Over the summer, I have made some progress. On the education front, for those wh
                         </aside>
                     </section>
                     <section>
-                        <h2>Education by demonstration</h2>
+                        <h2>Web page before linked data</h2>
                         <img src="images/dialled_onepager.png" alt="Screenshot of the Library One-Pager template for library websites" />
                     </section>
                     <section>
-                        <h2>Education by demonstration</h2>
+                        <h2>Web page after linked data</h2>
+                        <img src="images/dialled_onepager.png" alt="Screenshot of the Library One-Pager template for library websites" />
+                    </section>
+                    <section>
+                        <h2>Education by demonstration!</h2>
                         <ul>
                             <li>An augmented Library One-Pager</li>
                             <li>Live at <a href="http://dialled.ca/one_pager">dialled.ca/one_pager</a></li>
@@ -244,7 +419,7 @@ My hope is you can see how little change was required to make the Library One-Pa
                         <ul>
                             <li class="fragment">How many of you use a static HTML library web site?</li>
                             <li class="fragment">How many use a CMS like Drupal?</li>
-                            <li class="fragment">How many of you want a deep knowledge of RDFa and HTML to be the minimum bar for someone to change the opening hours on your website?</li>
+                            <li class="fragment">How many of you want a deep knowledge of RDFa, microdata, or JSON-LD and HTML to be the minimum bar for someone to change the opening hours on your website?</li>
                         </ul>
                     </section>
                     <section>
@@ -278,57 +453,28 @@ Adding basic schema.org metainstitutional data to your library website DOES NOT 
                         </aside>
                     </section>
                 </section>
-
                 <section>
                     <section>
-                        <h2>Incentives</h2>
+                        <h2>How to help dialled.ca directly</h2>
                         <ul>
-                            <li>Cleaner data for personal agents (Hi Siri! OK, Google?)</li>
-                            <li>Inclusion in OpenStreetMap, wikidata, and the LOD Cloud</li>
-                            <li>A more dynamic CWRC map</li>
-                            <li>Making <a href="http://dialled.ca">dialled.ca</a> a possibility</li>
+                            <li>Ensure your own library is listed, with an accurate URL: see <a href="https://goo.gl/ZpsB8M">https://goo.gl/ZpsB8M</a></li>
+                            <li>Create and maintain machine-readable lists (<em>ahem, Manitoba</em>)</li>
+                            <li>Write HTML scrapers for existing human-oriented lists</li>
                         </ul>
-                        <aside class="notes">
-I think there are a few clear incentives; there's the very simple "cleaner data for consumption by search engines so that people will show up at the right place at the right time" argument.
-<p>Combine that with the possibilities for personal agents like Siri and Google Now to alert people who have never been to the library to events that might be of interest to them, and I think that's a winner right there.</p>
-<p>Then you add friendliness towards map-making applications like CartoDB, and the inclusion in OpenStreetMap and wikidata argument (and I guess the whole LOD cloud) for the linked / open data geeks.</p>
-<p>Back to more concrete examples, I believe that enabling sites like the CWRC map of all libraries and archives in Canada to be a living entity, rather than a snapshot, is pretty compelling. Towards that end, I've proposed the creation of "DIALLED"--the Distributed Index of All Library Location &amp; Event Data (or Distributed Index of Archives and Library Location &amp; Event Data) and picked up the domain name dialled.ca.</p>
-<p>Right now you'll just find this presentation and links to the git repositories and example websites, but I hope to build on CWRC's effort and to start generating data based on regular crawls of all of the library &amp; archives sites that incorporate markup.</p>
-                        </aside>
                     </section>
-
                     <section>
-                        <h2>Advocacy</h2>
-                        <ul>
-                            <li class="fragment">Partnering with CWRC</li>
-                            <li class="fragment">Reaching out to co-operatives like SOLS, OLS North</li>
-                            <li class="fragment">Connecting with the smartest minds in library technology</li>
+                        <h2>The future of dialled.ca</h2>
+                        <ul> 
+                            <li>Generate periodic data dumps and statistics of the crawled data</li>
+                            <li>Normalize the data across different vocabularies</li>
+                            <li>Add more data from more sources (ILL symbols, etc)</li>
+                            <li>Integrate checks and updates via external lists</li>
+                            <li>Offer a dynamic web interface for querying the existing data</li>
+                            <li>Enhance the dialled.ca user experience</li>
+                            <li>Contributions welcome at <a href="https://github.com/dbs/dialled-crawler">https://github.com/dbs/dialled-crawler</a></li>
                         </ul>
-                        <aside class="notes">
-So I hope to partner with CWRC to reach out to libraries and archives.
-<p>I've also talked with people at Ontario Library Services North and the Southern Ontario Library Service, who are collectively responsible for providing the basic infrastructure for hundreds of library websites, and I'm optimistic that they will be able to integrate meta-institutional data into their sites.
-</p>
-<p>
-But as part of the effort is getting the word out to people who can magnify the impact, what better place than Access?
-<p>Surely we have some people from the Toronto Public Library here who can roll this out--you've already got OpenGraph Protocol metadata on your library branch pages, presumably for the purposes of showing up nicely in Facebook, now how about focusing a little more on utility and providing hours and location?--that would be another 100 branches in one shot. I bet there are a number of people here who each could have an impact on dozens of libraries and archives at a time.
-</p>
-<p>Any BC Libraries Co-op people here? Let's talk!</p>
-                        </aside>
                     </section>
-
-                    <section>
-<object type="image/svg+xml" data="images/avengers.svg">Access, assemble!</object><span style="font-size: 2em; color: white">ccess, assemble!</span>
-<p>
-<a href="https://commons.wikimedia.org/wiki/File:Symbol_from_Marvel's_The_Avengers_logo.svg" style="position: absolute; top: 0; left: 0;">©</a>
-</p>
-                        
-                        <aside class="notes">
-<p>
-You are my heroes. I hope you'll help make this happen. Spread the word, share your skills, and let's make meta-institutional data for libraries and archives a thing.
-</p>
-                        </aside>
-                    </section>
-				</section>
+                </section>
 			</div>
 
 		</div>
