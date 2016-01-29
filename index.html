@@ -161,6 +161,54 @@ The "authoritative single source for institutional metadata" that the WorldCat R
                             </p>
                         </aside>
                     </section>
+                    <section>
+                        <h2>Germans rock linked open data</h2>
+                        <ul>
+                            <li><a href="http://beta.lobid.org/organisations">beta.lobid.org</a> offers a web API for a comprehensive dataset of library institutions in Germany</li>
+                            <li>Major hat tip to Adrian Pohl!</li>
+                        </ul>
+                            <pre><code class="json">GET http://beta.lobid.org/organisations/DE-6
+{
+  "isil" : "DE-6",
+  "wikipedia" : "http://de.wikipedia.org/wiki/Universitäts-_und_Landesbibliothek_Münster",
+  "@context" : "http://beta.lobid.org/organisations/context.jsonld",
+  "linkedTo" : "http://lobid.org/organisation/DE-605",
+  "@type" : "http://schema.org/Library",
+  "rs" : "055150000000",
+  "name" : "Universitäts- und Landesbibliothek Münster",
+  "url" : "http://www.uni-muenster.de/ULB/",
+  "provides" : "http://www.uni-muenster.de/ULB/katalog/",
+  "@id" : "http://beta.lobid.org/organisations/DE-6#!",
+  "telephone" : "0049 251 83-24040",
+  "email" : "mailto:info.ulb@uni-muenster.de",
+  "address" : {
+    "postOfficeBoxNumber" : "80 29",
+    "addressLocality" : "Münster",
+    "@type" : "http://schema.org/PostalAddress",
+    "addressCountry" : "Germany",
+    "postalCode" : "48043"
+  },
+  "location" : [ {
+    "type" : "http://schema.org/Place",
+    "address" : {
+      "postalCode" : "48143",
+      "streetAddress" : "Krummer Timpen 3",
+      "addressLocality" : "Münster",
+      "addressCountry" : "Germany",
+      "@type" : "http://schema.org/PostalAddress"
+    },
+    "openingHoursSpecification" : {
+      "@type" : "http://schema.org/OpeningHoursSpecification",
+      "description" : "Mo-Fr 8.00-22.00, Sa-So 10.00-20.00"
+    },
+    "geo" : {
+      "lat" : "51.96286",
+      "lon" : "7.62076"
+    }
+  } ]
+}
+</code></pre>
+                    </section>
                 </section>
                 <section>
                     <section>
@@ -329,20 +377,6 @@ The "authoritative single source for institutional metadata" that the WorldCat R
 				</section>
 
                 <section>
-                    <section>
-                        <h2>We need to talk.</h2>
-                    </section>
-                    <section>
-                        <h3>We're not highly visible on the web of data</h3>
-                        <p>Global adoption numbers:</p>
-                        <ul>
-                            <li class="fragment"><a href="http://schema.org/Library">schema.org/Library</a> : A library. <em>Usage</em>: <span class="fragment">Between 100 and 1000 domains</span></li>
-                            <li class="fragment"><a href="http://schema.org/Museum">schema.org/Museum</a> : A museum. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
-                            <li class="fragment"><a href="http://schema.org/Archive">schema.org/Archive</a> : <em class="fragment">In the process of being defined.</em></li>
-                            <li class="fragment"><a href="http://schema.org/Cemetery">schema.org/Cemetery</a> : A graveyard. <em>Usage</em>: <span class="fragment">Between 10 and 100 domains</span></li>
-                        </ul>
-                    </section>
-
                     <section>
                         <h3>The picture in Canada</h3>
                         <ul>
