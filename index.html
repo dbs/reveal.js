@@ -31,6 +31,7 @@
         <style>
             .reveal section img { border: none; }
             .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
+            .reveal section li { color: aliceblue; }
         </style>
 
 		<!--[if lt IE 9]>
@@ -58,9 +59,23 @@
 				</section>
 
                 <section>
+                    <section data-background="images/linked_data_tweet.png"> </section>
                     <section>
-                        <h2>Inspired by CWRC</h2>
-                        <a href="http://cwrc.ca/rsc-src/"><img src="images/dialled_cwrc_map.png" alt="Screenshot of the CWRC map of libraries and archives in Canada" /></a>
+                        <h2>The 1-minute version</h2>
+                        <ul>
+                            <li class="fragment">There is linked data!</li>
+                            <li class="fragment">Current data dump in Turtle format is at <a href="https://dialled.ca">https://dialled.ca</a></li>
+                            <li class="fragment">There is not a huge amount of data</li>
+                            <li class="fragment">There is still a lot of work to do</li>
+                            <li class="fragment">Budget = my time + $0</li>
+                            <li class="fragment">Please help (both lightweight and heavyweight participation is encouraged!)</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-background="images/dialled_cwrc_map.png">
+                        <h2 style="background-color: #002B36">Inspired by CWRC</h2>
                         <aside class="notes">
 Thinking about the challenge of turning this around, and of convincing thousands of libraries and archives to adopt schema.org on just the most basic of all of their web pages, I *almost* gave up. That's a lot of inertia to overcome. But in January 2015, members of the Royal Society of Canada expert panel report on the future of libraries in Canada presented their work at the OLA SuperConference--and part of that work included a map of almost 5,000 Canadian libraries and archives. That map was an effort contributed by the Canadian Writing Research Collaboratory (CWRC), and the work on the initial version wrapped up in June 2014.
 <p>
@@ -92,11 +107,12 @@ Which is why this summer I was delighted to meet Susan Brown, who spearheaded th
                     </section>
 
                     <section>
-                        <h2>Library linked data principles (?)</h2>
+                        <h2>Library linked data principles</h2>
                         <ul>
                             <li>Every bibliographically described resource, its instances</li>
                             <li>Every instance, its offering library</li>
                             <li>Every library, its URL!</li>
+                            <li>... with hours, location, contact data so people can get to your stuff</li>
                         </ul>
                     </section>
 
@@ -105,6 +121,14 @@ Which is why this summer I was delighted to meet Susan Brown, who spearheaded th
                 <section>
                     <section>
                         <h2>I started at the bottom</h2>
+                        <ul>
+                            <li>Our MARC records now link to OCLC Work URIs and LoC IDs
+                            <ul>
+                                <li>Evergreen expresses these using schema.org in RDFa</li>
+                            </ul></li>
+                            <li>OCLS is similarly enriching their MARC records</li>
+                            <li>Zepheira offers a MARC-&gt;BIBFRAME-&gt;HTML + schema.org service</li>
+                        </ul>
                         <aside class="notes">
                             Starting at the individual copies and instances is arguably starting at the most granular point.
                             <p>
@@ -137,6 +161,8 @@ The "authoritative single source for institutional metadata" that the WorldCat R
                             </p>
                         </aside>
                     </section>
+                </section>
+                <section>
                     <section>
                         <h2>So, about that CWRC work...</h2>
                         <a href="http://cwrc.ca/rsc-src/"><img src="images/dialled_cwrc_map.png" alt="Screenshot of the CWRC map of libraries and archives in Canada" /></a>
@@ -458,7 +484,7 @@ Adding basic schema.org metainstitutional data to your library website DOES NOT 
                         <h2>How to help dialled.ca directly</h2>
                         <ul>
                             <li>Ensure your own library is listed, with an accurate URL: see <a href="https://goo.gl/ZpsB8M">https://goo.gl/ZpsB8M</a></li>
-                            <li>Create and maintain machine-readable lists (<em>ahem, Manitoba</em>)</li>
+                            <li>Create and maintain machine-readable lists</li>
                             <li>Write HTML scrapers for existing human-oriented lists</li>
                         </ul>
                     </section>
