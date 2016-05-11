@@ -12,3 +12,7 @@ blockquote { text-align: left; }
 blockquote p { padding-top: 1em !important; }
 
 h1, h2, h3 { text-transform: none !important; }
+
+pre code {
+    white-space: pre-wrap;
+}
