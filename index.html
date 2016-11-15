@@ -4,13 +4,29 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>schema.org, Wikidata, Knowledge Graph: strands of the modern semantic web</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+<style>
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none;
+}
+.bgb {
+    background-color: black;
+}
+.bgb::before, .bgb::after {
+    content: "\00a0";
+}
+</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,8 +40,209 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+                    <section>
+                        <h1>schema.org, Wikidata, Knowledge Graph:</h1>
+                        <h2>strands of the modern semantic web</h2>
+                        <p>Dan Scott, Laurentian University</p>
+                        <p><a href="https://coffeecode.net">coffeecode.net</a> / <a href="https://twitter.com/denials">@denials</a></p>
+                        <aside class="notes">
+                            Yes, a flappy-headed academic Canadian. A librarian, at that!
+                            <p>For some balance, I worked for eight years at IBM on DB2 Universal Database.</p>
+                            <p>So I'm someone who is passionate about collecting and organizing the world's knowledge.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Who is the governor of Ohio?</h2>
+                        <aside class="notes">
+                            Always good to get a lay of the landscape when travelling to a new place.
+                            <p>You can do some fun things with Google and Bing these days...</p>
+                            <p>When was the governor of Ohio born?</p>
+                            <p>Who is the governor of Ohio? When was he born?</p>
+                        </aside>
+                    </section>
+                    <section data-background="images/when_was_the_governor_born.png">
+                        <aside class="notes">
+                            You're undoubtedly familiar with these fact cards from the past few years.
+                            <p>In Google land, this is the domain of the Knowledge Graph.</p>
+                            <p>Microsoft calls their version Bing Knowledge.</p>
+                        </aside>
+                    </section>
+                </section>
+				<section>
+                    <section>
+                        <h1>Knowledge Graph sources</h1>
+                        <ul>
+                            <li>Crawling the web</li>
+                            <li>Wikipedia / Wikidata</li>
+                            <li>Freebase</li>
+                            <li>Licensed data</li>
+                        </ul>
+                        <aside class="notes">
+                           web pages often include tabular data, as well as human-annotated
+                           structured data (OpenGraph, schema.org, and the like).
+                           <p>Text, images, and data extracted from Wikipedia made up much of
+                              the Knowledge Graph, now found in Wikidata. We'll talk more about Wikidata.</p>
+                        </aside>
+                    </section>
+                    <section data-background="images/freebase_1.png">
+                        <p class="bgb">
+                            <strong>Freebase</strong>: Open graph database launched in 2007
+                        </p>
+                        <aside class="notes">
+                            <p>Bulk-loaded with data from trusted sources, editable by individuals</p>
+                        </aside>
+                    </section>
+                    <section data-background="images/freebase_2.png">
+                        <span class="bgb">Focused on entities and relationships</span>
+                        <aside class="notes">
+                            <p>Here we're drilling down through <em>Fictional Universes</em></p>
+                        </aside>
+                    </section>
+                    <section data-background="images/freebase_3.png">
+                        <span class="bgb">Each type of entity was well-structured</span>
+                    </section>
+                    <section data-background="images/freebase_4.png">
+                        <span class="bgb">with browsable instances</span>
+                    </section>
+                    <section data-background="images/freebase_6.png">
+                        <ul>
+                            <li class="bgb fragment">Freely available with a great auto-suggest API</li>
+                            <li class="bgb fragment">Purchased by Google in 2010</li>
+                            <li style="text-align: right" class="bgb fragment">... sunset August 31, 2016</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph Search API</h2>
+                        <ul>
+                            <li>Google taketh away but also giveth:
+                                <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a></li>
+                        </ul>
+                    </section>
+                    <section data-background="images/kg_api_console.png">
+                    </section>
+                    <section data-background="images/kg_api_console.png">
+                        <ul>
+                            <li class="bgb fragment">Enable the API in the <a href="https://console.developers.google.com/apis/dashboard?project=knowledge-graph-searching">Google API Console</a></li>
+                            <li class="bgb fragment">Daily quota of 100,000 requests, 17,000 "Discovery" requests</li>
+                            <li class="bgb fragment">Undocumented result limit of 200; defaults to 20</li>
+                        </ul>
+                        <aside class="notes">
+                            I've never triggered a "discovery" request
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph Discovery Widget</h2>
+                        <pre><code>&lt;head&gt;
+  &lt;link type="text/css" rel="stylesheet"
+    href="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.css"&gt;
+  &lt;style&gt;.kge-search-picker { width: 25em; }&lt;/style&gt;
+  &lt;script type="text/javascript"
+    src="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form id='myform'&gt;
+    &lt;label&gt;Search: &lt;input type="text" id="myinput"&gt;&lt;/label&gt;
+  &lt;/form&gt;
+  &lt;script&gt;
+    KGSearchWidget(API_KEY, document.getElementById('myinput'), {});
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                        <p><a href="https://stuff.coffeecode.net/2016/ohiodevfest/kgdiscovery.html">Awesome live demo!</a></p>
+                        <aside class="notes">
+                            Enables you to find IDs for entities from the Knowledge Graph
+                            <p>Search can be constrained to particular types (from schema.org) like Book or Person</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>KG Search API: Requests</h2>
+                        <ul>
+                            <li>Same general constraints (type, limit) as the widget</li>
+                            <li>Can also request specific KG IDs</li>
+                        </ul>
+                        <pre><code>https://kgsearch.googleapis.com/v1/entities:search?query=john+kasich&amp;key=$API_KEY&amp;limit=1&amp;indent=True
+https://kgsearch.googleapis.com/v1/entities:search?ids=/m/02zzm_&amp;key=$API_KEY&amp;indent=True</code></pre>
+                    </section>
+                    <section>
+                        <h2>KG Search API: Results</h2>
+                        <pre><code>{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "goog": "http://schema.googleapis.com/",
+    "EntitySearchResult": "goog:EntitySearchResult",
+    "detailedDescription": "goog:detailedDescription",
+    "resultScore": "goog:resultScore",
+    "kg": "http://g.co/kg"
+  },
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/02zzm_",
+        "name": "John Kasich",
+        "@type": [
+          "Person",
+          "Thing"
+        ],
+        "description": "Governor of Ohio",
+        "image": {
+          "contentUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcRoou4pZKD6FoNaE71ngNlv4RGgUS46mgtin5YJtyEoh42CIs4x",
+          "url": "https://en.wikipedia.org/wiki/John_Kasich"
+        },
+        "detailedDescription": {
+          "articleBody": "John Richard Kasich is an American politician, the 69th and current Governor of Ohio. First elected in 2010 and re-elected in 2014, Kasich is a member of the Republican Party. His term is set to end by January 2019.\n",
+          "url": "https://en.wikipedia.org/wiki/John_Kasich",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        },
+        "url": "https://johnkasich.com"
+      },
+      "resultScore": 22.28808
+    }
+  ]
+}
+                        </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph Search API problems</h2>
+                        <ul>
+                            <li>Limited constraints = poor precision
+                                <ul>
+                                    <li class="fragment">Can't limit to name of the entity</li>
+                                </ul>
+                            </li>
+
+                            <li>Type mapping to schema.org loses more precision
+                                <ul>
+                                    <li class="fragment">A <em>Fictional character</em> is a <em>Thing</em>, not <em>Person</em></li>
+                                </ul>
+                            </li>
+                            <li>Simplistic entity results: no facts, no relationships
+                                <ul>
+                                    <li class="fragment"><em>When was John Kasich born?</em> - no birthdate returned</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Search cannot be constrained to just the name of the entity, so "Buffy" returns references found anywhere in the description of the entity</p>
+                            <p>Compounded by having to use https://schema.org/Thing for many old Freeweb types like "Fictional Universe" or "Fictional Character" -- "Person" filters out fictional characters, so books / tv shows / actors who played the role show up</p>
+                            <p>The results contain only disconnected entities; none of the relationships to other entities in the graph are reflected in the results. Many of the properties used in Google's results are missing (e.g. birth date)</p>
+                            <p>The Graph is a lie!</p>
+                            <p>One could download the 250GB Freebase data dump and reconstruct the relationships based on the IDs (most of the KG IDs were inherited from Freebase), but that data is now rapidly aging. Who's the President-Elect now?</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph: entity relations</h2>
+                        <blockquote>Note: The Knowledge Graph Search API returns only individual matching entities, rather than graphs of interconnected entities. If you need the latter, we recommend using data dumps from Wikidata instead.</blockquote>
+                        <span>(<a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a>)</span>
+                </section>
+				<section>
+                    <section><h1>Wikidata</h1></section>
+                </section>
+				<section>
+                    <section><h1>schema.org</h1></section>
+				<section>
 			</div>
 		</div>
 
