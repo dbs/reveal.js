@@ -26,6 +26,12 @@
 .bgb::before, .bgb::after {
     content: "\00a0";
 }
+.reveal pre code {
+  max-height: 500px;
+}
+.reveal a .highlight {
+  color: yellow;
+}
 </style>
 
 		<!-- Printing and PDF exports -->
@@ -71,7 +77,7 @@
                 </section>
 				<section>
                     <section>
-                        <h1>Knowledge Graph sources</h1>
+                        <h2>Knowledge Graph sources</h2>
                         <ul>
                             <li>Crawling the web</li>
                             <li>Wikipedia / Wikidata</li>
@@ -112,14 +118,14 @@
                             <li style="text-align: right" class="bgb fragment">... sunset August 31, 2016</li>
                         </ul>
                     </section>
+                </section>
+                <section>
                     <section>
                         <h2>Knowledge Graph Search API</h2>
                         <ul>
                             <li>Google taketh away but also giveth:
                                 <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a></li>
                         </ul>
-                    </section>
-                    <section data-background="images/kg_api_console.png">
                     </section>
                     <section data-background="images/kg_api_console.png">
                         <ul>
@@ -157,16 +163,23 @@
                     <section>
                         <h2>KG Search API: Requests</h2>
                         <ul>
-                            <li>Same general constraints (type, limit) as the widget</li>
-                            <li>Can also request specific KG IDs</li>
-                        </ul>
-                        <pre><code>https://kgsearch.googleapis.com/v1/entities:search?query=john+kasich&amp;key=$API_KEY&amp;limit=1&amp;indent=True
-https://kgsearch.googleapis.com/v1/entities:search?ids=/m/02zzm_&amp;key=$API_KEY&amp;indent=True</code></pre>
+                            <li>Same general constraints (type, limit) as the widget
+                                <ul>
+                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;query=john+kasich">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">query=john+kasich</span></a></li>
+                                </ul>
+                            </li>
+                            <li>Can also request specific KG IDs:
+                                <ul>
+                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;ids=/m/02zzm_">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">ids=/m/02zzm_</span></a></li>
+                                </ul>
+                            </li>
+                            <aside class="notes">
+                                Either way, the results look like the following:
+                            </aside>
                     </section>
                     <section>
                         <h2>KG Search API: Results</h2>
-                        <pre><code>{
-  "@context": {
+                        <pre><code>{ "@context": {
     "@vocab": "http://schema.org/",
     "goog": "http://schema.googleapis.com/",
     "EntitySearchResult": "goog:EntitySearchResult",
@@ -174,17 +187,13 @@ https://kgsearch.googleapis.com/v1/entities:search?ids=/m/02zzm_&amp;key=$API_KE
     "resultScore": "goog:resultScore",
     "kg": "http://g.co/kg"
   },
-  "@type": "ItemList",
-  "itemListElement": [
+  "@type": "ItemList", "itemListElement": [
     {
       "@type": "EntitySearchResult",
       "result": {
         "@id": "kg:/m/02zzm_",
         "name": "John Kasich",
-        "@type": [
-          "Person",
-          "Thing"
-        ],
+        "@type": [ "Person", "Thing" ],
         "description": "Governor of Ohio",
         "image": {
           "contentUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcRoou4pZKD6FoNaE71ngNlv4RGgUS46mgtin5YJtyEoh42CIs4x",
@@ -205,7 +214,19 @@ https://kgsearch.googleapis.com/v1/entities:search?ids=/m/02zzm_&amp;key=$API_KE
 
                     </section>
                     <section>
-                        <h2>Knowledge Graph Search API problems</h2>
+                        <h2>Knowledge Graph IDs</h2>
+                        <pre><code>"kg": "http://g.co/kg"
+...
+"@id": "kg:/m/02zzm_"</code></pre>
+                        <p>So: <a href="http://g.co/kg/m/02zzm_" target="_blank">http://g.co/kg/m/02zzm_</a></p>
+                        <p>URIs don't have to resolve, but it's nice when they do!</p>
+                        <aside class="notes">
+                            So the Knowledge Graph gives you IDs for entities that you can associate and augment with your own data.
+                            <p>Those are the same IDs you get back from the Discovery Widget.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph API problems</h2>
                         <ul>
                             <li>Limited constraints = poor precision
                                 <ul>
@@ -234,11 +255,132 @@ https://kgsearch.googleapis.com/v1/entities:search?ids=/m/02zzm_&amp;key=$API_KE
                     </section>
                     <section>
                         <h2>Knowledge Graph: entity relations</h2>
-                        <blockquote>Note: The Knowledge Graph Search API returns only individual matching entities, rather than graphs of interconnected entities. If you need the latter, we recommend using data dumps from Wikidata instead.</blockquote>
-                        <span>(<a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a>)</span>
+                        <blockquote>Note: The Knowledge Graph Search API
+                            returns only individual matching entities, rather
+                            than graphs of interconnected entities. If you need
+                            the latter, we recommend using data dumps from
+                            Wikidata instead.</blockquote>
+                        <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a>
+                        <aside class="notes">At least Google is upfront about this limitation!</aside>
+                    </section>
                 </section>
 				<section>
-                    <section><h1>Wikidata</h1></section>
+                    <section data-background="images/wikidata_home.png">
+                        <h1 class="fragment bgb">Wikidata</h1>
+                        <aside class="notes">
+                            A spiritual successor to Freebase, albeit with a non-profit backer (Wikimedia Foundation)
+                            <p>Graphs accessible in all of their glory!</p>
+                            <p>25 million entities with a focus on relationships</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Wikidata entity search</h2>
+                        <p>REST-based MediaWiki API <code>wbsearchentities</code> module:</p>
+                        <p><a href="https://www.wikidata.org/w/api.php?action=wbsearchentities&amp;search=john+kasich&amp;language=en">https://www.wikidata.org/w/api.php?action=wbsearchentities&amp;search=john+kasich&amp;language=en</a></p>
+                        <p><em>Restrictions</em>: Serial requests, or risk the ban hammer!</p>
+                        <aside class="notes">
+                            You can perform a simple search for entities in Wikidata using the MediaWiki
+                            API wbsearchentities module.
+                            <p>
+                            More complex searches (like "governor of ohio")
+                            return nothing, but to be fair the KG search
+                            results won't give you what you want either!
+                            </p>
+                            <p>
+                            Usage limits: Wikimedia API etiquette suggests
+                            making one request at a time, serially, to avoid
+                            overloading the service. Too much might get you
+                            banned.
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>wbsearchentities results</h2>
+                        <pre><code>{
+  "searchinfo": { "search": "john kasich" },
+  "search": [
+    {
+      "id": "Q69319",
+      "concepturi": "http://www.wikidata.org/entity/Q69319",
+      "url": "//www.wikidata.org/wiki/Q69319",
+      "title": "Q69319",
+      "pageid": 72036,
+      "label": "John Kasich",
+      "description": "American politician",
+      "match": {
+        "type": "label",
+        "language": "en",
+        "text": "John Kasich"
+      }
+    }
+  ]
+}</code></pre>
+                    </section>
+                    <section data-background="images/wikidata_entity_result.png">
+                      <div class="fragment bgb">
+                        <p><a href="http://www.wikidata.org/entity/Q69319" target="_blank"><span class="highlight">Human:</span> http://www.wikidata.org/entity/Q69319</a></p>
+                        <p><a href="http://www.wikidata.org/entity/Q69319.json" target="_blank"><span class="highlight">JSON:</span> http://www.wikidata.org/entity/Q69319.json</a></p>
+                      </div>
+                      <aside class="notes">
+                        The results from the Wikidata entity search are entities. Just like the
+                        Knowledge Graph, you can look up entities directly, using either content
+                        negotiation or suffixes to request different formats.
+                        <p>And you get relationships!</p>
+                        <p>References!</p>
+                        <p>Crazy JSON!</p>
+                      </aside>
+                    </section>
+                    <section>
+                      <h2>Relationships</h2>
+                      <ul>
+                        <p>With <code>https://www.wikidata.org/entity/</code> as prefix <code>wde:</code>, the entity <a href="https://www.wikidata.org/entity/Q69319">wde:Q69319</a> ("John Kasich"):</p>
+                        <ul>
+                          <li>has the property <a href="https://www.wikidata.org/entity/P569">wde:P569</a> (was born) with the literal value <code>"+1952-05-13T00:00:00Z";</code></li>
+                        </ul>
+                        <ul>
+                          <li>also has the property <a href="https://www.wikidata.org/entity/P39">wde:P39</a> ("positions held")</li>
+                          <li>with the array member <a href="https://www.wikidata.org/entity/Q13218630">wde:Q13218630</a> ("United States representative")</li>
+                          <li>having the property <a href="https://www.wikidata.org/entity/P580">wde:P580</a> ("start time")</li>
+                          <li>with the literal <code>datavalue/value/time</code> value of <code>+1983-01-03T00:00:00Z</code>.</li>
+                        </ul>
+                    </section>
+                    <section>
+                      <h2>Graph Relationships</h2>
+                      <p>More simply...</p>
+                      <table>
+                        <thead><tr><th>Subject</th><th>Predicate</th><th>Object</th></tr></thead>
+                        <tbody>
+                          <tr><td>wde:Q69319</td><td>wde:P569</td><td>"+1952-05-13T00:00:00Z"</td></tr>
+                          <tr><td>wde:Q69319</td><td>wde:P39</td><td>wde:Q13218630</td></tr>
+                          <tr><td>wde:Q13218630</td><td>wde:P580</td><td>"+1983-01-03T00:00:00Z"</td></tr>
+                        </tbody>
+                      </table>
+                    </section>
+                    <section>
+                      <h2>SPARQL endpoint</h2>
+                      <ul>
+                        <li>SPARQL is the primary and most powerful query interface for Wikidata</li>
+                        <li>And it's a standard: yay!</li>
+                        <li><code>SELECT / WHERE / GROUP BY / ORDER</code>... just like SQL right?</li>
+                        <li><em><strong>Ish</strong></em> - querying a graph instead of a relational database</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h2>SPARQL examples</h2>
+                      <p>We can pull some really awesome results from Wikidata:</p>
+                      <ul>
+                        <li><a href="http://tinyurl.com/z2t8vob">Pictures of state governors in the United States</a></li>
+                        <li><a href="http://tinyurl.com/hw4ye4j">Featuring birthdates</a></li>
+                        <li><a href="http://tinyurl.com/zpmjvx8">Let's plot this on a map</a></li>
+                      </ul>
+
+                      <aside class="notes">
+Okay that's cool. How do we get stuff into it?
+
+Also, performance can vary wildly or time out completely, so if you can pre-bake &amp; cache your requests you'll be way better off than ad-hoc queries
+                      </aside>
+                    </section>
+
                 </section>
 				<section>
                     <section><h1>schema.org</h1></section>
