@@ -32,6 +32,9 @@
 .reveal a .highlight {
   color: yellow;
 }
+table.smaller tbody tr td, p.smaller {
+    font-size: 80%;
+}
 </style>
 
 		<!-- Printing and PDF exports -->
@@ -367,24 +370,310 @@
                     </section>
                     <section>
                       <h2>SPARQL examples</h2>
-                      <p>We can pull some really awesome results from Wikidata:</p>
+                      <p>We can pull some awesome results from Wikidata:</p>
                       <ul>
-                        <li><a href="http://tinyurl.com/z2t8vob">Pictures of state governors in the United States</a></li>
-                        <li><a href="http://tinyurl.com/hw4ye4j">Featuring birthdates</a></li>
-                        <li><a href="http://tinyurl.com/zpmjvx8">Let's plot this on a map</a></li>
+                        <li><a href="http://tinyurl.com/z2t8vob" target="_blank">Pictures of state governors in the United States</a></li>
+                        <li><a href="http://tinyurl.com/hw4ye4j" target="_blank">Featuring birthdates</a></li>
+                        <li><a href="http://tinyurl.com/zpmjvx8" target="_blank">We're on a <s>boat</s> map!</a></li>
+                        <li><a href="http://tinyurl.com/j6hq7ks" target="_blank">Bands formed in Cincinnati</a></li>
+                        <li><a href="http://tinyurl.com/jxbh84w" target="_blank">Canadian premiers</a></li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h2>SPARQL endpoint</h2>
+                      <ul>
+                          <li>URL: <a href="https://query.wikidata.org/sparql">https://query.wikidata.org/sparql?query=&lt;QUERY&gt;</a></li>
+                          <li>30-second timeout</li>
+                          <li>Available formats:
+                              <table class="smaller">
+<tbody><tr>
+<th>Format</th>
+<th>HTTP Header</th>
+<th>GET param</th>
+</tr>
+<tr>
+<td>XML</td>
+<td>Accept: application/sparql-results+xml</td>
+<td>format=xml</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>Accept: application/sparql-results+json</td>
+<td>format=json</td>
+</tr>
+<tr>
+<td>TSV</td>
+<td>Accept: text/tab-separated-values</td>
+<td></td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>Accept: text/csv</td>
+<td></td>
+</tr>
+</tbody></table>
+                          </li>
                       </ul>
 
                       <aside class="notes">
-Okay that's cool. How do we get stuff into it?
+                          You can use GET requests to query the SPARQL endpoint directly.
+                          <p>
+                          Also, performance can vary wildly or time out
+                          completely, so if you can pre-bake &amp; cache your
+                          requests you'll be way better off than ad-hoc queries
+                          </p>
+                          </p>
+                          Okay that's cool. How do we get stuff into it?
+                          </p>
+                      </aside>
+                    </section>
+                    <section>
+                      <h2>Getting data into Wikidata</h2>
+                      <ul>
+                          <li>Manual edits</li>
+                          <li>Bulk loading (with agreement)--<a href="http://dl.acm.org/citation.cfm?id=2874809">like Freebase</a>!</li>
+                          <li>APIs and bots:
+                              <ul>
+                                  <li><a href="https://www.wikidata.org/w/api.php?action=help&modules=wbcreateclaim" target="_blank">wbcreateclaim </a> to add new claims</li>
+                                  <li><a href="https://www.wikidata.org/w/api.php?action=help&modules=wbeditentity" target="_blank">wbeditentity</a> to add entities</li>
+                              </ul>
+                          </li>
+                      </ul>
+                      <p><a href="https://www.wikidata.org/wiki/Wikidata:Notability">Notability requirements</a> still apply</p>
+                      <aside class="notes">
+                        The great Freebase to Wikidata migration created 17.5 million claims and 1.5 million IDs.
+                        <p>
+                          The create/edit APIs seem a bit messy to this (current) outsider.
+                        </p>
+                      </aside>
+                    </section>
+                    <section>
+                      <h2>A <a href="https://www.wikidata.org/wiki/Wikidata:Fourth_Birthday" target="_blank">typical four-year old</a>?</h2>
+                      <ul>
+                        <li>Not <em>just</em> cute anymore</li>
+                        <li>Still growing rapidly<span class="fragment">: 25 milion entities</span></li>
+                        <li>A little unstable<span class="fragment">: queries can and do break</span></li>
+                        <li>Will benefit from guidance</li>
+                      </ul>
+                      <aside class="notes">
+                        For example, tackling music festivals: locations / directors / artists - huge possibilities for growth!
+                      </aside>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>schema.org</h1>
+                        <h2>Decentralized data publishing</h2>
+                        <aside class="notes">
+                            Just as the web is one giant decentralized library
+                            of documents, so too can it act as a giant
+                            decentralized database.
+                            <p>
+                            Using RDFa, Microdata, or JSON-LD, each web
+                            page can also express machine-readable data; this
+                            helps machines figure out what's important about
+                            the page.
+                            </p>
+                        </aside>
+                    </section>
+                    <section data-background="images/modal_news.png">
+                      <h2 class="fragment bgb"><a href="https://www.google.ca/#q=modal&tbm=nws" target="_blank">Introducing modal news!</a></h2>
+                      <aside class="notes">
+                        This is a cautionary tale: if you don't supply
+                        structured data, machines have to make a best guess at
+                        interpreting your page content. In this case, the modal
+                        UI is inserted dynamically as the first node of the
+                        DOM, and now that search engines can render dynamic
+                        HTML, we get this sort of modal mess.
+                      </aside>
+                    </section>
+                    <section>
+                        <h2><a href="http://ogp.me" target="_blank">OpenGraph Protocol</a></h2>
+                        <pre><code>&lt;head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# medium-com: http://ogp.me/ns/fb/medium-com#"&gt;
+  &lt;title&gt;LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH – The Owl Mag – Medium&lt;/title&gt;
+  &lt;meta name="title" content="LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH"&gt;
+  &lt;meta property="og:title" content="LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH"&gt;
+  &lt;meta property="og:url" content="https://medium.com/the-owl-mag/live-review-midpoint-music-festival-cincinnati-oh-a922af156600"&gt;
+  &lt;meta property="og:image" content="https://cdn-images-1.medium.com/proxy/1*MXL-j6S8fTEd8UFP_foEEw.png"&gt;
+  &lt;meta name="description" content="Cincinnati is not a music city by any means. Numerous bands skip the city in lieu of Columbus, OH on national tours and the city’s hottest music venues reside over the river in Kentucky. Midpoint…"&gt;
+  &lt;meta property="og:description" content="Cincinnati is not a music city by any means. Numerous bands skip the city in lieu of Columbus, OH on national tours and the city’s hottest music venues reside over the river in Kentucky. Midpoint…"&gt;
+  &lt;meta property="og:site_name" content="Medium"&gt;
+  &lt;meta property="og:type" content="article"&gt;
+&lt;/head&gt;</code></pre>
+                    </section>
+                    <section>
+                        <h2><a href="https://dev.twitter.com/cards/overview" target="_blank">Twitter Cards</a></h2>
+                        <pre><code>&lt;head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# medium-com: http://ogp.me/ns/fb/medium-com#"&gt;
+  &lt;title&gt;LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH – The Owl Mag – Medium&lt;/title&gt;
+  &lt;meta name="title" content="LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH"&gt;
+  &lt;meta name="description" content="Cincinnati is not a music city by any means. Numerous bands skip the city in lieu of Columbus, OH on national tours and the city’s hottest music venues reside over the river in Kentucky. Midpoint…"&gt;
+  &lt;meta name="twitter:description" content="Cincinnati is not a music city by any means. Numerous bands skip the city in lieu of Columbus, OH on national tours and the city’s hottest music venues reside over the river in Kentucky. Midpoint…"&gt;
+  &lt;meta name="twitter:image:src" content="https://cdn-images-1.medium.com/proxy/1*MXL-j6S8fTEd8UFP_foEEw.png"&gt;
+  &lt;meta name="twitter:site" content="@Medium"&gt;
+&lt;/head&gt;</code></pre>
 
-Also, performance can vary wildly or time out completely, so if you can pre-bake &amp; cache your requests you'll be way better off than ad-hoc queries
+                        <aside class="notes">
+                          OpenGraph Protocol and Twitter Cards jam everything into the
+                          &lt;head&gt;, very simplistic (typically title, description, image)
+                        </aside>
+                    </section>
+                    <section>
+                      <h2><a href="https://schema.org" target="_blank">schema.org</a></h2>
+                      <pre><code class="json">&lt;head&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "image": {
+      "@type": "ImageObject",
+      "width": 1920,
+      "height": 534,
+      "url": "https://cdn-images-1.medium.com/max/1920/1*5ztbgEt4NqpVaxTc64C-XA.png"
+    },
+    "datePublished": "2011-09-27T16:45:34.000Z",
+    "dateModified": "2016-04-19T20:30:07.176Z",
+    "headline": "LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH",
+    "name": "LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH",
+    "keywords": [
+      "Review"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "The Owl Mag",
+      "url": "https://medium.com/@theowlmag"
+    },
+    "creator": [
+      "The Owl Mag"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Owl Mag",
+      "url": "https://medium.com/the-owl-mag",
+      "logo": {
+        "@type": "ImageObject",
+        "width": 215,
+        "height": 60,
+        "url": "https://cdn-images-1.medium.com/max/215/1*5ztbgEt4NqpVaxTc64C-XA.png"
+      }
+    },
+    "mainEntityOfPage": "http://www.theowlmag.com/live-reviews/midpoint-music-festival-cincinnati-oh/"
+  }
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+                      <aside class="notes">Also embedded in the Medium markup</aside>
+                    </section>
+                    <section>
+                      <h2><a href="https://schema.org" target="_blank">schema.org (inline RDFa)</a></h2>
+                      <pre><code>&lt;body vocab="http://schema.org/" typeof="NewsArticle"&gt;
+  &lt;h1 property="name headline"&gt;LIVE REVIEW: Midpoint Music Festival — Cincinnati, OH&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;b&gt;Published by&lt;/b&gt;
+    &lt;em property="publisher" typeof="Organization"&gt;
+      &lt;a href="https://medium.com/the-owl-mag" property="url"&gt;
+        &lt;span property="name"&gt;The Owl Mag&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/em&gt;
+    &lt;span property="datePublished" content="2011-09-27T16:45:34.000Z"&gt;2011-09-27&lt;/span&gt;
+  &lt;div&gt;
+  &lt;p property="description"&gt;
+  Cincinnati is not a music city by any means. Numerous bands skip the city in lieu of Columbus, OH on national tours and the city’s hottest music venues reside over the river in Kentucky. Midpoint...
+  &lt;/p&gt;
+  &lt;div property="image" typeof="ImageObject"&gt;
+    &lt;img src="https://cdn-images-1.medium.com/max/1920/1*5ztbgEt4NqpVaxTc64C-XA.png" /&gt;
+    &lt;meta property="width" content="1920" /&gt;
+    &lt;meta property="height" content="534" /&gt;
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+                      <aside class="notes">
+                        Or you can avoid the duplication with inline
+                        annotation method (RDFa or microdata).
                       </aside>
                     </section>
 
-                </section>
+                    <section>
+                      <h2>Deep, rich structrure</h2>
+                      <ul>
+                        <li>584 types, 846 properties</li>
+                        <li>Covering a broad set of domains:
+                          <ul>
+                            <li>commerce</li>
+                            <li>culture</li>
+                            <li>events</li>
+                            <li>health</li>
+                            <li>organizations</li>
+                          </ul>
+                        </li>
+                        <li>Run as a <a href="https://www.w3.org/community/schemaorg/">W3C Community Group</a></li>
+                        <li>Extensible</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h2>Enthusiasm++</h2>
+                      <ul>
+                        <li>Joined the Bibliographic Extension community
+                          <ul>
+                            <li>Fleshed out journals/magazines</li>
+                            <li>Represented library holdings as Product/Offers</li>
+                            <li>Dragged comics across the finish line</li>
+                          </ul>
+                        </li>
+                        <li>Implemented schema.org support in library systems</li>
+                        <li>Evangelized schema.org at conferences and articles</li>
+                        <li>Aggregated library linked open data for analysis and reuse</li>
+                      </ul>
+                      <aside class="notes">
+                        It's demonstrably the superior solution!
+                      </aside>
+                    </section>
+                    <section>
+                      <h2>Result?</h2>
+                      <ul>
+                        <li>Through my <a href="https://dialled.ca">DIALLED.ca</a> project,
+                        I checked over 4,000 library home pages in Canada</li>
+                        <li class="fragment">525 had OpenGraph Protocol title attributes</a></li>
+                        <li class="fragment">215 had <a href="http://schema.org/name">schema.org/name</a> attributes</a></li>
+                        <li class="fragment">10 had Twitter Cards</a></li>
+                        <li class="fragment">5 used <a href="http://schema.org/Library">schema.org/Library</a></li>
+                      </ul>
+                      <h2 class="fragment">Despair</h2>
+                      <aside class="notes">
+                        <p>
+                        The majority of that data was CMS template defaults. A lot of it pretty bad.
+                        </p>
+                        I'm not bitter though. I built a very nice crawler on
+                        top of RDFLib that extracts RDFa, microdata, and
+                        JSON-LD, so I can play with that...
+                      </aside>
+                    </section>
+                    <section>
+                      <h2>Adoption from 2014 to 2015</h2>
+                      <blockquote>Big data makes common schemas even more
+                        necessary.<br />[...]<br />In this sample 31.3 percent
+                        of pages have Schema.org markup, up from 22 percent one
+                        year ago.
+                      </blockquote>
+                      <p class="smaller">Guha, R. V., Brickley, D., &amp;
+                        Macbeth, S. (2016). Schema.org: Evolution of structured
+                        data on the web. <em>Communications of the ACM</em>,
+                        <em>59</em>(2), 44-51. (<a
+                        href="http://cacm.acm.org/magazines/2016/2/197422-schema-org/fulltext">http://cacm.acm.org/magazines/2016/2/197422-schema-org/fulltext</a>)
+                      </p>
+                    </section>
+                    <section>
+                      <h2>The semantic web <em>is</em> alive</h2>
+                      <ul>
+                        <li>schema.org data is very rich in some communities</li>
+                        <li>Crawling and aggregating schema.org data can make sense</li>
+                        <li>That can feed into wikidata</li>
+                        <li>We can pull from and build on top of wikidata</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h2>Questions?</h2>
+                      <p>Please direct them to <s>my SPARQL endpoint</s> the microphone</p>
+                    </section>
 				<section>
-                    <section><h1>schema.org</h1></section>
-				<section>
+
 			</div>
 		</div>
 
