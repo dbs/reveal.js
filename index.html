@@ -209,6 +209,55 @@ flavours.forEach(function(flavour) {
                             Drag and drop doesn't work with mobile browsers.
                         </aside>
                     </section>
+                    <section>
+                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2004-)</h2>
+                        <blockquote>
+                        The Dojo Toolkit began in 2004 by a group of
+                        like-minded JavaScript engineers that were tired
+                        of reinventing the wheel and hacking around browser
+                        inconsistencies.
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
+                        <blockquote>
+                        in "modern" Dojo, if you are about to access
+                        something in the global namespace STOP because
+                        you are doing something wrong
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
+                        <ul>
+                            <li>Dojo packages functionality into modules:
+                            <ul>
+                                <li onclick="revealCode('dojoById');"><code>dojo/dom</code> for selecting elements by ID!</li>
+                                <li onclick="revealCode('dojoQuery');"><code>dojo/query</code> for CSS selector syntax!</li>
+                                <li onclick="revealCode('dojoRequest');"><code>dojo/request</code> for cross-browser Ajax!</li>
+                            </ul></li>
+                        </ul>
+                        <pre id="dojoById" class="hidden"><code>require(["dojo/dom", "dojo/domReady!"], function(dom){
+  dom.byId("helloworld").innerHTML = "Hello New World!";
+});</code></pre>
+                        <pre id="dojoQuery" class="hidden"><code>require(["dojo/query", "dojo/dom", "dojo/domReady!"],
+  function (query, dom) {
+    // retrieve an array of nodes with the ID "list"
+    var list = query("#list")[0];
+  }
+)
+</code></pre>
+                        <pre id="dojoRequest" class="hidden"><code>require(["dojo/request"], function(request){
+  request.get("something.json", {
+    handleAs: "json"
+  }).then(function(response){
+    console.log("response:", response);
+  }, function(err){
+    console.log("error:", err);
+  });
+});</code></pre>
+
+                    </section>
                 </section>
 			</div>
 		</div>
