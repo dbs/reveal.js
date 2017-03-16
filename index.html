@@ -4,10 +4,44 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>JavaScript libraries: early days</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
+
+<style>
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    text-transform: none;
+}
+.reveal img.inline-logo {
+    max-height: 2em;
+    max-width: 2em;
+    border: none;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+.reveal pre.hidden {
+    display:none;
+}
+.reveal pre.show {
+    display:pre;
+}
+</style>
+<script>
+function revealCode(showId) {
+    let matches = document.querySelectorAll('.reveal pre.show');
+    for (let match of matches) {
+        match.className = 'hidden';
+    }
+    document.getElementById(showId).className = 'show';
+    Reveal.sync();
+}
+</script>
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +58,145 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section>
+                    <h1>JavaScript libraries:</h1>
+                    <h2>How did we get here?</h2>
+                    <p>Dan Scott (<a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a>)</p>
+                    <p>Associate Librarian,
+                        <span style="font-size: 60%">Chair of the Library &amp; Archives,
+                            <span style="font-size: 60%">Systems Librarian, …<span></span>
+                    </p>
+                </section>
+				<section>
+                    <section>
+                        <h2>Browser Wars!</h2>
+                        <ul>
+                            <li>Netscape Navigator (1994-2007<a href="http://news.bbc.co.uk/2/hi/technology/7270583.stm">[0]</a>)</li>
+                            <li>Internet Explorer (1995-<a href="https://support.microsoft.com/en-us/help/969393/information-about-internet-explorer-versions">[1]</a>)</li>
+                            <li>Apple Safari (2003-<a href="http://www.macworld.com/article/1008698/safari.html">[2]</a>)</li>
+                            <li>Mozilla Firefox (2004-<a href="https://www.mozilla.org/en-US/about/history/details/">[4</a>,<a href="https://wiki.mozilla.org/Timeline">5]</a>)</li>
+                            <li>Google Chrome (2008-<a href="https://arstechnica.com/information-technology/2008/12/google-anticipates-a-bright-and-shiny-future-for-chrome/">[6]</a>)</li>
+                        </ul>
+                        <aside class="notes">
+                            And let's not forget about Konqueror (the base for Safari), Midori, Epiphany, and other lesser-known browsers.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>JavaScript vs. JScript… ECMAScript!</h2>
+                        <h3>1, 2, 3, 4, 5, 6/2015, 2016, 2017</h3>
+                    </section>
+                    <section>
+                        <h2>Array.prototype.forEach()</h2>
+                        <ul>
+                            <li>Executes a function once for each array element<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">[1]</a>
+                                <pre><code>var flavours = ['orange', 'lemon'];
+var styles = ['ice cream', 'sherbet'];
+
+flavours.forEach(function(flavour) {
+    for (let style of styles) {
+    	console.log(flavour + ' ' + style);
+    }
+});</code></pre>
+                            </li>
+                            <li>Added to Firefox 1.5 in 2005<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">[2]</a></li>
+                            <li class="fragment">... and to Internet Explorer 9 in 2011<a href="https://docs.microsoft.com/en-us/scripting/javascript/reference/foreach-method-array-javascript">[3]</a>,</li>
+                            <li class="fragment">... but only in <em>Quirks</em> mode</li>
+                        </ul>
+                        <aside class="notes">
+                            Even with standardization, you can't count on standard JavaScript language features being present in any given browser
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>DOM DOM DOM DOM…</h2>
+                        <ul>
+                            <li><abbr title="Document Object Model">DOM</abbr> is a <a href="https://www.w3.org/TR/domcore/">W3C standard</a></li>
+                            <li>but standards implementation progress is uneven</li>
+                            <li><a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> did not arrive until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
+                        </ul>
+                        <aside class="notes">
+                            And you can't count on standard browser features being present in any given browser
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Performance is variable</h2>
+                        <ul>
+                            <li>JavaScript engines include:
+                                <ul>
+                                    <li><img src="images/mozilla_firefox.png" alt="Mozilla Firefox logo" class="inline-logo" />SpiderMonkey, TraceMonkey</li>
+                                    <li><img src="images/microsoft_edge.png" alt="Microsoft IE / Edge logo" class="inline-logo" />Chakra</li>
+                                    <li><img src="images/google_chrome.png" alt="Google Chrome logo" class="inline-logo" />V8</li>
+                                    <li><img src="images/apple_safari.png" alt="Apple Safari logo" class="inline-logo" />SquirrelFish / FTL</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            And JavaScript engine implementations vary widely, with different optimizations.
+                            <p>
+                                For example: Early versions of IE were pathologically slow at string concatenation
+                            </p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Document all the things(?)</h2>
+                        <ul>
+                            <li>Sites sprang up to help harried developers, like:
+                                <ul>
+                                    <li><a href="http://quirksmode.org/">quirksmode.org</a> (stale as of 2013)</li>
+                                    <li><a href="http://caniuse.com/">caniuse.com</a></li>
+                                </ul>
+                            </li>
+                            <li>Massively helpful; occasionally entertaining</li>
+                            <li>…but reimplementing workarounds is not fun/financially wise</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Libraries = encoded, shared wisdom</h2>
+                        <ul>
+                            <li>Librarians do the hard work so you don't have to!</li>
+                        </ul>
+                        <aside class="notes">
+                            Like any other programming language, JavaScript
+                            libraries collect routines that either provide
+                            convenience methods or optimized approaches to
+                            solving common problems.
+                        </aside>
+                    </section>
+                    <section>
+                        <p><a href="http://prototypejs.org" alt="Prototype.js logo" target="_blank"><img src="images/prototype.png" style="vertical-align: middle;" /></a> (2005-2015)</p>
+                        <ul>
+                            <li onclick="revealCode('prototypeId');"><code>$()</code> for selecting elements by ID!</li>
+                            <li onclick="revealCode('prototypeCss');"><code>$$()</code> for CSS selector syntax!</li>
+                            <li onclick="revealCode('prototypeAjax');"><code>Ajax.Request</code> for cross-browser Ajax!</li>
+                        </ul>
+                        <pre id="prototypeId" class="hidden"><code>$('itemId').hide();</code></pre>
+                        <pre id="prototypeCss" class="hidden"><code>$('div img.loading').hide();</code></pre>
+                        <pre id="prototypeAjax" class="hidden"><code>new Ajax.Request('/some_url', {
+  method:'get',
+  onSuccess: function(transport) {
+    var response = transport.responseText || "no text";
+    alert("Success! \n\n" + response);
+  },
+  onFailure: function() { alert('Something went wrong...'); }
+});</code></pre>
+                        <aside class="notes">
+                            <p>So yes, here we have global namespace pollution.</p>
+                            <p>From the web site:</p>
+                            <blockquote>
+                                Prototype takes the complexity out of
+                                client-side web programming. Built to solve
+                                real-world problems, it adds useful extensions
+                                to the browser scripting environment and
+                                provides elegant APIs around the clumsy
+                                interfaces of Ajax and the Document Object
+                                Model.
+                            </blockquote>
+                        </aside>
+
+                    </section>
+
+                </section>
 			</div>
 		</div>
 
