@@ -19,11 +19,13 @@
     text-transform: none;
 }
 .reveal img.inline-logo {
-    max-height: 2em;
-    max-width: 2em;
     border: none;
     vertical-align: middle;
     margin-right: 0.5em;
+}
+.reveal img.inline-logo.small {
+    max-height: 2em;
+    max-width: 2em;
 }
 .reveal pre.hidden {
     display:none;
@@ -122,10 +124,10 @@ flavours.forEach(function(flavour) {
                         <ul>
                             <li>JavaScript engines include:
                                 <ul>
-                                    <li><img src="images/mozilla_firefox.png" alt="Mozilla Firefox logo" class="inline-logo" />SpiderMonkey, TraceMonkey</li>
-                                    <li><img src="images/microsoft_edge.png" alt="Microsoft IE / Edge logo" class="inline-logo" />Chakra</li>
-                                    <li><img src="images/google_chrome.png" alt="Google Chrome logo" class="inline-logo" />V8</li>
-                                    <li><img src="images/apple_safari.png" alt="Apple Safari logo" class="inline-logo" />SquirrelFish / FTL</li>
+                                    <li><img src="images/mozilla_firefox.png" alt="Mozilla Firefox logo" class="inline-logo small" />SpiderMonkey, TraceMonkey</li>
+                                    <li><img src="images/microsoft_edge.png" alt="Microsoft IE / Edge logo" class="inline-logo small" />Chakra</li>
+                                    <li><img src="images/google_chrome.png" alt="Google Chrome logo" class="inline-logo small" />V8</li>
+                                    <li><img src="images/apple_safari.png" alt="Apple Safari logo" class="inline-logo small" />SquirrelFish / FTL</li>
                                 </ul>
                             </li>
                         </ul>
@@ -164,7 +166,8 @@ flavours.forEach(function(flavour) {
                         </aside>
                     </section>
                     <section>
-                        <p><a href="http://prototypejs.org" alt="Prototype.js logo" target="_blank"><img src="images/prototype.png" style="vertical-align: middle;" /></a> (2005-2015)</p>
+                        <p><a href="http://prototypejs.org" target="_blank"><img src="images/prototype.png" alt="Prototype.js logo" style="vertical-align: middle;" /></a> (2005-2015)</p>
+                        <p>Originally developed with Ruby on Rails</p>
                         <ul>
                             <li onclick="revealCode('prototypeId');"><code>$()</code> for selecting elements by ID!</li>
                             <li onclick="revealCode('prototypeCss');"><code>$$()</code> for CSS selector syntax!</li>
@@ -193,9 +196,19 @@ flavours.forEach(function(flavour) {
                                 Model.
                             </blockquote>
                         </aside>
-
                     </section>
-
+                    <section>
+                        <p><a href="http://script.aculo.us" target="_blank"><img src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" /></a> (2005-2010)</p>
+                        <p>UI library, building on Prototype.js</p>
+                        <ul>
+                            <li>Drag and drop interaction</li>
+                            <li>Autocompletion text widget</li>
+                            <li>Animation framework</li>
+                        </ul>
+                        <aside class="notes">
+                            Drag and drop doesn't work with mobile browsers.
+                        </aside>
+                    </section>
                 </section>
 			</div>
 		</div>
