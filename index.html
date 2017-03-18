@@ -37,10 +37,15 @@
 <script>
 function revealCode(showId) {
     let matches = document.querySelectorAll('.reveal pre.show');
-    for (let match of matches) {
-        match.className = 'hidden';
+    if (document.getElementById(showId).className == 'show') {
+        document.getElementById(showId).className = 'hidden';
     }
-    document.getElementById(showId).className = 'show';
+    else {
+        for (let match of matches) {
+            match.className = 'hidden';
+        }
+        document.getElementById(showId).className = 'show';
+    }
     Reveal.sync();
 }
 </script>
@@ -94,12 +99,15 @@ function revealCode(showId) {
                         <h2>This page best viewed with...</h2>
                         <ul>
                             <li><a href="http://www.mshealthcareers.com/bestview.htm">Mississippi Health Careers Center</a></li>
-                            <iframe style="width:800px;height:400px;" data-src="http://www.mshealthcareers.com/bestview.htm"></iframe>
+                            <!-- Avoid insecure browser warning
+                                <iframe style="width:800px;height:400px;" data-src="http://www.mshealthcareers.com/bestview.htm"></iframe>
+                            -->
                         </ul>
                     </section>
                     <section>
                         <h2>JavaScript vs. JScript… ECMAScript!</h2>
                         <h3>1, 2, 3, 4, 5, 6/2015, 2016, 2017</h3>
+                        <p>Thank you <a href="https://www.ecma-international.org/publications/standards/Ecma-262-arch.htm"><abbr title="European Computer Manufacturer's Association">ECMA</abbr></a> TC 39!</p>
                     </section>
                     <section>
                         <h2>Array.prototype.forEach()</h2>
@@ -127,7 +135,7 @@ flavours.forEach(function(flavour) {
                         <ul>
                             <li><abbr title="Document Object Model">DOM</abbr> is a <a href="https://www.w3.org/TR/domcore/">W3C standard</a></li>
                             <li>but standards implementation progress is uneven</li>
-                            <li><a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> did not arrive until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
+                            <li>Microsoft did not add <a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
                         </ul>
                         <aside class="notes">
                             And you can't count on standard browser features being present in any given browser
@@ -221,6 +229,29 @@ flavours.forEach(function(flavour) {
                         </ul>
                         <aside class="notes">
                             Drag and drop doesn't work with mobile browsers.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2><a href="https://modernizr.com"><img src="images/modernizr.png" alt="Modernizr" class="inline-logo" style="background:white;margin-right:0em" /></a></h2>
+                        <ul>
+                            <li>Minimalist browser feature detection library <a href="http://farukat.es/journal/2009/07/271-proudly-announcing-modernizr/">launched in 2009</a>
+                                <ul>
+                                    <li onclick="revealCode('modernizrClasses');"><code>&lt;html&gt;</code> element gets a <code>class</code> attribute of <em><code>(no-)feature-name</code></em> for each feature</em>
+<pre id="modernizrClasses" class="hidden"><code>&lt;html class="gamepads video webgl no-emoji"&gt;</code></pre>
+                                    </li>
+                                    <li onclick="revealCode('modernizrProgrammatic');">Programmatic access via a global <code>Modernizr</code> object
+<pre id="modernizrProgrammatic" class="hidden"><code data-trim>if (Modernizr.awesomeNewFeature) {
+  showOffAwesomeNewFeature();
+} else {
+  getTheOldLameExperience();
+}</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Supports custom builds for a subset of features</li>
+                        </ul>
+                        <aside class="notes">
+                            Because yes the browser feature support situation has been that bad for this long.
                         </aside>
                     </section>
                     <section>
