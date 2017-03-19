@@ -311,6 +311,42 @@ flavours.forEach(function(flavour) {
                 </section>
                 <section>
                     <section>
+                        <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
+                        <p>Originally developed by John Resig</p>
+                        <ul>
+                            <li onclick="revealCode('jquerySelector');"><code>$()</code> for selecting elements by CSS selector</li>
+                            <li onclick="revealCode('jqueryAjax');"><code>$.ajax</code> for cross-browser Ajax!</li>
+                        </ul>
+                        <pre id="jquerySelector" class="hidden"><code data-trim>
+$('#itemId').hide("slow");
+$('body').innerHtml =
+    "&lt;h1&gt;Good news, everyone!&lt;/h1&gt;";
+</code></pre>
+                        <pre id="jqueryAjax" class="hidden"><code data-trim>
+$.ajax({
+    url: "/some_url",
+    type: "GET",
+    data: { id: 123 },
+    dataType : "json",
+}).done(function(response) {
+    console.log("response:", response);
+}).fail(function(xhr, status, err) {
+    alert('Something went wrong...');
+    console.log("Error: " + err);
+    console.dir(xhr);
+}).always(function( xhr, status ) {
+    alert("The request is complete!");
+});
+</code></pre>
+
+                    </section>
+                    <section>
+                        <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
+                        <iframe style="width:640px;height:400px;background:white" data-src="jquery_example.html"></iframe>
+                    </section>
+                </section>
+                <section>
+                    <section>
                         <h2>Loading up your toolbox</h2>
                     </section>
                     <section>
