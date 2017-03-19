@@ -27,16 +27,16 @@
     max-height: 2em;
     max-width: 2em;
 }
-.reveal pre.hidden {
+.reveal .hidden {
     display:none;
 }
-.reveal pre.show {
+.reveal .show {
     display:pre;
 }
 </style>
 <script>
 function revealCode(showId) {
-    let matches = document.querySelectorAll('.reveal pre.show');
+    let matches = document.querySelectorAll('.reveal .show');
     if (document.getElementById(showId).className == 'show') {
         document.getElementById(showId).className = 'hidden';
     }
@@ -61,6 +61,7 @@ function revealCode(showId) {
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -303,6 +304,8 @@ flavours.forEach(function(flavour) {
 });</code></pre>
 
                     </section>
+                    <section>
+                    </section>
                 </section>
                 <section>
                     <section>
@@ -342,6 +345,30 @@ flavours.forEach(function(flavour) {
                                     <li><a href="https://developer.mozilla.org/en-US/docs/Tools">Firefox DevTools</a></li>
                                     <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide">Edge Dev Tools</a></li>
                                     <li><a href="https://developer.apple.com/safari/tools/">Safari Web Inspector</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Dev tools: Console</h2>
+                        <ul>
+                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Network</strong></li>
+                            <li><em onclick="revealCode('jscript_error');">Where all the warnings and errors hide</em> - log with <code>console.error()</code>, <code>console.info()</code>, <code>console.log()</code>
+                                <center id='jscript_error' class="hidden">
+                                    <h3 style="margin-bottom: 0.2em">So much better than...</h3>
+                                    <img src="images/explorer_jscript_error.gif" class="inline-logo" style="margin:0px" />
+                                    <div style="font-size:30%;">Image courtesy <a href="http://ganex-t.blogspot.ca/2009_11_01_archive.html">http://ganex-t.blogspot.ca/2009_11_01_archive.html</a></div>
+                                </center>
+                            </li>
+                            <li>Run arbitrary JavaScript:
+                                <ul>
+                                    <li><code>alert(2 + 2)</code></li>
+                                </ul>
+                            </li>
+                            <li>Inspect and modify objects and properties:
+                                <ul>
+                                    <li><code>window.history.back()</code></li>
+                                    <li><code>window.location.href = 'https://laurentian.ca'</code></li>
                                 </ul>
                             </li>
                         </ul>
