@@ -188,6 +188,8 @@ flavours.forEach(function(flavour) {
                             solving common problems.
                         </aside>
                     </section>
+                </section>
+                <section>
                     <section>
                         <p><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" style="vertical-align: middle;" /></a> (2005-2015)</p>
                         <p>Originally developed with Ruby on Rails</p>
@@ -232,6 +234,8 @@ flavours.forEach(function(flavour) {
                             Drag and drop doesn't work with mobile browsers.
                         </aside>
                     </section>
+                </section>
+                <section>
                     <section>
                         <h2><a href="https://modernizr.com"><img data-src="images/modernizr.png" alt="Modernizr" class="inline-logo" style="background:white;margin-right:0em" /></a></h2>
                         <ul>
@@ -255,6 +259,8 @@ flavours.forEach(function(flavour) {
                             Because yes the browser feature support situation has been that bad for this long.
                         </aside>
                     </section>
+                </section>
+                <section>
                     <section>
                         <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2004-)</h2>
                         <blockquote>
@@ -294,7 +300,11 @@ flavours.forEach(function(flavour) {
 )
 </code></pre>
                         <pre id="dojoRequest" class="hidden"><code>require(["dojo/request"], function(request){
-  request.get("something.json", {
+  request.get("/some_url", {
+    data: {
+        id: 123
+    },
+    // The type of data we expect back
     handleAs: "json"
   }).then(function(response){
     console.log("response:", response);
