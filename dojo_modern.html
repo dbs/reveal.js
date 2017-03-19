@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Modern Dojo: no globals!</title>
+  </head>
+  <body>
+    <h1>Modern Dojo: no globals!</h1>
+    <input type="button" id="hello" value="Hello?" />
+    <input type="button" id="helloWiper" value="Good bye" />
+    <input type="button" id="helloReturn" value="And we're back" />
+    <div id="helloworld"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.12.1/dojo/dojo.js"></script>
+    <script>
+    require(["dojo/dom", "dojo/domReady!"], function(dom) {
+      dom.byId('hello').addEventListener("click", function() {
+          dom.byId("helloworld").innerHTML = "Hello New World!";
+          // reset styles that the animations mess with
+          dom.byId("helloworld").style.display = "block";
+          dom.byId("helloworld").style.position = "relative";
+          dom.byId("helloworld").style.top = "auto";
+          dom.byId("helloworld").style.left = "auto";
+      });
+    });
+    require(["dojo/fx", "dojo/dom", "dojo/domReady!"], function(fx, dom) {
+      dom.byId('helloWiper').addEventListener("click", function() {
+        fx.slideTo({ node: dom.byId("helloworld"), left: "100", top: "100" }).play();
+        fx.wipeOut({ node: dom.byId("helloworld") }).play();
+      });
+      dom.byId('helloReturn').addEventListener("click", function() {
+        fx.wipeIn({ node: dom.byId("helloworld") }).play();
+        fx.slideTo({ node: dom.byId("helloworld"), left: "0", top: "0" }).play();
+      });
+    });
+    </script>
+  </body>
+</html>
