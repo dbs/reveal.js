@@ -353,23 +353,31 @@ flavours.forEach(function(flavour) {
                         <h2>Dev tools: Console</h2>
                         <ul>
                             <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Network</strong></li>
-                            <li><em onclick="revealCode('jscript_error');">Where all the warnings and errors hide</em> - log with <code>console.error()</code>, <code>console.info()</code>, <code>console.log()</code>
-                                <center id='jscript_error' class="hidden">
+                            <li><em onclick="revealCode('consoleJScriptError');">Where all the warnings and errors hide</em>
+                                <div id='consoleJScriptError' class="hidden">
+                                    <ul><li>Log with <code>console.error()</code>, <code>console.info()</code>, <code>console.log()</code></li></ul>
                                     <h3 style="margin-bottom: 0.2em">So much better than...</h3>
                                     <img src="images/explorer_jscript_error.gif" class="inline-logo" style="margin:0px" />
                                     <div style="font-size:30%;">Image courtesy <a href="http://ganex-t.blogspot.ca/2009_11_01_archive.html">http://ganex-t.blogspot.ca/2009_11_01_archive.html</a></div>
                                 </center>
                             </li>
-                            <li>Run arbitrary JavaScript:
-                                <ul>
-                                    <li><code>alert(2 + 2)</code></li>
-                                </ul>
+                            <li><span onclick="revealCode('consoleAlert');">Run arbitrary JavaScript:</span>
+                                <pre id="consoleAlert" class="hidden"><code>alert(2 + 2)</code></pre>
                             </li>
-                            <li>Inspect and modify objects and properties:
-                                <ul>
-                                    <li><code>window.history.back()</code></li>
-                                    <li><code>window.location.href = 'https://laurentian.ca'</code></li>
-                                </ul>
+                            <li><span onclick="revealCode('consoleMalkovich');">Inspect and modify objects and properties:</span>
+                                    <pre id="consoleMalkovich" class="hidden"><code data-trim>
+// Manipulate browser history
+window.history.back()
+
+// Change the browser URL
+window.location.href = 'https://laurentian.ca'
+
+// Being John Malkovich
+document.querySelectorAll('img').forEach(
+    function(el) {
+        el.src="images/malkovich.jpg";
+})
+</code></pre>
                             </li>
                         </ul>
                     </section>
