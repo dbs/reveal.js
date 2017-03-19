@@ -352,7 +352,7 @@ flavours.forEach(function(flavour) {
                     <section>
                         <h2>Dev tools: Console</h2>
                         <ul>
-                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Network</strong></li>
+                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Console</strong></li>
                             <li><em onclick="revealCode('consoleJScriptError');">Where all the warnings and errors hide</em>
                                 <div id='consoleJScriptError' class="hidden">
                                     <ul><li>Log with <code>console.error()</code>, <code>console.info()</code>, <code>console.log()</code></li></ul>
@@ -361,25 +361,34 @@ flavours.forEach(function(flavour) {
                                     <div style="font-size:30%;">Image courtesy <a href="http://ganex-t.blogspot.ca/2009_11_01_archive.html">http://ganex-t.blogspot.ca/2009_11_01_archive.html</a></div>
                                 </center>
                             </li>
-                            <li><span onclick="revealCode('consoleAlert');">Run arbitrary JavaScript:</span>
-                                <pre id="consoleAlert" class="hidden"><code>alert(2 + 2)</code></pre>
+                            <li><span onclick="revealCode('consoleAlert');">Run arbitrary JavaScript</span>
+                                <pre id="consoleAlert" class="hidden"><code data-trim>
+alert(2 + 2);
+1 == "1";
+1 === "1";
+                                </code></pre>
                             </li>
-                            <li><span onclick="revealCode('consoleMalkovich');">Inspect and modify objects and properties:</span>
-                                    <pre id="consoleMalkovich" class="hidden"><code data-trim>
-// Manipulate browser history
-window.history.back()
+                            <li><span onclick="revealCode('consoleMalkovich');">Modify objects and properties</span>
 
-// Change the browser URL
-window.location.href = 'https://laurentian.ca'
-
-// Being John Malkovich
-document.querySelectorAll('img').forEach(
-    function(el) {
-        el.src="images/malkovich.jpg";
-})
-</code></pre>
                             </li>
                         </ul>
+                        <pre id="consoleMalkovich" class="hidden"><code data-trim>
+// Manipulate browser history
+window.history.back();
+
+// Change the browser URL
+window.location.href = 'https://laurentian.ca';
+
+function be_john_malkovich() {
+  // image via https://www.flickr.com/photos/vhf/4058845635
+  let malkovich = 'https://goo.gl/uYmCUg';
+  document.querySelectorAll('img').forEach(
+    function(el) {
+      el.src = malkovich;
+  });
+}
+</code></pre>
+
                     </section>
                     <section>
                         <h2>Dev tools: Inspect element</h2>
