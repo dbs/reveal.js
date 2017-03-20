@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>script.aculo.us demo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script>
+    </head>
+    <body>
+        <h1 id="stitle"><a href="http://script.aculo.us" target="_blank"><img src="images/scriptaculous.png" style="width:250px" alt="script.aculo.us logo" class="inline-logo" /></a> (2005-2010)</h1>
+        <p id="tagline">UI library that builds on Prototype.js</p>
+        <ul id="list">
+            <li id="item1">Drag and drop interaction</li>
+            <li id="item2">Autocompletion text widget</li>
+            <li id="item3">Animation framework</li>
+        </ul>
+        <script>
+new Draggable('stitle');
+new Draggable('tagline', {revert:true});
+Sortable.create('list');
+        </script>
+    </body>
+</html>

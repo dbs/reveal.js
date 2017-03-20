@@ -134,12 +134,15 @@ flavours.forEach(function(flavour) {
                     <section>
                         <h2>DOM DOM DOM DOM…</h2>
                         <ul>
-                            <li><abbr title="Document Object Model">DOM</abbr> is a <a href="https://www.w3.org/TR/domcore/">W3C standard</a></li>
-                            <li>but standards implementation progress is uneven</li>
-                            <li>Microsoft did not add <a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
+                            <li><abbr title="Document Object Model">DOM</abbr> is a <a href="https://www.w3.org/TR/domcore/">W3C standard</a>
+                                <ul>
+                                    <li>but standards implementation progress is uneven</li>
+                                    <li>Microsoft did not add <a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         <aside class="notes">
-                            And you can't count on standard browser features being present in any given browser
+                            And you can't count on "standard" browser features being present in any given browser
                         </aside>
                     </section>
                     <section>
@@ -164,10 +167,11 @@ flavours.forEach(function(flavour) {
                     <section>
                         <h2>Document all the things(?)</h2>
                         <ul>
-                            <li>Sites sprang up to help harried developers, like:
+                            <li>Sites sprang up to help harried developers compare browser support, like:
                                 <ul>
                                     <li><a href="http://quirksmode.org/">quirksmode.org</a> (stale as of 2013)</li>
                                     <li><a href="http://caniuse.com/">caniuse.com</a></li>
+                                    <li><a href="https://developer.mozilla.org/">Mozilla Developer Network (MDN)</a></li>
                                 </ul>
                             </li>
                             <li>Massively helpful; occasionally entertaining</li>
@@ -177,7 +181,18 @@ flavours.forEach(function(flavour) {
                 </section>
                 <section>
                     <section>
-                        <h2>Libraries = encoded, shared wisdom</h2>
+                        <h2>Libraries: encoded, shared wisdom</h2>
+                        <blockquote style="text-align:left">
+                            <strong>1.</strong> In programming, a collection of
+                            routines stored in a file. Each set of instructions
+                            in a library has a name, and each performs a
+                            different task.
+                            <br /><strong>2.</strong> A collection of
+                            software or data files.
+                            <br /><cite style="font-size:60%"><a
+                                href="https://laurentian.concat.ca/eg/opac/record/781666">Microsoft
+                                Computer Dictionary. (2002). Redmond, WA: Microsoft Press.</a></cite>
+                        </blockquote>
                         <ul>
                             <li>Librarians do the hard work so you don't have to!</li>
                         </ul>
@@ -203,8 +218,7 @@ flavours.forEach(function(flavour) {
                         <pre id="prototypeAjax" class="hidden"><code>new Ajax.Request('/some_url', {
   method:'get',
   onSuccess: function(transport) {
-    var response = transport.responseText || "no text";
-    alert("Success! \n\n" + response);
+    alert("Success!\n\n" + transport.responseText || "no text");
   },
   onFailure: function() { alert('Something went wrong...'); }
 });</code></pre>
@@ -224,12 +238,13 @@ flavours.forEach(function(flavour) {
                     </section>
                     <section>
                         <p><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" /></a> (2005-2010)</p>
-                        <p>UI library, building on Prototype.js</p>
-                        <ul>
+                        <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo');" /></p>
+                        <ul class="show">
                             <li>Drag and drop interaction</li>
                             <li>Autocompletion text widget</li>
                             <li>Animation framework</li>
                         </ul>
+                        <iframe style="width:640px;height:400px;background:white" data-src="scriptaculous_demo.html" id="scriptaculousDemo" class="hidden"></iframe>
                         <aside class="notes">
                             Drag and drop doesn't work with mobile browsers.
                         </aside>
@@ -469,7 +484,7 @@ function be_john_malkovich() {
                         </ul>
                     </section>
                     <section>
-                        <h2>Dev tools: network monitoring</h2>
+                        <h2>Dev tools: Network monitoring</h2>
                         <ul>
                             <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Network</strong>
                                 <ul>
