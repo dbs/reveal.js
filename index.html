@@ -35,7 +35,7 @@
 }
 </style>
 <script>
-function revealCode(showId) {
+function revealCode(showId, el, hideId) {
     let matches = document.querySelectorAll('.reveal .show');
     if (document.getElementById(showId).className == 'show') {
         document.getElementById(showId).className = 'hidden';
@@ -45,6 +45,9 @@ function revealCode(showId) {
             match.className = 'hidden';
         }
         document.getElementById(showId).className = 'show';
+    }
+    if (el !== undefined && hideId !== undefined) {
+        el.setAttribute('onclick', 'revealCode("' + hideId + '", this, "' + showId + '")');
     }
     Reveal.sync();
 }
@@ -238,8 +241,8 @@ flavours.forEach(function(flavour) {
                     </section>
                     <section>
                         <p><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" /></a> (2005-2010)</p>
-                        <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo');" /></p>
-                        <ul class="show">
+                        <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo', this, 'scriptaculousBullets');" /></p>
+                        <ul id="scriptaculousBullets" class="show">
                             <li>Drag and drop interaction</li>
                             <li>Autocompletion text widget</li>
                             <li>Animation framework</li>
