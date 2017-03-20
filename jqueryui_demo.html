@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery UI demo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    </head>
+    <body>
+        <h1 id="stitle"><a href="https://jqueryui.com/" target="_blank"><img src="images/jqueryui_logo.png" style="width:250px" alt="jQuery UI logo" class="inline-logo" /></a></h1>
+        <p id="tagline">UI library that builds on jQuery</p>
+        <ul id="list">
+            <li id="item1">Drag and drop interaction</li>
+            <li id="item2">Autocompletion text widget</li>
+            <li id="item3">Animation framework</li>
+        </ul>
+        <script>
+$(function() {
+  $('#stitle').draggable();
+  $('#tagline').draggable(
+    { revert: true }
+  );
+  $('#list').sortable();
+});
+        </script>
+    </body>
+</html>

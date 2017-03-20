@@ -239,8 +239,8 @@ flavours.forEach(function(flavour) {
                             </blockquote>
                         </aside>
                     </section>
-                    <section>
-                        <p><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" /></a> (2005-2010)</p>
+                    <section id="scriptaculous">
+                        <p><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" style="max-width:400px" /></a> (2005-2010)</p>
                         <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo', this, 'scriptaculousBullets');" /></p>
                         <ul id="scriptaculousBullets" class="show">
                             <li>Drag and drop interaction</li>
@@ -248,6 +248,7 @@ flavours.forEach(function(flavour) {
                             <li>Animation framework</li>
                         </ul>
                         <iframe style="width:640px;height:400px;background:white" data-src="scriptaculous_demo.html" id="scriptaculousDemo" class="hidden"></iframe>
+                        <p style="font-size:80%"><a href="#scriptaculous_demo">script.aculo.us</a> - <a href="#jqueryui_demo">jQuery UI</a></p>
                         <aside class="notes">
                             Drag and drop doesn't work with mobile browsers.
                         </aside>
@@ -373,6 +374,17 @@ $.ajax({
                         <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
                         <iframe style="width:640px;height:400px;background:white" data-src="jquery_example.html"></iframe>
                         <p style="font-size:80%"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
+                    </section>
+                    <section id="jqueryui_demo">
+                        <h2><a href="https://jqueryui.com/" target="_blank"><img src="images/jqueryui_logo.png" style="width:250px;background:white;" alt="jQuery UI logo" class="inline-logo" /></a></h2>
+                        <p>UI library that builds on jQuery <input type="button" value="Demo" onclick="revealCode('jqueryuiDemo', this, 'jqueryuiBullets');" /></p>
+                        <ul id="jqueryuiBullets" class="show">
+                            <li>Drag and drop interaction</li>
+                            <li>Autocompletion text widget</li>
+                            <li>Animation framework</li>
+                        </ul>
+                        <iframe style="width:640px;height:400px;background:white" class="hidden" data-src="jqueryui_demo.html" id="jqueryuiDemo"></iframe>
+                        <p style="font-size:80%"><a href="#scriptaculous">script.aculo.us</a> - <a href="#jqueryui_demo">jQuery UI</a></p>
                     </section>
                     <section>
                         <a href="http://www.doxdesk.com/updates/2009.html#u20091116-jquery" class="stretch" style="width:80%"><img data-src="http://www.doxdesk.com/img/updates/20091116-so-large.gif" class="inline-logo" /></a>
