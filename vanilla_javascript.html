@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vanilla JavaScript + CSS example</title>
+    <style>
+    #helloworld {
+      overflow-y: hidden;
+      max-height: 200px;
+      position:relative;
+      left: 0;
+      top: 0;
+      transition-property: all;
+      transition-duration: 1s;
+      transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    }
+    #helloworld.closed {
+      position: relative;
+      left: 200px;
+      top: 200px;
+      max-height: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Vanilla JavaScript</h1>
+    <input type="button" id="hello" value="Hello?" />
+    <input type="button" id="helloWiper" value="Good bye" />
+    <input type="button" id="helloReturn" value="And we're back" />
+    <div id="helloworld"></div>
+    <script>
+    document.getElementById('hello').addEventListener("click", function() {
+      let el = document.getElementById("helloworld");
+      el.innerHTML = "Hello New World!";
+    });
+    document.getElementById('helloWiper').addEventListener("click", function() {
+      let el = document.getElementById("helloworld");
+      el.classList.add('closed');
+    });
+    document.getElementById('helloReturn').addEventListener("click", function() {
+      let el = document.getElementById("helloworld");
+      el.classList.remove('closed');
+    });
+    </script>
+  </body>
+</html>
