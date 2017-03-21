@@ -337,9 +337,7 @@ flavours.forEach(function(flavour) {
 </code></pre>
                         <pre id="dojoRequest" class="hidden"><code>require(["dojo/request"], function(request){
   request.get("/some_url", {
-    data: {
-        id: 123
-    },
+    data: { id: 123 },
     // The type of data we expect back
     handleAs: "json"
   }).then(function(response){
@@ -378,11 +376,10 @@ $.ajax({
 }).done(function(response) {
     console.log("response:", response);
 }).fail(function(xhr, status, err) {
-    alert('Something went wrong...');
     console.log("Error: " + err);
     console.dir(xhr);
-}).always(function( xhr, status ) {
-    alert("The request is complete!");
+}).always(function(xhr, status) {
+    console.log("The request is complete!");
 });
 </code></pre>
 
