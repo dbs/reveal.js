@@ -33,6 +33,17 @@
 .reveal .show {
     display:pre;
 }
+.reveal blockquote {
+    text-align: left;
+    width: 80%;
+}
+.reveal blockquote cite {
+    font-size: 60%;
+    float: right;
+}
+.reveal .demolinks {
+    font-size: 80%;
+}
 </style>
 <script>
 function revealCode(showId, el, hideId) {
@@ -185,14 +196,14 @@ flavours.forEach(function(flavour) {
                 <section>
                     <section>
                         <h2>Libraries: encoded, shared wisdom</h2>
-                        <blockquote style="text-align:left">
+                        <blockquote>
                             <strong>1.</strong> In programming, a collection of
                             routines stored in a file. Each set of instructions
                             in a library has a name, and each performs a
                             different task.
                             <br /><strong>2.</strong> A collection of
                             software or data files.
-                            <br /><cite style="font-size:60%"><a
+                            <cite><a
                                 href="https://laurentian.concat.ca/eg/opac/record/781666">Microsoft
                                 Computer Dictionary. (2002). Redmond, WA: Microsoft Press.</a></cite>
                         </blockquote>
@@ -209,8 +220,22 @@ flavours.forEach(function(flavour) {
                 </section>
                 <section>
                     <section>
-                        <p><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" style="vertical-align: middle;" /></a> (2005-2015)</p>
-                        <p>Originally developed with Ruby on Rails</p>
+                        <h2><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" style="vertical-align: middle;" /></a> (2005-2015)</h2>
+                            <blockquote>
+                                Prototype takes the complexity out of
+                                client-side web programming. Built to solve
+                                real-world problems, it adds useful extensions
+                                to the browser scripting environment and
+                                provides elegant APIs around the clumsy
+                                interfaces of Ajax and the Document Object
+                                Model.
+                                <cite><a href="http://prototypejs.org/">http://prototypejs.org/</a></cite>
+                            </blockquote>
+                            <p>Originally developed with Ruby on Rails</p>
+                    </section>
+
+                    <section>
+                        <h2><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" style="vertical-align: middle;" /></a> (2005-2015)</h2>
                         <ul>
                             <li onclick="revealCode('prototypeId');"><code>$()</code> for selecting elements by ID!</li>
                             <li onclick="revealCode('prototypeCss');"><code>$$()</code> for CSS selector syntax!</li>
@@ -227,20 +252,10 @@ flavours.forEach(function(flavour) {
 });</code></pre>
                         <aside class="notes">
                             <p>So yes, here we have global namespace pollution.</p>
-                            <p>From the web site:</p>
-                            <blockquote>
-                                Prototype takes the complexity out of
-                                client-side web programming. Built to solve
-                                real-world problems, it adds useful extensions
-                                to the browser scripting environment and
-                                provides elegant APIs around the clumsy
-                                interfaces of Ajax and the Document Object
-                                Model.
-                            </blockquote>
                         </aside>
                     </section>
                     <section id="scriptaculous">
-                        <p><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" style="max-width:400px" /></a> (2005-2010)</p>
+                        <h2><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" style="max-width:400px" /></a> (2005-2010)</h2>
                         <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo', this, 'scriptaculousBullets');" /></p>
                         <ul id="scriptaculousBullets" class="show">
                             <li>Drag and drop interaction</li>
@@ -287,6 +302,7 @@ flavours.forEach(function(flavour) {
                         like-minded JavaScript engineers that were tired
                         of reinventing the wheel and hacking around browser
                         inconsistencies.
+                        <cite><a href="https://dojotoolkit.org/community/roadmap/vision.html">https://dojotoolkit.org/community/roadmap/vision.html</a></cite>
                         </blockquote>
                     </section>
                     <section>
@@ -295,6 +311,7 @@ flavours.forEach(function(flavour) {
                         in "modern" Dojo, if you are about to access
                         something in the global namespace STOP because
                         you are doing something wrong
+                        <cite><a href="https://dojotoolkit.org/documentation/tutorials/1.10/modern_dojo/index.html">https://dojotoolkit.org/documentation/tutorials/1.10/modern_dojo/index.html</a></cite>
                         </blockquote>
                     </section>
 
@@ -336,7 +353,7 @@ flavours.forEach(function(flavour) {
                     <section id="dojo_demo">
                         <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
                         <iframe style="width:640px;height:400px;background:white" data-src="dojo_modern.html"></iframe>
-                        <p style="font-size:80%"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
+                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
                     </section>
                 </section>
                 <section>
@@ -373,7 +390,7 @@ $.ajax({
                     <section id="jquery_demo">
                         <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
                         <iframe style="width:640px;height:400px;background:white" data-src="jquery_example.html"></iframe>
-                        <p style="font-size:80%"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
+                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
                     </section>
                     <section id="jqueryui_demo">
                         <h2><a href="https://jqueryui.com/" target="_blank"><img src="images/jqueryui_logo.png" style="width:250px;background:white;" alt="jQuery UI logo" class="inline-logo" /></a></h2>
@@ -386,11 +403,24 @@ $.ajax({
                         <iframe style="width:640px;height:400px;background:white" class="hidden" data-src="jqueryui_demo.html" id="jqueryuiDemo"></iframe>
                         <p style="font-size:80%"><a href="#scriptaculous">script.aculo.us</a> - <a href="#jqueryui_demo">jQuery UI</a></p>
                     </section>
+                    <section id="jquerymobile">
+                        <h2><a href="https://jquerymobile.com/" target="_blank"><img src="images/jquerymobile-logo.png" style="max-width:250px;background:white;" alt="jQuery Mobile logo" class="inline-logo" /></a></h2>
+                        <blockquote>a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices
+                        <cite><a href="http://view.jquerymobile.com/master/demos/">http://view.jquerymobile.com/master/demos/</a></cite>
+                        </blockquote>
+                        <ul>
+                            <li>Last stable release was in <a href="http://blog.jquerymobile.com/2014/10/31/jquery-mobile-1-4-5-released/">October, 2014</a></li>
+                            <li><a href="http://view.jquerymobile.com/master/demos/">Current demos</a> load 1,277 KB of JavaScript and CSS!?!</a></li>
+                        </ul>
+                    </section>
                     <section>
                         <a href="http://www.doxdesk.com/updates/2009.html#u20091116-jquery" class="stretch" style="width:80%"><img data-src="http://www.doxdesk.com/img/updates/20091116-so-large.gif" class="inline-logo" /></a>
                     </section>
                 </section>
                 <section>
+                    <section>
+                        <h2>Getting modern</h2>
+                    </section>
                     <section>
                         <h2>Sortable</h2>
                         <p>"for modern browsers and touch devices. No jQuery."
@@ -571,24 +601,39 @@ function be_john_malkovich() {
                     <section id="vanilla_demo">
                         <h2>Vanilla JavaScript!</h2>
                         <iframe style="width:640px;height:400px;background:white" data-src="vanilla_javascript.html"></iframe>
-                        <p style="font-size:80%"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
+                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
                     </section>
                 </section>
                 <section>
                     <section>
                         <h2>References</h2>
-                        <ul>
+                        <ul style="font-size:75%">
                             <li>Mozilla Developer Network (MDN) at <a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a></li>
                             <li>Google Developers (Web) at <a href="https://developers.google.com/web/">https://developers.google.com/web/</a></li>
                             <li>Resig, J., Ferguson, R., Paxton, J. (2015). <em>Pro JavaScript Techniques (Second Edition)</em>.  Berkeley, CA: Apress. Retrieved from <a href="https://laurentian.concat.ca/eg/opac/record/2916930">https://laurentian.concat.ca/eg/opac/record/2916930</a></li>
-                            <li>Olsson, M. (2015). JavaScript Quick Syntax Reference. Berkeley, CA: Apress. Retrieved from <a href="https://laurentian.concat.ca/eg/opac/record/2916905"</a>https://laurentian.concat.ca/eg/opac/record/2916905</a></li>
+                            <li>Olsson, M. (2015). <em>JavaScript Quick Syntax Reference</em>. Berkeley, CA: Apress. Retrieved from <a href="https://laurentian.concat.ca/eg/opac/record/2916905"</a>https://laurentian.concat.ca/eg/opac/record/2916905</a></li>
                             </li>
                         </ul>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>Next time: JavaScript frameworks</h2>
+                        <h2>Next time</h2>
+                        <ul>
+                            <li><strong>Frameworks</strong>
+                                <ul>
+                                    <li>Angular</li>
+                                    <li>React</li>
+                                </ul>
+                            </li>
+                            <li><strong>Modern web development</strong>
+                                <ul>
+                                    <li>nodejs &amp; npm</li>
+                                    <li>Progressive Web Apps (PWAs)</li>
+                                    <li>Accelerated Mobile Pages (AMP)</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
                 </section>
 			</div>
