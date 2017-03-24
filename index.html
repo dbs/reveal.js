@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>JavaScript frameworks: bleeding edge (2017)</title>
+		<title>Bleeding edge JavaScript (2017)</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -123,15 +123,29 @@ function revealCode(showId, el, hideId) {
                         <ul>
                             <li>npm and <code>package.json</code> are not <em>just</em> for nodejs:
                                 <ul>
-                                    <li class="fragment">It manages any JavaScript package in the npm registry</li>
-                                    <li class="fragment">It identifies test and build scripts, like <code>grunt serve</code></li>
+                                    <li class="fragment">Manages any JavaScript package in the npm registry</li>
+                                    <li class="fragment">Identifies test and build scripts, like <code>grunt serve</code></li>
                                     <li class="fragment">Let's take a look…</li>
                                 </ul>
                             </li>
                         </ul>
                     </section>
                     <section>
-                        <h3>JS build tools</h3>
+                        <h3>JS build tools: why?</h3>
+                        <ul>
+                            <li>Automated testing (linting, regression, unit, integration, performance)</li>
+                            <li>Bundling hundreds of packages into one or more <em>vendor</em> files</li>
+                            <li>Minifying and uglifying JSS &amp; CSS; optimizing images</li>
+                            <li><em>Transpiling</em>:
+                                <ul>
+                                    <li>Write ECMAScript 2017 (or other languages)</li>
+                                    <li>Generate ECMAScript 2015 (or lower) to run in targeted environments</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>JS build tools face-off</h3>
                         <table>
                             <thead>
                                 <tr><th> </th><th>Grunt</th><th>Gulp</th></tr>
@@ -146,7 +160,7 @@ function revealCode(showId, el, hideId) {
                     <section>
                         <h3>Grunt vs. Gulp?</h3>
                         <img data-src="images/wash.jpg" class="inline-logo">
-                        <p class="fragment">It's a wash...</p>
+                        <p class="fragment">It's really a wash...</p>
                     </section>
                 </section>
                 <section>
@@ -258,6 +272,16 @@ function revealCode(showId, el, hideId) {
   "orientation": "landscape"
 }</code></pre>
                     </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.7);">
+                      <h3>Auditing your PWA progress</h3>
+                        <ul>
+                          <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a> audits web apps for quality</li>
+                          <li>Focused on PWAs, but generally applicable</li>
+                          <li>Chrome extension &amp; command line tool</li>
+                        </ul>
+                        </div>
+                    </section>
                     <section>
                       <h3>Free online course!</h3>
                       <p><a href="https://www.udacity.com/course/intro-to-progressive-web-apps--ud811">Intro to Progressive Web Apps</a> (Udacity)</p>
@@ -285,6 +309,73 @@ function revealCode(showId, el, hideId) {
                     <section>
                       <h3>We made it slow</h3>
                       <p><a href="https://docs.google.com/presentation/d/15wA5f0HHIHggO0C9B9R4Tqr6gBJF1Z2ZJ08Ez7_ojWM/pub?start=false&loop=false&delayms=3000">AMP is one way to fix that</a></p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Frameworks</h2>
+                        <hr />
+                        <h3>Angular</h3>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular</h3>
+                        <ul>
+                            <li>2.0.0 released <a href="https://github.com/angular/angular/releases/tag/2.0.0">September 2016</a></li>
+                            <li>Rethink and rewrite of the very popular model-view-controller framework AngularJS</li>
+                            <li>So major that the default language is <a href="https://www.typescriptlang.org/">TypeScript</a></li>
+                            <li>Oh yeah, and the name changed</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Hello World</h3>
+                        <pre><code data-trim>npm install -g @angular/cli
+ng new hello-world
+cd hello-world
+ng eject --aot -pr
+webpack -p</code></pre>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Components</h3>
+                        <p>Encapsulation of properties, style, and behaviour</p>
+                        <pre><code>import { Component, Input } from '@angular/core';
+import { Faculty } from './faculty';
+@Component({
+  selector: 'faculty-detail',
+  styleUrls: [ './faculty-detail.component.css' ],
+  template: `
+    &lt;div *ngIf="faculty"&gt;
+      &lt;h2&gt;{{faculty.name}} details!&lt;/h2&gt;
+      &lt;div&gt;&lt;label&gt;id: &lt;/label&gt;{{faculty.id}}&lt;/div&gt;
+      &lt;div&gt;
+        &lt;label&gt;name: &lt;/label&gt;
+        &lt;input [(ngModel)]="faculty.name" placeholder="name"/&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class FacultyDetailComponent {
+  @Input() faculty: Faculty;
+}</code></pre>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Services</h3>
+                        <ul>
+                            <li><em>Services</em> isolate data access from component internals</li>
+                            <li>Asynchronous (non-blocking)</li>
+                            <li>Reusable by different components</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Routing</h3>
+                        <p><em>Routes</em> map URL paths and parameters to components</p>
+                    <pre><code>{
+  path: 'detail/:id',
+  component: FacultyDetailComponent
+},</code></pre>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Tutorial</h3>
+                        <p><a href="https://angular.io/docs/ts/latest/tutorial/">Get hands-on!</a></p>
                     </section>
                 </section>
 			</div>
