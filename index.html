@@ -320,10 +320,14 @@ function revealCode(showId, el, hideId) {
                     <section>
                         <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular</h3>
                         <ul>
+                            <li>It's a Google thing</li>
                             <li>2.0.0 released <a href="https://github.com/angular/angular/releases/tag/2.0.0">September 2016</a></li>
-                            <li>Rethink and rewrite of the very popular model-view-controller framework AngularJS</li>
-                            <li>So major that the default language is <a href="https://www.typescriptlang.org/">TypeScript</a></li>
-                            <li>Oh yeah, and the name changed</li>
+                            <li>Rethink and rewrite of the AngularJS model-view-controller framework (<a href="http://angularjs.blogspot.ca/2012/07/angularjs-10-12-roadmap.html">released 2012</a>)</li>
+                            <li>Why the name change?
+                                <ul>
+                                    <li class="fragment">The default language is <a href="https://www.typescriptlang.org/">TypeScript</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </section>
                     <section>
@@ -331,6 +335,7 @@ function revealCode(showId, el, hideId) {
                         <pre><code data-trim>npm install -g @angular/cli
 ng new hello-world
 cd hello-world
+ng serve
 ng eject --aot -pr
 webpack -p</code></pre>
                     </section>
@@ -376,6 +381,40 @@ export class FacultyDetailComponent {
                     <section>
                         <h3><img data-src="images/angular-logo.png" class="inline-logo small" style="height:1.5em" alt="Angular logo" />Angular: Tutorial</h3>
                         <p><a href="https://angular.io/docs/ts/latest/tutorial/">Get hands-on!</a></p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Frameworks</h2>
+                        <hr />
+                        <h3>React</h3>
+                    </section>
+                    <section>
+                        <h3><a href="https://facebook.github.io/react/">React</a></h3>
+                        <ul>
+                            <li>Components are a key React concept; they:
+                                <ul>
+                                    <li>Return descriptions of how to be rendered</li>
+                                    <li>Can include methods attached to DOM lifecycle events</li>
+                                    <li>Favour composition and <em>props</em> over inheritance</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>React: Hello World</h3>
+                        <pre><code>npm install -g create-react-app
+create-react-app hello-world
+cd hello-world
+npm start</code></pre>
+                    </section>
+                    <section>
+                        <h3><img data-src="images/preact.png" class="inline-logo small" style="height:1.5em" alt="Preact logo" />Preact</h3>
+                        <ul>
+                            <li>Clones the React ES6 API, with a 3kb payload</li>
+                            <li>Discards some features needed only by IE8</li>
+                            <li><a href="https://preactjs.com">preactjs.com</a></li>
+                        </ul>
                     </section>
                 </section>
 			</div>
