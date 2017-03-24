@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>JavaScript libraries: early days</title>
+		<title>JavaScript frameworks: bleeding edge (2017)</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -81,585 +81,210 @@ function revealCode(showId, el, hideId) {
 		<div class="reveal">
 			<div class="slides">
                 <section>
-                    <h1>JavaScript libraries:</h1>
-                    <h2>How did we get here?</h2>
+                    <h1>Bleeding edge JS</h1>
+                    <h2>the 2017 edition</h2>
                     <p>Dan Scott (<a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a>)</p>
                     <p>Associate Librarian,
                         <span style="font-size: 60%">Chair of the Library &amp; Archives,
                             <span style="font-size: 60%">Systems Librarian, …<span></span>
                     </p>
-                    <p>March 21, 2017</p>
+                    <p>March 24, 2017</p>
                 </section>
 				<section>
                     <section>
-                        <h2>Browser Wars!</h2>
-                        <ul>
-                            <li>Netscape Navigator (1994-2007<a href="http://news.bbc.co.uk/2/hi/technology/7270583.stm">[0]</a>)</li>
-                            <li>Internet Explorer (1995-<a href="https://support.microsoft.com/en-us/help/969393/information-about-internet-explorer-versions">[1]</a>)</li>
-                            <li>Apple Safari (2003-<a href="http://www.macworld.com/article/1008698/safari.html">[2]</a>)</li>
-                            <li>Mozilla Firefox (2004-<a href="https://www.mozilla.org/en-US/about/history/details/">[4</a>,<a href="https://wiki.mozilla.org/Timeline">5]</a>)</li>
-                            <li>Google Chrome (2008-<a href="https://arstechnica.com/information-technology/2008/12/google-anticipates-a-bright-and-shiny-future-for-chrome/">[6]</a>)</li>
-                        </ul>
-                        <aside class="notes">
-                            And let's not forget about Konqueror (the base for Safari), Midori, Epiphany, and other lesser-known browsers.
-                        </aside>
+                        <h2>Current JS build tools</h2>
+                        <hr />
+                        <h3>nodejs, npm, Grunt, and Gulp</h3>
                     </section>
                     <section>
-                        <h2>This page best viewed with...</h2>
+                        <h3><img data-src="images/nodejs.png" alt="nodejs logo" class="inline-logo small" /></h3>
                         <ul>
-                            <li><a href="https://spaceflight.nasa.gov/history/shuttle-mir/welcome/best-use.htm">NASA Shuttle-Mir History web site</a></li>
-                            <iframe style="width:640px;height:400px;" data-src="https://spaceflight.nasa.gov/history/shuttle-mir/welcome/best-use.htm"></iframe>
+                            <li>Chrome V8 JavaScript engine was really fast, but sandboxed for security reasons</li>
+                            <li>Free software license allowed a group to fork V8 to allow file I/O, etc</li>
+                            <li>… and thus nodejs was born!</li>
+                            <li>Asynchronous and event-driven, not forking processes or threads</li>
+                            <li><a href="https://nodejs.org/en/about/">https://nodejs.org/en/about/</a></li>
                         </ul>
                     </section>
                     <section>
-                        <h2>This page best viewed with...</h2>
+                        <h3><img data-src="images/npm.png" alt="npm logo" class="inline-logo small" /></h3>
                         <ul>
-                            <li><a href="http://www.mshealthcareers.com/bestview.htm">Mississippi Health Careers Center</a></li>
-                            <!-- Avoid insecure browser warning
-                                <iframe style="width:800px;height:400px;" data-src="http://www.mshealthcareers.com/bestview.htm"></iframe>
-                            -->
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>JavaScript vs. JScript… ECMAScript!</h2>
-                        <h3>1, 2, 3, 4, 5, 6/2015, 2016, 2017</h3>
-                        <p>Thank you <a href="https://www.ecma-international.org/publications/standards/Ecma-262-arch.htm"><abbr title="European Computer Manufacturer's Association">ECMA</abbr></a> TC 39!</p>
-                    </section>
-                    <section>
-                        <h2>Array.prototype.forEach()</h2>
-                        <ul>
-                            <li>Executes a function once for each array element<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">[1]</a>
-                                <pre><code>var flavours = ['orange', 'lemon'];
-var styles = ['ice cream', 'sherbet'];
-
-flavours.forEach(function(flavour) {
-    for (let style of styles) {
-    	console.log(flavour + ' ' + style);
-    }
-});</code></pre>
+                            <li>nodejs Package Manager
+                                <blockquote>"The npm registry hosts almost half a million packages of free, reusable code — the largest software registry in the world."
+                                    <cite><a href="https://www.npmjs.com/">https://www.npmjs.com/</a></cite>
+                                </blockquote>
                             </li>
-                            <li>Added to Firefox 1.5 in 2005<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">[2]</a></li>
-                            <li class="fragment">... and to Internet Explorer 9 in 2011<a href="https://docs.microsoft.com/en-us/scripting/javascript/reference/foreach-method-array-javascript">[3]</a>,</li>
-                            <li class="fragment">... but only in <em>Quirks</em> mode</li>
+                            <li><code>package.json</code> lists the packages your project depends on</li>
+                            <li><code>npm install</code> downloads those packages and their dependencies</li>
                         </ul>
-                        <aside class="notes">
-                            Even with standardization, you can't count on standard JavaScript language features being present in any given browser
-                        </aside>
                     </section>
                     <section>
-                        <h2>DOM DOM DOM DOM…</h2>
+                        <h3><img data-src="images/npm.png" alt="npm" class="inline-logo small" /></h3>
                         <ul>
-                            <li><abbr title="Document Object Model">DOM</abbr> is a <a href="https://www.w3.org/TR/domcore/">W3C standard</a>
+                            <li>npm and <code>package.json</code> are not <em>just</em> for nodejs:
                                 <ul>
-                                    <li>but standards implementation progress is uneven</li>
-                                    <li>Microsoft did not add <a href="https://www.w3.org/TR/domcore/#dom-parentnode-queryselector"><code>querySelector()</code></a> until IE9<a href="http://caniuse.com/#feat=queryselector">[1]</a></li>
+                                    <li class="fragment">It manages any JavaScript package in the npm registry</li>
+                                    <li class="fragment">It identifies test and build scripts, like <code>grunt serve</code></li>
+                                    <li class="fragment">Let's take a look…</li>
                                 </ul>
                             </li>
                         </ul>
-                        <aside class="notes">
-                            And you can't count on "standard" browser features being present in any given browser
-                        </aside>
                     </section>
                     <section>
-                        <h2>Performance is variable</h2>
-                        <ul>
-                            <li>JavaScript engines include:
-                                <ul>
-                                    <li><img data-src="images/mozilla_firefox.png" alt="Mozilla Firefox logo" class="inline-logo small" />SpiderMonkey, TraceMonkey</li>
-                                    <li><img data-src="images/google_chrome.png" alt="Google Chrome logo" class="inline-logo small" />V8</li>
-                                    <li><img data-src="images/microsoft_edge.png" alt="Microsoft IE / Edge logo" class="inline-logo small" />Chakra</li>
-                                    <li><img data-src="images/apple_safari.png" alt="Apple Safari logo" class="inline-logo small" />SquirrelFish / FTL</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <aside class="notes">
-                            And JavaScript engine implementations vary widely, with different optimizations.
-                            <p>
-                                For example: Early versions of IE were pathologically slow at string concatenation
-                            </p>
-                        </aside>
+                        <h3>JS build tools</h3>
+                        <table>
+                            <thead>
+                                <tr><th> </th><th>Grunt</th><th>Gulp</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><em>File name</em></td><td><code>Gruntfile.js</code></td><td><code>gulpfile.js</code></td></tr>
+                                <tr><td><em>Format</em></td><td><code>JSON</code></td><td><code>JavaScript</code></td></tr>
+                                <tr><td><em>Goals</em></td><td colspan="2">Building, testing, deploying packages</td></tr>
+                            </tbody>
+                        </table>
                     </section>
                     <section>
-                        <h2>Document all the things(?)</h2>
-                        <ul>
-                            <li>Sites sprang up to help harried developers compare browser support, like:
-                                <ul>
-                                    <li><a href="http://quirksmode.org/">quirksmode.org</a> (stale as of 2013)</li>
-                                    <li><a href="http://caniuse.com/">caniuse.com</a></li>
-                                    <li><a href="https://developer.mozilla.org/">Mozilla Developer Network (MDN)</a></li>
-                                </ul>
-                            </li>
-                            <li>Massively helpful; occasionally entertaining</li>
-                            <li>…but reimplementing workarounds is not fun/financially wise</li>
-                        </ul>
+                        <h3>Grunt vs. Gulp?</h3>
+                        <img data-src="images/wash.jpg" class="inline-logo">
+                        <p class="fragment">It's a wash...</p>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>Libraries: encoded, shared wisdom</h2>
-                        <blockquote>
-                            <strong>1.</strong> In programming, a collection of
-                            routines stored in a file. Each set of instructions
-                            in a library has a name, and each performs a
-                            different task.
-                            <br /><strong>2.</strong> A collection of
-                            software or data files.
-                            <cite><a
-                                href="https://laurentian.concat.ca/eg/opac/record/781666">Microsoft
-                                Computer Dictionary. (2002). Redmond, WA: Microsoft Press.</a></cite>
-                        </blockquote>
-                        <ul>
-                            <li>Librarians do the hard work so you don't have to!</li>
-                        </ul>
+                        <h2>Moving the web forward</h2>
+                        <hr />
+                        <h3>Progressive Web Apps (PWAs)</h3>
+                    </section>
+                    <section>
+                        <h3>From graceful degradation to progressive enhancement</h3>
                         <aside class="notes">
-                            Like any other programming language, JavaScript
-                            libraries collect routines that either provide
-                            convenience methods or optimized approaches to
-                            solving common problems.
+                            Where graceful degradation was a web design
+                            philosophy arguing that web sites should still be
+                            functional in the absence of JavaScript or advanced
+                            HTML, the progressive enhancement philosophy takes
+                            JavaScript as a baseline and argues that you should
+                            enable your site to take advantage of functionality
+                            offered by different web browsers, particularly those
+                            on a standards track.
                         </aside>
                     </section>
-                </section>
-                <section>
                     <section>
-                        <h2><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" class="inline-logo" /></a> (2005-2015)</h2>
-                            <blockquote>
-                                Prototype takes the complexity out of
-                                client-side web programming. Built to solve
-                                real-world problems, it adds useful extensions
-                                to the browser scripting environment and
-                                provides elegant APIs around the clumsy
-                                interfaces of Ajax and the Document Object
-                                Model.
-                                <cite><a href="http://prototypejs.org/">http://prototypejs.org/</a></cite>
-                            </blockquote>
-                            <p>Originally developed with Ruby on Rails</p>
-                    </section>
-
-                    <section>
-                        <h2><a href="http://prototypejs.org" target="_blank"><img data-src="images/prototype.png" alt="Prototype.js logo" class="inline-logo" /></a> (2005-2015)</h2>
+                        <h3>Progressive Web Apps (PWAs)</h3>
                         <ul>
-                            <li onclick="revealCode('prototypeId');"><code>$()</code> for selecting elements by ID!</li>
-                            <li onclick="revealCode('prototypeCss');"><code>$$()</code> for CSS selector syntax!</li>
-                            <li onclick="revealCode('prototypeAjax');"><code>Ajax.Request</code> for cross-browser Ajax!</li>
-                        </ul>
-                        <pre id="prototypeId" class="hidden"><code>$('itemId').hide();</code></pre>
-                        <pre id="prototypeCss" class="hidden"><code>$('div img.loading').hide();</code></pre>
-                        <pre id="prototypeAjax" class="hidden"><code>new Ajax.Request('/some_url', {
-  method:'get',
-  onSuccess: function(transport) {
-    alert("Success!\n\n" + transport.responseText || "no text");
-  },
-  onFailure: function() { alert('Something went wrong...'); }
-});</code></pre>
-                        <aside class="notes">
-                            <p>So yes, here we have global namespace pollution.</p>
-                        </aside>
-                    </section>
-                    <section id="scriptaculous">
-                        <h2><a href="http://script.aculo.us" target="_blank"><img data-src="images/scriptaculous.png" alt="script.aculo.us logo" class="inline-logo" style="max-width:400px" /></a> (2005-2010)</h2>
-                        <p>UI library that builds on Prototype.js <input type="button" value="Demo" onclick="revealCode('scriptaculousDemo', this, 'scriptaculousBullets');" /></p>
-                        <ul id="scriptaculousBullets" class="show">
-                            <li>Drag and drop interaction</li>
-                            <li>Autocompletion text widget</li>
-                            <li>Animation framework</li>
-                        </ul>
-                        <iframe style="width:640px;height:400px;background:white" data-src="scriptaculous_demo.html" id="scriptaculousDemo" class="hidden"></iframe>
-                        <p style="font-size:80%"><a href="#scriptaculous_demo">script.aculo.us</a> - <a href="#jqueryui_demo">jQuery UI</a></p>
-                        <aside class="notes">
-                            Drag and drop doesn't work with mobile browsers.
-                        </aside>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2><a href="https://modernizr.com"><img data-src="images/modernizr.png" alt="Modernizr" class="inline-logo" style="background:white;margin-right:0em" /></a></h2>
-                        <ul>
-                            <li>Minimalist browser feature detection library <a href="http://farukat.es/journal/2009/07/271-proudly-announcing-modernizr/">launched in 2009</a>
+                            <li>Making web apps more like native apps:
                                 <ul>
-                                    <li onclick="revealCode('modernizrClasses');"><code>&lt;html&gt;</code> element gets a <code>class</code> attribute of <em><code>(no-)feature-name</code></em> for each feature</em>
-<pre id="modernizrClasses" class="hidden"><code>&lt;html class="gamepads video webgl no-emoji"&gt;</code></pre>
-                                    </li>
-                                    <li onclick="revealCode('modernizrProgrammatic');">Programmatic access via a global <code>Modernizr</code> object
-<pre id="modernizrProgrammatic" class="hidden"><code data-trim>if (Modernizr.awesomeNewFeature) {
-  showOffAwesomeNewFeature();
-} else {
-  getTheOldLameExperience();
-}</code></pre>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Supports custom builds for a subset of features</li>
-                        </ul>
-                        <aside class="notes">
-                            Because yes the browser feature support situation has been that bad for this long.
-                        </aside>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2004-)</h2>
-                        <blockquote>
-                        The Dojo Toolkit began in 2004 by a group of
-                        like-minded JavaScript engineers that were tired
-                        of reinventing the wheel and hacking around browser
-                        inconsistencies.
-                        <cite><a href="https://dojotoolkit.org/community/roadmap/vision.html">https://dojotoolkit.org/community/roadmap/vision.html</a></cite>
-                        </blockquote>
-                    </section>
-                    <section>
-                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
-                        <blockquote>
-                        in "modern" Dojo, if you are about to access
-                        something in the global namespace STOP because
-                        you are doing something wrong
-                        <cite><a href="https://dojotoolkit.org/documentation/tutorials/1.10/modern_dojo/index.html">https://dojotoolkit.org/documentation/tutorials/1.10/modern_dojo/index.html</a></cite>
-                        </blockquote>
-                    </section>
-
-                    <section>
-                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
-                        <ul>
-                            <li>Dojo packages functionality into modules:
-                            <ul>
-                                <li onclick="revealCode('dojoById');"><code>dojo/dom</code> for selecting elements by ID!</li>
-                                <li onclick="revealCode('dojoQuery');"><code>dojo/query</code> for CSS selector syntax!</li>
-                                <li onclick="revealCode('dojoRequest');"><code>dojo/request</code> for cross-browser Ajax!</li>
-                            </ul></li>
-                        </ul>
-                        <pre id="dojoById" class="hidden"><code>require(["dojo/dom", "dojo/domReady!"], function(dom){
-  dom.byId("helloworld").innerHTML = "Hello New World!";
-});</code></pre>
-                        <pre id="dojoQuery" class="hidden"><code>require(["dojo/query", "dojo/dom", "dojo/domReady!"],
-  function (query, dom) {
-    // retrieve an array of nodes with the ID "list"
-    var list = query("#list")[0];
-  }
-)
-</code></pre>
-                        <pre id="dojoRequest" class="hidden"><code>require(["dojo/request"], function(request){
-  request.get("/some_url", {
-    data: { id: 123 },
-    // The type of data we expect back
-    handleAs: "json"
-  }).then(function(response){
-    console.log("response:", response);
-  }, function(err){
-    console.log("error:", err);
-  });
-});</code></pre>
-
-                    </section>
-                    <section id="dojo_demo">
-                        <h2><a href="https://dojotoolkit.org/" target="_blank"><img data-src="images/dojotoolkit.png" alt="Dojo Toolkit logo" class="inline-logo" style="background:white;" /></a> (2011-)</h2>
-                        <iframe style="width:640px;height:400px;background:white" data-src="dojo_modern.html"></iframe>
-                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
-                        <p>Originally developed by John Resig</p>
-                        <ul>
-                            <li onclick="revealCode('jquerySelector');"><code>$()</code> for selecting elements by CSS selector</li>
-                            <li onclick="revealCode('jqueryAjax');"><code>$.ajax</code> for cross-browser Ajax!</li>
-                        </ul>
-                        <pre id="jquerySelector" class="hidden"><code data-trim>
-$('#itemId').hide("slow");
-$('body').innerHtml =
-    "&lt;h1&gt;Good news, everyone!&lt;/h1&gt;";
-</code></pre>
-                        <pre id="jqueryAjax" class="hidden"><code data-trim>
-$.ajax({
-    url: "/some_url",
-    type: "GET",
-    data: { id: 123 },
-    dataType : "json",
-}).done(function(response) {
-    console.log("response:", response);
-}).fail(function(xhr, status, err) {
-    console.log("Error: " + err);
-    console.dir(xhr);
-}).always(function(xhr, status) {
-    console.log("The request is complete!");
-});
-</code></pre>
-
-                    </section>
-                    <section id="jquery_demo">
-                        <h2><a href="https://jquery.com/" target="_blank"><img data-src="images/jquery.png" alt="jQuery logo" class="inline-logo"></a> (2006-)</h2>
-                        <iframe style="width:640px;height:400px;background:white" data-src="jquery_example.html"></iframe>
-                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
-                    </section>
-                    <section id="jqueryui_demo">
-                        <h2><a href="https://jqueryui.com/" target="_blank"><img data-src="images/jqueryui_logo.png" style="width:250px;background:white;" alt="jQuery UI logo" class="inline-logo" /></a></h2>
-                        <p>UI library that builds on jQuery <input type="button" value="Demo" onclick="revealCode('jqueryuiDemo', this, 'jqueryuiBullets');" /></p>
-                        <ul id="jqueryuiBullets" class="show">
-                            <li>Drag and drop interaction</li>
-                            <li>Autocompletion text widget</li>
-                            <li>Animation framework</li>
-                        </ul>
-                        <iframe style="width:640px;height:400px;background:white" class="hidden" data-src="jqueryui_demo.html" id="jqueryuiDemo"></iframe>
-                        <p style="font-size:80%"><a href="#scriptaculous">script.aculo.us</a> - <a href="#jqueryui_demo">jQuery UI</a></p>
-                    </section>
-                    <section id="jquerymobile">
-                        <h2><a href="https://jquerymobile.com/" target="_blank"><img data-src="images/jquerymobile-logo.png" style="max-width:250px;background:white;" alt="jQuery Mobile logo" class="inline-logo" /></a></h2>
-                        <blockquote>a touch-optimized HTML5 UI framework designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices
-                        <cite><a href="http://view.jquerymobile.com/master/demos/">http://view.jquerymobile.com/master/demos/</a></cite>
-                        </blockquote>
-                        <ul>
-                            <li>Last stable release was in <a href="http://blog.jquerymobile.com/2014/10/31/jquery-mobile-1-4-5-released/">October, 2014</a></li>
-                            <li><a href="http://view.jquerymobile.com/master/demos/">Current demos</a> load 1,277 KB of JavaScript and CSS!?!</a></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <a href="https://www.doxdesk.com/updates/2009.html#u20091116-jquery" class="stretch" style="width:80%"><img data-src="https://www.doxdesk.com/img/updates/20091116-so-large.gif" class="inline-logo" /></a>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Getting modern</h2>
-                    </section>
-                    <section>
-                        <h2>Sortable</h2>
-                        <p>"for modern browsers and touch devices. No jQuery."
-                            <br /><cite><a href="http://rubaxa.github.io/Sortable/">http://rubaxa.github.io/Sortable/</a></cite>
-                        </p>
-                        <iframe style="width:640px;height:400px;background:white" data-src="sortable.html" id="sortableDemo"></iframe>
-                    </section>
-                    <section>
-                        <h2>Google Charts</h2>
-                        <ul>
-                            <li><a href="https://developers.google.com/chart/interactive/docs/">Charts</a> are just one of many libraries Google offers</li>
-                            <li>Includes pie, bar, scatter, and <a href="google_charts.html">calendar</a> charts</li>
-                        </ul>
-                        <iframe style="width:1000px;height:400px;background:white" data-src="google_charts.html" id="googleChartsDemo"></iframe>
-                    </section>
-                    <section>
-                        <h2>three.js : 3D animation</h2>
-                        <p>"an easy to use, lightweight, 3D library"
-                            <br /><cite><a href="https://github.com/mrdoob/three.js/">https://github.com/mrdoob/three.js/</a></cite>
-                        </p>
-                        <iframe style="width:640px;height:400px;background:white" data-src="threejs.html" id="threejsDemo"></iframe>
-                    </section>
-                    <section>
-                        <h2>A-Frame : WebVR</h2>
-                        <p>"A web framework for building virtual reality experiences"
-                        <br /><cite><a href="https://aframe.io/">https://aframe.io/</a></cite>
-                        </p>
-                        <p>And <a href="https://aframe.io/blog/awoa-50/#articles">I'm famous!</a></p>
-                        <iframe style="width:640px;height:400px;background:white" data-src="https://stuff.coffeecode.net/forestvr" id="aframeDemo"></iframe>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Loading up your toolbox</h2>
-                    </section>
-                    <section>
-                        <h2>caniuse.com</h2>
-                        <ul>
-                            <li>Compatibility tables for common browsers vs.:
-                                <ul>
-                                    <li>JavaScript</li>
-                                    <li>HTML5</li>
-                                    <li>CSS</li>
+                                    <li>Responsive: UI adapts to different devices</li>
+                                    <li>Fast to load and render</li>
+                                    <li>Secured by HTTPS</li>
+                                    <li>Reliable even with spotty (or no) network connectivity</li>
+                                    <li>Installable to your device home screen</li>
                                 </ul>
                             </li>
                         </ul>
                     </section>
                     <section>
-                        <h2>webpagetest.org</h2>
+                        <h3>Responsive web design</h3>
                         <ul>
-                            <li>Evaluates web page performance:
-                                <ul>
-                                    <li>Simulates different conditions (for example, cable vs. cell phone)</li>
-                                    <li>Captures screenshots, progress, performance bottlenecks</li>
-                                    <li>Easy to share results</li>
-                                    <li>Suggests possible optimizations (caching, etc)</li>
-                                </ul>
-                            </li>
+                            <li onclick="revealCode('viewport-demo')"><code>&lt;meta name="viewport"&gt;</code> attribute</li>
+                            <li onclick="revealCode('mediaquery-demo')">CSS media queries and relative units</li>
+                            <li>Modernizr</li>
                         </ul>
-                    </section>
-
-                    <section>
-                        <h2>Developer tools: Firebug extension</h2>
-                        <ul>
-                            <li><a href="https://getfirebug.com/">Firebug extension</a> (<em>ca. 2006</em>) made <em>View source</em> dynamic:
-                                <ul>
-                                    <li>editable HTML</li>
-                                    <li>editable CSS</li>
-                                    <li>network monitoring</li>
-                                    <li>JavaScript debugging, …</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Native dev tools</h2>
-                        <ul>
-                            <li>Browser makers saw how popular Firebug became and thought <em>"Good idea, let's bake that right in!"</em>
-                                <ul>
-                                    <li><a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Tools">Firefox DevTools</a></li>
-                                    <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/f12-devtools-guide">Edge Dev Tools</a></li>
-                                    <li><a href="https://developer.apple.com/safari/tools/">Safari Web Inspector</a>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Dev tools: Console</h2>
-                        <ul>
-                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Console</strong></li>
-                            <li><em onclick="revealCode('consoleJScriptError');">Where all the warnings and errors hide</em>
-                                <div id='consoleJScriptError' class="hidden">
-                                    <ul><li>Log with <code>console.error()</code>, <code>console.info()</code>, <code>console.log()</code></li></ul>
-                                    <h3 style="margin-bottom: 0.2em">So much better than...</h3>
-                                    <img data-src="images/explorer_jscript_error.gif" class="inline-logo" style="margin:0px" />
-                                    <div style="font-size:30%;">Image courtesy <a href="http://ganex-t.blogspot.ca/2009_11_01_archive.html">http://ganex-t.blogspot.ca/2009_11_01_archive.html</a></div>
-                                </center>
-                            </li>
-                            <li><span onclick="revealCode('consoleAlert');">Run arbitrary JavaScript</span>
-                                <pre id="consoleAlert" class="hidden"><code data-trim>
-alert(2 + 2);
-1 == "1";
-1 === "1";
-                                </code></pre>
-                            </li>
-                            <li><span onclick="revealCode('consoleMalkovich');">Modify browser objects and properties</span>
-
-                            </li>
-                        </ul>
-                        <pre id="consoleMalkovich" class="hidden"><code data-trim>
-// Manipulate browser history
-window.history.back();
-
-// Change the browser URL
-window.location.href = 'https://laurentian.ca';
-
-function be_john_malkovich() {
-  // image via https://www.flickr.com/photos/vhf/4058845635
-  let malkovich = 'https://goo.gl/uYmCUg';
-  document.querySelectorAll('img').forEach(
-    function(el) {
-      el.src = malkovich;
-  });
+<pre id="viewport-demo" class="hidden"><code data-trim>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1"&gt;</code></pre>
+<pre id="mediaquery-demo" class="hidden"><code data-trim>&lt;style&gt;
+.menu { width: 100% }
+.facet_sidebar {
+  display: none;
 }
-</code></pre>
+@media (min-width: 600px) {
+  .facet_sidebar {
+    display: block;
+  }
+}
+&lt;/style&gt;</code></pre>
+                        </ul>
                     </section>
                     <section>
-                        <h2>Dev tools: Inspect element</h2>
+                        <h3>Fast to load and render</h3>
                         <ul>
-                            <li>Right-click any part of a web page and <strong>Inspect element</strong> to see and manipulate dynamically:
+                            <li>Minimize your payloads</li>
+                            <li>Cache common assets</li>
+                            <li>Avoid synchronous loading</li>
+                            <li>Load data as needed</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Secured by HTTPS</h3>
+                        <ul>
+                            <li><a href="https://letsencrypt.org">Let's Encrypt</a> offers free TLS certificates</a></li>
+                            <li class="fragment">There's no catch.</li>
+                            <li class="fragment">No, really! You just need to prove you control the hostname.</li>
+                            <li class="fragment">There's also (now) no excuse!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Reliable with spotty/no network</h3>
+                        <ul>
+                            <li>Introducing <em>service workers</em> (Chrome and Firefox)
                                 <ul>
-                                    <li>Elements and attributes</li>
-                                    <li>CSS rules - applied and computed</li>
-                                    <li>Event listeners (<em>Chrome</em>)</li>
+                                    <li>Special JS that can intercept and modify network fetch requests</li>
+                                    <li>Requests can populate and access dedicated IndexedDB</li>
                                 </ul>
                             </li>
+                            <li>Mozilla's <a href="https://serviceworke.rs/">Service Worker Cookbook</a>: great examples</li>
+                            <li>Google's <a href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox</a> and <a href="https://github.com/GoogleChrome/sw-precache">sw-precache</a> JS packages 👍</li>
                         </ul>
                     </section>
                     <section>
-                        <h2>Dev tools: Network monitoring</h2>
+                        <h3>Installable to your device</h3>
                         <ul>
-                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Network</strong>
-                                <ul>
-                                    <li>Shows all requests and responses</li>
-                                    <li>Waterfall view of requests</li>
-                                    <li>Timing / performance - network throttling optional!</li>
-                                </ul>
-                            </li>
+                          <li><code>manifest.json</code> makes a web app installable</li>
+                          <li>Like a native app as of <a href="https://developers.google.com/web/updates/2017/02/improved-add-to-home-screen">March 2017</a>
+                            <img data-src="images/android_logo.png" class="inline-logo" style="height:1em; background-color: rgb(106, 179, 68); margin-right: 0em;" />
+                            <img data-src="images/google_chrome.png" class="inline-logo" style="height:1em;" />
+                          </li>
                         </ul>
-                        <aside class="notes">
-                            <ul>
-                                <li>Laurentian home page</li>
-                                <li>Laurentian faculty directory - web console warnings, performance, mobile</li>
-                            </ul>
-                        </aside>
+                        <pre><code>{
+  "name": "Forest VR",
+  "icons": [{
+      "src": "./images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+  }],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}</code></pre>
                     </section>
                     <section>
-                        <h2>Dev tools: JavaScript debugging</h2>
-                        <ul>
-                            <li>Hit <strong><code>F12</code></strong> or <strong><code>CTRL-Shift-i</code></strong> and select <strong>Debugger</strong> (Firefox)
-                                <ul>
-                                    <li>Set breakpoints in scripts, DOM modification, XHR (Chrome)</li>
-                                    <li>Step through, into, out of scopes</li>
-                                    <li>Inspect variable values</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <aside class="notes">
-                            <ul>
-                                <li>Laurentian home page</li>
-                                <li>Laurentian faculty directory - web console warnings, performance, mobile</li>
-                            </ul>
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>Dev tools: Mobile devices</h2>
-                        <ul>
-                            <li>Emulated: <em>Responsive mode</em> (<strong><code>F12 → CTRL-Shift-m</code></strong>)</li>
-                            <li>USB debugging on Android in Chrome: <strong>⋮ → More tools → Remote devices</strong>:
-                                <ul>
-                                    <li>Live debugging on real devices!</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </section>
-                </section>
-                <section>
-                    <section id="vanilla_demo">
-                        <h2>Vanilla JavaScript!</h2>
-                        <iframe style="width:640px;height:400px;background:white" data-src="vanilla_javascript.html"></iframe>
-                        <p class="demolinks"><a href="#dojo_demo">Dojo</a> - <a href="#jquery_demo">jQuery</a> - <a href="#vanilla_demo">Vanilla</a></p>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>References</h2>
-                        <ul style="font-size:75%">
-                            <li>Mozilla Developer Network (MDN) at <a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a></li>
-                            <li>Google Developers (Web) at <a href="https://developers.google.com/web/">https://developers.google.com/web/</a></li>
-                            <li>Resig, J., Ferguson, R., Paxton, J. (2015). <em>Pro JavaScript Techniques (Second Edition)</em>.  Berkeley, CA: Apress. Retrieved from <a href="https://laurentian.concat.ca/eg/opac/record/2916930">https://laurentian.concat.ca/eg/opac/record/2916930</a></li>
-                            <li>Olsson, M. (2015). <em>JavaScript Quick Syntax Reference</em>. Berkeley, CA: Apress. Retrieved from <a href="https://laurentian.concat.ca/eg/opac/record/2916905"</a>https://laurentian.concat.ca/eg/opac/record/2916905</a></li>
-                            </li>
-                        </ul>
+                      <h3>Free online course!</h3>
+                      <p><a href="https://www.udacity.com/course/intro-to-progressive-web-apps--ud811">Intro to Progressive Web Apps</a> (Udacity)</p>
+                      <p>You know, in all your spare time…</p>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>Next time</h2>
-                        <ul>
-                            <li><h3>Modern JavaScript tooling</h3>
-                                <ul>
-                                    <li>nodejs &amp; npm</li>
-                                    <li>Build systems (gulp / grunt)</li>
-                                </ul>
-                            </li>
-                            <li><h3>Awareness initiatives</h3>
-                                <ul>
-                                    <li>Progressive Web Apps (PWAs)</li>
-                                    <li>Accelerated Mobile Pages (AMP)</li>
-                                </ul>
-                            </li>
-                            <li><h3>Frameworks</h3>
-                                <ul>
-                                    <li>Angular</li>
-                                    <li>React</li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <h2>Moving the web forward</h2>
+                        <hr />
+                        <h3>Accelerated Mobile Pages (AMP)</h3>
                     </section>
-                </section>
-                <section>
                     <section>
-                        <h2>Deets</h2>
-                        <ul>
-                            <li>Slides: <a href="https://stuff.coffeecode.net/2017/javascript_libraries">stuff.coffeecode.net/2017/javascript_libraries</a></li>
-                            <li>Email: <a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a></li>
-                            <li>Social: <a href="https://twitter.com/denials">@denials</a> / <a href="https://plus.google.com/+DanScottCAN">+DanScottCAN</a></li>
-                            <li>Blog: <a href="https://coffeecode.net">coffeecode.net</a></li>
-                        </ul>
-                        <p class="smaller"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
+                      <h3>We did an awful thing to the web</h3>
+                    </section>
+                    <section>
+                      <h3>We made it slow</h3>
+                      <ul>
+                        <li>Ads (so many ads)</li>
+                        <li>Trackers</li>
+                        <li>Big blobs of JavaScript</li>
+                        <li>Blocking images and videos</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h3>We made it slow</h3>
+                      <p><a href="https://docs.google.com/presentation/d/15wA5f0HHIHggO0C9B9R4Tqr6gBJF1Z2ZJ08Ez7_ojWM/pub?start=false&loop=false&delayms=3000">AMP is one way to fix that</a></p>
                     </section>
                 </section>
 			</div>
