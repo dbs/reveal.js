@@ -43,6 +43,9 @@
 .reveal .demolinks {
     font-size: 80%;
 }
+li[onclick] {
+    list-style-type: '† ';
+}
 </style>
 <script>
 function revealCode(showId, el, hideId) {
@@ -140,14 +143,13 @@ function revealCode(showId, el, hideId) {
                     </section>
                     <section data-background="images/lighthouse.png">
                         <div style="background:rgba(0,0,0,0.9);">
-                            <h3>Baseline: 50/100</h3>
+                            <h3>Baseline: 37/100</h3>
                             <ul>
-                                <li>Fresh Evergreen 2.12 install, with HTTPS</li>
+                                <li>Fresh Evergreen 2.12 install, without HTTPS</li>
                                 <li>Praised for:
                                     <ul>
                                         <li>Page load performance is fast</li>
                                         <li>Site is progressively enhanced</li>
-                                        <li>Network connection is secure</li>
                                         <li>Design is mobile-friendly</li>
                                     </ul>
                                 </li>
@@ -156,18 +158,51 @@ function revealCode(showId, el, hideId) {
                     </section>
                     <section data-background="images/lighthouse.png">
                         <div style="background:rgba(0,0,0,0.9);">
-                            <h3>Baseline: 50/100</h3>
+                            <h3>Baseline: 37/100</h3>
                             <ul>
                                 <li>Fresh Evergreen 2.12 install, with HTTPS</li>
                                 <li>Punished for:
                                     <ul>
-                                        <li>App can load on offline/flaky connections</li>
+                                        <li>Network connection is secure</li>
                                         <li>User can be prompted to Add to Homescreen</li>
                                         <li>Installed web app will launch with custom splash screen</li>
                                         <li>Address bar matches brand colors</li>
+                                        <li>App can load on offline/flaky connections</li>
                                     </ul>
                                 </li>
                             </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Let's encrypt that connection</h2>
+                        <ul>
+                            <li onclick="revealCode('tls-certbot')">Use <code>certbot</code> to get a free TLS certificate from <a href="https://letsencrypt.org">LetsEncrypt</a></li>
+                            <li onclick="revealCode('tls-config')">Point the Apache config at the certificates</li>
+                            <li onclick="revealCode('tls-everything')">Enable TLS for all connections</li>
+                        </ul>
+                        <pre id="tls-certbot" class="hidden"><code>certbot certonly --webroot -w /openils/var/web/ \
+        -d shiny.example.org</code></pre>
+                        <pre id="tls-config" class="hidden"><code>vim /etc/apache2/sites-enabled/eg.conf
+
+SSLCertificateFile /etc/letsencrypt/live/shiny.example.org/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/shiny.example.org/privkey.pem</code></pre>
+                        <pre id="tls-everything" class="hidden"><code>vim /etc/apache2/eg_vhost.conf
+
+# Uncomment the following to force SSL for everything.
+# Note that this defeats caching and you will suffer
+# a performance hit.
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>Baseline with HTTPS: 50/100</h3>
+                            <blockquote class="fragment">
+                                'Yes. Yes, this is a fertile land, and we will
+                                thrive. We will rule over all this land, and we
+                                will call it... "This Land."'
+                                <cite>"Serenity." <em>Firefly</em>, performance by Alan Tudyk, season 1, episode 1, 2002-09-20. <em>Netflix</em>, https://www.netflix.com/watch/70133870?trackId=200257859.</cite>
+                            </blockquote>
                         </div>
                     </section>
                 </section>
