@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>We aim to misbehave: Evergreen as a Progressive Web App</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -77,8 +77,100 @@ function revealCode(showId, el, hideId) {
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section>
+                    <section>
+                        <h1>We aim to misbehave</h1>
+                        <h2>Evergreen as a Progressive Web App(?)</h2>
+                        <p>Dan Scott, Laurentian University</p>
+                        <p>2017 Evergreen International Conference</p>
+                        <p>2017-04-07</p>
+                    </section>
+                </section>
+				<section>
+                    <section>
+                        <h2>Progressive Web Apps are... what?</h2>
+                    </section>
+                    <section>
+                        <h3>From graceful degradation to progressive enhancement</h3>
+                        <aside class="notes">
+                            Where graceful degradation was a web design
+                            philosophy arguing that web sites should still be
+                            functional in the absence of JavaScript or advanced
+                            HTML, the progressive enhancement philosophy takes
+                            JavaScript as a baseline and argues that you should
+                            enable your site to take advantage of functionality
+                            offered by different web browsers, particularly those
+                            on a standards track.
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Progressive Web Apps (PWAs)</h3>
+                        <ul>
+                            <li><a href="https://developers.google.com/web/progressive-web-apps/checklist">Baseline</a> - make web apps more like native apps:
+                                <ul>
+                                    <li><em>Responsive</em>: UI adapts to different devices</li>
+                                    <li><em>Fast</em> to load and render</li>
+                                    <li><em>Secure</em>: encrypted by HTTPS</li>
+                                    <li><em>Reliable</em> under any network condition</li>
+                                    <li><em>Installable</em> to your device home screen</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            All of these are worthwhile goals. Let's see what
+                            happens when we try to adapt the Evergreen
+                            catalogue to meet them.
+                        </aside>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>Auditing PWA progress</h3>
+                            <ul>
+                                <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a> audits web apps for quality</li>
+                                <li>Focused on PWA baseline criteria</li>
+                                <li>Offers advice for <em>exemplary PWAs</em> as well</li>
+                                <li>Chrome extension &amp; command line tool</li>
+                            </ul>
+                        </div>
+                        <aside class="notes">
+                            We would really benefit from an objective tool to
+                            tell us how we're doing. Lighthouse is one such 
+                            solution.
+                        </aside>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>Baseline: 50/100</h3>
+                            <ul>
+                                <li>Fresh Evergreen 2.12 install, with HTTPS</li>
+                                <li>Praised for:
+                                    <ul>
+                                        <li>Page load performance is fast</li>
+                                        <li>Site is progressively enhanced</li>
+                                        <li>Network connection is secure</li>
+                                        <li>Design is mobile-friendly</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>Baseline: 50/100</h3>
+                            <ul>
+                                <li>Fresh Evergreen 2.12 install, with HTTPS</li>
+                                <li>Punished for:
+                                    <ul>
+                                        <li>App can load on offline/flaky connections</li>
+                                        <li>User can be prompted to Add to Homescreen</li>
+                                        <li>Installed web app will launch with custom splash screen</li>
+                                        <li>Address bar matches brand colors</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
 			</div>
 		</div>
 
