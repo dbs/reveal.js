@@ -230,11 +230,100 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                             <blockquote class="fragment">
                                 'Yes. Yes, this is a fertile land, and we will
                                 thrive. We will rule over all this land, and we
-                                will call it... "This Land."'
+                                will call it… "This Land."'
                                 <cite>"Serenity." <em>Firefly</em>, performance by Alan Tudyk, season 1, episode 1, 2002-09-20. <em>Netflix</em>, https://www.netflix.com/watch/70133870?trackId=200257859.</cite>
                             </blockquote>
                         </div>
                     </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Manifest destiny</h2>
+                        <blockquote>
+                            The purpose of the manifest is to install web
+                            applications to the homescreen of a device,
+                            providing users with quicker access and a richer
+                            experience.
+                            <cite>"Web App Manifest." <em><a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/Manifest">Mozilla
+                                    Developer Network</a></em></cite>
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h3>Manifest basics</h3>
+                        <ul>
+                            <li>A JSON file with metadata about the web app</li>
+                            <li>A link to the manifest from the <code>&lt;head&gt;</code></li>
+                        </ul>
+
+                        <pre><code>{
+  "short_name": "Shiny!",
+  "name": "Evergreen's Progressive Web App",
+  "start_url": "/eg/opac/home"
+}</code></pre>
+                        <pre><code>&lt;link rel="manifest" href="/manifest.json" /&gt;</code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li><code>short_name</code> will be displayed on your device, underneath the icon</li>
+                                <li><code>name</code> is displayed while the application loads</li>
+                                <li><code>start_url</code> is where the application will open when you launch it</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Manifest icons</h3>
+                        <p>Multiple icons for multiple screen densities</p>
+                        <pre><code>{
+  "short_name": "Shiny!",
+  "icons": [{
+      "src": "/images/icon48.png", "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/images/icon96.png", "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/images/icon192.png", "type": "image/png",
+      "sizes": "192x192"
+    }],
+}</code></pre>
+                        <aside class="notes">
+                            192x192 is the most critical size
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Manifest theming</h3>
+                        <p>While the app launches, give it nice colours</p>
+                        <pre><code>{
+  "short_name": "Shiny!",
+  "background_color": "#007a54",
+  "theme_color": "#007a54",
+}</code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li><code>background_color</code> is for the splash screen</li>
+                                <li><code>theme_color</code> can affect the operating system (title bar, etc)</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3><code>meta</code> theme-color</h3>
+                        <p>The manifest theme color should have a matching <code>&lt;meta rel="theme-color" /&gt;</code> element</p>
+                        <pre><code>&lt;meta rel="theme-color" value="#007a54" /&gt;</code></pre>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>HTTPS + manifest: 85/100</h3>
+                            <blockquote class="fragment">
+                                'Yes. Yes, this is a fertile land, and we will
+                                thrive. We will rule over all this land, and we
+                                will call it… "This Land."'
+                                <cite>"Serenity." <em>Firefly</em>, performance by Alan Tudyk, season 1, episode 1, 2002-09-20. <em>Netflix</em>, https://www.netflix.com/watch/70133870?trackId=200257859.</cite>
+                            </blockquote>
+                        </div>
+                    </section>
+
                 </section>
 			</div>
 		</div>
