@@ -380,6 +380,178 @@ END;
                         </ul>
                     </section>
                 </section>
+                <section>
+                    <section>
+                        <h2>Handling offline/flaky connections:</h2>
+                        <h3>Introducing service workers</h3>
+                    </section>
+                    <section>
+                        <h3>Service workers</h3>
+                        <ul>
+                            <li>A separate JavaScript per origin <em>scope</em></li>
+                            <li>Runs on a separate thread</li>
+                            <li>No access to the DOM</li>
+                            <li>Can intercept and modify network requests for fine-grained <a href="https://serviceworke.rs/">caching strategies</a></li>
+                            <li>Enables push notifications, too!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Service worker support</h3>
+                        <ul>
+                            <li><a href="https://jakearchibald.github.io/isserviceworkerready/">Supported by</a> Chrome, Firefox, Opera</li>
+                            <li>Microsoft Edge is working on it</li>
+                            <li>Safari… 🤷</li>
+                            <li class="fragment">But progressive enhancement means it's okay!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Service worker registration</h3>
+                        <pre><code>&lt;script&gt;
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    // Your service worker *must* be located at
+    // the top-level directory relative to your site.
+    // It won't be able to control pages unless it's
+    // located at the same level or higher than them.
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg) { /* … stuff! */ })
+      .catch(function(e) { console.error('Error:', e); });
+  }
+}
+&lt;/script&gt;</code></pre>
+                        <cite>Adapted from <a href="https://github.com/GoogleChrome/sw-precache/blob/master/demo/app/js/service-worker-registration.js">Google SW registration boilerplate</a></cite>
+                    </section>
+                    <section>
+                        <h3>Service worker: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></h3>
+                        <ul>
+                            <li>More flexible than <code>XMLHttpRequest()</code>
+                                <ul>
+                                    <li>Generic <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Request</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers">Headers</a> interfaces</li>
+                                </ul>
+                            </li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent">FetchEvent</a> handler + <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch()</a> + <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache API</a> + cache dedicated to a given web app:
+                                <ul>
+                                    <li>Fetch network requests from the cache</li>
+                                    <li>Store network responses in the cache</li>
+                                    <li class="fragment">Overcome network flakiness!</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Let there be patterns!</h3>
+                        <p><a href="https://serviceworke.rs/">serviceworke.rs</a> offers examples of caching strategies</p>
+                    </section>
+                    <section>
+                        <h3><a href="https://serviceworke.rs/strategy-network-or-cache.html">Network-or-cache</a></h3>
+                        <pre><code>self.addEventListener('fetch', function(evt) {
+  if evt.respondWith(fromNetwork(evt.request, 400)
+  .catch(function () {
+    return fromCache(evt.request);
+  }));
+});
+function fromNetwork(request, timeout) {
+  return new Promise(function (fulfill, reject) {
+  var timeoutId = setTimeout(reject, timeout);
+  fetch(request).then(function (response) {
+      clearTimeout(timeoutId);
+      fulfill(response);
+    }, reject);
+  });
+}</code></pre>
+                    </section>
+                    <section>
+                        <h3><a href="https://serviceworke.rs/strategy-cache-and-update.html">Cache and update</a></h3>
+                        <pre><code>self.addEventListener('fetch', function(evt) {
+  evt.respondWith(fromCache(evt.request));
+  evt.waitUntil(update(evt.request));
+});
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response);
+    });
+  });
+}</code></pre>
+                    </section>
+                    <section>
+                        <h3>Let there be tools!</h3>
+                        <ul>
+                            <li>We could roll our own service worker based on the <a href="https://serviceworke.rs/">serviceworke.rs</a> patterns</li>
+                            <li>But libraries provide a nice layer of abstraction:
+                                <ul>
+                                    <li><a href="https://github.com/GoogleChrome/sw-toolbox">sw-toolbox</a> implements network handlers with five request/caching patterns</li>
+                                    <li><a href="https://github.com/GoogleChrome/sw-precache">sw-precache</a> builds on <code>sw-toolbox</code> to generate a service worker based on a configuration file</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>package.json</h3>
+<pre><code>{
+  "name": "evergreen-pwa-stuff",
+  "version": "1.0.0",
+  "description": "Evergreen PWA stuff",
+  "author": "Dan Scott",
+  "license": "GPL-2.0+",
+  "dependencies": {
+    "sw-precache": "&gt;4.3.0"
+  }
+}</code></pre>
+<pre><code>$ npm install</code></pre>
+                    </section>
+                    <section>
+                        <h3>sw-precache basic dumb config</h3>
+                        <pre><code>module.exports = {
+  staticFileGlobs: [
+    '/openils/var/web/css/skin/default/opac/semiauto.css',
+    '/openils/var/web/js/ui/default/opac/simple.js',
+    '/openils/var/web/opac/images/small_logo.png',
+    '/openils/var/web/opac/images/progressbar_green.png',
+    '/openils/var/web/opac/images/main_logo.png',
+    '/openils/var/web/opac/images/eg_tiny_logo.png'
+  ],
+  stripPrefix: '/openils/var/web/',
+  runtimeCaching: [{
+    urlPattern: /^https:\/\/shiny.example.org\//,
+    handler: 'networkFirst'
+  }]
+};</code></pre>
+                    </section>
+                    <section>
+                        <h3>Enable our service worker</h3>
+                        <ol>
+                            <li onclick="revealCode('sw-generate')">Generate and install the service worker</li>
+                            <li onclick="revealCode('sw-copy')">Copy boilerplate registration code into place</li>
+                            <li onclick="revealCode('sw-register')">Add registration to <code style="font-size: smaller;white-space:nowrap;">templates/opac/parts/base.tt2</code></li>
+                        </ol>
+<pre id="sw-generate" class="hidden"><code data-noescape data-trim class="lang-bash">
+$ <strong>node_modules/sw-precache/cli.js --config sw-precache.js</strong>
+Total precache size is about 18.2 kB for 6 resources.
+service-worker.js has been generated.
+$ <strong>cp service-worker.js /openils/var/web/sw.js</strong>
+</code></pre>
+<pre id="sw-copy" class="hidden"><code data-noescape data-trim class="lang-bash">
+$ <strong>cp sw-register.js /openils/var/web/.</strong>
+</code></pre>
+<pre id="sw-register" class="hidden"><code data-trim class="lang-bash">
+<script src="/js/sw-register.js" async></script>
+</code></pre>
+                    </section>
+                    <section data-background="images/lighthouse.png">
+                        <div style="background:rgba(0,0,0,0.9);">
+                            <h3>HTTPS + manifest + service worker: 100/100</h3>
+                            <p class="fragment">Shut. Up.</p>
+                        </div>
+                    </section>
+                </section>
 			</div>
 		</div>
 
