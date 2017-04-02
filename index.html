@@ -323,7 +323,62 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                             </blockquote>
                         </div>
                     </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Optimizations</h2>
+                        <ul>
+                            <li><code>/eg/opac/home</code> first paint: 1648.1ms
+                                <pre><code>…opac/home (shiny)
+  …opac/semiauto.css (shiny) - 719.2ms, 14.61KB
+  …opac/simple.js (shiny) - 796ms, 16.4KB
+  …tundra/tundra.css (shiny) - 1,060.6ms, 54.93KB
+  …css/style.css (shiny) - 1,175.7ms, 60.35KB
+  …dojo/openils_dojo.js (shiny) - 1,456.5ms, 12.82KB
+  …opensrf/JSON_v1.js (shiny) - 1,541.4ms, 15.97KB
+  …opensrf/opensrf_xhr.js (shiny) - 1,571.1ms, 17.78KB
+  …themes/dijit.css (shiny) - 1,640.9ms, 36.78KB
+  …images/small_logo.png (shiny) - 1,747.4ms, 15.37KB
+  …opensrf/opensrf.js (shiny) - 1,840.6ms, 39.31KB
+  …images/eg_tiny_logo.png (shiny) - 1,926.7ms, 14.96KB
+  …images/main_logo.png (shiny) - 1,941.4ms, 21.25KB
+  …dojo/dojo.js (shiny) - 2,106ms, 92.59KB</code></pre>
+                            </li>
+                            <li><em>Dojo</em>? Didn't we try to avoid Dojo?</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3><code>opac/parts/header.tt2</code></h3>
+                        <pre><code># Dojo is required to use the copy locations advanced search
+# filter, therefore, it should always be enabled.
+want_dojo = 1;
 
+IF use_autosuggest.enabled == "t";
+    want_dojo = 1;
+END;
+
+IF ctx.google_books_preview;
+    want_dojo = 1;
+END;
+
+IF ENV.OILS_NOVELIST_URL;
+    want_dojo = 1;
+END;
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>The fix is in <a href="https://bugs.launchpad.net/evergreen/+bug/1411699">bug 1411699</a></h3>
+                        <pre><code>…opac/home (shiny)
+  …opac/semiauto.css (shiny) - 592ms, 11.48KB
+  …opac/simple.js (shiny) - 642.3ms, 13.26KB
+  …css/style.css (shiny) - 862.8ms, 58.53KB
+  …images/eg_tiny_logo.png (shiny) - 1,041.5ms, 11.82KB
+  …images/main_logo.png (shiny) - 1,071.5ms, 18.12KB</code></pre>
+                        <ul>
+                            <li class="fragment">Still 85/100 , but first paint is down to 1011.9ms!</li>
+                            <li class="fragment">Most of the points are docked because we fail the <em>App can load on offline/flaky connections</em> test</li>
+                        </ul>
+                    </section>
                 </section>
 			</div>
 		</div>
