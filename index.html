@@ -529,27 +529,206 @@ function update(request) {
                         <h3>Enable our service worker</h3>
                         <ol>
                             <li onclick="revealCode('sw-generate')">Generate and install the service worker</li>
-                            <li onclick="revealCode('sw-copy')">Copy boilerplate registration code into place</li>
-                            <li onclick="revealCode('sw-register')">Add registration to <code style="font-size: smaller;white-space:nowrap;">templates/opac/parts/base.tt2</code></li>
+                            <li onclick="revealCode('sw-copy')">Install the boilerplate registration code</li>
+                            <li onclick="revealCode('sw-register')">Add registration code to <code style="font-size: smaller;white-space:nowrap;">templates/opac/parts/base.tt2</code></li>
                         </ol>
-<pre id="sw-generate" class="hidden"><code data-noescape data-trim class="lang-bash">
+                        <pre id="sw-generate" class="hidden"><code data-noescape data-trim class="lang-none">
 $ <strong>node_modules/sw-precache/cli.js --config sw-precache.js</strong>
 Total precache size is about 18.2 kB for 6 resources.
 service-worker.js has been generated.
 $ <strong>cp service-worker.js /openils/var/web/sw.js</strong>
-</code></pre>
-<pre id="sw-copy" class="hidden"><code data-noescape data-trim class="lang-bash">
+                        </code></pre>
+                        <pre id="sw-copy" class="hidden"><code data-noescape data-trim class="lang-none">
 $ <strong>cp sw-register.js /openils/var/web/.</strong>
-</code></pre>
-<pre id="sw-register" class="hidden"><code data-trim class="lang-bash">
-<script src="/js/sw-register.js" async></script>
-</code></pre>
+                        </code></pre>
+                        <pre id="sw-register" class="hidden"><code data-trim>
+<script src="/js/sw-register.js" async ></script>
+                        </code></pre>
+                        <aside class="notes">
+                            <code>async</code> tells the browser to load the script asynchronously, so that it does not delay rendering.
+                        </aside>
                     </section>
                     <section data-background="images/lighthouse.png">
                         <div style="background:rgba(0,0,0,0.9);">
                             <h3>HTTPS + manifest + service worker: 100/100</h3>
                             <p class="fragment">Shut. Up.</p>
                         </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>100/100 PWA score!<sup>*</sup></h2>
+                        <ul>
+                            <li class="fragment" data-fragment-index="2">Specifically, no <em>My Account</em> pages are available offline</li>
+                            <li class="fragment" data-fragment-index="3">That was kind of the point of the exercise</li>
+                        </ul>
+                        <p class="fragment" data-fragment-index="1"><sup>*</sup>Score may not reflect real-world experiences</p>
+                    </section>
+                    <section>
+                        <h2>"My Account" headers</h2>
+                        <pre><code data-trim class="lang-none">
+cache-control: no-store, no-cache, must-revalidate
+expires: -1
+                        </code></pre>
+                        <ul>
+                            <li><code>no-store</code> means "never cache this"</li>
+                            <li><code>expires: -1</code> means "this expires immediately"</li>
+                            <li>Pretty hard to view content offline with these headers!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Radical surgery</h3>
+                        <pre><code data-trim class="lang-diff">
+diff --git a/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGCatLoader.pm b/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGCatLoader.pm
+index 6aa1f58..6548edc 100644
+--- a/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGCatLoader.pm
++++ b/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGCatLoader.pm
+@@ -184,8 +184,7 @@ sub load {
+ return $self-&gt;redirect_auth unless $self-&gt;editor-&gt;requestor;
+ 
+ # Don't cache anything requiring auth for security reasons
+-$self-&gt;apache-&gt;headers_out-&gt;add("cache-control" =&gt; "no-store, no-cache, must-revalidate");
+-$self-&gt;apache-&gt;headers_out-&gt;add("expires" =&gt; "-1");
++$self-&gt;apache-&gt;headers_out-&gt;add("cache-control" =&gt; "no-cache, must-revalidate");
+ 
+ return $self-&gt;load_email_record if $path =~ m|opac/record/email|;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Rapid decay</h3>
+                        <p>If we remove those headers, Expires becomes + 5 seconds due to <code>/etc/apache2/eg_vhost.conf</code>:</p>
+                        <pre><code data-trim>
+&lt;Location /eg/opac&gt;
+  PerlSetVar OILSWebContextLoader "OpenILS::WWW::EGCatLoader"
+  # Expire the HTML quickly since we're loading dynamic data
+  ExpiresActive On
+  ExpiresByType text/html "access plus 5 seconds"
+&lt;/Location&gt;
+                        </code></pre>
+                        <p>It's dynamic, but there are alternatives to <code>Expires</code></p>
+                    </section>
+                    <section>
+                        <h3>Enter ETag</h3>
+                        <pre><code data-trim class="lang-diff">
+diff --git a/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGWeb.pm b/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGWeb.pm
+index da18d7e..21d4715 100644
+--- a/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGWeb.pm
++++ b/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGWeb.pm
+@@ -129,11 +129,16 @@ sub handler_guts {
+ $vhost_processor_cache{$processor_key} = $tt;
+ $ctx-&gt;{encode_utf8} = sub {return encode_utf8(shift())};
+ 
+-unless($tt-&gt;process($template, {ctx =&gt; $ctx, ENV =&gt; \%ENV, l =&gt; $text_handler}, $r)) {
++my $_out = '';
++unless($tt-&gt;process($template, {ctx =&gt; $ctx, ENV =&gt; \%ENV, l =&gt; $text_handler}, \$_out)) {
+     $r-&gt;log-&gt;warn('egweb: template error: ' . $tt-&gt;error);
+     return Apache2::Const::HTTP_INTERNAL_SERVER_ERROR;
+ }
+ 
++my $etag = md5_hex(Encode::encode_utf8($_out);)
++$r-&gt;headers_out-&gt;add('Etag' =&gt; $etag);
++$r-&gt;print($_out);
++
+ return Apache2::Const::OK;
+                        </code></pre>
+                        <aside class="notes">
+                            <code>ETag</code> and <code>Last-Modified</code> enable the browser to check for updates
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Whither <code>Expires</code>?</h3>
+                        <ul>
+                            <li>Given <code>ETag</code> and <code>no-cache</code>, the browser will always make a request to the server</li>
+                            <li>If the server can't respond (is down, or has no network connection), the service worker can</li>
+                            <li>Bonus: for other HTML pages, <code>Expires</code> can be turned off</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>HTTP/2</h2>
+                        <ul>
+                            <li>Lighthouse recommends using HTTP/2</li>
+                            <li>One TCP connection multiplexes requests and compresses headers</li>
+                            <li>More efficient than four to eight separate connections per origin (<a href="https://http2.github.io/faq/#why-just-one-tcp-connection">http2 FAQ</a>)</li>
+                            <li>Nginx--which we're already using to proxy websockets--supports HTTP/2</li>
+                            <li>Let's get this thing going</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>HTTP/2 on Debian Jessie</h3>
+                        <p>Jessie doesn't deliver a new enough version, so:</p>
+                        <pre><code data-trim class="lang-none">
+apt-get -t jessie-backports install nginx
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>HTTP/2: nginx config</h3>
+                        <pre><code data-trim class="lang-diff">
+diff --git a/examples/nginx/osrf-ws-http-proxy b/examples/nginx/osrf-ws-http-proxy
+index d079230..2fbf832 100644
+--- a/examples/nginx/osrf-ws-http-proxy
++++ b/examples/nginx/osrf-ws-http-proxy
+@@ -19,7 +19,7 @@ server {
+ }
+ 
+ server {
+-    listen 443;
++    listen 443 ssl http2;
+     ssl on;
+ 
+     # Use the same SSL certificate as Apache.
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>HTTP/2: Are we good?</h3>
+                        <pre><code data-trim class="lang-none">
+$ curl --http2 -H "Accept-Encoding: gzip" \
+       -I https://shiny.example.org/eg/opac/home
+HTTP/2 200 
+server: nginx/1.10.3
+date: Sat, 01 Apr 2017 15:44:15 GMT
+content-type: text/html; encoding=utf8
+etag: 1735fc80e7ea268e656d53ac9126e438
+                        </code></pre>
+                        <p>nginx falls back to HTTP 1.1 for browsers that don't support HTTP/2</p>
+                        <p class="fragment">(Yes, I tested with <strong>w3m</strong>)</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Brain dead approach PWA results</h2>
+                        <p>Not bad. Almost ready for prime time!</p>
+                        <p class="fragment">But we're lacking a few things…</p>
+                    </section>
+                    <section>
+                        <h3>An offline fallback page</h3>
+                        <ul>
+                            <li>A search-driven app <em>will</em> lead to cache misses</li>
+                            <li>Ideally, tell the user what they <em>can</em> access (perhaps via <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">History API</a>?)</li>
+                            <li>This will require custom service worker code</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Better control over GET params</h3>
+                        <ul>
+                            <li>Default behaviour is to treat the following pages as completely different:
+                                <ul>
+                                    <li><code>https://shiny.example.org/eg/opac/myopac/holds?query=potter</code></li>
+                                    <li><code>https://shiny.example.org/eg/opac/myopac/holds?query=harry</code></li>
+                                </ul>
+                            </li>
+                            <li>For the <code>/myopac/</code> pages, at least, GET params shouldn't matter</li>
+                            <li>This will require custom service worker code</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Separate the apps</h3>
+                        <ul>
+                            <li><code>/eg/opac/</code>, <code>/eg/staff/</code>, and <code>/eg/myopac/</code> are conceptually separate apps</li>
+                            <li>But common assets living at <code>/</code> require them all to use the same service worker</li>
+                            <li>Instead, use <code>/eg/opac/assets/</code>, <code>/eg/staff/assets/</code>, and <code>/eg/myopac/assets</code> to serve up static assets from <code>/openils/var/web/</code>?</li>
+                        </ul>
                     </section>
                 </section>
 			</div>
