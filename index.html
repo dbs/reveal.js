@@ -591,7 +591,7 @@ expires: -1
                         <ul>
                             <li><code>no-store</code> means "never cache this"</li>
                             <li><code>expires: -1</code> means "this expires immediately"</li>
-                            <li>Pretty hard to view content offline with these headers!</li>
+                            <li class="fragment fade-right">No network connection? You shall not see your checked out items!</li>
                         </ul>
                     </section>
                     <section>
@@ -660,6 +660,13 @@ index da18d7e..21d4715 100644
                             <li>If the server can't respond (is down, or has no network connection), the service worker can</li>
                             <li>Bonus: for other HTML pages, <code>Expires</code> can be turned off</li>
                         </ul>
+                        <pre><code data-trim>
+&lt;Location /eg/opac&gt;
+  PerlSetVar OILSWebContextLoader "OpenILS::WWW::EGCatLoader"
+  ExpiresActive Off
+&lt;/Location&gt;
+                        </code></pre>
+
                     </section>
                 </section>
                 <section>
@@ -717,6 +724,7 @@ etag: 1735fc80e7ea268e656d53ac9126e438
                     <section>
                         <h2>Brain dead approach PWA results</h2>
                         <p>Not bad. Almost ready for prime time!</p>
+                        <p class="fragment">We've inadvertently enabled the web staff client--yay!?</p>
                         <p class="fragment">But we're lacking a few things…</p>
                     </section>
                     <section>
@@ -747,6 +755,26 @@ etag: 1735fc80e7ea268e656d53ac9126e438
                             <li>But common assets living at <code>/</code> require them all to use the same service worker</li>
                             <li>Instead, use <code>/eg/opac/assets/</code>, <code>/eg/staff/assets/</code>, and <code>/eg/myopac/assets</code> to serve up static assets from <code>/openils/var/web/</code>?</li>
                         </ul>
+                    </section>
+                    <section>
+                        <h3>A modern <code>/eg/myopac</code>?</h3>
+                        <ul>
+                            <li>Precache a static app shell</li>
+                            <li>Load fines, holds, lists, messages, etc as JSON</li>
+                            <li>Deliver native device notifications with the <a href="https://developer.mozilla.org/en/docs/Web/API/Push_API">Push API</a></li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Details</h2>
+                        <ul>
+                            <li>Slides: <a href="https://stuff.coffeecode.net/2017/evergreen-progressive-web-app" property="url">stuff.coffeecode.net/2017/evergreen-progressive-web-app</a></li>
+                            <li>Email: <span resource="#author"><a href="mailto:dscott@laurentian.ca" property="email">dscott@laurentian.ca</a></span></li>
+                            <li>Social: <span resource="#author"><a href="https://twitter.com/denials" property="sameAs">@denials</a> / <a href="https://plus.google.com/+DanScottCAN" property="sameAs">+DanScottCAN</a></span></li>
+                            <li>Blog: <span resource="#author"><a href="https://coffeecode.net" property="sameAs">coffeecode.net</a></span></li>
+                        </ul>
+                        <p class="smaller"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" data-src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
                     </section>
                 </section>
 			</div>
