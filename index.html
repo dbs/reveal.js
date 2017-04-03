@@ -77,16 +77,23 @@ function revealCode(showId, el, hideId) {
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+	<body vocab="https://schema.org/" typeof="PresentationDigitalDocument">
+        <meta property="isAccessibleForFree" content="True" />
+        <div class="reveal">
+            <div class="slides">
                 <section>
                     <section>
-                        <h1>We aim to misbehave</h1>
-                        <h2>Evergreen: Progressive Web App</h2>
-                        <p>Dan Scott, Laurentian University</p>
-                        <p>2017 Evergreen International Conference</p>
-                        <p>2017-04-07</p>
+                        <span property="name">
+                            <h1>We aim to misbehave</h1>
+                            <h2>Evergreen: Progressive Web App</h2>
+                        </span>
+                        <p>
+                            <span property="author" typeof="Person" resource="#author"><span property="givenName">Dan</span> <span property="familyName">Scott</span>,
+                            <span property="worksFor" typeof="CollegeOrUniversity"><a href="https://laurentian.ca" property="url"><span
+                                  property="name">Laurentian University</span></a></span>
+                        </p>
+                        <p property="publication" typeof="PublicationEvent"><span property="name">2017 Evergreen International Conference</span></p>
+                        <p property="datePublished">2017-04-07</p>
                     </section>
                     <section>
                         <h2>Everyone wants an app</h2>
