@@ -563,7 +563,16 @@ $ <strong>cp sw-register.js /openils/var/web/.</strong>
 <script src="/js/sw-register.js" async ></script>
                         </code></pre>
                         <aside class="notes">
-                            <code>async</code> tells the browser to load the script asynchronously, so that it does not delay rendering.
+                            <p>
+                            <code>async</code> tells the browser to load the
+                            script asynchronously so that it does not delay
+                            rendering.
+                            </p>
+                            <p>
+                            However, this still results in horrible FOUCs on Firefox,
+                            so instead we just include the code at the bottom of
+                            base.tt2.
+                            </p>
                         </aside>
                     </section>
                     <section data-background="images/lighthouse.png">
