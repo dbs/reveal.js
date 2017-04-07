@@ -185,7 +185,7 @@ function revealCode(showId, el, hideId) {
                         </div>
                         <aside class="notes">
                             We would really benefit from an objective tool to
-                            tell us how we're doing. Lighthouse is one such 
+                            tell us how we're doing. Lighthouse is one such
                             solution.
                         </aside>
                     </section>
@@ -653,12 +653,12 @@ index 6aa1f58..6548edc 100644
 +++ b/Open-ILS/src/perlmods/lib/OpenILS/WWW/EGCatLoader.pm
 @@ -184,8 +184,7 @@ sub load {
  return $self-&gt;redirect_auth unless $self-&gt;editor-&gt;requestor;
- 
+
  # Don't cache anything requiring auth for security reasons
 -$self-&gt;apache-&gt;headers_out-&gt;add("cache-control" =&gt; "no-store, no-cache, must-revalidate");
 -$self-&gt;apache-&gt;headers_out-&gt;add("expires" =&gt; "-1");
 +$self-&gt;apache-&gt;headers_out-&gt;add("cache-control" =&gt; "no-cache, must-revalidate");
- 
+
  return $self-&gt;load_email_record if $path =~ m|opac/record/email|;
                         </code></pre>
                     </section>
@@ -685,14 +685,14 @@ index da18d7e..21d4715 100644
 @@ -129,11 +129,16 @@ sub handler_guts {
  $vhost_processor_cache{$processor_key} = $tt;
  $ctx-&gt;{encode_utf8} = sub {return encode_utf8(shift())};
- 
+
 -unless($tt-&gt;process($template, {ctx =&gt; $ctx, ENV =&gt; \%ENV, l =&gt; $text_handler}, $r)) {
 +my $_out = '';
 +unless($tt-&gt;process($template, {ctx =&gt; $ctx, ENV =&gt; \%ENV, l =&gt; $text_handler}, \$_out)) {
      $r-&gt;log-&gt;warn('egweb: template error: ' . $tt-&gt;error);
      return Apache2::Const::HTTP_INTERNAL_SERVER_ERROR;
  }
- 
+
 +my $etag = md5_hex(Encode::encode_utf8($_out);)
 +$r-&gt;headers_out-&gt;add('Etag' =&gt; $etag);
 +$r-&gt;print($_out);
@@ -769,12 +769,12 @@ index d079230..2fbf832 100644
 +++ b/examples/nginx/osrf-ws-http-proxy
 @@ -19,7 +19,7 @@ server {
  }
- 
+
  server {
 -    listen 443;
 +    listen 443 ssl http2;
      ssl on;
- 
+
      # Use the same SSL certificate as Apache.
                         </code></pre>
                     </section>
@@ -783,7 +783,7 @@ index d079230..2fbf832 100644
                         <pre><code data-trim class="lang-none">
 $ curl --http2 -H "Accept-Encoding: gzip" \
        -I https://shiny.example.org/eg/opac/home
-HTTP/2 200 
+HTTP/2 200
 server: nginx/1.10.3
 date: Sat, 01 Apr 2017 15:44:15 GMT
 content-type: text/html; encoding=utf8
