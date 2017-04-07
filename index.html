@@ -118,8 +118,7 @@ function revealCode(showId, el, hideId) {
                         <blockquote>
                             Y'all got on this boat for different reasons, but y'all come to the same place.
                             So now I'm asking more of you than I have before. Maybe all. Sure as I know
-                            anything, I know this - they will try again. Maybe on another world, maybe on
-                            this very ground swept clean. A year from now, ten? They'll swing back to the
+                            anything, I know this - they will try again. […] They'll swing back to the
                             belief that they can make [native apps]… better. And I do not hold to that. So no
                             more runnin'. I aim to misbehave.
                                 <cite><em>Serenity</em>, performance by Nathan Fillion, 2005-09-30.</cite>
@@ -247,10 +246,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                         <div style="background:rgba(0,0,0,0.9);">
                             <h3>Baseline with HTTPS: 50/100</h3>
                             <blockquote class="fragment">
-                                'Yes. Yes, this is a fertile land, and we will
-                                thrive. We will rule over all this land, and we
-                                will call it… "This Land."'
-                                <cite>"Serenity." <em>Firefly</em>, performance by Alan Tudyk, season 1, episode 1, 2002-09-20. <em>Netflix</em>, https://www.netflix.com/watch/70133870?trackId=200257859.</cite>
+                                <strong>Zoë:</strong> We mentioned that we were out of rations, and 10 minutes later, a bunch of apples rained into the trench.
+                                <br /><strong>Wash:</strong> And they grew into a big tree, and they all climbed up the tree into a magical land with unicorns and a harp.
+                                <cite>"War Stories." <em>Firefly</em>, performance by Gina Torres and Alan Tudyk, season 1, episode 9, 2002-12-06.</cite>
                             </blockquote>
                         </div>
                     </section>
@@ -276,8 +274,9 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                         </ul>
 
                         <pre><code>{
-  "short_name": "Shiny!",
-  "name": "Evergreen's Progressive Web App",
+  "short_name": "Shiny Cap'n",
+  "name": "Shiny Cap'n",
+  "description": "A real shiny public catalogue!",
   "start_url": "/eg/opac/home"
 }</code></pre>
                         <pre><code>&lt;link rel="manifest" href="/manifest.json" /&gt;</code></pre>
@@ -293,7 +292,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                         <h3>Manifest icons</h3>
                         <p>Multiple icons for multiple screen densities</p>
                         <pre><code>{
-  "short_name": "Shiny!",
+  "short_name": "Shiny Cap'n",
   "icons": [{
       "src": "/images/icon48.png", "type": "image/png",
       "sizes": "48x48"
@@ -315,7 +314,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                         <h3>Manifest theming</h3>
                         <p>While the app launches, give it nice colours</p>
                         <pre><code>{
-  "short_name": "Shiny!",
+  "short_name": "Shiny Cap'n",
   "background_color": "#007a54",
   "theme_color": "#007a54",
 }</code></pre>
@@ -327,10 +326,34 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [NE,R,L]</code></pre>
                         </aside>
                     </section>
                     <section>
-                        <h3><code>meta</code> theme-color</h3>
-                        <p>The manifest theme color should have a matching <code>&lt;meta rel="theme-color" /&gt;</code> element</p>
-                        <pre><code>&lt;meta rel="theme-color" value="#007a54" /&gt;</code></pre>
+                        <h3>Manifest <code>display</code></h3>
+                        <ul>
+                            <li>When the app launches, set <code>display</code> to either:
+                                <ul>
+                                    <li>Hide all user agent chrome: <em>fullscreen</em></li>
+                                    <li>Launch as a separate application: <em>standalone</em></li>
+                                </ul>
+                            </li>
+                            <li>Set <code>orientation</code> to either <em>portrait</em> or <em>landscape</em></li>
+                        </ul>
+                        <pre><code>{
+  "short_name": "Shiny Cap'n",
+  "display": "standalone",
+  "orientation": "portrait"
+}</code></pre>
                     </section>
+                    <section>
+                        <h3><code>link</code> and <code>meta</code> matching</h3>
+                        <p><code>&lt;head&gt;</code> should contain
+                        <code>&lt;link rel="icon" /&gt;</code> and
+                        <code>&lt;meta rel="theme-color" /&gt;</code> elements
+                        that match the manifest values:</p>
+                        <pre><code data-trim>
+                        &lt;meta rel="theme-color" value="#007a54" /&gt;
+                        &lt;link rel="icon" sizes="192x192" href="images/icon192.png" /&gt;
+                        </code></pre>
+                    </section>
+
                     <section data-background="images/lighthouse.png">
                         <div style="background:rgba(0,0,0,0.9);">
                             <h3>HTTPS + manifest: 85/100</h3>
@@ -417,9 +440,9 @@ END;
                     <section>
                         <h3>Service worker support</h3>
                         <ul>
-                            <li><a href="https://jakearchibald.github.io/isserviceworkerready/">Supported by</a> Chrome, Firefox, Opera</li>
-                            <li>Microsoft Edge is working on it</li>
-                            <li>Safari… 🤷</li>
+                            <li><a href="https://jakearchibald.github.io/isserviceworkerready/">Supported by</a> Chrome, Firefox, Opera today</li>
+                            <li class="fragment">Microsoft Edge is working on it</li>
+                            <li class="fragment">Safari… 🤷</li>
                             <li class="fragment">But progressive enhancement means it's okay!</li>
                         </ul>
                     </section>
@@ -681,6 +704,29 @@ index da18d7e..21d4715 100644
                 </section>
                 <section>
                     <section>
+                        <h2>Add to Home Screen: Shiny!</h2>
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_add_to_home.jpg" alt="Add to Home Screen prompt" style="height:500px" />
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_added_notification.jpg" alt="Android notification that the PWA has been added to the home screen" style="height:500px" />
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_app_drawer.png" alt="Android app drawer with PWA" style="height:500px" />
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_launcher_1.jpg" alt="Android PWA launcher splash screen" style="height:500px" />
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_launcher_2.jpg" alt="Android PWA launcher splash screen transition" style="height:500px" />
+                    </section>
+                    <section>
+                        <img data-src="images/pwa_fullscreen.jpg" alt="Android PWA in full screen mode" style="height:500px" />
+                    </section>
+                </section>
+                <section>
+                    <section>
                         <h2>HTTP/2</h2>
                         <ul>
                             <li>Lighthouse recommends using HTTP/2</li>
@@ -726,7 +772,7 @@ date: Sat, 01 Apr 2017 15:44:15 GMT
 content-type: text/html; encoding=utf8
 etag: 1735fc80e7ea268e656d53ac9126e438
                         </code></pre>
-                        <p>nginx falls back to HTTP 1.1 for browsers that don't support HTTP/2</p>
+                        <p class="fragment">nginx falls back to HTTP 1.1 for browsers that don't support HTTP/2</p>
                         <p class="fragment">(Yes, I tested with <strong>w3m</strong>)</p>
                     </section>
                 </section>
@@ -750,8 +796,8 @@ etag: 1735fc80e7ea268e656d53ac9126e438
                         <ul>
                             <li>Default behaviour is to treat the following pages as completely different:
                                 <ul>
-                                    <li><code>https://shiny.example.org/eg/opac/myopac/holds?query=potter</code></li>
-                                    <li><code>https://shiny.example.org/eg/opac/myopac/holds?query=harry</code></li>
+                                    <li><code data-noescape>https://shiny.example.org/eg/opac/myopac/holds?query=<span style="color:blue;background:yellow">potter</span></code></li>
+                                    <li><code>https://shiny.example.org/eg/opac/myopac/holds?query=<span style="color:blue;background:yellow">harry</span></code></li>
                                 </ul>
                             </li>
                             <li>For the <code>/myopac/</code> pages, at least, GET params shouldn't matter</li>
@@ -762,17 +808,27 @@ etag: 1735fc80e7ea268e656d53ac9126e438
                         <h3>Separate the apps</h3>
                         <ul>
                             <li><code>/eg/opac/</code>, <code>/eg/staff/</code>, and <code>/eg/myopac/</code> are conceptually separate apps</li>
-                            <li>But common assets living at <code>/</code> require them all to use the same service worker</li>
-                            <li>Instead, use <code>/eg/opac/assets/</code>, <code>/eg/staff/assets/</code>, and <code>/eg/myopac/assets</code> to serve up static assets from <code>/openils/var/web/</code>?</li>
+                            <li class="fragment">But common JS, image, CSS assets under <code>/</code> require them all to use the same service worker</li>
+                            <li class="fragment">Instead, use <code>/eg/opac/assets/</code>, <code>/eg/staff/assets/</code>, and <code>/eg/myopac/assets</code> to serve up static assets from <code>/openils/var/web/</code>?</li>
                         </ul>
                     </section>
                     <section>
                         <h3>A modern <code>/eg/myopac</code>?</h3>
                         <ul>
                             <li>Precache a static app shell</li>
-                            <li>Load fines, holds, lists, messages, etc as JSON</li>
+                            <li>Load fines, holds, lists, messages, etc as JSON over REST</li>
                             <li>Deliver native device notifications with the <a href="https://developer.mozilla.org/en/docs/Web/API/Push_API">Push API</a></li>
                         </ul>
+                    </section>
+                    <section>
+                        <blockquote>
+                            I got people with me, people who trust each other,
+                            who do for each other and ain't always looking for
+                            the advantage. There's good people in the 'verse.
+                            Not many, lord knows, but you only need a few.
+                            <cite>"Our Mrs. Reynolds." <em>Firefly</em>, performance by Nathan Fillion, season 1, episode 3, 2002-10-02.</cite>
+                        </blockquote>
+
                     </section>
                 </section>
                 <section>
