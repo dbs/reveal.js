@@ -4,13 +4,18 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Wikidata for librarians: workshop</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+<style>
+.reveal h1, .reveal h2, .reveal h3 { text-transform: none }
+.reveal section { text-align: left; }
+.reveal section.center { text-align: center; }
+</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,8 +29,196 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section class="center">
+                    <h1>Wikidata for librarians</h1>
+                    <p class="center">Dan Scott, Laurentian University / <a href="https://coffeecode.net">coffeecode.net</a></p>
+                    <p class="center"><a href="https://caml-acbm.org/?q=content/2017-conference-0">CAML 2017</a> preconference</p>
+                </section>
+                <section>
+                    <h2>Details</h2>
+                    <p>Slides: <a href="https://stuff.coffeecode.net/2017/wikidata_workshop">stuff.coffeecode.net/2017/wikidata_workshop</a>
+                    <p>Notes: <a href="https://stuff.coffeecode.net/2017/wikidata_workshop/notes.html">stuff.coffeecode.net/2017/wikidata_workshop/notes.html</a>
+                    <p style="font-size: 80%; text-align: center"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" data-src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
+                </section>
+                <section>
+                    <h2>Objectives</h2>
+                    <p class="fragment">Understand Wikidata's data model</p>
+                    <p class="fragment">Understand Wikidata's role</p>
+                    <p class="fragment">Embrace editing</p>
+                    <p class="fragment">Create notable entities</p>
+                    <p class="fragment">Share your finely honed skills</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Overview</h2>
+                    </section>
+                    <section>
+                        <h2>Log in</h2>
+                        <p>Same user name and password across all Wikimedia projects</p>
+                    </section>
+                    <section>
+                        <h2>Sandbox</h2>
+                        <p>Use the <a
+                           href="https://www.wikidata.org/wiki/Q4115189">Wikidata
+                           Sandbox</a> page for practice editing</p>
+                        <p>Also recommended: <a href="https://www.wikidata.org/wiki/Wikidata:Tours">Wikidata:Tours</a></p>
+                    </section>
+                    <section>
+                        <h2>Licensing</h2>
+                        <p class="fragment"><a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Public Domain Dedication (CC0) license</a></p>
+                        <p class="fragment">Public domain, or as close as possible</p>
+                    </section>
+                    <section>
+                        <h2>Impact</h2>
+                        <p>Linked open data: great in theory…</p>
+                        <p class="fragment">Proof of concept: <a href="https://laurentian.concat.ca/eg/opac/record/353368?query=Rock%20music;qtype=subject;fi%3Asearch_format=music">Laurentian University catalogue</a></p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p style="font-size: 60%; margin: 0;">By <a href="//commons.wikimedia.org/wiki/User:Charlie_Kritschmar_(WMDE)" title="User:Charlie Kritschmar (WMDE)">Charlie Kritschmar (WMDE)</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" title="Creative Commons Zero, Public Domain Dedication">CC0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=49616867">Link</a></p>
+                        <img data-src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Datamodel_in_Wikidata.svg?download" style="height:70%" />
+                    </section>
+                    <section>
+                        <h2>Data model</h2>
+                        <p><em>Entities</em>: people, places, things (including concepts)</p>
+                        <p><em>Statements</em>: properties with values</p>
+                    </section>
+                    <section>
+                        <h2>Notability criteria: <em>one of</em></h2>
+                        <p class="fragment">Notable, via publicly available references</p>
+                        <p class="fragment">Links to a Wiki* page</p>
+                        <p class="fragment">Fulfills a structural need</p>
+                    </section>
+                    <section>
+                        <h2>Labels, aliases, and descriptions</h2>
+                        <p><em>Q####</em>: machine-readable name and URL</p>
+                        <p class="fragment">Humans get one <em>label</em> and <em>description</em> per entity per language</p>
+                        <p class="fragment">Multiple <em>aliases</em> per entity</p>
+                        <table class="fragment">
+                            <thead>
+                                <tr><th>Label</th><th>Description</th><th>Aliases</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Bono</td><td>Lead singer for U2</td><td>Paul David Hewson</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Missing labels</h2>
+                        <p class="fragment">Display falls back to <em>Q###</em></p>
+                        <p class="fragment">No references needed for edits to label/description/aliases</p>
+                        <p class="fragment">Grandparent class of <a href="https://www.wikidata.org/wiki/Q6607">guitar (Q6607)</a></p>
+                        <p class="fragment">Maybe <em>"stringed instrument: A musical instrument that generates tones by one or more strings stretched between two points"</em></p>
+                    </section>
+                    <section>
+                        <h2>Subclasses and instances</h2>
+                        <p><em>Subclasses</em>: refined classifications</p>
+                        <p><em>Instances</em>: concrete members of a subclass</p>
+                    </section>
+                    <section>
+                        <h2>Music genres</h2>
+                        <p>SQID allows browsing of subclass / instance relationships</p>
+                        <p><a href="https://tools.wmflabs.org/sqid/#/view?id=Q188451">Music genre (Q188451)</a></p>
+                        <p>1,250 instances, 16 subclasses</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>A musician's statements</h2>
+                        <p><a href="https://www.wikidata.org/wiki/Q467027">Buffy Sainte-Marie (Q467027)</a></p>
+                        <p class="fragment"><em>instance of</em></p>
+                        <p class="fragment"><em>genre</em> (multiple values)</p>
+                        <p class="fragment"><em>image</em> (Wikimedia only)</p>
+                        <p class="fragment"><em>date of birth</em> (date constraint)</p>
+                        <p class="fragment"><em>spouse</em> (qualified)</p>
+                    </section>
+                    <section>
+                        <h2>Add a qualifier</h2>
+                        <p class="fragment"><a href="https://www.wikidata.org/wiki/Q467027">Buffy Sainte-Marie (Q467027)</a>: missing a date for <strong>Governor General’s Performing Arts Award</strong></p>
+                        <p class="fragment">Referenced in a <a href="https://www.thestar.com/entertainment/music/2010/04/29/buffy_saintemarie_to_get_governor_generals_award.html">2010 Toronto Star article</a></p>
+                        <p class="fragment">Let's fix that!</p>
+                    </section>
+                    <section>
+                        <h2>Reference pieces</h2>
+                        <p>Stated in</p>
+                        <p>Reference URL</p>
+                        <p>Title</p>
+                        <p>Publication date</p>
+                        <p>Retrieved</p>
+                    </section>
+                    <section>
+                        <h2>Adding references in bulk</h2>
+                        <p>Enable <strong>Preferences -> Gadgets -> DuplicateReferences</strong></p>
+                        <ol>
+                            <li class="fragment">Add the reference once</li>
+                            <li class="fragment">Reload the page</li>
+                            <li class="fragment">Open a reference</li>
+                            <li class="fragment">Click <strong>copy</strong></li>
+                            <li class="fragment">Click <strong>insert reference</strong></li>
+                        </ol>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Authority control</h2>
+                        <p>Check out Buffy Sainte-Marie's <a href="https://www.wikidata.org/wiki/Q467027#identifiers">Identifiers</a>:</p>
+                        <p class="fragment">Well-known: VIAF, ISNI, LC Authorities</p>
+                        <p class="fragment">Music: AllMusic, Discogs, MusicBrainz, Songkick</p>
+                        <p class="fragment">Social media: Twitter, Facebook, MySpace</p>
+                        <p class="fragment">… and many more to build out the network</p>
+                    </section>
+                    <section>
+                        <h2>Authority control: Wikipedia</h2>
+                        <p>Check out Buffy Sainte-Marie's <a href="https://en.wikipedia.org/wiki/Buffy_Sainte-Marie">Wikipedia page</a></p>
+                        <p class="fragment">See <strong>Authority control</strong> in <a href="https://en.wikipedia.org/wiki/Buffy_Sainte-Marie#External_links">External links</a></p>
+                        <p class="fragment">Edit the page to see the <code>{{Authority control}}</code> macro</p>
+                    </section>
+                </section>
+                <section>
+                    <h2>Musician entities</h2>
+                    <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:P136"><em>genre</em> (P136)</a> captures the <a href="https://www.wikidata.org/entity/Q188451">music genre(s) (Q188451</a>) for the band, individual, or event (<a href="https://tools.wmflabs.org/sqid/#/view?id=Q188451">SQID</a>)</p>
+                    <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:P106"><em>occupation</em> (P106)</a> = <a href="https://www.wikidata.org/entity/Q639669"><em>musician</em> (Q639669)</a> or one of its subclasses (<a href="https://tools.wmflabs.org/sqid/#/view?id=Q639669">SQID</a>)</p>
+                    <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:P1303"><em>instrument (P1303)</em></a> = <a href="https://www.wikidata.org/entity/Q34379"><em>musical instrument</em> (Q34379)</a> or one of its subclasses (<a href="https://tools.wmflabs.org/sqid/#/view?id=Q34379">SQID</a>)</p>
+                </section>
+                <section>
+                    <h2>Band entities</h2>
+                    <p class="fragment"><em>instance of</em> = <a href="https://www.wikidata.org/entity/Q215380">band (Q215380</a>)</p>
+                    <p class="fragment">Band members are represented via <em<a href="https://www.wikidata.org/wiki/Property:P527">>has part</em> (P527)</a>, and you can qualify each statement with <a href="https://www.wikidata.org/wiki/Property:P585"><em>point in time</em> (P585)</a> to reflect when members joined or left the band</p>
+                    <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:P585"><em>inception</em> (P571)</a> is the when the band began</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Music festival classes</h2>
+                        <p>Credit due to Eurovision Song Contest!</p>
+                        <p class="fragment">Festival class: <a href="https://www.wikidata.org/wiki/Q7058657">Northern Lights Festival Boréal</a></p>
+                        <p class="fragment">
+                        <em>Instance of</em> both:
+                        <ul>
+                            <li class="fragment"><a href="https://www.wikidata.org/entity/Q868557">music festival (Q868557)</a></li>
+                            <li class="fragment"><a href="https://www.wikidata.org/entity/Q15275719">recurring event (Q15275719)</a></li>
+                        </ul>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Music festival instances</h2>
+                        <p class="fragment"><em>Instance of</em> a specific music festival</p>
+                        <p class="fragment">Series instances: <a href="https://www.wikidata.org/wiki/Q29875240">Northern Lights Festival Boréal 2016</a></p>
+                        <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:393"><em>edition number</em> (P393)</a> indicates the festival edition</p>
+                        <p class="fragment">Link between editions with <a href="https://www.wikidata.org/wiki/Property:P155"><em>follows</em> (P155)</a> and <a href="https://www.wikidata.org/wiki/Property:P156"><em>followed by</em> (P156)</a></p>
+                        <p class="fragment"><a href="https://www.wikidata.org/wiki/Property:710"><em>participant</em> (P710)</a> statements link to performers</p>
+                    </section>
+                </section>
+                <section>
+                    <h2>Querying Wikidata with SPARQL</h2>
+                    <p><a href="https://docs.google.com/presentation/d/1t9VHNE9_Ah8PZbEMrhUb5yTDeul8eYYPr_QkRn3OwvM/mobilepresent#slide=id.p">Intro to SPARQL and the Wikidata Query Service</a></p>
+                </section>
+                <section>
+                    <h2>Details</h2>
+                    <p>Slides: <a href="https://stuff.coffeecode.net/2017/wikidata_workshop">stuff.coffeecode.net/2017/wikidata_workshop</a>
+                    <p>Notes: <a href="https://stuff.coffeecode.net/2017/wikidata_workshop/notes.html">stuff.coffeecode.net/2017/wikidata_workshop/notes.html</a>
+                    <p style="font-size: 80%"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" data-src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
+                </section>
 			</div>
 		</div>
 
