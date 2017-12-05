@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Wikidata infocards: SWIB 2017</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,10 +24,48 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+        <section>
+          <h2>Bringing (some) joy to a library catalogue</h2>
+          <ul>
+            <li class="fragment">🇨🇦 Music &amp; Belonging in Canada @ 150 project</li>
+            <li class="fragment">A proof of concept for <strong>Why?</strong></li>
+            <li class="fragment">One small JavaScript file dropped into an Evergreen library catalogue</li>
+            <li class="fragment">Example: <a href="https://laurentian.concat.ca/eg/opac/record/349295">1985 Juno Awards Collection</a></li>
+          </ul>
+        </section>
+        <section><pre><code>SELECT DISTINCT ?item ?itemLabel ?itemDescription ?image
+  ?birthPlace ?birthPlaceLabel ?website
+  ?musicbrainz ?songKick ?twitter ?facebook 
+WHERE { 
+    ?item rdfs:label|skos:altLabel|wdt:P1449 "' + entity_name + '"@en . 
+    { ?item (wdt:P31/wdt:P279*) wd:Q215380 }
+  UNION 
+    { ?item (wdt:P106/wdt:P279*) wd:Q639669 } 
+  OPTIONAL { ?item wdt:P3478 ?songKick } . 
+  OPTIONAL { ?item wdt:P19 ?birthPlace } . 
+  OPTIONAL { ?item wdt:P856 ?website } . 
+  OPTIONAL { ?item wdt:P434 ?musicbrainz } . 
+  OPTIONAL { ?item wdt:P2002 ?twitter } . 
+  OPTIONAL { ?item wdt:P2013 ?facebook } . 
+  OPTIONAL { ?item wdt:P18 ?image } . 
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } 
+} 
+LIMIT 10</code></pre>
+        </section>
+
+        <section>
+          <h2>Limitations (MANY)</h2>
+          <ul>
+            <li class="fragment">Leaps/links of faith!</li>
+            <li class="fragment">Matches only on exact name</li>
+            <li class="fragment">Hard-coded UI (language, HTML elements)</li>
+          </ul>
+        </section>
+        <section>
+          <p>More at <a href="https://coffeecode.net/enriching-catalogue-pages-in-evergreen-with-wikidata.html">https://coffeecode.net/enriching-catalogue-pages-in-evergreen-with-wikidata.html</a></p>
+        </section>
+      </div>
+    </div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
