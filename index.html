@@ -11,6 +11,7 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <style>.reveal h1, .reveal h2, .reveal h3 { text-transform: none }</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -32,6 +33,7 @@
             <li class="fragment">One small JavaScript file dropped into an Evergreen library catalogue</li>
             <li class="fragment">Example: <a href="https://laurentian.concat.ca/eg/opac/record/349295">1985 Juno Awards Collection</a></li>
           </ul>
+          <p><a href="https://coffeecode.net">Dan Scott</a> (<a href="https://twitter.com/denials">@denials</a>), Laurentian University</p>
         </section>
         <section><pre><code>SELECT DISTINCT ?item ?itemLabel ?itemDescription ?image
   ?birthPlace ?birthPlaceLabel ?website
@@ -56,13 +58,20 @@ LIMIT 10</code></pre>
         <section>
           <h2>Limitations (MANY)</h2>
           <ul>
-            <li class="fragment">Leaps/links of faith!</li>
-            <li class="fragment">Matches only on exact name</li>
-            <li class="fragment">Hard-coded UI (language, HTML elements)</li>
+            </li>
+            <li class="fragment">Matches only on exact name
+              <ul><li class="fragment">Add QIDs to our records</li></ul>
+            </li>
+            <li class="fragment">Leaps/links of faith!
+              <ul><li class="fragment">Run lookups on page load; hide icon if no result</li></ul>
+            <li class="fragment">Hard-coded UI (language, HTML elements)
+              <ul><li class="fragment">Be smart!</li></ul>
+            </li>
           </ul>
         </section>
         <section>
           <p>More at <a href="https://coffeecode.net/enriching-catalogue-pages-in-evergreen-with-wikidata.html">https://coffeecode.net/enriching-catalogue-pages-in-evergreen-with-wikidata.html</a></p>
+          <p><a href="https://coffeecode.net">Dan Scott</a> (<a href="https://twitter.com/denials">@denials</a>), Laurentian University</p>
         </section>
       </div>
     </div>
