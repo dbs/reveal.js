@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Canadian demographics: Census 2016</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,136 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h1>Canadian demographics</h1>
+          <p>Dan Scott &lt;<a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a>&gt;</p>
+          <p>2018-01-10</p>
+        </section>
+        <section>
+          <section>
+            <h2>Canadian Census of Population</h2>
+            <a href="http://www12.statcan.gc.ca/census-recensement/index-eng.cfm"><img src="images/census_2016_home.png" alt="Census 2016 home page" /></a>
+          </section>
+          <section>
+            <p><a href="http://www12.statcan.gc.ca/census-recensement/index-eng.cfm">http://www12.statcan.gc.ca/census-recensement/index-eng.cfm</a></p>
+            <ul>
+              <li class="fragment">"A statistical portrait of the country"</li>
+              <li class="fragment">Every 5 years (<em>quinquennial!</em>)</li>
+              <li class="fragment">Most recently in 2016</li>
+              <li class="fragment">100% of households surveyed:
+                <ul>
+                  <li class="fragment">75% short-form survey</li>
+                  <li class="fragment">25% long-form survey</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Short form data</h2>
+            <ul>
+              <li class="fragment">date of birth and age</li>
+              <li class="fragment">sex</li>
+              <li class="fragment">relationships of household members</li>
+              <li class="fragment">knowledge of official languages</li>
+              <li class="fragment">language spoken most often</li>
+              <li class="fragment">other language spoken regularly</li>
+              <li class="fragment">first language learned</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Long form data</h2>
+            <ul>
+              <li>Everything from the short form, <strong>plus</strong>:</li>
+              <li class="fragment">activities of daily living</li>
+              <li class="fragment">sociocultural information</li>
+              <li class="fragment">mobility</li>
+              <li class="fragment">place of birth</li>
+              <li class="fragment">education</li>
+              <li class="fragment">labour market activities</li>
+              <li class="fragment">housing</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Income data</h2>
+            <ul>
+              <li class="fragment">Drawn from 2015 personal income tax and benefits information</li>
+              <li class="fragment"><em>Way more accurate than self-reported income</em></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Data granularity</h2>
+            <p>Aggregated by geographic area: country, province,</p>
+            <ul>
+              <li class="fragment">census divisions (CD) - groups of municipalities</li>
+              <li class="fragment">census subdivisions (CSD) - municipality</li>
+              <li class="fragment">census metropolitan areas (CMA) - 100,000+</li>
+              <li class="fragment">census agglomeration areas (CA) - 10,000+</li>
+              <li class="fragment">dissemination areas (DA) - 400 - 700</li>
+          </section>
+        </section>
+        <section>
+          <h2>Hands-on with the Census</h2>
+          <p><em>Exercise</em>: investigate the demographics of the area surrounding McGill University</p>
+          <p class="fragment">That's in Montréal.</p>
+          <p class="fragment">Québec.</p>
+        </section>
+        <section>
+          <section data-background="images/census_2016_home.png" style="background:black">
+            <h2>Launch</h2>
+              <p>URL: <a href="http://www12.statcan.gc.ca/census-recensement/index-eng.cfm">http://www12.statcan.gc.ca/census-recensement/index-eng.cfm</a></p>
+          </section>
+          <section>
+            <h2>GeoSearch</h2>
+            <p><a href="http://www12.statcan.gc.ca/census-recensement/2016/geo/geosearch-georecherche/index-eng.cfm"><img src="images/census_2016_geosearch.png" alt="Statistics Canada GeoSearch screenshot"></a></p>
+          </section>
+          <section>
+            <h2>GeoSearch</h2>
+            <ol>
+              <li class="fragment">Drill down to <abbr title="Dissemination Area">DA</abbr> level <em>- note the names!</em></li>
+              <li class="fragment">Click a DA for high level details (population, dwellings, area)</li>
+              <li class="fragment">Scroll down to <strong>Results</strong> and click <strong>2016 Census Profile</strong></li>
+              <li class="fragment">It's a wonderland of data!</li>
+            </ol>
+          </section>
+          <section>
+            <img src="images/geosearch_results.png" alt="Example results for DA 24663182" />
+          </section>
+          <section>
+            <h2>Filtering data</h2>
+            <ul>
+              <li>Default view of <strong>All data</strong> is a lot</li>
+              <li class="strong"><strong>Select a view</strong> lets you filter to just one category of data</li>
+            </ul>
+          </section>
+          <section>
+            <img src="images/geosearch_filter_data.png" alt="Geosearch: Select a view" />
+          </section>
+          <section>
+            <h2>Comparing geographies</h2>
+            <ul>
+              <li>Your selection is compared against Canada by default</li>
+              <li class="strong"><strong>Change geography</strong> lets you compare to province or other census dissemination area (CD, CSD, CMA, DA…<li>
+            </ul>
+          </section>
+          <section>
+            <img src="images/geosearch_compare_geographies.png" alt="Geosearch: Compare geographies" />
+          </section>
+          <section>
+            <img src="images/geosearch_change_geographies.png" alt="Geosearch: Change geographies" />
+          </section>
+          <section>
+            <h2>Download the data</h2>
+            <ul>
+              <li><abbr title="Comma separated values">CSV</abbr> is available for the compared geographies…</li>
+              <li class="fragment">Or all DAs in a given province (these files are huge and need special processing)</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Contact</h2>
+          <p><em>SPAD librarian:</em> Dan Scott &lt;<a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a>&gt;</p>
+          <p><em>Data librarian:</em> Tomasz Mrozewski &lt;<a href="mailto:tmrozewski@laurentian.ca">tmrozewski@laurentian.ca</a>&gt;</p>
+        </section>
 			</div>
 		</div>
 
@@ -37,6 +165,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
