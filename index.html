@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Scholarly publishing</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/night.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,12 +20,81 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+    <style>
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  text-transform: none;
+}
+    </style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <section>
+            <h1>Scholarly publishing</h1>
+            <p>Dan Scott &lt;<a href="mailto:dscott@laurentian.ca">dscott@laurentian.ca</a>&gt;</p>
+            <p>Associate Librarian</p>
+            <p>2018-01-23</p>
+          </section>
+        </section>
+          <section>
+            <h2>Why publish?</h2>
+            <aside class="notes">
+              <p>$$$</p>
+              <p>Advancing knowledge</p>
+              <p>Prestige; making a name for yourself</p>
+              <p>Employability; tenure &amp; promotion</p>
+            </aside>
+          </section>
+          <section>
+            <h2>Venue: Books</h2>
+          </section>
+          <section>
+            <h2>Venue: Conferences</h2>
+          </section>
+          <section>
+            <h2>Venue: Journals</h2>
+          </section>
+        <section>
+          <section>
+            <h2>Establishing yourself</h2>
+          </section>
+          <section>
+            <h2>Disambiguation</h2>
+            <ul>
+              <li><a href="https://orcid.org/0000-0002-8584-4960">John Gunn</a> <span class="fragment">(Family Sciences and Human Development)</span></li>
+              <li><a href="https://orcid.org/0000-0001-9055-7256">John Gunn</a> <span class="fragment">(Structural Engineering)</span></li>
+              <li><a href="https://orcid.org/0000-0002-3821-4827">John Gunn</a> <span class="fragment">(Natural Resources &amp; the Environment)</span></li>
+              <li><a href="https://orcid.org/0000-0003-2848-8346">John Gunn</a> <span class="fragment">(No public information available)</span></li>
+            </ul>
+            <aside class="notes">
+              <p>"The one affiliated with Laurentian University" works as long as you are a student or employed there; but researchers change institutions and contact information. Establish your personal profiles.</p>
+            </aside>
+          </section>
+          <section>
+            <h2>Researcher profiles</h2>
+            <ul>
+              <li class="fragment"><a href="https://orcid.org/"><abbr title="Open Researcher and Contributor ID">ORCID</abbr></a> (Open, non-profit)</li>
+              <li class="fragment"><a href="https://researcherid.org/">ResearcherID</a> (Web of Science)</li>
+              <li class="fragment"><a href="https://scholar.google.ca/citations?hl=en">Google Scholar</a> (Google)</li>
+            </ul>
+            <aside class="notes">
+              <p>ORCID was developed based on ResearcherID's technology, but is open and non-profit. You can link your ResearcherID and ORCID profiles.</p>
+              <p>Google Scholar is a heavily-used academic search engine; you can establish your profile and disambiguate your works from your name doppelgangers.</p>
+            </aside>
+          </section>
+          <section>
+            <h2>Researcher networks</h2>
+            <ul>
+              <li class="fragment"><a href="https://researchgate.net">Researchgate</a></li>
+              <li class="fragment"><a href="https://academia.edu">Academia.edu</a></li>
+            </ul>
+            <p>Be careful: these entice you to upload your papers, at <a href="https://www.researchgate.net/terms-of-service#obligations">your legal responsibility</a>.</p>
+          </section>
+        </section>
 			</div>
 		</div>
 
@@ -37,6 +106,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
