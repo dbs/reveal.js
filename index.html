@@ -217,12 +217,12 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
             <h3>Friendly human interface</h3>
             <div class="split">
               <ul>
-                <li>Auto-complete</li>
+                <li>Auto-completion</li>
                 <li>Hover for labels</li>
                 <li>Results as maps, images, trees, timelines, charts...</li>
-                <li>Rich set of examples</li>
+                <li>Rich set of examples just a click away</li>
               </ul>
-              <a href="https://query.wikidata.org/"><img src="images/wikidata-human-sparql.png" alt="Wikidata query editor screenshot"></a>
+              <a href="https://query.wikidata.org/#%23Map%20of%20Libraries%20in%20Canada%0A%23%20Canadian%20libraries%20on%20a%20map%20%28must%20have%20coordinates%21%29%0A%23defaultView%3AMap%0ASELECT%20%3Flibrary%20%3FlibraryLabel%20%3Fcoords%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cfr%22.%20%7D%0A%20%20%3Flibrary%20%28wdt%3AP31%2Fwdt%3AP279%2a%29%20wd%3AQ7075.%0A%20%20%3Flibrary%20wdt%3AP17%20wd%3AQ16.%0A%20%20%3Flibrary%20wdt%3AP625%20%3Fcoords.%0A%7D%0ALIMIT%20100"><img src="images/wikidata-human-sparql.png" alt="Wikidata query editor screenshot"></a>
             </div>
           </section>
           <section>
@@ -230,7 +230,8 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
             <ul>
               <li>Highly available, averaging over 3M queries/day</li>
               <li>Long-running queries are killed after 60 seconds</li>
-              <li>Wikibase services</li>
+              <li>Data is ~5 minutes behind main site</li>
+              <li>Wikibase services...</li>
             </ul>
           </section>
           <section>
@@ -252,8 +253,72 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
               </p>
             </aside>
           </section>
+        </section>
+        <section>
           <section>
-            <h3>
+            <h2>Wikibase API</h2>
+            <p>Base URL for all modules: <code>https://wikidata.org/w/api.php</code></p>
+            <p style="font-size: 0.5em">Modules:
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbavailablebadges">wbavailablebadges</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbcheckconstraintparameters">wbcheckconstraintparameters</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbcheckconstraints">wbcheckconstraints</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbcreateclaim">wbcreateclaim</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbcreateredirect">wbcreateredirect</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbeditentity">wbeditentity</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbformatvalue">wbformatvalue</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbgetclaims">wbgetclaims</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbgetentities">wbgetentities</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wblinktitles">wblinktitles</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbmergeitems">wbmergeitems</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbparsevalue">wbparsevalue</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbremoveclaims">wbremoveclaims</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbremovequalifiers">wbremovequalifiers</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbremovereferences">wbremovereferences</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsearchentities">wbsearchentities</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetaliases">wbsetaliases</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetclaim">wbsetclaim</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetclaimvalue">wbsetclaimvalue</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetdescription">wbsetdescription</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetlabel">wbsetlabel</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetqualifier">wbsetqualifier</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetreference">wbsetreference</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsetsitelink">wbsetsitelink</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/wbsgetsuggestions">wbsgetsuggestions</a>,
+<a href="https://wikidata.org/wiki/Special:ApiHelp/webapp-manifest">webapp-manifest</a>
+            </p>
+          </section>
+          <section>
+            <h3>API: Search entities</h3>
+            <ul>
+              <li>Retrieve entities with labels or aliases that match a string: <a href="https://wikidata.org/wiki/Special:ApiHelp/wbsearchentities">wbsearchentities</a></li>
+              <li>Query params:
+                <pre><code>{ "action": "wbsearchentities",
+  "format": "json",
+  "search": "mcgill university library",
+  "languages": "en" }</code></pre>
+              </li>
+              <li>Results via <a href="https://www.wikidata.org/wiki/Special:ApiSandbox#action=wbsearchentities&amp;search=mcgill+university+library&amp;language=en&amp;format=json">API Sandbox</a></li>
+            </ul>
+            <aside class="notes">
+              One language at a time.
+              <p>
+              <code>match</code> gives you context for the match
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h3>API: Get Entities</h3>
+            <ul>
+              <li>Retrieve claims for one or more items: <a href="https://wikidata.org/wiki/Special:ApiHelp/wbgetentities">wbgetentities</a></li>
+              <li>Query params:
+                <pre><code>{ "action": "wbgetentities",
+  "format": "json",
+  "ids": "Q6801308|Q48035044",
+  "languages": "en|fr" }</code></pre>
+              </li>
+              <li>Results via <a href="https://www.wikidata.org/wiki/Special:ApiSandbox#action=wbgetentities&amp;format=json&amp;ids=Q6801308|Q48035044&amp;languages=en|fr">API Sandbox</a> ("snak" format)</li>
+              <li>claim IDs (<code>"Q6801308$E938C340-3F01-41BA-BF4A-3B19F36337DA"</code>) used in <code>wbsetclaim</code>, etc</li>
+            </ul>
           </section>
         </section>
 			</div>
