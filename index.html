@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Wikidata access methods</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -20,12 +20,242 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+<style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+.reveal .split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5em;
+  font-size: smaller;
+}
+</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h1>Wikidata access methods</h1>
+        </section>
+        <section>
+          <section>
+            <h2>Dereferencing</h2>
+          </section>
+          <section>
+            <h3>URI patterns</h3>
+            <table>
+              <tbody>
+                <tr><th>URI type</th><th>Pattern</th></tr>
+                <tr><td><em>Wiki</em> (human)</td><td>http://www.wikidata.org/wiki/(P|Q)###</td></tr>
+                <tr><td><em>Concept</em> (RWO)</td><td>http://www.wikidata.org/entity/(P|Q)###</td></tr>
+                <tr><td><em>Data</em> (document)</td><td>http://www.wikidata.org/Special:EntityData/(P|Q)###</td></tr>
+              </tbody>
+            </table>
+            <ul>
+              <li><code><em>P</em></code> prefixes identify properties</li>
+              <li><code><em>Q</em></code> prefixes identify items</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Serializations</h3>
+            <table>
+              <tbody>
+                <tr><th>Media type (<code>Accept:</code>)</th><th>Extension</th></tr>
+                <tr><td>application/json</td><td>.json<sup>1</sup></td></tr>
+                <tr><td>application/n-triples</td><td>.nt</td></tr>
+                <tr><td>application/rdf+xml</td><td>.rdf</td></tr>
+                <tr><td>text/html</td><td>.html</td></tr>
+                <tr><td>text/n3</td><td>.n3</td></tr>
+                <tr><td>text/turtle</td><td>.ttl</td></tr>
+              </tbody>
+            </table>
+            <p>
+            1. <em>Not</em> JSON-LD.
+            </p>
+          </section>
+          <section>
+            <h3>Dereference and dig in</h3>
+            <pre><code class="stretch">curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
+
+@prefix wikibase: &lt;http://wikiba.se/ontology-beta#&gt; .
+@prefix wdata: &lt;https://www.wikidata.org/wiki/Special:EntityData/&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix cc: &lt;http://creativecommons.org/ns#&gt; .
+@prefix wd: &lt;http://www.wikidata.org/entity/&gt; .
+
+wdata:Q6801308 a schema:Dataset ;
+  schema:about wd:Q6801308 ;
+  cc:license &lt;http://creativecommons.org/publicdomain/zero/1.0/&gt; ;
+  schema:softwareVersion "0.1.0" ;
+  schema:version "632535452"^^xsd:integer ;
+  schema:dateModified "2018-02-17T22:02:36Z"^^xsd:dateTime ;
+  wikibase:statements "9"^^xsd:integer ;
+  wikibase:identifiers "2"^^xsd:integer ;
+  wikibase:sitelinks "2"^^xsd:integer .</code></pre>
+<aside class="notes">
+  <code>wdata:Q6801308</code> is our document, with high-level detail such as
+  its license and when it was last modified.
+</aside>
+          </section>
+          <section>
+            <h3>Dereference and dig in</h3>
+            <pre><code>curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
+
+@prefix wikibase: &lt;http://wikiba.se/ontology-beta#&gt; .
+@prefix wds: &lt;http://www.wikidata.org/entity/statement/&gt; .
+@prefix wd: &lt;http://www.wikidata.org/entity/&gt; .
+@prefix wdt: &lt;http://www.wikidata.org/prop/direct/&gt; .
+@prefix wdtn: &lt;http://www.wikidata.org/prop/direct-normalized/&gt; .
+@prefix p: &lt;http://www.wikidata.org/prop/&gt; .
+
+wd:Q6801308 a wikibase:Item ;
+  rdfs:label "McGill University Library"@en ;
+  skos:prefLabel "McGill University Library"@en ;
+  schema:name "McGill University Library"@en ;
+  rdfs:label "Bibliothèque de l'Université McGill"@fr ;
+  skos:prefLabel "Bibliothèque de l'Université McGill"@fr ;
+  schema:name "Bibliothèque de l'Université McGill"@fr ;
+  schema:description "library system of McGill University in Montreal, Quebec, Canada"@en,
+    "universiteitsbibliotheek in Montreal, Canada"@nl ;
+  wdt:P17 wd:Q16 ;
+  wdt:P31 wd:Q856234 ;
+  wdt:P912 wd:Q1329411 ;
+  wdt:P131 wd:Q340 ;
+  wdt:P361 wd:Q201492 ;
+  wdt:P463 wd:Q4810036 ;
+  wdt:P2581 "01813570n" ;
+  wdtn:P2581 &lt;http://babelnet.org/rdf/s01813570n&gt; ;
+  wdt:P4848 "954" ;
+  p:P17 wds:Q6801308-E938C340-3F01-41BA-BF4A-3B19F36337DA .</code></pre>
+<aside class="notes">
+  <p>
+    Labels for each language and multiple schemas. There is no automated
+    fall-back for languages.
+  </p>
+</aside>
+          </section>
+          <section>
+            <h3>Dereference and dig in</h3>
+            <pre><code>@prefix wdt: &lt;http://www.wikidata.org/prop/direct/&gt; .
+
+wd:Q6801308 a wikibase:Item ;
+  wdt:P17 wd:Q16 ;</code></pre>
+            <ul>
+              <li>
+                The country (<code>P17</code>) for the McGill library system is
+                Canada (<code>Q16</code>).
+              </li>
+              <li>
+                <code>wdt:</code> is the "truthy" value for a given statement; qualifiers
+                such as "start date" or "language of work" are stripped out, and
+                instead appear in separate statements.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Dereference and dig in</h3>
+            <pre><code>@prefix wdt: &lt;http://www.wikidata.org/prop/direct/&gt; .
+@prefix wdtn: &lt;http://www.wikidata.org/prop/direct-normalized/&gt; .
+
+wd:Q6801308 a wikibase:Item ;
+  wdt:P2581 "01813570n" ;
+  wdtn:P2581 &lt;http://babelnet.org/rdf/s01813570n&gt; ;
+  wdt:P856 &lt;http://www.mcgill.ca/library/&gt; ;
+</code></pre>
+            <ul>
+              <li>
+                <code>wdtn</code> is the "truthy nomalized" value for a given statement.
+                The BabelNet ID (<code>0181357n</code>) is also available as a
+                normalized URL.
+              </li>
+              <li>
+                The official website (P856) for the McGill library system is at the URL
+                http://mcgill.ca/library/.
+              </li>
+              <li class="fragment">MARC cataloguers rejoice, the 856 lives!</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Qualified statements</h3>
+            <pre><code>@prefix wds: &lt;http://www.wikidata.org/entity/statement/&gt; .
+@prefix p: &lt;http://www.wikidata.org/prop/&gt; .
+@prefix ps: &lt;http://www.wikidata.org/prop/statement/&gt; .
+@prefix pq: &lt;http://www.wikidata.org/prop/qualifier/&gt; .
+
+wd:Q48035044 a wikibase:Item ;
+  rdfs:label "South End Library"@en ;
+  wdt:P856 &lt;http://www.sudburylibraries.ca/en/aboutus/southendlibrary.asp&gt;,
+    &lt;http://www.sudburylibraries.ca/fr/aboutus/southendlibrary.asp&gt; ;
+
+wd:Q48035044 p:P856 wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b .
+
+wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
+    wikibase:BestRank ;
+  wikibase:rank wikibase:NormalRank ;
+  ps:P856 &lt;http://www.sudburylibraries.ca/en/aboutus/southendlibrary.asp&gt; ;
+  pq:P407 wd:Q1860 .</code></pre>
+            <aside class="notes">
+              <code>pq:</code> is a property qualifier, in this case "language of work
+              (Q407)" being "English" (Q1860).
+            </aside>
+          </section>
+          <section>
+            Best docs for Wikidata data model: <a href="https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format">RDF Dump Format</a>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>SPARQL endpoint</h2>
+            <table>
+              <tr><td>Humans</td><td><a href="https://query.wikidata.org/">https://query.wikidata.org/</a></td></tr>
+              <tr><td>Machines</td><td><a href="https://query.wikidata.org/sparql">https://query.wikidata.org/sparql</a></td></tr>
+            </table>
+            Built on <a href="https://blazegraph.com/">Blazegraph <img src="https://www.blazegraph.com/wordpress/wp-content/uploads/2015/04/Blazegraph-Logo-by-SYSTAP_square_250x250.png" alt="Blazegraph logo" style="width: 100px; vertical-align: middle"></a>
+          </section>
+          <section>
+            <h3>Friendly human interface</h3>
+            <div class="split">
+              <ul>
+                <li>Auto-complete</li>
+                <li>Hover for labels</li>
+                <li>Results as maps, images, trees, timelines, charts...</li>
+                <li>Rich set of examples</li>
+              </ul>
+              <a href="https://query.wikidata.org/"><img src="images/wikidata-human-sparql.png" alt="Wikidata query editor screenshot"></a>
+            </div>
+          </section>
+          <section>
+            <h3>Quirks</h3>
+            <ul>
+              <li>Highly available, averaging over 3M queries/day</li>
+              <li>Long-running queries are killed after 60 seconds</li>
+              <li>Wikibase services</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Label service</h3>
+            Rather than:
+            <pre><code>SELECT ?library ?libraryLabel WHERE {
+  ?library wdt:P31 wd:Q856234.
+  ?library rdfs:label ?libraryLabel.
+  FILTER(lang(?libraryLabel) = 'en' || lang(?libraryLabel) = 'fr')</code></pre>
+            use the <em>label service</em>:
+            <pre><code>SELECT ?library ?libraryLabel WHERE {
+  ?library wdt:P31 wd:Q856234.
+  SERVICE wikibase:label { bd:serviceParam
+    wikibase:language "[AUTO_LANGUAGE],en,fr". }</code></pre>
+            <aside class="notes">
+              Behold the magic <code>?libraryLabel</code> that is generated automatically!
+              <p>
+              Also note that you get the first matching label in your list of languages, avoiding duplicates!
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h3>
+          </section>
+        </section>
 			</div>
 		</div>
 
@@ -37,6 +267,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+                history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
