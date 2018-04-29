@@ -230,7 +230,7 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
               <li>Highly available, averaging over 3M queries/day</li>
               <li>Long-running queries are killed after 60 seconds</li>
               <li>Data is ~5 minutes behind main site</li>
-              <li>Wikibase services...</li>
+              <li>Wikibase services (extended functions)</li>
             </ul>
           </section>
           <section>
@@ -251,6 +251,14 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
               Also note that you get the first matching label in your list of languages, avoiding duplicates!
               </p>
             </aside>
+          </section>
+          <section>
+            <h3>Geospatial services</h3>
+						<ul>
+							<li><code>wikibase:around</code></li>
+							<li><code>wikibase:box</code></li>
+						</ul>
+						<p><a href="https://query.wikidata.org/#%23%20Libraries%20between%20San%20Jose%20and%20Sacramento%0A%23defaultView%3AMap%0ASELECT%20%3Flocation%20%3Fplace%20%3FplaceLabel%20WHERE%20%7B%0A%20%20hint%3AQuery%20hint%3Aoptimizer%20%22None%22.%0A%20%20wd%3AQ16553%20wdt%3AP625%20%3FSJloc.%0A%20%20wd%3AQ18013%20wdt%3AP625%20%3FSCloc.%0A%20%20SERVICE%20wikibase%3Abox%20%7B%0A%20%20%20%20%3Fplace%20wdt%3AP625%20%3Flocation.%0A%20%20%20%20bd%3AserviceParam%20wikibase%3AcornerSouthWest%20%3FSJloc.%0A%20%20%20%20bd%3AserviceParam%20wikibase%3AcornerNorthEast%20%3FSCloc.%0A%20%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%0A%20%20%20%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%2Cfr%22.%20%7D%0A%20%20%3Fplace%20%28wdt%3AP31%2Fwdt%3AP279%2a%29%20wd%3AQ7075.%0A%7D%20LIMIT%2010">wikibase:box example</a> (libraries between San Jose and Sacramento)</p>
           </section>
         </section>
         <section>
