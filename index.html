@@ -30,6 +30,10 @@
   grid-column-gap: 0.5em;
   font-size: smaller;
 }
+.reveal figcaption {
+  font-size: smaller;
+  font-style: italic;
+}
 </style>
 	</head>
 	<body>
@@ -40,7 +44,7 @@
         </section>
         <section>
           <section>
-            <h2>Dereferencing</h2>
+            <h2>Getting data: dereferencing</h2>
           </section>
           <section>
             <h3>URI patterns</h3>
@@ -71,12 +75,12 @@
               </tbody>
             </table>
             <p>
-            1. <em>Not</em> JSON-LD.
+            1. Wikidata's JSON format is <em>not</em> JSON-LD.
             </p>
           </section>
           <section>
             <h3>Dereference and dig in</h3>
-            <pre><code class="stretch">curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
+            <pre style="width:100%" class="stretch"><code>curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
 
 @prefix wikibase: &lt;http://wikiba.se/ontology-beta#&gt; .
 @prefix wdata: &lt;https://www.wikidata.org/wiki/Special:EntityData/&gt; .
@@ -99,8 +103,8 @@ wdata:Q6801308 a schema:Dataset ;
 </aside>
           </section>
           <section>
-            <h3>Dereference and dig in</h3>
-            <pre><code>curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
+            <h3>Labels and descriptions</h3>
+            <pre style="width:100%" class="stretch"><code>curl -LH 'Accept: text/turtle' http://www.wikidata.org/entity/Q6801308
 
 @prefix wikibase: &lt;http://wikiba.se/ontology-beta#&gt; .
 @prefix wds: &lt;http://www.wikidata.org/entity/statement/&gt; .
@@ -117,17 +121,7 @@ wd:Q6801308 a wikibase:Item ;
   skos:prefLabel "Bibliothèque de l'Université McGill"@fr ;
   schema:name "Bibliothèque de l'Université McGill"@fr ;
   schema:description "library system of McGill University in Montreal, Quebec, Canada"@en,
-    "universiteitsbibliotheek in Montreal, Canada"@nl ;
-  wdt:P17 wd:Q16 ;
-  wdt:P31 wd:Q856234 ;
-  wdt:P912 wd:Q1329411 ;
-  wdt:P131 wd:Q340 ;
-  wdt:P361 wd:Q201492 ;
-  wdt:P463 wd:Q4810036 ;
-  wdt:P2581 "01813570n" ;
-  wdtn:P2581 &lt;http://babelnet.org/rdf/s01813570n&gt; ;
-  wdt:P4848 "954" ;
-  p:P17 wds:Q6801308-E938C340-3F01-41BA-BF4A-3B19F36337DA .</code></pre>
+    "universiteitsbibliotheek in Montreal, Canada"@nl ;</code></pre>
 <aside class="notes">
   <p>
     Labels for each language and multiple schemas. There is no automated
@@ -136,7 +130,7 @@ wd:Q6801308 a wikibase:Item ;
 </aside>
           </section>
           <section>
-            <h3>Dereference and dig in</h3>
+            <h3>Truthy values</h3>
             <pre><code>@prefix wdt: &lt;http://www.wikidata.org/prop/direct/&gt; .
 
 wd:Q6801308 a wikibase:Item ;
@@ -154,7 +148,7 @@ wd:Q6801308 a wikibase:Item ;
             </ul>
           </section>
           <section>
-            <h3>Dereference and dig in</h3>
+            <h3>Normalized values</h3>
             <pre><code>@prefix wdt: &lt;http://www.wikidata.org/prop/direct/&gt; .
 @prefix wdtn: &lt;http://www.wikidata.org/prop/direct-normalized/&gt; .
 
@@ -178,7 +172,7 @@ wd:Q6801308 a wikibase:Item ;
           </section>
           <section>
             <h3>Qualified statements</h3>
-            <pre><code>@prefix wds: &lt;http://www.wikidata.org/entity/statement/&gt; .
+            <pre style="width:100%" class="stretch"><code>@prefix wds: &lt;http://www.wikidata.org/entity/statement/&gt; .
 @prefix p: &lt;http://www.wikidata.org/prop/&gt; .
 @prefix ps: &lt;http://www.wikidata.org/prop/statement/&gt; .
 @prefix pq: &lt;http://www.wikidata.org/prop/qualifier/&gt; .
@@ -206,7 +200,7 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
         </section>
         <section>
           <section>
-            <h2>SPARQL endpoint</h2>
+            <h2>Getting data: SPARQL endpoint</h2>
             <table>
               <tr><td>Humans</td><td><a href="https://query.wikidata.org/">https://query.wikidata.org/</a></td></tr>
               <tr><td>Machines</td><td><a href="https://query.wikidata.org/sparql">https://query.wikidata.org/sparql</a></td></tr>
@@ -256,7 +250,7 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
         </section>
         <section>
           <section>
-            <h2>Wikibase API</h2>
+            <h2>Getting data: Wikibase API</h2>
             <p>Base URL for all modules: <code>https://wikidata.org/w/api.php</code></p>
             <p style="font-size: 0.5em">Modules:
 <a href="https://wikidata.org/wiki/Special:ApiHelp/wbavailablebadges">wbavailablebadges</a>,
@@ -307,7 +301,7 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
             </aside>
           </section>
           <section>
-            <h3>API: Get Entities</h3>
+            <h3>API: Get entities</h3>
             <ul>
               <li>Retrieve claims for one or more items: <a href="https://wikidata.org/wiki/Special:ApiHelp/wbgetentities">wbgetentities</a></li>
               <li>Query params:
@@ -319,6 +313,95 @@ wds:Q48035044-814e2829-4ba7-ec4b-c397-da81f893b64b a wikibase:Statement,
               <li>Results via <a href="https://www.wikidata.org/wiki/Special:ApiSandbox#action=wbgetentities&amp;format=json&amp;ids=Q6801308|Q48035044&amp;languages=en|fr">API Sandbox</a> ("snak" format)</li>
               <li>claim IDs (<code>"Q6801308$E938C340-3F01-41BA-BF4A-3B19F36337DA"</code>) used in <code>wbsetclaim</code>, etc</li>
             </ul>
+          </section>
+          <section>
+            <h3>Best(?) LOD workflow</h3>
+            <ol>
+              <li>Use <a href="https://wikidata.org/wiki/Special:ApiHelp/wbsearchentities">wbsearchentities</a> to find matching items</li>
+              <li>Dereference the items with the LOD serialization of your preference</li>
+            </ol>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Editing data: QuickStatements</h2>
+            <figure>
+              <pre class="nohighlight"><code>Q849751 → Len → "York University"</code></pre>
+              <figcaption>Item Q849571 has the label "York University"</figcaption>
+            </figure>
+            <ul>
+              <li>Tab-delimited format for adding/editing Wikidata items (<a href="https://www.wikidata.org/wiki/Help:QuickStatements">docs</a>)</li>
+              <li>Editing a label (<code>L<em>langcode</em></code>) replaces the current label, if any.</li>
+              <li>Strings are delimited by double quotes</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Editing statements</h3>
+            <figure>
+              <pre class="nohighlight"><code>Q849751 → P17 → Q16</code></pre>
+              <figcaption>York University country is Canada</figcaption>
+            </figure>
+            <p>Adds a new statement if it does not exactly match the current property</p>
+          </section>
+          <section>
+            <h3>Create an item</h3>
+            <figure>
+              <pre class="nohighlight"><code>CREATE
+LAST → Len → "Ajax Public Library"
+LAST → P31 → Q28324850</code></pre>
+              <figcaption>New item has label "Ajax Public Library", is a library system</figcaption>
+            </figure>
+            <ul>
+              <li><code>CREATE</code> creates a new item</li>
+              <li><code>LAST</code> refers to the most recently created item</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Add/edit qualified statements</h3>
+            <figure>
+              <pre class="nohighlight"><code>Q41506 → P2196 → 16336 → P585 → +2016-10-23T00:00:00:Z/11</code></pre>
+              <figcaption>Stanford student count = 16,336 as of 2016-10-23</figcaption>
+            </figure>
+            <ul>
+              <li>Add 1 or more <code>P###</code> qualifiers to the statement</li>
+              <li>Datetime values use <code>+yyyy-MM-ddThh:mm:ss:Z/<em>precision</em></code> format</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Statements with sources</h3>
+            <figure>
+              <pre class="nohighlight"><code>Q41506 → P2196 → 16336 → P585 → +2016-10-23T00:00:00:Z/11
+  → S854 → "https://example.com"
+  → S813 → +2018-04-29T00:00:00:Z/11</code></pre>
+              <figcaption>Source URL = https://example.com, retrieved on 2018-04-29</figcaption>
+            </figure>
+            <p>Use <code>S</code> as the prefix for <code>P###</code> IDs when used as source statements</p>
+          </section>
+          <section>
+            <h3>Applying QuickStatements</h3>
+            <ul>
+              <li>Upload to <a href="http://tools.wmflabs.org/quickstatements/">http://tools.wmflabs.org/quickstatements/</a> and either:
+                <ul>
+                  <li>Run in your browser (ongoing feedback but slow for large jobs)</li>
+                  <li>Run on the server as a background job</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Applying QuickStatements</h3>
+            <img src="images/quickstatements.png" style="max-height:400px" alt="Screenshot of QuickStatements web page">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>OpenRefine reconciliation</h2>
+            <img src="images/openrefine_province.png" alt="OpenRefine reconciliation screenshot" style="height:400px">
+          </section>
+          <section>
+            <h3>OpenRefine Wikidata extension</h3>
+            <img src="https://user-images.githubusercontent.com/309908/38146049-22995316-3444-11e8-834e-1c4172e7fea1.gif" alt="OpenRefine Wikidata extension screenshot" style="height:400px">
+            <p><a href="https://github.com/OpenRefine/OpenRefine/pull/1530">In development</a> since August 2017</p>
           </section>
         </section>
 			</div>
