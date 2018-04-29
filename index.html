@@ -36,11 +36,16 @@
 }
 </style>
 	</head>
-	<body>
+	<body vocab="http://schema.org/" typeof="PresentationDigitalDocument">
 		<div class="reveal">
 			<div class="slides">
         <section>
-          <h1>Wikidata access methods</h1>
+					<h1 property="name">Wikidata access methods</h1>
+					<div property="author" typeof="Person" resource="https://dscott.ca/#i">
+						<p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
+						<p><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></p>
+					</div>
+          <p property="dateCreated datePublished">2018-05-01</p>
         </section>
         <section>
           <section>
@@ -389,6 +394,20 @@ LAST → P31 → Q28324850</code></pre>
             </ul>
           </section>
           <section>
+            <h3>QuickStatements sample</h3>
+            <pre><code>CREATE
+LAST	Len	"Ajax Public Library"
+LAST	Den	"library system in Ontario, Canada"
+LAST	P31	Q28324850	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P17	Q16	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P131	Q386567	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P463	Q7570226	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P969	"55 Harwood Avenue South, Ajax, Ontario, L1S 2H8"	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P856	"http://ajaxlibrary.ca"	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11
+LAST	P1174	9457	P585	+2016-00-00T00:00:00Z/9	S248	Q52147771	S854	"https://files.ontario.ca/opendata/ontario_public_library_statistics_open_data_2016.csv"	S813	+2018-04-22T00:00:00Z/11</code></pre>
+						<p>Load into <a href="https://tools.wmflabs.org/quickstatements">https://tools.wmflabs.org/quickstatements</a></p>
+          </section>
+          <section>
             <h3>Applying QuickStatements</h3>
             <img src="images/quickstatements.png" style="max-height:400px" alt="Screenshot of QuickStatements web page">
           </section>
@@ -403,6 +422,10 @@ LAST → P31 → Q28324850</code></pre>
             <img src="https://user-images.githubusercontent.com/309908/38146049-22995316-3444-11e8-834e-1c4172e7fea1.gif" alt="OpenRefine Wikidata extension screenshot" style="height:400px">
             <p><a href="https://github.com/OpenRefine/OpenRefine/pull/1530">In development</a> since August 2017</p>
           </section>
+        </section>
+        <section>
+          <h2>Details</h2>
+          <p style="font-size: 80%"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" data-src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
         </section>
 			</div>
 		</div>
