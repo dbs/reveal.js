@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Scaling linked data workflows</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +24,80 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h1>Scaling linked data workflows</h1>
+          <aside class="notes">
+            I’m delighted to be part of this workshop; the participants in and around LD4P have been doing incredible, much-needed work in moving the needle forward on linked data adoption “for real”. Thank you all for that!
+          </aside>
+        </section>
+        <section>
+          <h2>Disclaimer: I'm an idiot</h2>
+          <aside class="notes">
+            But first a disclaimer: I’m (currently) a bit of an idiot. I’ve gotten my hands dirty enough to be dangerous, but won’t have the luxury to dive deeply into these problems for another couple of months--at which point, I plan to start filling in my naive/idealistic gaps to help move this forward.
+          </aside>
+        </section>
+        <section>
+          <h2>Big Blue(s)</h2>
+          <aside class="notes">
+            A few words about my own interest in the subject: prior to joining the library world in 2006 I spent eight years at IBM working on relational database software for Linux, UNIX, and Windows. (And OS2!) As part of IBM’s Software Division, I was surrounded by web services and enterprise service buses, much of which was focused on solving business problems by wrapping legacy COBOL applications in Java beans so that the new wave of web-based applications could talk to systems designed for a green screen. While I appreciated the pragmatic approach, and cynically understood just how much service revenue the corporation would continue to rake in keeping those legacy systems alive, part of me wanted those customers to just reimplement their systems on a nice, clean relational database so that the data could flow freely and easily.
+          </aside>
+        </section>
+        <section>
+          <h2>Solo systems</h2>
+          <aside class="notes">
+            To bring this back to the library world, one of my primary hopes is to open up access to our data, and linked open data is one of my great hopes for resolving some of the recurring problems we’ve faced. I work at a small institution as a lone systems librarian, so I’m in touch with all of the systems we rely on, and (thank you open source) maintain most of them. It often leads me to curse, but it’s also a blessing in that I experience a wide cross section of academic library workflows.
+          </aside>
+        </section>
+        <section>
+          <h2>schema.org, RDFa, and the ILS</h2>
+          <aside class="notes">
+            A few years ago, I taught the Evergreen, Koha, and VuFind library systems how to express their bibliographic records as schema.org linked open data. This was the equivalent of writing a Java wrapper for a legacy mainframe app: MARC was still at the core, and the goal was to provide better access to the semantic data than either screen-scraping the HTML pages, protocols such as Z39.50, or using the unAPI API to access XSLT transforms of the underlying MARC. The data we exposed via RDFa was reasonably rich for those early days of schema.org, particularly in Evergreen where we also linked to a schema.org description of each library's location, contact info, and opening hours. Alas, it seems to have largely been ignored.
+          </aside>
+        </section>
+        <section>
+          <h2>Zed Thirty Nine Fifty</h2>
+          <aside class="notes">
+            I mentioned Z39.50. A working Z39.50 server was a requirement for our university's adoption of Evergreen. To participate in our consortial ILL system, we had to expose a Z39.50 endpoint. Eventually, we were able to build an SRU service, then use IndexData’s yaz utilities to offer Z39.50 on top of that. Mike Rylander did much of the early work on SRU and I helped refine the service and the Z39.50 configuration.
+          </aside>
+        </section>
+        <section>
+          <h2>Arcane</h2>
+          <aside class="notes">
+            Here's the thing: outside the library world, who uses Z39.50? What about SRU? Assuming we want the outside world to access our data, the barrier to entry is high and arcane.
+          </aside>
+        </section>
+        <section>
+          <h2>Strange women lying in ponds distributing swords is no basis for establishing a government</h2>
+          <aside class="notes">
+            Beyond classic integrated library systems, OpenURL is another area that troubles me. I love its promise. I hate maintaining the knowledge base OpenURL implementations rely on.  Parsing tab-delimited KBART files, or spreadsheets with varying formats, distributed by FTP or email just to understand what we have access to this month (thanks aggregators!) is far from efficient. Thankfully we consolidate some of the holdings maintenance pain at a provincial level. The Google Scholar format for electronic resources was a promising step forward for providing reasonably understandable info about our collections; I've previously advocated making it more generally available as a resource.
+          </aside>
+        </section>
+        <section>
+          <h2>Global Open Knowledge Base (GOKb)</h2>
+          <aside class="notes">
+            Could we evolve the Google Scholar format into linked data and lead / implore / insist that our major database providers and publishers use a common format? But perhaps our first step is to build that representation ourselves, and begin building services on that. The Global Open Knowledge Base (GOKb) gives me hope: they “are working on a SPARQL endpoint that will make the data available as linked data as well”.
+          </aside>
+        </section>
+        <section>
+          <h2>Beyond BIBFRAME</h2>
+          <aside class="notes">
+            BIBFRAME--a library-specific vocabulary built on a set of more broadly adopted technologies--has evolved significantly in its second iteration, thanks to feedback by bibliothek-o and other early adopters. This may be the perfect time to determine what other standards we can build on top of, to replace the niche technologies that initially served us so well but have left us increasingly isolated.
+          </aside>
+        </section>
+        <section>
+          <h2>A few questions</h2>
+          <ul>
+            <li>Is SPARQL enough to replace Z39.50 and SRU?</li>
+            <li>Is the Linked Data Platform a candidate base for replacing SIP and NCIP?</li>
+            <li>Linked Data Notifications - can we harness them for updates from “upstream” sources?</li>
+            <li>How can we make OCLC holdings maintenance more efficient?</li>
+            <li>Does LDP Paging offer path for replacing OAI-PMH?</li>
+            <li>What must we not leave behind, without suffering the Innovator’s Dilemma?</li>
+          </ul>
+          <aside class="notes">
+            I will start working on this in earnest in July. I know I have much to learn. I appreciate any comments, suggestions, directions, or feedback, either now, through the rest of the workshop, or in the future.
+          </aside>
+        </section>
 			</div>
 		</div>
 
