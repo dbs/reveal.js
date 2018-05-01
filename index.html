@@ -7,7 +7,7 @@
 		<title>Scaling linked data workflows</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,12 +20,22 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+    <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+    </style>
 	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+  <body vocab="http://schema.org/" typeof="PresentationDigitalDocument">
+    <div class="reveal">
+      <div class="slides">
         <section>
-          <h1>Scaling linked data workflows</h1>
+          <h1 property="name">Scaling linked data workflows</h1>
+          <div property="author" typeof="Person" resource="https://dscott.ca/#i">
+            <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
+            <p><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></p>
+          </div>
+          <p property="dateCreated datePublished">2018-05-01</p>
           <aside class="notes">
             I’m delighted to be part of this workshop; the participants in and around LD4P have been doing incredible, much-needed work in moving the needle forward on linked data adoption “for real”. Thank you all for that!
           </aside>
@@ -55,7 +65,7 @@
           </aside>
         </section>
         <section>
-          <h2>Zed Thirty Nine Fifty</h2>
+          <h2>Zed Thirty Nine Dot Fifty</h2>
           <aside class="notes">
             I mentioned Z39.50. A working Z39.50 server was a requirement for our university's adoption of Evergreen. To participate in our consortial ILL system, we had to expose a Z39.50 endpoint. Eventually, we were able to build an SRU service, then use IndexData’s yaz utilities to offer Z39.50 on top of that. Mike Rylander did much of the early work on SRU and I helped refine the service and the Z39.50 configuration.
           </aside>
@@ -85,14 +95,14 @@
           </aside>
         </section>
         <section>
-          <h2>A few questions</h2>
+          <h2>Questions</h2>
           <ul>
-            <li>Is SPARQL enough to replace Z39.50 and SRU?</li>
+            <li>Can SPARQL replace Z39.50 and SRU?</li>
             <li>Is the Linked Data Platform a candidate base for replacing SIP and NCIP?</li>
-            <li>Linked Data Notifications - can we harness them for updates from “upstream” sources?</li>
+            <li>Linked Data Notifications: can we harness LDN for updates from “upstream” sources?</li>
             <li>How can we make OCLC holdings maintenance more efficient?</li>
-            <li>Does LDP Paging offer path for replacing OAI-PMH?</li>
-            <li>What must we not leave behind, without suffering the Innovator’s Dilemma?</li>
+            <li>Can / should LDP Paging replace OAI-PMH?</li>
+            <li>While avoiding the Innovator's Dilemma, what must we not leave behind?</li>
           </ul>
           <aside class="notes">
             I will start working on this in earnest in July. I know I have much to learn. I appreciate any comments, suggestions, directions, or feedback, either now, through the rest of the workshop, or in the future.
@@ -109,6 +119,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
