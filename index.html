@@ -51,19 +51,19 @@
           <section>
             <h2 id="_wikibase">Wikibase</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 Open source (GPL v2 or later) project on which Wikidata is built
               </li>
-              <li>
+              <li class="fragment">
                 It scales!
                 <ul>
-                  <li>
+                  <li class="fragment">
                     <a href="https://www.wikidata.org/wiki/Special:Statistics">50M items</a>
                   </li>
-                  <li>
+                  <li class="fragment">
                     5,000 properties
                   </li>
-                  <li>
+                  <li class="fragment">
                     <a href="https://tools.wmflabs.org/wikidata-todo/stats.php">450M claims</a>
                   </li>
                 </ul>
@@ -73,30 +73,30 @@
           <section>
             <h2 id="_why_wikibase">Why Wikibase?</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 It exists <strong>now</strong>
               </li>
-              <li>
+              <li class="fragment">
                 Designed for collaboratively building and maintaining a dataset
               </li>
-              <li>
+              <li class="fragment">
                 Active development community
                 <ul>
-                    <li>
+                    <li class="fragment">
                       Extensions and development efforts might be embraced
                     </li>
-                    <li>
+                    <li class="fragment">
                       Skills learned may be reused in other projects
                     </li>
                   </ul>
               </li>
-              <li>
+              <li class="fragment">
                 Good platform for rapid prototyping
               </li>
             </ul>
             <aside class="notes">
               <ul>
-                <li>
+                <li class="fragment">
                   In my first half day, I had modelled the ORKG ontology and was ready to begin adding research data
                 </li>
               </ul>
@@ -105,31 +105,31 @@
           <section>
             <h2 id="_core_features_built_in">Core features built-in</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 <a href="https://www.mediawiki.org/wiki/Wikibase/DataModel/Primer">Rich data model</a>
               </li>
-              <li>
+              <li class="fragment">
                 Basic item and property editor interface
               </li>
-              <li>
+              <li class="fragment">
                 Per-page discussion and revision history
               </li>
-              <li>
+              <li class="fragment">
                 Authentication and authorization controls
               </li>
-              <li>
+              <li class="fragment">
                 Multilingual
               </li>
-              <li>
+              <li class="fragment">
                 Self-hosting ontology
               </li>
-              <li>
+              <li class="fragment">
                 Content negotiation for per-item or bulk RDF dumps
               </li>
-              <li>
+              <li class="fragment">
                 MediaWiki API with bindings in <a href="https://github.com/wikimedia/pywikibot">Python</a>, <a href="https://github.com/Wikidata/Wikidata-Toolkit">Java</a>, <a href="https://github.com/maxlath/wikidata-edit">JavaScript</a>, etc
               </li>
-              <li>
+              <li class="fragment">
                 <a href="https://github.com/wetneb/openrefine-wikibase">Integration with OpenRefine 3.0</a>
               </li>
             </ul>
@@ -137,16 +137,16 @@
           <section>
             <h2 id="_sparql_endpoint">SPARQL endpoint</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 Built on Blazegraph
               </li>
-              <li>
+              <li class="fragment">
                 Autocomplete query editor
               </li>
-              <li>
+              <li class="fragment">
                 <a href="https://query.wikidata.org/#SELECT%20%3Fmine%20%3FmineLabel%20%3Fcoords%20%3Fterritory%20%3FterritoryLabel%20%3Fparent%20%3FparentLabel%20WHERE%20%7B%0A%20%20%3Fmine%20wdt%3AP31%20wd%3AQ820477%20.%0A%20%20%3Fmine%20wdt%3AP625%20%3Fcoords%20.%0A%20%20%3Fmine%20wdt%3AP131%20%3Fterritory%20.%0A%20%20%3Fmine%20wdt%3AP17%20wd%3AQ16%20.%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fterritory%20wdt%3AP131%20%3Fparent%0A%20%20%20%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0ALIMIT%20500">Various visualizations</a> (maps, graphs, etc)
               </li>
-              <li>
+              <li class="fragment">
                 Loosely coupled via RDF updates
               </li>
             </ul>
@@ -210,21 +210,21 @@
           <section>
             <h2 id="_community">Community</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 Channels on IRC, mailing lists, Wikidata itself, Phabricator (project management software), Discourse
                 <ul>
-                  <li>
+                  <li class="fragment">
                     Initial response was slow: prep + unknown newbie == limited cycles?
                   </li>
-                  <li>
+                  <li class="fragment">
                     Weekly <a href="https://www.mediawiki.org/wiki/Technical_Advice_IRC_Meeting">Technical Advice IRC Meeting</a> worked
                   </li>
                 </ul>
               </li>
-              <li>
+              <li class="fragment">
                 Docker images via docker-compose (8 images in all)
                 <ul>
-                  <li>
+                  <li class="fragment">
                     Images were a release behind, so I <a href="https://phabricator.wikimedia.org/T197212">updated them</a>
                   </li>
                 </ul>
@@ -234,10 +234,10 @@
           <section>
             <h2 id="minimal_orkg">Minimal ORKG infrastructure</h2>
             <ol>
-              <li>A data model for semantically representing scholarly communication</li>
-              <li>A scalable graph-storage backend infrastructure […] exposing a comprehensive API</li>
-              <li>User interface widgets and components for collaborative authoring and curation of the graph</li>
-              <li>Semi-automated semantic integration, search, extraction and recommendation services</li>
+              <li class="fragment">A data model for semantically representing scholarly communication</li>
+              <li class="fragment">A scalable graph-storage backend infrastructure […] exposing a comprehensive API</li>
+              <li class="fragment">User interface widgets and components for collaborative authoring and curation of the graph</li>
+              <li class="fragment">Semi-automated semantic integration, search, extraction and recommendation services</li>
             </ol>
             <hr>
             <cite style="font-size: 50%">Auer, Sören et al (2018). Towards an Open Research Knowledge Graph. <a href="https://doi.org/10.5281/zenodo.1157185">https://doi.org/10.5281/zenodo.1157185</a></cite>
@@ -245,19 +245,19 @@
           <section>
             <h2 id="wikibase_for_orkg">Wikibase for ORKG?</h2>
             <ol>
-              <li>
+              <li class="fragment">
                 Data model lacks RDF for every revision
                 <ul>
-                  <li>
+                  <li class="fragment">
                     Updated RDF is loaded every ten seconds; retain every change with provenance?
                   </li>
                 </ul>
               </li>
-              <li>Backend is scalable, generates RDF, has an API</li>
-              <li>Authoring UI satisfies some use cases</li>
-              <li>SPARQL endpoint arguably supports semantic integration, search, and extraction
+              <li class="fragment">Backend is scalable, generates RDF, has an API</li>
+              <li class="fragment">Authoring UI satisfies some use cases</li>
+              <li class="fragment">SPARQL endpoint arguably supports semantic integration, search, and extraction
                 <ul>
-                  <li>Recommendation service (beyond autocomplete) needs work</li>
+                  <li class="fragment">Recommendation service (beyond autocomplete) needs work</li>
                 </ul>
               </li>
             </ol>
@@ -265,26 +265,29 @@
           <section>
             <h2 id="_maybe_missing">Other Wikibase concerns</h2>
             <ul>
-              <li>
+              <li class="fragment">
                 Limited support for expressing RDFS or OWL ontologies
                 <ul>
-                  <li>
+                  <li class="fragment">
                     An ontology could be hardcoded into the RDF output
                   </li>
-                  <li>
-                    More flexibily, support for <code>owl:equivalentProperty</code> etc could follow <code>canonicalUriProperty</code> approach
+                  <li class="fragment">
+                    Or support for <code>owl:equivalentProperty</code>, etc could follow <code>canonicalUriProperty</code> approach
                   </li>
                 </ul>
               </li>
-              <li>
+              <li class="fragment">
                 <a href="http://wikiba.se/projects/">Limited adoption by independent projects</a>
                 <ul>
-                  <li>
+                  <li class="fragment">
                     A showcase opportunity for ORKG?
                   </li>
                 </ul>
               </li>
             </ul>
+            <aside class="notes">
+             <code>owl:complementOf</code>, <code>owl:onPrperty</code>, <code>owl:DataProperty</code>, <code>owl:ObjectProperty</code>, <code>owl:Restriction</code>, <code>owl:Thing</code>, <code>rdf:type</code>
+            </aside>
           </section>
         </section>
         <section>
@@ -294,67 +297,70 @@
           <section>
             <h3>Premises</h3>
             <ul>
-              <li>
+              <li class="fragment">
                 Current focus is on the technology stack
               </li>
-              <li>
+              <li class="fragment">
                 It is a <strong>huge</strong> amount of work to do to design, build, test, and document a full stack
               </li>
-              <li>
-                ORKG would benefit from prototypes to guide that work
+              <li class="fragment">
+                Prototypes would help validate design decisions and guide implementation efforts
               </li>
             </ul>
           </section>
           <section>
             <h3>Open issues? (1/2)</h3>
             <ul>
-              <li>
+              <li class="fragment">
                 Granularity of statements to be added to the graph
               </li>
-              <li>
+              <li class="fragment">
                 Just URIs for publications, or more?
                 <ul>
-                  <li>
+                  <li class="fragment">
                     If more, reuse an existing publication ontology or mint a new one?
                   </li>
                 </ul>
               </li>
-              <li>
-                11 relations in ORKG, or CITO's roughly 40 citation types, etc
+              <li class="fragment">
+                11 relations in ORKG, or <a href="https://sparontologies.github.io/cito/current/cito.html">CITO</a>'s roughly 40 citation types, etc
               </li>
-              <li>Vocabulary for classifying research areas: <a href="http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/1297.0Main%20Features32008?opendocument&tabname=Summary&prodno=1297.0&issue=2008&num=&view="><abbr title="Australian and New Zealand Standard Research Classification">ANZSRC</abbr></a>? (for example, <a href="http://vocabs.ands.org.au/repository/api/lda/anzsrc-for/resource?uri=http://purl.org/au-research/vocabulary/anzsrc-for/2008/080104">Computer vision</a>)</li>
+              <li class="fragment">Vocabulary for classifying research areas: <a href="http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/1297.0Main%20Features32008?opendocument&tabname=Summary&prodno=1297.0&issue=2008&num=&view="><abbr title="Australian and New Zealand Standard Research Classification">ANZSRC</abbr></a>? (for example, <a href="http://vocabs.ands.org.au/repository/api/lda/anzsrc-for/resource?uri=http://purl.org/au-research/vocabulary/anzsrc-for/2008/080104">Computer vision</a>)</li>
             </ul>
+            <aside class="notes">
+              Canada's research councils are adopting and updating ANZSRC so this might be a fruitful direction
+            </aside>
           </section>
           <section>
             <h3>Open issues? (2/2)</h3>
             <ul>
-              <li>
+              <li class="fragment">
                 Data entry techniques need different prototypes:
                 <ul>
-                  <li>
+                  <li class="fragment">
                     Form linked from conference / article submission
                   </li>
-                  <li>
+                  <li class="fragment">
                     Retrospective conversion
                   </li>
-                  <li>
+                  <li class="fragment">
                     Automated vs. manual approaches
                   </li>
-                  <li>
+                  <li class="fragment">
                     Curation: creation vs. editing vs. administration
                   </li>
                 </ul>
               </li>
-              <li>
+              <li class="fragment">
                 Output prototypes
                 <ul>
-                  <li>
+                  <li class="fragment">
                     Visualizations of research domains
                   </li>
-                  <li>
+                  <li class="fragment">
                     Research area summaries and trends
                   </li>
-                  <li>
+                  <li class="fragment">
                     Generated systematic reviews
                   </li>
                 </ul>
