@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Experimenting with Wikibase as a linked data platform</title>
+<title>Investigating Wikibase as a linked data platform</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,11 +20,34 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+    <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+.reveal .split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5em;
+  font-size: smaller;
+}
+.reveal figcaption {
+  font-size: smaller;
+  font-style: italic;
+}
+</style>
 	</head>
-	<body>
+		<body vocab="http://schema.org/" typeof="PresentationDigitalDocument">
 		<div class="reveal">
 			<div class="slides">
 				<section>
+          <section>
+            <h1 property="name">Investigating Wikibase</h1>
+            <div property="author" typeof="Person" resource="https://dscott.ca/#i">
+              <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
+              <p><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></p>
+            </div>
+            <p property="dateCreated datePublished">2018-07-24</p>
+          </section>
           <section>
             <h2 id="_wikibase">Wikibase</h2>
             <ul>
@@ -54,7 +77,7 @@
                 It exists <strong>now</strong>
               </li>
               <li>
-                Complete package for collaboratively building and maintaining a dataset
+                Designed for collaboratively building and maintaining a dataset
               </li>
               <li>
                 Active development community
@@ -130,44 +153,59 @@
           </section>
           <section>
             <h2 id="_datatypes">11 built-in datatypes</h2>
-            <ul>
-              <li>
-                Media file (<a href="https://www.mediawiki.org/wiki/Help:Tabular_Data">maintained in Wikimedia Commons</a>)
-              </li>
-              <li>
+            <table>
+              <tbody>
+                <tr>
+              <td>
                 External identifier
-              </li>
-              <li>
+              </td>
+              <td>
                 Geographic coordinates
-              </li>
-              <li>
+              </td>
+                </tr>
+                <tr>
+              <td>
                 Geographic shape
-              </li>
-              <li>
+              </td>
+              <td>
                 Item
-              </li>
-              <li>
+              </td>
+                </tr>
+                <tr>
+              <td>
                 Monolingual text
-              </li>
-              <li>
+              </td>
+              <td>
                 Point in time
-              </li>
-              <li>
+              </td>
+                </tr>
+                <tr>
+              <td>
                 Property
-              </li>
-              <li>
+              </td>
+              <td>
                 Quantity
-              </li>
-              <li>
+              </td>
+                </tr>
+                <tr>
+              <td>
                 String
-              </li>
-              <li>
-                Tabular data (<a href="https://www.mediawiki.org/wiki/Help:Tabular_Data">maintained in Wikimedia Commons</a>)
-              </li>
-              <li>
+              </td>
+              <td>
                 URL
-              </li>
-            </ul>
+              </td>
+                </tr>
+                <tr>
+              <td>
+                Media file<a href="#datatype_fn">*</a>
+              </td>
+              <td>
+                Tabular data<a href="#datatype_fn">*</a>
+              </td>
+                </tr>
+              </tbody>
+            </table>
+            <p id="datatype_fn">* <a href="https://www.mediawiki.org/wiki/Help:Tabular_Data">maintained in Wikimedia Commons</a></p>
           </section>
           <section>
             <h2 id="_community">Community</h2>
@@ -176,10 +214,10 @@
                 Channels on IRC, mailing lists, Wikidata itself, Phabricator (project management software), Discourse
                 <ul>
                   <li>
-                    Initial response was slow, but Wikimania prep + unknown newbie == limited cycles
+                    Initial response was slow: prep + unknown newbie == limited cycles?
                   </li>
                   <li>
-                    Weekly <a href="https://www.mediawiki.org/wiki/Technical_Advice_IRC_Meeting">Technical Advice IRC Meeting</a> was perfect
+                    Weekly <a href="https://www.mediawiki.org/wiki/Technical_Advice_IRC_Meeting">Technical Advice IRC Meeting</a> worked
                   </li>
                 </ul>
               </li>
@@ -194,24 +232,55 @@
             </ul>
           </section>
           <section>
-            <h2 id="_maybe_missing">Maybe missing</h2>
-            <ul>
+            <h2 id="minimal_orkg">Minimal ORKG infrastructure</h2>
+            <ol>
+              <li>A data model for semantically representing scholarly communication</li>
+              <li>A scalable graph-storage backend infrastructure […] exposing a comprehensive API</li>
+              <li>User interface widgets and components for collaborative authoring and curation of the graph</li>
+              <li>Semi-automated semantic integration, search, extraction and recommendation services</li>
+            </ol>
+            <hr>
+            <cite style="font-size: 50%">Auer, Sören et al (2018). Towards an Open Research Knowledge Graph. <a href="https://doi.org/10.5281/zenodo.1157185">https://doi.org/10.5281/zenodo.1157185</a></cite>
+          </section>
+          <section>
+            <h2 id="wikibase_for_orkg">Wikibase for ORKG?</h2>
+            <ol>
               <li>
-                RDF for every revision
-              </li>
-              <li>
-                Broad RDFS or OWL ontology support
+                Data model lacks RDF for every revision
                 <ul>
                   <li>
-                    Much of this could be added relatively easily
+                    Updated RDF is loaded every ten seconds; retain every change with provenance?
+                  </li>
+                </ul>
+              </li>
+              <li>Backend is scalable, generates RDF, has an API</li>
+              <li>Authoring UI satisfies some use cases</li>
+              <li>SPARQL endpoint arguably supports semantic integration, search, and extraction
+                <ul>
+                  <li>Recommendation service (beyond autocomplete) needs work</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h2 id="_maybe_missing">Other Wikibase concerns</h2>
+            <ul>
+              <li>
+                Limited support for expressing RDFS or OWL ontologies
+                <ul>
+                  <li>
+                    An ontology could be hardcoded into the RDF output
+                  </li>
+                  <li>
+                    More flexibily, support for <code>owl:equivalentProperty</code> etc could follow <code>canonicalUriProperty</code> approach
                   </li>
                 </ul>
               </li>
               <li>
-                Broad adoption by independent projects
+                <a href="http://wikiba.se/projects/">Limited adoption by independent projects</a>
                 <ul>
                   <li>
-                    This may be an opportunity for ORKG
+                    A showcase opportunity for ORKG?
                   </li>
                 </ul>
               </li>
@@ -223,35 +292,44 @@
             <h2 id="_orkg_observations">ORKG observations</h2>
           </section>
           <section>
-
+            <h3>Premises</h3>
             <ul>
               <li>
                 Current focus is on the technology stack
               </li>
               <li>
-                There is a <strong>huge</strong> amount of work to do to design, build, test, and document a full technology stack
+                It is a <strong>huge</strong> amount of work to do to design, build, test, and document a full stack
               </li>
               <li>
-                ORKG is missing the explicit use cases and prototypes to guide that work, however:
-                <div class="ulist"><ul>
-                    <li>
-                      Granularity of statements to be added to the graph
-                    </li>
-                    <li>
-                      Just URIs for publications, or more?
-                      <ul>
-                        <li>
-                          If more, reuse an existing publication ontology or mint a new one?
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      CITO for roughly 40 citation types instead of 11 relations in ORKG?
-                    </li>
-                  </ul>
+                ORKG would benefit from prototypes to guide that work
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Open issues? (1/2)</h3>
+            <ul>
+              <li>
+                Granularity of statements to be added to the graph
               </li>
               <li>
-                Data entry techniques require different prototypes:
+                Just URIs for publications, or more?
+                <ul>
+                  <li>
+                    If more, reuse an existing publication ontology or mint a new one?
+                  </li>
+                </ul>
+              </li>
+              <li>
+                11 relations in ORKG, or CITO's roughly 40 citation types, etc
+              </li>
+              <li>Vocabulary for classifying research areas: <a href="http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/1297.0Main%20Features32008?opendocument&tabname=Summary&prodno=1297.0&issue=2008&num=&view="><abbr title="Australian and New Zealand Standard Research Classification">ANZSRC</abbr></a>? (for example, <a href="http://vocabs.ands.org.au/repository/api/lda/anzsrc-for/resource?uri=http://purl.org/au-research/vocabulary/anzsrc-for/2008/080104">Computer vision</a>)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Open issues? (2/2)</h3>
+            <ul>
+              <li>
+                Data entry techniques need different prototypes:
                 <ul>
                   <li>
                     Form linked from conference / article submission
@@ -260,21 +338,24 @@
                     Retrospective conversion
                   </li>
                   <li>
-                    Automated vs manual approaches
+                    Automated vs. manual approaches
                   </li>
                   <li>
-                    Creation vs. editing vs. administration
+                    Curation: creation vs. editing vs. administration
                   </li>
                 </ul>
               </li>
               <li>
-                Analysis goals
+                Output prototypes
                 <ul>
                   <li>
-                    Generated systematic reviews?
+                    Visualizations of research domains
                   </li>
                   <li>
-                    Research area summaries and trends?
+                    Research area summaries and trends
+                  </li>
+                  <li>
+                    Generated systematic reviews
                   </li>
                 </ul>
               </li>
@@ -292,6 +373,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
