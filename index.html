@@ -96,7 +96,10 @@
             </ul>
             <aside class="notes">
               <ul>
-                <li class="fragment">
+                <li>
+                  Interested in using it as a base for my own explorations with Canadian authority files, etc.
+                </li>
+                <li>
                   In my first half day, I had modelled the ORKG ontology and was ready to begin adding research data
                 </li>
               </ul>
@@ -109,7 +112,7 @@
                 <a href="https://www.mediawiki.org/wiki/Wikibase/DataModel/Primer">Rich data model</a>
               </li>
               <li class="fragment">
-                Basic item and property editor interface
+                Basic item, property, and claim editor interface
               </li>
               <li class="fragment">
                 Per-page discussion and revision history
@@ -118,7 +121,7 @@
                 Authentication and authorization controls
               </li>
               <li class="fragment">
-                Multilingual
+                Multilingual labels, descriptions, search
               </li>
               <li class="fragment">
                 Self-hosting ontology
@@ -133,6 +136,12 @@
                 <a href="https://github.com/wetneb/openrefine-wikibase">Integration with OpenRefine 3.0</a>
               </li>
             </ul>
+            <aside class="notes">
+              <ul>
+                <li>Search uses ElasticSearch</li>
+                <li>Ontology is self-hosting in that it is documented as items and properties in the same instance</li>
+              </ul>
+            </aside>
           </section>
           <section>
             <h2 id="_sparql_endpoint">SPARQL endpoint</h2>
@@ -150,6 +159,9 @@
                 Loosely coupled via RDF updates
               </li>
             </ul>
+            <aside class="notes">
+              So theoretically replacing Blazegraph with Fuseki or some other triple-store would require adapting the RDF updates to the new store.
+            </aside>
           </section>
           <section>
             <h2 id="_datatypes">11 built-in datatypes</h2>
