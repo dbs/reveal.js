@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<title>Experimenting with Wikibase as a linked data platform</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,263 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+          <section>
+            <h2 id="_wikibase">Wikibase</h2>
+            <ul>
+              <li>
+                Open source (GPL v2 or later) project on which Wikidata is built
+              </li>
+              <li>
+                It scales!
+                <ul>
+                  <li>
+                    <a href="https://www.wikidata.org/wiki/Special:Statistics">50M items</a>
+                  </li>
+                  <li>
+                    5,000 properties
+                  </li>
+                  <li>
+                    <a href="https://tools.wmflabs.org/wikidata-todo/stats.php">450M claims</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 id="_why_wikibase">Why Wikibase?</h2>
+            <ul>
+              <li>
+                It exists <strong>now</strong>
+              </li>
+              <li>
+                Complete package for collaboratively building and maintaining a dataset
+              </li>
+              <li>
+                Active development community
+                <ul>
+                    <li>
+                      Extensions and development efforts might be embraced
+                    </li>
+                    <li>
+                      Skills learned may be reused in other projects
+                    </li>
+                  </ul>
+              </li>
+              <li>
+                Good platform for rapid prototyping
+              </li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>
+                  In my first half day, I had modelled the ORKG ontology and was ready to begin adding research data
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h2 id="_core_features_built_in">Core features built-in</h2>
+            <ul>
+              <li>
+                <a href="https://www.mediawiki.org/wiki/Wikibase/DataModel/Primer">Rich data model</a>
+              </li>
+              <li>
+                Basic item and property editor interface
+              </li>
+              <li>
+                Per-page discussion and revision history
+              </li>
+              <li>
+                Authentication and authorization controls
+              </li>
+              <li>
+                Multilingual
+              </li>
+              <li>
+                Self-hosting ontology
+              </li>
+              <li>
+                Content negotiation for per-item or bulk RDF dumps
+              </li>
+              <li>
+                MediaWiki API with bindings in <a href="https://github.com/wikimedia/pywikibot">Python</a>, <a href="https://github.com/Wikidata/Wikidata-Toolkit">Java</a>, <a href="https://github.com/maxlath/wikidata-edit">JavaScript</a>, etc
+              </li>
+              <li>
+                <a href="https://github.com/wetneb/openrefine-wikibase">Integration with OpenRefine 3.0</a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 id="_sparql_endpoint">SPARQL endpoint</h2>
+            <ul>
+              <li>
+                Built on Blazegraph
+              </li>
+              <li>
+                Autocomplete query editor
+              </li>
+              <li>
+                <a href="https://query.wikidata.org/#SELECT%20%3Fmine%20%3FmineLabel%20%3Fcoords%20%3Fterritory%20%3FterritoryLabel%20%3Fparent%20%3FparentLabel%20WHERE%20%7B%0A%20%20%3Fmine%20wdt%3AP31%20wd%3AQ820477%20.%0A%20%20%3Fmine%20wdt%3AP625%20%3Fcoords%20.%0A%20%20%3Fmine%20wdt%3AP131%20%3Fterritory%20.%0A%20%20%3Fmine%20wdt%3AP17%20wd%3AQ16%20.%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fterritory%20wdt%3AP131%20%3Fparent%0A%20%20%20%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0ALIMIT%20500">Various visualizations</a> (maps, graphs, etc)
+              </li>
+              <li>
+                Loosely coupled via RDF updates
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 id="_datatypes">11 built-in datatypes</h2>
+            <ul>
+              <li>
+                Media file (<a href="https://www.mediawiki.org/wiki/Help:Tabular_Data">maintained in Wikimedia Commons</a>)
+              </li>
+              <li>
+                External identifier
+              </li>
+              <li>
+                Geographic coordinates
+              </li>
+              <li>
+                Geographic shape
+              </li>
+              <li>
+                Item
+              </li>
+              <li>
+                Monolingual text
+              </li>
+              <li>
+                Point in time
+              </li>
+              <li>
+                Property
+              </li>
+              <li>
+                Quantity
+              </li>
+              <li>
+                String
+              </li>
+              <li>
+                Tabular data (<a href="https://www.mediawiki.org/wiki/Help:Tabular_Data">maintained in Wikimedia Commons</a>)
+              </li>
+              <li>
+                URL
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 id="_community">Community</h2>
+            <ul>
+              <li>
+                Channels on IRC, mailing lists, Wikidata itself, Phabricator (project management software), Discourse
+                <ul>
+                  <li>
+                    Initial response was slow, but Wikimania prep + unknown newbie == limited cycles
+                  </li>
+                  <li>
+                    Weekly <a href="https://www.mediawiki.org/wiki/Technical_Advice_IRC_Meeting">Technical Advice IRC Meeting</a> was perfect
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Docker images via docker-compose (8 images in all)
+                <ul>
+                  <li>
+                    Images were a release behind, so I <a href="https://phabricator.wikimedia.org/T197212">updated them</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 id="_maybe_missing">Maybe missing</h2>
+            <ul>
+              <li>
+                RDF for every revision
+              </li>
+              <li>
+                Broad RDFS or OWL ontology support
+                <ul>
+                  <li>
+                    Much of this could be added relatively easily
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Broad adoption by independent projects
+                <ul>
+                  <li>
+                    This may be an opportunity for ORKG
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2 id="_orkg_observations">ORKG observations</h2>
+          </section>
+          <section>
+
+            <ul>
+              <li>
+                Current focus is on the technology stack
+              </li>
+              <li>
+                There is a <strong>huge</strong> amount of work to do to design, build, test, and document a full technology stack
+              </li>
+              <li>
+                ORKG is missing the explicit use cases and prototypes to guide that work, however:
+                <div class="ulist"><ul>
+                    <li>
+                      Granularity of statements to be added to the graph
+                    </li>
+                    <li>
+                      Just URIs for publications, or more?
+                      <ul>
+                        <li>
+                          If more, reuse an existing publication ontology or mint a new one?
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      CITO for roughly 40 citation types instead of 11 relations in ORKG?
+                    </li>
+                  </ul>
+              </li>
+              <li>
+                Data entry techniques require different prototypes:
+                <ul>
+                  <li>
+                    Form linked from conference / article submission
+                  </li>
+                  <li>
+                    Retrospective conversion
+                  </li>
+                  <li>
+                    Automated vs manual approaches
+                  </li>
+                  <li>
+                    Creation vs. editing vs. administration
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Analysis goals
+                <ul>
+                  <li>
+                    Generated systematic reviews?
+                  </li>
+                  <li>
+                    Research area summaries and trends?
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
 			</div>
 		</div>
 
