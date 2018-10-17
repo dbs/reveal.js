@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Dan Scott - GLIS 703 - Comparative analysis of two methodologies</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,15 +20,203 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+<style>
+.reveal h1, .reveal h2, .reveal h3 {
+  text-transform: none;
+}
+.reveal h1 {
+  font-size: 2em;  
+}
+.reveal h2 {
+  font-size: 1.5em;
+}
+.reveal blockquote {
+  text-align: left;
+}
+.reveal blockquote cite {
+  display: block;
+  text-align: right;
+  font-style: normal;
+}
+</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+          <section>
+            <h1>Two methodologies of database design research</h1>
+            <h2>Dan Scott, 2018-10-18</h2>
+            <h2>GLIS 703</h2>
+          </section>
+        </section>
+				<section>
+          <section>
+            <p>Sukula, S. K. (2005). Indigenous database development in Indian research and development library and information centres. <em>Online Information Review</em>, 29(2), 193–207.</p>
+          </section>
+          <section>
+            <p>Godbold, N. (2009). User-Centred Design vs. “Good” Data Base Design Principles: a Case Study, Creating Knowledge Repositories for Indigenous Australians. <em>Australian Academic &amp; Research Libraries</em>, 40(2), 116–131. <a href="https://doi.org/10.1080/00048623.2009.10721390">https://doi.org/10.1080/00048623.2009.10721390</a></p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Sukula: problem statement</h2>
+            <blockquote>the Indian user seldom ﬁnds indigenous information in international databases [and] global databases are often biased towards Western publishing <cite>(2005, p. 194)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Sukula: epistemology</h2>
+            <p>Positivist</p>
+            <blockquote>Positivistic research is often silent because it conceives itself as ``scientific'': the only valid approach" <cite>(Hjørland, 2000, p. 526)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Sukula: research question</h2>
+            <ul>
+              <li>Not explicitly stated, but working backwards from the conclusions:
+                <ul>
+                  <li><em>What actions should Indian libraries and information centres take to improve their development and promotion of indigenous databases?</em></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: aim</h2>
+            <blockquote>to nurture and develop potential [indigenous] databases, and facilitate increased user access<cite>(2005, p.194)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Sukula: objectives</h2>
+            <blockquote style="font-size: .8em">
+              <ul>
+                <li>To study the development and maintenance of indigenous databases.</li>
+                <li>To discover indigenous database marketing practices.</li>
+                <li>To assess database quality and impact on library and information services.</li>
+                <li>To discover the possibilities for database use in an Indian context.</li>
+              </ul>
+              <cite>(2005, p.194)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Sukula: methodology</h2>
+            <ul>
+              <li>Quantitative</li>
+              <li><strong>Method</strong>: descriptive survey - no hypothesis</li>
+              <li><strong>Instruments</strong>: questionnaire and interview</li>
+              <li><strong>Sampling</strong>: purposive - chief librarians</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: variables</h2>
+            <ul>
+              <li>Operationalized from the objectives</li>
+              <li>Five-point Likert scales to measure agreement strength</li>
+              <li>Dichotomous and ordinal variables for other data</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: analysis</h2>
+            <ul>
+              <li>Purely quantitative, rather simplistic:
+                <ul>
+                  <li>Data tables (<strong><em>n</em></strong> &amp; <strong>%</strong>)</li>
+                  <li>Text summarizing the numeric data in each table</li>
+                </ul></li>
+              <li>Concludes with strong ungrounded recommendations</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: ethics</h2>
+            <ul>
+              <li><strong>Good</strong>: Participants cannot be associated with their responses</li>
+              <li><strong>Problematic</strong>: <em>"the use of marketing techniques will not place an extra burden on existing library staff"</em> (2005, p. 205)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: design problem?</h2>
+            <ul>
+              <li>Chief librarians:
+                <ul>
+                  <li>Responsible for the current lack of indigenous databases</li>
+                  <li>Only source of data for recommendations to address the problems</li>
+                </ul>
+              </li>
+              <li>Library workers' voices are absent; troubling from a critical theorist lens</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Sukula: further positivist evidence</h2>
+            <ul>
+              <li>No discussion of researcher bias; assumes an objective reality</li>
+              <li>Generalizes results drawn from Northern India to all of India</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Godbold: problem statement</h2>
+            <blockquote>[creating a database shell for] clans to independently record their own traditional knowledge in the context of their unique knowledge system<cite>(2009, p. 117)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Godbold: epistemology</h2>
+            <p>Subjectivist / transactional</p>
+            <blockquote>results of the investigation are a product of interaction between the subject and the investigator<cite>(Pickard, 2012, p. 7)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Godbold: research question</h2>
+            <ul>
+              <li>Not explicitly stated, but implied:
+                <ul>
+                  <li><em>How can user-centred design and standard database design principles accommodate traditional knowledge?</em></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Godbold: aim</h2>
+            <p>Driven by applied research:</p>
+            <blockquote>[reflect on the process of] creating a robust, flexible, searchable infrastructure to support the archiving and ongoing use of the traditional knowledge being gathered by indigenous community members<cite>(2009, p. 117)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Godbold: methodology</h2>
+            <ul>
+              <li>Qualitative</li>
+              <li><strong>Method</strong>: Case study? No: action research</li>
+              <li><strong>Instruments</strong>: Human instrument (reflection); usability tests</li>
+              <li><strong>Sampling</strong>: Purposive (determined by applied research)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>On action research</h2>
+            <blockquote>[action research is] an interventionist approach to research taken with the explicit intention of improving practice, and understanding that practice and the situation in which it takes place<cite>(Pickard, 2012, p. 158)</cite></blockquote>
+          </section>
+          <section>
+            <h2>Godbold: analysis</h2>
+            <ul>
+              <li>Systematic reflection--examples:
+                <ul>
+                  <li><em>"At first glance […] the TKRP project appeared to be a good candidate for creating data repositories which can later be shared"</em> (2009, p. 118)</li>
+                  <li>Generic personas cannot satisfy users from <em>“several hundred language groups with all the cultural variety that implies”</em> (2009, p. 119)</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Godbold: analysis (2)</h2>
+            <ul>
+              <li>Fundamental contradiction:
+                <ul>
+                  <li>A metadata scheme <em>"designed to be a private, local solution for individual communities"</em> cannot also support a merged public database (2009, p. 119)</li>
+                  <li>A feature, not a bug!</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Godbold: ethics</h2>
+            <ul>
+              <li>Was informed consent obtained from the participants?</li>
+            </ul>
+          </section>
+        </section>
 			</div>
 		</div>
-
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 
@@ -37,6 +225,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
