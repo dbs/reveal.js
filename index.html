@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Wikidata access methods</title>
+		<title>Wikidata workshop at McGill School of Information Studies</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,12 +40,96 @@
 		<div class="reveal">
 			<div class="slides">
         <section>
-					<h1 property="name">Wikidata access methods</h1>
+					<h1 property="name">Wikidata: McGill SIS Workshop</h1>
 					<div property="author" typeof="Person" resource="https://dscott.ca/#i">
 						<p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
-						<p><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></p>
+						<p><span property="jobTitle">Doctoral student</span>, <span property="memberOf" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></p>
 					</div>
-          <p property="dateCreated datePublished">2018-05-01</p>
+          <p property="dateCreated datePublished">2018-11-12</p>
+        </section>
+        <section>
+          <section>
+            <h2>Linked open data</h2>
+          </section>
+          <section>
+            <h3>Making statements about things</h3>
+            <ul>
+              <li>Montreal -- instance of -- metropolis</li>
+              <li>... using the Resource Description Framework (RDF) triple pattern:
+              <ul>
+                <li><em>subject -- predicate -- object</em></li>
+              </ul>
+              </li>
+              <li>with links (URIs) instead of labels:
+                <ul>
+                  <li><a href="http://example.org/Montreal">http://example.org/Montreal</a> <a href="https://www.example.org/instance_of">https://www.example.org/instance_of</a> <a href="http://www.example.org/metropolis">http://www.example.org/metropolis</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Dereferencing links</h3>
+            Links may give you more information about themselves (if you ask nicely):
+            <pre><code>curl -LH 'Accept: text/turtle' http://example.org/metropolis
+
+@prefix example: <http://example.org> .
+
+example:metropolis a example:Item ;
+    example:subclass_of example:city ;
+    example:named_after example:mother ;
+    example:named_after example:city .</code></pre>
+            (with apologies for the Turtle syntax)
+          </section>
+          <section>
+            <h3><em>(Wikidata)</em> opaque identifiers</h3>
+            Opaque identifiers allow neutral multilingualism:
+<pre><code>&lt; href="http://www.wikidata.org/entity/Q340">http://www.wikidata.org/entity/Q340</a> &lt; href="https://www.wikidata.org/entity/P31">https://www.wikidata.org/entity/P31</a> &lt; href="http://www.wikidata.org/entity/Q200250">http://www.wikidata.org/entity/Q200250</a>
+      <strong>@en</strong>: Montreal -- instance of -- metropolis
+      <strong>@fr</strong>: Montréal -- nature de l'élément -- métropole
+      <strong><abbr title="Atikamekw Nehiromowin - Cree">@atj</abbr></strong>: Moriak -- nature de l'élément -- métropole</code></pre>
+<aside class="notes">Fallback language chains in the human-oriented view of Wikidata</aside>
+          </section>
+          <section>
+            <h3>Linked <strong>open</strong> data</h3>
+            <ul>
+              <li>Wikidata: CC-0 license</li>
+              <li>(Roughly: <em>Do whatever you want, no attribution required</em>)</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Wikidata advanced data model</h2>
+          </section>
+          <section>
+            <h3>Qualifying statements</h3>
+            <pre><code>wd:Q340 wdt:P1082 "+1704694"^^xsd:decimal ;</code></pre>
+            Population of Montréal - but when?
+          </section>
+          <section>
+            <h3>Qualifier: A statement about a statement</h3>
+    <pre><code>wd:Q340 p:P1082 wds:Q340-4460bad7 .
+
+wds:Q340-4460bad7 a wikibase:Statement ;
+  ps:P1082 "+1704694"^^xsd:decimal ;
+  pq:P585 "2016-01-01T00:00:00Z"^^xsd:dateTime ;</code></pre>
+          </section>
+          <section>
+            <h3>Establishing trust</h3>
+            References - Blocks of statements about a statement
+
+    <pre><code>wd:Q340 p:P1082 wds:Q340-4460bad7 .
+
+wds:Q340-4460bad7 a wikibase:Statement ;
+  ps:P1082 "+1704694"^^xsd:decimal ;
+  prov:wasDerivedFrom wdref:229126ee7cccf5ae097b4f604191a1a3e66b97ac .
+
+wdref:229126ee7cccf5ae097b4f604191a1a3e66b97ac a wikibase:Reference ;
+  pr:P248 wd:Q16955163 .
+
+wd:Q16955163 a wikibase:Item ;
+  rdfs:label "Canada 2016 Census"@en ;</code></pre>
+          </section>
         </section>
         <section>
           <section>
