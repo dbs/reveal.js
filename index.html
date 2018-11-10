@@ -72,7 +72,7 @@
             Links may give you more information about themselves (if you ask nicely):
             <pre><code>curl -LH 'Accept: text/turtle' http://example.org/metropolis
 
-@prefix example: &lt;http://example.org> .
+@prefix example: &lt;http://example.org&gt; .
 
 example:metropolis a example:Item ;
     example:subclass_of example:city ;
@@ -83,10 +83,11 @@ example:metropolis a example:Item ;
           <section>
             <h3><em>(Wikidata)</em> opaque identifiers</h3>
             Opaque identifiers allow neutral multilingualism:
-<pre><code>http://www.wikidata.org/entity/Q340 http://www.wikidata.org/entity/P31 http://www.wikidata.org/entity/Q200250
-      @en: Montreal -- instance of -- metropolis
-      @fr: Montréal -- nature de l'élément -- métropole
-      @atj: Moriak -- nature de l'élément -- métropole</code></pre>
+<pre><code>@prefix wd: &lt;http://www.wikidata.org/entity/&gt;
+wd:Q340 wd:P31 wd:Q200250
+    @en: Montreal -- instance of -- metropolis
+    @fr: Montréal -- nature de l'élément -- métropole
+    @atj: Moriak -- nature de l'élément -- métropole</code></pre>
 <aside class="notes">atj = Atikamekw Nehiromowin - Cree
   <p>Fallback language chains in the human-oriented view of Wikidata</p></aside>
           </section>
