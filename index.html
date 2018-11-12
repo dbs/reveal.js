@@ -49,20 +49,154 @@
         </section>
         <section>
           <section>
+            <h2>A few examples</h2>
+            <ul>
+              <li class="fragment"><a href="https://tools.wmflabs.org/reasonator/?q=2882604&amp;lang=en">Whitehorse (band) in Reasonator</a></li>
+              <li class="fragment"><a href="http://tinyurl.com/yazpcrvw">map of public libraries in Ontario</a></li>
+              <li class="fragment"><a href="http://zone47.com/crotos/">Crotos</a> - ("winged victory")</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Origins</h2>
+            <ul>
+              <li class="fragment">Wikipedia (and the many Wikipedias)</li>
+              <li class="fragment">Wikimedia Commons</li>
+              <li class="fragment">The Wikimedia Foundation</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Show authority data on Wikipedia</h2>
+            <ul>
+              <li class="fragment">Bands or musicians from Montreal?</li>
+              <li class="fragment">Authority entries on Wikipedia pages</li>
+              <li class="fragment">Show the coding: <code>{{Authority Control}}</code></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Laurentian catalogue</h2>
+            <ul>
+              <li class="fragment">Search for music recording: "<a href="https://laurentian.concat.ca/eg/opac/record/3104780">Innocence</a>"</li>
+              <li class="fragment">Click through a few of the "author" entries</li>
+              <li class="fragment">The Alice Neary entry could use more info</li>
+              <li class="fragment">Add links (linked data!) to MusicBrainz and AllMusic entries</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Minding your Ps and Qs</h2>
+          </section>
+        </section>
+        <section>
+          <h2>What kind of data?</h2>
+          <ul>
+            <li class="fragment">Must fulfill <a href="https://www.wikidata.org/wiki/Wikidata:Notability">Wikidata's notability policy</a>:
+              <ul>
+                <li class="fragment">It contains a valid sitelink to a Wikimedia Foundation project page</li>
+                <li class="fragment">It refers to an instance of a clearly identifiable conceptual or material entity. The entity must be notable, in the sense that it can be described using serious and publicly available references</li>
+                <li class="fragment">Or fulfills some structural need--supporting another item</li>
+                <li class="fragment">Tension between trying to represent everything that would benefit from a multilingual representation in Wikipedia &amp; related projects, without tackling literally everything - there is a space for MusicBrainz and other subject-dedicated projects</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Back to Alice Neary</h2>
+          <ul>
+            <li class="fragment">Look at one of the references - aha, received the Pierre Fournier Award!</li>
+            <li class="fragment">Try to add a link for "award received" for the Pierre Fournier Award - the award does not exist</li>
+            <li class="fragment">Add a new item "Pierre Fournier Award", modelled after the Peabody Award
+              <ul>
+                <li class="fragment">Establishes the "follow the lead of an existing, high-profile item" in terms of properties</li>
+              </ul>
+            </li>
+            <li class="fragment">Credit Alice Neary with the award</li>
+          </ul>
+        </section>
+        <section>
+          <h2>How does this work?</h2>
+          <ul>
+            <li class="fragment">Linked Open Data</li>
+            <li class="fragment">Uncover some of the structure behind the interface</li>
+            <li class="fragment"><a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons 0 (public dedication) license</a></li>
+          </ul>
+
+        </section>
+        </section>
+        <section>
+          <section>
+            <h2>Who is using Wikidata's data?</h2>
+            <ul>
+              <li class="fragment">Google and Microsoft are thought to be using Wikidata (financial donations; Freebase contribution) to power their Knowlege Graphs
+                <ul>
+                  <li class="fragment">Check out the representation of "Jerusalem" in Google, as discussed in Ford and Graham (2015)</li>
+                </ul>
+              </li>
+              <li class="fragment">Histropedia can display timelines drawn from Wikidata
+                <ul>
+                  <li class="fragment"><a href="http://tinyurl.com/yaphba6c">McGill University alumni</a> on Wikidata timeline</li>
+                  <li class="fragment"><a href="http://histropedia.com/showcase/wikidata-viewer.html?q=%23Timeline%20of%20McGill%20University%20Alumni%20%0A%0ASELECT%20DISTINCT%20%3FPerson%20%3FpersonLabel%20%3Fdob%20%3FGender%20%3FCountry%20%3Farticle%20%3Fprecision%20(MAX(%3Fimage)%20AS%20%3Fimage)%20(MAX(%3FOccupation)%20AS%20%3FOccupation)%20%3Frank%0AWHERE%20%7B%0A%0A%0A%20%20%20%20%3Fperson%20wdt%3AP31%20wd%3AQ5%20.%20%23%20human%0A%20%20%20%20%3Fperson%20wdt%3AP69%20wd%3AQ201492%20.%20%23PlaceOfEducation%0A%20%20%20%20%3Fperson%20wdt%3AP19%20%3FbirthPlace%20.%0A%20%20%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP18%20%3Fimage%20.%7D%20%23image%0A%20%20%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP106%20%3Foccupation%20.%7D%20%23occupation%0A%20%20%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP21%20%3Fgender%20.%7D%20%23gender%0A%20%20%20%20OPTIONAL%20%7B%20%3FbirthPlace%20wdt%3AP17%20%3Fcountry%20%7D%20%23place%20of%20birth%0A%20%20%20%20%3Fperson%20p%3AP569%2Fpsv%3AP569%20%3FdobNode%20.%20%23date%20of%20birth%0A%20%20%20%20%3FdobNode%20wikibase%3AtimeValue%20%3Fdob%20.%0A%20%20%20%20%3FdobNode%20wikibase%3AtimePrecision%20%3Fprecision%20.%0A%20%20%20%20%3Farticle%20schema%3Aabout%20%3Fperson%20.%0A%20%20%20%20%3Farticle%20schema%3AisPartOf%20%3Chttps%3A%2F%2Fen.wikipedia.org%2F%3E.%0A%0A%20%20%20%3Fperson%20wikibase%3Asitelinks%20%3Frank%20.%0A%0A%20%20%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%0A%3Fgender%20rdfs%3Alabel%20%3FGender%20.%0A%3Fperson%20rdfs%3Alabel%20%3FPerson%20.%0A%3Fcountry%20rdfs%3Alabel%20%3FCountry%20.%0A%3Foccupation%20rdfs%3Alabel%20%3FOccupation.%0A%20%20%20%20%7D%0A%7D%0AGROUP%20BY%20%3FPerson%20%3FpersonLabel%20%3Fdob%20%3FGender%20%3FCountry%20%3Farticle%20%3Fprecision%20%3Frank%0AORDER%20BY%20DESC%20(%3Frank)&md=true&g=article&l=article&t=Person&s=dob&sp=precision&i=image&c=Country,Occupation,%20Gender&f=Country,Occupation,%20Gender&v=t#">McGill University alumni on Histropedia timeline</a> (credit to <a href="https://thinking.is.ed.ac.uk/wikidata-basics/practical-personalising-a-sparql-query-and-mass-edits/">https://thinking.is.ed.ac.uk/wikidata-basics/practical-personalising-a-sparql-query-and-mass-edits/</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Artisanal curation vs. bulk manipulation in Wikidata</h2>
+            <ul>
+              <li class="fragment">Mix'n'Match: <a href="https://tools.wmflabs.org/mix-n-match/#/catalog/1277">LoC relators</a></li>
+              <li class="fragment">QuickStatements: <a href="https://tools.wmflabs.org/quickstatements/#/batch/2621">Ontario public libraries</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Reconciliation (creating links to Wikidata entities)</h2>
+            <ul>
+              <li class="fragment"><a href="http://openrefine.org/">OpenRefine</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Some SPARQL hands-on</h2>
+            <ul>
+              <li class="fragment">Walk through map of public libraries in Ontario</li>
+              <li class="fragment">Limits of the Wikidata Query Service (60 second timeouts)</li>
+              <li class="fragment">Example queries</li>
+              <li class="fragment">User-friendly interface (hover help, CTRL-Space completion)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>More examples</h2>
+            <ul>
+              <li class="fragment"><a href="https://tools.wmflabs.org/scholia/">Scholia</a>
+                <ul>
+                  <li class="fragment">McGill University</li>
+                  <li class="fragment"><a href="https://tools.wmflabs.org/scholia/organization/Q30296127">Centre for Research on Brain Music and Language</a> (data entry by McGill Library Digital Initiatives, project led by Eka Grguric)</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wikidata runs on Wikibase -- all open source software</h2>
+            <ul>
+              <li class="fragment">Wikipedia (PHP + MySQL + Apache)</li>
+              <li class="fragment">Wikibase extension for Wikipedia</li>
+              <li class="fragment">ElasticSearch (full text search)</li>
+              <li class="fragment">BlazeGraph triple store (query service)</li>
+              <li class="fragment">Nginx (query service proxy)</li>
+            </ul>
+        </section>
+        <section>
+          <section>
             <h2>Linked open data</h2>
           </section>
           <section>
             <h3>Making statements about things</h3>
             <ul>
-              <li>Montreal -- instance of -- metropolis</li>
-              <li>... using the Resource Description Framework (RDF) triple pattern:
+              <li class="fragment">Montreal -- instance of -- metropolis</li>
+              <li class="fragment">... using the Resource Description Framework (RDF) triple pattern:
               <ul>
-                <li><em>subject -- predicate -- object</em></li>
+                <li class="fragment"><em>subject -- predicate -- object</em></li>
               </ul>
               </li>
-              <li>with links (URIs) instead of labels:
+              <li class="fragment">with links (URIs) instead of labels:
                 <ul>
-                  <li><a href="http://example.org/Montreal">http://example.org/Montreal</a> <a href="https://www.example.org/instance_of">https://www.example.org/instance_of</a> <a href="http://www.example.org/metropolis">http://www.example.org/metropolis</a></li>
+                  <li class="fragment"><a href="http://example.org/Montreal">http://example.org/Montreal</a> <a href="https://www.example.org/instance_of">https://www.example.org/instance_of</a> <a href="http://www.example.org/metropolis">http://www.example.org/metropolis</a></li>
                 </ul>
               </li>
             </ul>
