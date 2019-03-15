@@ -121,6 +121,13 @@
             <ul>
               <li>A set of nodes, vertices, or points connected by edges, arcs, or lines</li>
             </ul>
+            <aside class="notes">
+              These are different terms for what are essentially the same
+              things when discussing sets of linked data. The usage depends on
+              the speaker, and in very specific domains might have important
+              distinctions, but in most linked data discussions they're
+              interchangeable.
+            </aside>
           </section>
         </section>
         <section>
@@ -177,6 +184,10 @@
               the first statement is the subject of the second and third
               statements.
               </p>
+              <p>
+              URIs play a role similar to primary keys in relational
+              databases--except URIs are, well, universal.
+              </p>
             </aside>
           </section>
         </section>
@@ -194,6 +205,10 @@
                 </ul>
               </li>
             </ul>
+            <aside class="notes">
+              RDFS is simple but very useful for describing the basic
+              vocabulary.
+            </aside>
           </section>
           <section>
             <h3>Ontology: "the study of being"</h3>
@@ -207,7 +222,7 @@
                   <li class="fragment smaller">Class intersections and unions</li>
                 </ul>
               </li>
-              <li class="fragment">Can link vocabularies (<code>owl:equivalentClass</code>) and things (<code>owl:sameAs</code>)
+              <li class="fragment">Can link vocabularies (<code>owl:equivalentClass</code>, <code>owl:equivalentProperty</code>) and things (<code>owl:sameAs</code>)
               <li class="fragment">Enables reasoning over / deriving inferences from your data</li>
             </ul>
             <aside class="notes">
@@ -215,6 +230,11 @@
               your data and derive new knowledge from it. This is particularly
               important when you are aggregating data from multiple sources, as
               is common with Knowledge Graphs.
+              <p>
+              When you combine two sets of linked data, you want to map their
+              schemas so that you can identify the unique triples, as well as
+              identify (and resolve) potential conflicting statements.
+              </p>
             </aside>
           </section>
           <section>
@@ -225,6 +245,11 @@
               <li><a href="https://www.w3.org/2004/02/skos/"><abbr title="Simple Knowledge Organization System">SKOS</abbr></a> - thesauri, taxonomies, classification schemes</li>
               <li><a href="http://www.loc.gov/bibframe/"><abbr title="Bibliographic Framework">BIBFRAME</abbr></a> - bibliographic description; replacement for MARC 21</li>
             </ul>
+            <aside class="notes">
+              Not surprisingly, schema.org has had a ton of adoption as
+              organizations strive to get their products and services more
+              visible in search engines.
+            </aside>
           </section>
         </section>
         <section>
@@ -237,6 +262,14 @@
               <li>Inline syntax: <a href="https://json-ld.org/">JSON-LD</a>, <a href="https://rdfa.info/">RDFa</a>, microdata</li>
               <li>Parallel data (<em>content negotiation</em>): Turtle, RDF/XML, JSON-LD, NTriples, …</li>
             </ul>
+            <aside class="notes">
+              If you go with an inline syntax, I recommend JSON-LD. It can
+              surface all of the linked data you want to publish for a given
+              page within a single <code>&lt;script&gt;</code> tag. It is much
+              less susceptible to breakage over time due to unrelated changes
+              in HTML templates (for example, to improve the visual appeal of
+              the page) that can disrupt RDFa and microdata.
+            </aside>
           </section>
           <section>
             <h3>Common approaches</h3>
@@ -248,8 +281,13 @@
                   <li><a href="https://www.w3.org/TR/r2rml/"><abbr title="Relational to RDF Mapping Language">R2RML</abbr></a> - mapping database tables to RDF</li>
                 </ul>
               </li>
+              <li>SPARQL endpoint (for queries)</li>
               <li>Data dumps</li>
             </ul>
+            <aside class="notes">
+              There are other options, like <a href="http://linkeddatafragments.org/">Linked Data Fragments</a>,
+              but we don't have time to cover any of these in depth!
+            </aside>
           </section>
         </section>
         <section>
@@ -449,6 +487,7 @@ LIMIT 100</code></pre></a></li>
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
         history: true,
+        showNotes: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
