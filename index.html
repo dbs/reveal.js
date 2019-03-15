@@ -117,25 +117,9 @@
             </aside>
           </section>
           <section>
-            <h3>Classes</h3>
+            <h3>Entities and relationships: graphs</h3>
             <ul>
-              <li>Today's class</li>
-              <li>The course offered in 2019</li>
-              <li>The course</li>
-            </ul>
-          </section>
-          <section>
-            <h3>Organizations</h3>
-            <ul>
-              <li>School of Information Studies</li>
-              <li>Faculty of Arts</li>
-              <li>McGill University</li>
-            </ul>
-          </section>
-          <section>
-            <h3>Entities and their relationships</h3>
-            <ul>
-              <li>Entity-relationship diagrams anyone?</li>
+              <li>A set of nodes, vertices, or points connected by edges, arcs, or lines</li>
             </ul>
           </section>
         </section>
@@ -199,25 +183,39 @@
         <section>
           <section><h2>Vocabularies and ontologies</h2></section>
           <section>
-            <h3>Vocabularies: naming things</h3>
+            <h3>Vocabularies: (mostly) naming things</h3>
             <ul>
               <li><em>Classes</em> (types of things)</li>
-              <li><em>Predicates</em> (relationships between things, or properties)</li>
+              <li><em>Properties</em> (relationships between things, or predicates)</li>
+              <li>Often expressed in <a href="https://www.w3.org/TR/rdf-schema/"><abbr title="RDF Schema">RDFS</abbr></a>:
+                <ul>
+                  <li>Domain and range restrictions</li>
+                  <li>Human-readable descriptions</li>
+                </ul>
+              </li>
             </ul>
           </section>
           <section>
-            <h3>Ontology: the study of being</h3>
+            <h3>Ontology: "the study of being"</h3>
             <ul>
               <li>Describes a worldview for a given domain</li>
-              <li>Layers rules on top of vocabularies, e.g.
+              <li>Often expressed in <a href="https://www.w3.org/TR/owl2-overview/"><abbr title="Web Ontology Language">OWL</abbr></a>
+                (more complex than RDFS):
                 <ul>
-                  <li class="smaller">A <code>Person</code> cannot be a parent of itself</li>
-                  <li class="smaller">The object of an <code>alumniOf</code> predicate must be an <code>EducationalInstitution</code></li>
+                  <li class="fragment smaller">Cardinalities</li>
+                  <li class="fragment smaller">Class disjointness</li>
+                  <li class="fragment smaller">Class intersections and unions</li>
                 </ul>
               </li>
-              <li>Links vocabularies (<code>owl:equivalentClass</code>) and things (<code>owl:sameAs</code>)
-              <li>Enables reasoning over / deriving inferences from your data</li>
+              <li class="fragment">Can link vocabularies (<code>owl:equivalentClass</code>) and things (<code>owl:sameAs</code>)
+              <li class="fragment">Enables reasoning over / deriving inferences from your data</li>
             </ul>
+            <aside class="notes">
+              Expressing rules gives you the ability to check the validity of
+              your data and derive new knowledge from it. This is particularly
+              important when you are aggregating data from multiple sources, as
+              is common with Knowledge Graphs.
+            </aside>
           </section>
           <section>
             <h3>Notable vocabularies/ontologies</h3>
@@ -231,12 +229,42 @@
         </section>
         <section>
           <section>
-            <h2><abbr title="SPARQL Protocol and Query Language">SPARQL</abbr></h2>
+            <h2>Publishing linked data</h2>
+          </section>
+          <section>
+            <h3>Syntaxes</h3>
             <ul>
-              <li>Just different enough from SQL to be confusing 😕</li>
-              <li><code>SELECT</code> variables rather than columns</li>
-              <li>No <code>FROM</code> clause (just one set of triples)</li>
-              <li>Narrow results based on relationships between entities, or <code>FILTER</code> attribute values</li>
+              <li>Inline syntax: <a href="https://json-ld.org/">JSON-LD</a>, <a href="https://rdfa.info/">RDFa</a>, microdata</li>
+              <li>Parallel data (<em>content negotiation</em>): Turtle, RDF/XML, JSON-LD, NTriples, …</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Common approaches</h3>
+            <ul>
+              <li>Inline: modify HTML templates</li>
+              <li>Content negotiation:
+                <ul>
+                  <li>Different templates</li>
+                  <li><a href="https://www.w3.org/TR/r2rml/"><abbr title="Relational to RDF Mapping Language">R2RML</abbr></a> - mapping database tables to RDF</li>
+                </ul>
+              </li>
+              <li>Data dumps</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Querying linked data: <abbr title="SPARQL Protocol and Query Language">SPARQL</abbr></h2>
+            <ul>
+              <li>Just different enough from SQL to be confusing 😕
+                <ul>
+                  <li><code>SELECT</code> variables rather than columns</li>
+                  <li>No <code>FROM</code> clause: just the entire dataset of triples!</li>
+                  <li><code>WHERE</code> clause creates a pattern for the triples you want</li>
+                  <li>No <code>JOIN</code>s: relationships between entities</li>
+                  <li><code>FILTER</code> attribute values to narrow further</li>
+                </ul>
+              </li>
             </ul>
           </section>
           <section>
