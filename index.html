@@ -4,20 +4,412 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Linked data for relational minds</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Theme used for syntax highlighted code -->
+		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+    <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+.reveal .smaller {
+  font-size: 70%;
+}
+    </style>
 	</head>
-	<body>
+	<body vocab="http://schema.org/" typeof="PresentationDigitalDocument">
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <h1 property="name">Linked data for relational minds</h1>
+          <div property="author" typeof="Person" resource="https://dscott.ca/#i">
+            <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
+            <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD Candidate</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></p>
+            <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
+          </div>
+          <p property="dateCreated datePublished">2019-03-15</p>
+          <aside class="notes">
+          </aside>
+        </section>
+        <section>
+          <section>
+            <h2>I love relational databases</h2>
+            <aside class="notes">
+              I spent eight years at IBM working in the data management division
+              of Software Group, responsible for documentation, information
+              architecture, programming, and product planning.
+              <p>
+              Relational databases rock!
+              </p>
+          </section>
+          <section>
+            <h3>But there is another way…</h3>
+          </section>
+          <section data-background="images/tim_berners_lee.jpg" alt="Portrait of Tim Berners-Lee" />
+            <span class="fragment">Image credit: <a href="https://www.wikidata.org/wiki/Q20202034">Paul Clarke</a> on <a href="https://commons.wikimedia.org/wiki/File:Sir_Tim_Berners-Lee_(cropped).jpg">Wikimedia Commons</a> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></span>
+            <aside class="notes">
+              Tuesday, March 12th, 2019 was celebrated as the 30th anniversary
+              of the World Wide Web. In March 1989, Berners-Lee wrote his
+              proposal for the hyper-text based information management system.
+            </aside>
+          </section>
+          <section>
+            <h3>Web of documents</h3>
+            <ul>
+              <li>A web address (like <a href="https://mcgill.ca/">https://mcgill.ca/</a>)</li>
+              <li>… returns an HTML document -- a web page</li>
+              <li>… which may link to other web addresses</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Web of data</h3>
+            <ul>
+              <li>Not just documents that have meaning for humans</li>
+              <li>… but also data that has meaning for machines</li>
+              <li>a <em>semantic web</em></li>
+            </ul>
+            <aside class="notes">
+              HTML documents are hard for computers to understand. If web
+              addresses could also serve highly structured data that machines
+              could make sense of (without natural language parsing and other
+              costly programming efforts), we could build all kinds of exciting
+              applications!
+              <p>That was Tim Berners-Lee's idea for the <em>semantic web</em>.</p>
+              <p><em>Linked data</em> is the practitioner's approach to the semantic web</p>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section><h2>Modelling today's class</h2></section>
+          <section>
+            <h3>People</h3>
+            <table>
+              <thead>
+                <tr><th>Type or class</th><th>Instance</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Professor</td><td>Dr. Guastavino</td></tr>
+                <tr><td>Student</td><td>You*</td></tr>
+                <tr><td>Teaching assistant</td><td>Richard Yanaky</td></tr>
+                <tr><td>Guest lecturer</td><td>Dan Scott</td></tr>
+              </tbody>
+            </table>
+            <aside class="notes">
+              We could model this a number of ways:
+              <ul>
+                <li>All of these classes may directly be subclasses of People</li>
+                <li>There could be an Instructor class that Professor, Teaching Assistant, and Guest lecturer are subclasses of</li>
+                <li>We might be interested in the relationships between the instances of the classes</li>
+                <li>We might want to know attributes (email address, etc) of the people</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <h3>Classes</h3>
+            <ul>
+              <li>Today's class</li>
+              <li>The course offered in 2019</li>
+              <li>The course</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Organizations</h3>
+            <ul>
+              <li>School of Information Studies</li>
+              <li>Faculty of Arts</li>
+              <li>McGill University</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Entities and their relationships</h3>
+            <ul>
+              <li>Entity-relationship diagrams anyone?</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Linked data principles</h2>
+            <ol>
+              <li class="fragment">Use <abbr title="Uniform Resource Identifier">URI</abbr>s as names for things.</li>
+              <li class="fragment">Use HTTP URIs <em class="fragment">(web addresses)</em> so that people can look up those names.</li>
+              <li class="fragment">When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL)</li>
+              <li class="fragment">Include links to other URIs, so that they can discover more things.</li>
+            </ol>
+            <hr />
+            <cite class="smaller">Berners-Lee, T. (2009, June 18). Linked Data - Design Issues. Retrieved March 10, 2019, from <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a></cite>
+            <aside class="notes">
+              There are non-HTTP URIs (URN, DOI, file://, geo:), but as they
+              aren't directly resolvable they inhibit the ability to easily
+              publish and access their corresponding data.
+            </aside>
+          </section>
+          <section>
+            <h3>Plain language statements</h3>
+            <table>
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object</th></tr>
+              </thead>
+              <tbody>
+                <tr class="fragment"><td>Dan Scott</td><td>member of</td><td>McGill University</td></tr>
+                <tr class="fragment"><td>McGill University</td><td>location</td><td>Montreal</td></tr>
+                <tr class="fragment"><td>McGill University</td><td>founding date</td><td>1821</td></tr>
+              </tbody>
+            </table>
+            <aside class="notes">
+              These are simple statements. But by combining them, we can assemble a complex body of information.
+            </aside>
+          </section>
+          <section>
+            <h3>Resource Description Framework (RDF)</h3>
+            <p>Use HTTP URIs (web addresses) to identify things:</p>
+            <table class="smaller">
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object</th></tr>
+              </thead>
+              <tbody>
+                <tr class="fragment"><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
+                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
+                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>"1821"^^xsd:gYear</td></tr>
+              </tbody>
+            </table>
+            <p class="fragment">These three-part statements are called <em>triples</em>.</p>
+            <aside class="notes">
+              RDF is built from statements consisting of three parts: a subject, predicate, and object.
+              <p>
+              Subjects and predicates have to be URIs. Note that the object of
+              the first statement is the subject of the second and third
+              statements.
+              </p>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section><h2>Vocabularies and ontologies</h2></section>
+          <section>
+            <h3>Vocabularies: naming things</h3>
+            <ul>
+              <li><em>Classes</em> (types of things)</li>
+              <li><em>Predicates</em> (relationships between things, or properties)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Ontology: the study of being</h3>
+            <ul>
+              <li>Describes a worldview for a given domain</li>
+              <li>Layers rules on top of vocabularies, e.g.
+                <ul>
+                  <li class="smaller">A <code>Person</code> cannot be a parent of itself</li>
+                  <li class="smaller">The object of an <code>alumniOf</code> predicate must be an <code>EducationalInstitution</code></li>
+                </ul>
+              </li>
+              <li>Links vocabularies (<code>owl:equivalentClass</code>) and things (<code>owl:sameAs</code>)
+              <li>Enables reasoning over / deriving inferences from your data</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Notable vocabularies/ontologies</h3>
+            <ul>
+              <li><a href="http://xmlns.com/foaf/spec/"><abbr title="Friend of a Friend">FOAF</abbr></a> - linking people</li>
+              <li><a href="http://schema.org/">schema.org</a> - general vocabulary, led by search engines</li>
+              <li><a href="https://www.w3.org/2004/02/skos/"><abbr title="Simple Knowledge Organization System">SKOS</abbr></a> - thesauri, taxonomies, classification schemes</li>
+              <li><a href="http://www.loc.gov/bibframe/"><abbr title="Bibliographic Framework">BIBFRAME</abbr></a> - bibliographic description; replacement for MARC 21</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2><abbr title="SPARQL Protocol and Query Language">SPARQL</abbr></h2>
+            <ul>
+              <li>Just different enough from SQL to be confusing 😕</li>
+              <li><code>SELECT</code> variables rather than columns</li>
+              <li>No <code>FROM</code> clause (just one set of triples)</li>
+              <li>Narrow results based on relationships between entities, or <code>FILTER</code> attribute values</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Hands-on with Wikidata: randomness</h2>
+            <ol>
+              <li>Open <a href="https://query.wikidata.org/">query.wikidata.org</a> in a browser.</li>
+              <li>On the right hand side, type the following query:
+                <pre><code>SELECT * WHERE {
+  ?s ?p ?o
+}
+LIMIT 10</code></pre></li>
+                <li>Press <code>CTRL + ENTER</code>, or click the arrow button on the left, to submit the query.</li>
+            </ol>
+            <aside class="notes">
+              Wikidata is one of the largest sets of openly queryable RDF data.
+              It has a rich ontology with thousands of classes and properties.
+              <p>
+              Note, however, the data it contains may not be complete, current,
+              or accurate. (This is arguably true of any large-scale store of
+              data!)
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: McGill</h2>
+            <ol>
+              <li>Let's get something less random. Change <code>?o</code> to <code>"McGill University"</code>: 
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%22McGill%20University%22%0A%7D%0ALIMIT%2010"><pre><code>SELECT * WHERE {
+  ?s ?p "McGill University"
+}
+LIMIT 10</code></pre></a></li>
+                <li>Two of the subjects should be <a href="http://www.wikidata.org/entity/Q201492">Q201492</a>. Click on one of them to see the structured data about McGill University.</li>
+            </ol>
+            <aside class="notes">
+              Wikidata uses Q-numbers instead of "natural keys" to identify
+              entities because it wants to support many different languages.
+              <p>
+              The first statement for McGill was <a href="https://www.wikidata.org/wiki/Property:P31">"instance of (P31)"</a> <a href="http://www.wikidata.org/entity/Q3918">"university (Q3918)"</a>.
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: Universities</h2>
+            Let's retrieve all instances of universities in Wikidata:
+            <ol>
+              <li>Change your predicate to <code>wdt:P31</code> (<em>instance of</em>).</li>
+              <li>Change your object to <code>wd:Q3918</code> (<em>university</em>).
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%0A%7D"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918
+}</code></pre></a></li>
+            </ol>
+            <ul>
+              <li><code>wdt:</code> = "truthiness"</li>
+              <li><code>wd:</code> = entity</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: countries</h2>
+            Let's get the countries for each university in Wikidata:
+            <ol>
+              <li>Append the "AND" operator (a period <code>.</code>) to your first statement.</li>
+              <li>Add a statement that asks for the country (predicate = <code>wdt:P17</code>) for the subject and store the value in a new variable, <code>?country</code>.
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%0A%7D"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country
+}</code></pre></a></li>
+            </ol>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: labels!</h2>
+            Okay, we need human-friendly labels.
+            <ol>
+              <li>Add a statement that asks for the <code>rdfs:label</code> of the subject.</li>
+              <li>Add a statement that asks for the <code>rdfs:label</code> of the country.</li>
+              <li>Add a <code>LIMIT 100</code> clause to keep things fast.</li>
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?s rdfs:label ?sLabel .
+  ?country rdfs:label ?countryLabel .
+}
+LIMIT 100</code></pre></a></li>
+            </ol>
+            <p>Don't forget the "AND" operator (period <code>.</code>) for your statements!</p>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: English labels!</h2>
+            Okay, we really need labels in a particular language.
+            <ol>
+              <li>Add FILTER statements that restrict the language of each label to "en" (<code>FILTER(LANG(?countryLabel) = "en")</code>)
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?s rdfs:label ?sLabel .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?sLabel) = "en") .
+  FILTER(LANG(?countryLabel) = "en") .
+}
+LIMIT 100</code></pre></a></li>
+            </ol>
+            <aside class="notes">
+              Wikidata has an extension to SPARQL called a label service that
+              is faster and easily supports multiple languages, but this works
+              as a decent example for using FILTER.
+            </aside>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: ORDER</h2>
+            Let's sort the results in order of country name.
+            <ol>
+              <li>Add an <code>ORDER BY ?countryLabel</code> clause just before the <code>LIMIT</code> clause:
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?s rdfs:label ?sLabel .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?sLabel) = "en") .
+  FILTER(LANG(?countryLabel) = "en") .
+}
+ORDER BY ?countryLabel
+LIMIT 100</code></pre></a></li>
+            </ol>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: aggregates</h2>
+            SPARQL can count and group too:
+            <ol>
+              <li>Change your <code>SELECT</code> clause to select <code>?countryLabel (COUNT (?s) AS ?cnt)</code>.</li>
+              <li>Add an <code>GROUP BY DESC(?cnt)</code> clause just before the <code>ORDER BY</code> clause:
+                <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?countryLabel) = "en") .
+}
+GROUP BY ?countryLabel
+ORDER BY DESC(?cnt)
+LIMIT 100</code></pre></a></li>
+            </ol>
+            <aside class="notes">
+              The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: HAVING filter</h2>
+            SPARQL can filter aggregate results
+            <ol>
+              <li>Add a <code>HAVING(COUNT(?s) &lt;= 50)</code> clause just before the <code>ORDER BY</code> clause:
+                <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20%3Fpopulation%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20%3Fcountry%20wdt%3AP1082%20%3Fpopulation%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%20%3Fpopulation%0AHAVING%28COUNT%28%3Fs%29%20%3C%3D%2050%29%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?countryLabel) = "en") .
+}
+GROUP BY ?countryLabel
+HAVING(COUNT(?s) &lt;= 50)
+ORDER BY DESC(?cnt)
+LIMIT 100</code></pre></a></li>
+            </ol>
+            <aside class="notes">
+              The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
+          </section>
+
+        </section>
+        <section>
+          <h2>Further resources</h2>
+          <ul>
+            <li><a href="https://coffeecode.net/linked-data-introductory-resources.html">Linked
+                data introductory resources</a> - a blog post in which I have
+              aggregated videos, presentations, articles, and books (all
+              available to McGill students)</li>
+          </ul>
+        </section>
 			</div>
 		</div>
 
