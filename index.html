@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Assessing the quality of linked bibliographic data</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -20,12 +20,360 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+    <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+.reveal .smaller {
+  font-size: 70%;
+}
+    </style>
+  </head>
+  <body vocab="http://schema.org/" typeof="PresentationDigitalDocument">
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 property="name">Assessing the quality of linked bibliographic data</h1>
+          <div property="author" typeof="Person" resource="https://dscott.ca/#i">
+            <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
+            <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD Candidate</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></span></p>
+          </div>
+          <p><span property="dateCreated datePublished">2019-04-02</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          </p>
+          <aside class="notes">
+            First, I want to acknowledge that McGill University is located on
+            land which has long served as a site of meeting and exchange
+            amongst Indigenous peoples, including the Haudenosaunee and
+            Anishinabeg nations.
+            <p>
+            To situate myself, my family is of English and Irish settler origin,
+            and my mother's side traces our arrival to the New York region
+            of North America in the 1700's, before crossing into southern
+            Ontario as part of the Loyalist movement. Since 2005 I've lived in
+            Sudbury, Ontario, which is the territory of the Atikemkshing
+            Aniishnabek in the Robinson-Huron Treaty territory, where I have
+            worked as a systems librarian at Laurentian University.
+            </p>
+            <p>
+            That last piece partially explains why I'm interested in data
+            quality of linked bibliographic data.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <section>
+            <table>
+              <thead>
+                <tr><th>Bibliographic data</th><th>Linked data</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Printed cards</td> <td>A web of documents</td></tr>
+                <tr><td>Digital card catalogues</td> <td>A web of data</td></tr>
+                <tr><td>Records (fields with values)</td><td>Entities and relationships</td></tr>
+                <tr><td>Text</td><td>Text and media</td></tr>
+                <tr><td>Records are shared, modified, reshared</td><td>Anyone can say anything about anything</td></tr>
+                <tr><td>Metadata</td><td>Metadata <em>and</em> data</td></tr>
+              </tbody>
+            </table>
+            <aside class="notes">
+              Rough parallels between bibliographic data and linked data, in terms of:
+              <ul>
+                <li>Evolution</li>
+                <li>Structural principles</li>
+                <li>Kinds of information</li>
+                <li>Provenance</li>
+                <li>Scope</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <figure style="width: 35%; display: inline-block">
+              <img src="images/anne_film_marc.png" alt="Part of a MARC21 record showing fields and text">
+              <figcaption>MARC record data</figcaption>
+            </figure>
+            <figure style="width: 55%; display: inline-block">
+              <img src="images/anne_film_bibframe.png" style="background: white" alt="Corresponding data as BIBFRAME showing relationships between the book and film">
+              <figcaption>Linked data</figcaption>
+            </figure>
+            <aside class="notes">
+              On the left we see a subset of a MARC21 record for the film "Anne
+              of Green Gables", showing classic bibliographic data consisting
+              of fields and text.
+              <p>
+              On the right we see a possible expression of the same data as
+              linked bibliographic data, showing the separation of entities
+              such as "Agents" (L.M. Montgomery, Kevin Sullivan, Megan
+              Follows)--each of which has their own link, and which can be
+              reused and extended by other linked data.
+              </p>
+            </aside>
+          </section>
+          <section>
+            <h2>Linked bibliographic data</h2>
+            <ul>
+              <li>From bibliographic records to linked bibliographic data:
+                <ul>
+                  <li>Dublin Core Metadata Terms (<em>dcterms</em>) - 2003-</li>
+                  <li>Bibliographic Ontology (<em>bibo</em>) - 2008-2009</li>
+                  <li>FRBR-Aligned Bibliographic Ontology (<em>fabio</em>) - 2010-</li>
+                  <li><strong>Bibliographic Framework</strong> (<em>BIBFRAME</em>) - 2012-</li>
+                  <li>Resource Description Access (<em>RDA</em>) - 2014-</li>
+                </ul>
+              </li>
+            </ul>
+            <aside class="notes">
+              dcterms is used extensively, both as the basis of other
+              vocabularies, and as a lightweight vocabulary for institutional
+              repositories and other special collections.
+              <p>
+              While bibo and fabio were developed relatively early, and have
+              influenced other vocabularies such as schema.org, they have found
+              low adoption rates.
+              </p>
+              <p>
+              BIBFRAME is an initiative led by the Library of Congress to
+              provide a successor for the 50-year old MARC format for
+              bibliographic interchange. The second iteration of BIBFRAME
+              in 2016 saw an international set of libraries including Harvard,
+              Stanford, Cornell, and the University of Alberta commit to adopting
+              BIBFRAME as their primary cataloguing format.
+              </p>
+              <p>
+              RDA is an effort to produce a vocabulary aligned with FRBR (now
+              IFLA LRM) that targets all cultural heritage institutions.
+              </p>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <section>
+          <h2>Data quality: why?</h2>
+          <ul>
+            <li class="fragment">Standards are not sufficient<span class="fragment">, <em>nor standard</em> (Zhu et al, 2016)</span></li>
+            <li class="fragment">Bibliographic data: history of collaborative efforts and challenges</li>
+            <li class="fragment">Linked data: broad scope, sophisticated models, but limited results</li>
+            <li class="fragment">Linked bibliographic data: early days, wide open</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Seminal definition of data quality</h3>
+          <blockquote style="text-align: left">
+            data that are fit for use by data consumers
+            <cite style="display: block; text-align: right">Wang &amp; Strong (1996)</cite>
+          </blockquote>
+          <ul>
+            <li>"data consumers" means context is critical</li>
+            <li>Context for this work was MIS with defence systems</li>
+          </ul>
+          <aside class="notes">
+            This definition is cited by most of the articles in the LIS and computer science fields.
+          </aside>
+        </section>
+        <section>
+          <h3>Wang &amp; Strong (1996) model</h3>
+          <table class="smaller">
+            <thead>
+              <tr><th>Category</th><th>Dimensions</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Intrinsic</td><td> believability, accuracy, objectivity, reputation</td></tr>
+              <tr><td>Contextual</td><td> value-added, relevancy, timeliness, completeness, amount</td></tr>
+              <tr><td>Representational</td><td> interpretability, ease of understanding, representational consistency, concise representation</td></tr>
+              <tr><td>Accessibility</td><td> accessibility, access security</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h3>Bibliographic data models</h3>
+          <table class="smaller">
+            <thead>
+              <tr><th>Paper</th><th>Categories (# dimensions)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Moen et al. (1998)</td><td>Completeness, accuracy, serviceability</td></tr>
+              <tr><td>Bruce &amp; Hillman (2004)</td><td>Completeness, accuracy, provenance, conformance, coherence, timeliness, accessibility</td></tr>
+              <tr><td>Stvilia et al. (2007)</td><td>Intrinsic (9), relational/contextual (12), reputational (1)</td></tr>
+              <tr><td>Ochoa &amp; Duval (2009)</td><td>Bruce &amp; Hillman (2004)</td></tr>
+              <tr><td>Gavrilis et al. (2015)</td><td>Completeness, accuracy, consistency, appropriateness, auditability</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            <p>
+            Gavrilis et al evaluated 67 packages containing over 2M metadata items of CARARE data from Europeana
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h3>Linked data models</h3>
+          <table class="smaller">
+            <thead>
+              <tr><th>Paper</th><th>Categories (# dimensions)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pipino et al. (2002)</td><td>Wang &amp; Strong (1996) + free-of-error, objectivity</td></tr>
+              <tr><td>Fürber &amp; Hepp (2011)</td><td>Completeness, accuracy, timeliness, uniqueness</td></tr>
+              <tr><td>Zaveri et al. (2016)</td><td>Intrinsic (5), contextual (4), representational (4), accessibility (5)</td></tr>
+              <tr><td>Färber et al. (2017)</td><td>Intrinsic (3), contextual (3), representational (2), accessibility (3)</td></tr>
+              <tr><td>Debattista et al. (2018)</td><td>Intrinsic, contextual, representational, accessibility</td></tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Fürber &amp; Hepp based their definition of data quality on functional requirements; analyzed Best Buy data
+            <p>
+            Färber et al compared knowledge graphs (Freebase, Wikidata, DBpedia, OpenCyc, YAGO)
+            </p>
+            <p>
+            Debattista et al. implemented Zaveri et al.'s model against 130 LOD datasets
+            </p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Gaps and opportunities</h2>
+        </section>
+        <section>
+          <h3>Generalizability</h3>
+          <ul>
+            <li>Linked data: yes, but specificity is lacking</li>
+            <li>Bibliographic literature: no
+              <ul>
+                <li>Small scale</li>
+                <li>Dublin Core</li>
+                <li>Context bound</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Replicability</h3>
+          <ul>
+            <li>External validity threat: history vs. open datasets</li>
+            <li>Lack of access to implementations, in-house datasets</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Automation: breadth vs. depth</h3>
+          <ul>
+            <li>Billions of records: mostly syntax</li>
+            <li>Handfuls of records: rich semantics</li>
+          </ul>
+          <aside class="notes">
+            Context makes this hard!
+            <p>
+            David &amp; Thomas (2015) analyzed logs to determine 4 key
+            access points (title, author, year, subject), analyzed 9,800
+            records; it would take 208 person-days to check all of the
+            records in their platform
+            </p>
+            <p>
+            Stvilia et al. (2007) constructed a meticulous framework, then
+            tested only a subset of it against Dublin Core records
+            </p>
+            <ul>
+              <li>Linked bibliographic data has more specific context</li>
+              <li>∴ "fitness for use" can be more meaningfully determined</li>
+              <li>and an automated method may made be more useful</li>
+            </ul>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Proposal</h2>
+          <ol>
+            <li>Synthesize a conceptual model for quality assessment of linked bibliographic data</li>
+            <li>Compile a gold standard dataset of linked bibliographic data using the BIBFRAME vocabulary (Aalberg et al., 2018; Decourselle, 2016)</li>
+            <li>Implement the conceptual model metrics in an automated assessment tool</li>
+          </ol>
+          <aside class="notes">
+            <ol>
+              <li>Using grounded theory analysis as described by Jabberdeen (2009) and Charmaz (2014)</li>
+              <li>Coordinating BIBFRAME experts to compile and evaluate the quality of the dataset</li>
+              <li>Written in Python, using the dataset as a test bed</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <h2>Significance</h2>
+          <ul>
+            <li>Constructivist grounded theory is a new approach to model development for data quality</li>
+            <li>Gold standard dataset will ease the efforts of other researchers, in data quality and other inquiries</li>
+            <li>Assessment tool should enable libraries to evaluate and improve their linked bibliographic data early</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h2><a href="reading_course_references.html">References</a></h2>
+      </section>
+      <section>
+        <section>
+          <h2>Appendices</h2>
+        </section>
+        <section>
+          <h3>Methodologies</h3>
+          <ul>
+            <li>Surveys</li>
+            <li>Interviews</li>
+            <li>Card sorting</li>
+            <li>Content analysis</li>
+            <li>Log analysis</li>
+            <li>Functional requirements heuristics</li>
+            <li>Deductive reasoning</li>
+            <li>Automated tools</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Aggregations</h3>
+          <p>From national union catalogues, cooperative cataloguing efforts, and OAI-PMH harvested records, to open knowledge graphs</p>
+          <p class="smaller">
+          Boissonas (1979);
+          Bruce &amp; Hillman (2004);
+          Debattista et al. (2018);
+          El-Sherbini (2010);
+          Färber et al. (2017);
+          Hider &amp; Tan (2008);
+          Moen et al. (1998);
+          Stvilia et al. (2007);
+          </p>
+          <aside class="notes">
+            <p>Context: aggregations often serve different users and different purposes</p>
+            <ul>
+              <li>Boissonas (1979) - OCLC vs LoC</li>
+              <li>Bruce &amp; Hillman (2004) - metadata in general</li>
+              <li>Debattista et al. (2018) - implemented Zaveri et al's model against 130 LOD datasets</li>
+              <li>El-Sherbini (2010) - <abbr title="Program for Cooperative Cataloging">PCC</abbr> <abbr title="Bibliographic Consortium">BIBCO</abbr> records</li>
+              <li>Färber et al. (2017) - comparison of knowledge graphs</li>
+              <li>Hider &amp; Tan (2008) - national union catalogue</li>
+              <li>Moen et al. (1998) - <abbr title="Government Information Locator Service">GILS</abbr> records</li>
+              <li>Stvilia et al. (2007) - OAI Dublin Core records</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Fitness for use</h3>
+          <ul>
+            <li>Heavy dependence on IFLA LRM (2017) tasks:
+              <ul>
+                <li><em>Find</em></li>
+                <li><em>Identify</em></li>
+                <li><em>Select</em></li>
+                <li><em>Obtain</em></li>
+                <li><em>Explore</em></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Data consumers</h3>
+          <ul>
+            <li>"Data consumers" depend on context</li>
+            <li>Linked data broadens possible contexts</li>
+            <li class="fragment">Consumers... but also producers?</li>
+          </ul>
+        </section>
+
+      </section>
 			</div>
 		</div>
 
@@ -37,6 +385,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+        history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
