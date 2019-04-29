@@ -6,7 +6,7 @@
 
 		<title>Assessing the quality of linked bibliographic data</title>
     <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" >
-    <meta name="DC.date.published" content="2019-04-01" >
+    <meta name="DC.date.published" content="2019-04-29" >
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
@@ -26,8 +26,8 @@
 .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
   text-transform: none;
 }
-.reveal .smaller {
-  font-size: 70%;
+.reveal .smaller, .reveal .datatable td, .reveal .datatable th {
+  font-size: 60%;
 }
     </style>
   </head>
@@ -40,7 +40,7 @@
             <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
             <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></span></p>
           </div>
-          <p><span property="dateCreated datePublished">2019-04-02</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          <p><span property="dateCreated datePublished">2019-04-29</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
           </p>
           <aside class="notes">
             First, I want to acknowledge that McGill University is located on
@@ -52,7 +52,7 @@
             and my mother's side traces our arrival to the New York region
             of North America in the 1700's, before crossing into southern
             Ontario as part of the Loyalist movement. Since 2005 I've lived in
-            Sudbury, Ontario, which is the territory of the Atikemkshing
+            Sudbury, Ontario, which is the territory of the Atikameksheng
             Aniishnabek in the Robinson-Huron Treaty territory, where I have
             worked as a systems librarian at Laurentian University.
             </p>
@@ -63,6 +63,13 @@
           </aside>
         </section>
         <section>
+          <section>
+            <img class="stretch" src="images/library-card-catalog-index-card.jpg" alt="Printed card from a library catalogue describing a book published in 1969">
+            <p>Photo credit: <a href="https://www.worthpoint.com/worthopedia/library-card-catalog-index-cards-1900-460304398">worthpoint.com</a></p>
+          </section>
+          <section>
+            <img class="stretch" src="images/lccat_item_marc_record.png" alt="MARC record from a library catalogue describing same book published in 1969 with same values">
+          </section>
           <section>
             <table>
               <thead>
@@ -156,6 +163,9 @@
             <li class="fragment">Linked data: broad scope, sophisticated models, but limited results</li>
             <li class="fragment">Linked bibliographic data: early days, wide open</li>
           </ul>
+          <aside class="notes">
+            Zhu et al warn that complex standards can result in inconsistent application.
+          </aside>
         </section>
         <section>
           <h3>Seminal definition of data quality</h3>
@@ -172,66 +182,184 @@
           </aside>
         </section>
         <section>
-          <h3>Wang &amp; Strong (1996) model</h3>
-          <table class="smaller">
+          <h3>Data quality dimensions</h3>
+          <table class="datatable">
             <thead>
-              <tr><th>Category</th><th>Dimensions</th></tr>
+              <th>Dimension</th>
+              <th>CS models</th>
+              <th>LIS models</th>
+              <th>MIS models</th>
+              <th>Total</th>
             </thead>
             <tbody>
-              <tr><td>Intrinsic</td><td> believability, accuracy, objectivity, reputation</td></tr>
-              <tr><td>Contextual</td><td> value-added, relevancy, timeliness, completeness, amount</td></tr>
-              <tr><td>Representational</td><td> interpretability, ease of understanding, representational consistency, concise representation</td></tr>
-              <tr><td>Accessibility</td><td> accessibility, access security</td></tr>
+              <tr>
+                <td>Intrinsic structural consistency</td>
+                <td>6</td>
+                <td>4</td>
+                <td>4</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>Intrinsic accuracy</td>
+                <td>4</td>
+                <td>3</td>
+                <td>4</td>
+                <td>11</td>
+              </tr>
+              <tr>
+                <td>Intrinsic completeness</td>
+                <td>4</td>
+                <td>3</td>
+                <td>4</td>
+                <td>11</td>
+              </tr>
+              <tr>
+                <td>Accessibility</td>
+                <td>4</td>
+                <td>2</td>
+                <td>2</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Completeness</td>
+                <td>5</td>
+                <td>1</td>
+                <td>2</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Relevancy</td>
+                <td>4</td>
+                <td>2</td>
+                <td>2</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Reputation</td>
+                <td>5</td>
+                <td>1</td>
+                <td>2</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Timeliness</td>
+                <td>6</td>
+                <td>0</td>
+                <td>2</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Relational accuracy</td>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Relational structural consistency</td>
+                <td>5</td>
+                <td>1</td>
+                <td>1</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Intrinsic concise representation</td>
+                <td>5</td>
+                <td>0</td>
+                <td>2</td>
+                <td>7</td>
+              </tr>
             </tbody>
           </table>
-        </section>
-        <section>
-          <h3>Bibliographic data models</h3>
-          <table class="smaller">
-            <thead>
-              <tr><th>Paper</th><th>Categories (# dimensions)</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Moen et al. (1998)</td><td>Completeness, accuracy, serviceability</td></tr>
-              <tr><td>Bruce &amp; Hillman (2004)</td><td>Completeness, accuracy, provenance, conformance, coherence, timeliness, accessibility</td></tr>
-              <tr><td>Stvilia et al. (2007)</td><td>Intrinsic (9), relational/contextual (12), reputational (1)</td></tr>
-              <tr><td>Ochoa &amp; Duval (2009)</td><td>Bruce &amp; Hillman (2004)</td></tr>
-              <tr><td>Gavrilis et al. (2015)</td><td>Completeness, accuracy, consistency, appropriateness, auditability</td></tr>
-            </tbody>
-          </table>
+          <p class="smaller">15 studies across CS (<em>n</em>=7), LIS (<em>n</em>=4), and MIS (<em>n</em>=4)</p>
           <aside class="notes">
-            <p>
-            Gavrilis et al evaluated 67 packages containing over 2M metadata items of CARARE data from Europeana
-            </p>
+            <ul>
+              <li>Synthesis of 15 studies that proposed conceptual models of data quality</li>
+              <li>Resulted in 37 unique dimensions</li>
+              <li>Cut-off at 7/15 results in 11 dimensions</li>
+              <li>“Intrinsic” dimensions measure the quality of the data at the granular level of the data itself</li>
+              <li>“relational” dimensions measure the quality of the data in relation to the broader dataset</li>
+            </ul>
           </aside>
         </section>
         <section>
-          <h3>Linked data models</h3>
-          <table class="smaller">
+          <h3>Data quality dimensions</h3>
+          <table class="datatable">
             <thead>
-              <tr><th>Paper</th><th>Categories (# dimensions)</th></tr>
+              <th>Dimension</th>
+              <th>CS models</th>
+              <th>LIS models</th>
+              <th>MIS models</th>
+              <th>Total</th>
             </thead>
             <tbody>
-              <tr><td>Pipino et al. (2002)</td><td>Wang &amp; Strong (1996) + free-of-error, objectivity</td></tr>
-              <tr><td>Fürber &amp; Hepp (2011)</td><td>Completeness, accuracy, timeliness, uniqueness</td></tr>
-              <tr><td>Zaveri et al. (2016)</td><td>Intrinsic (5), contextual (4), representational (4), accessibility (5)</td></tr>
-              <tr><td>Färber et al. (2017)</td><td>Intrinsic (3), contextual (3), representational (2), accessibility (3)</td></tr>
-              <tr><td>Debattista et al. (2018)</td><td>Intrinsic, contextual, representational, accessibility</td></tr>
+              <tr>
+                <td>Intrinsic complexity</td>
+                <td>0</td>
+                <td>2</td>
+                <td>2</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Relational semantic consistency</td>
+                <td>1</td>
+                <td>3</td>
+                <td>0</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Currency</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Volatility</td>
+                <td>1</td>
+                <td>2</td>
+                <td>1</td>
+                <td>4</td>
+              </tr>
             </tbody>
           </table>
+          <p class="smaller">15 studies across CS (<em>n</em>=7), LIS (<em>n</em>=4), and MIS (<em>n</em>=4)</p>
           <aside class="notes">
-            <p>
-            Pipino et al. - derived from practice (consulting case studies)
-            </p>
-            <p>
-            Fürber &amp; Hepp based their definition of data quality on functional requirements; analyzed Best Buy data
-            </p>
-            <p>
-            Färber et al compared knowledge graphs (Freebase, Wikidata, DBpedia, OpenCyc, YAGO)
-            </p>
-            <p>
-            Debattista et al. implemented Zaveri et al.'s model against 130 LOD datasets
-            </p>
+            <ul>
+              <li>These are the remaining dimensions that had 50% or greater appearance in LIS studies</li>
+              <li>Currency measures age of data when delivered to user</li>
+              <li>Volatility measures how long data remains valid</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Data quality research methods</h3>
+          <table class="datatable">
+            <thead>
+              <tr><th>Method</th><th>CS</th><th>LIS</th><th>MIS</th><th>Grand Total</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Automated analysis</td><td>9</td><td>2</td><td>1</td><td>12</td></tr>
+              <tr><td>Benchmark</td><td>3</td><td></td><td></td><td>3</td></tr>
+              <tr><td>Case studies</td><td>1</td><td>1</td><td>1</td><td>3</td></tr>
+              <tr><td>Content analysis</td><td></td><td>8</td><td></td><td>8</td></tr>
+              <tr><td>Deductive reasoning</td><td>2</td><td>2</td><td></td><td>4</td></tr>
+              <tr><td>Expert opinion</td><td></td><td>2</td><td></td><td>2</td></tr>
+              <tr><td>Survey (quantitative)</td><td></td><td>2</td><td>3</td><td>5</td></tr>
+              <tr><td>Test datasets</td><td>1</td><td>2</td><td></td><td>3</td></tr>
+            </tbody>
+          </table>
+          <p class="smaller">33 studies across CS (<em>n</em>=11), LIS (<em>n</em>=19), and MIS (<em>n</em>=3)</p>
+          <aside class="notes">
+            Cut off at 2 or lower; eliminated:
+            <ul>
+              <li>card-sorting</li>
+              <li>exploratory interviews</li>
+              <li>functional requirement heuristics</li>
+              <li>log analysis</li>
+              <li>think-aloud</li>
+              <li>systematic review</li>
+            </ul>
           </aside>
         </section>
       </section>
@@ -294,7 +422,7 @@
         </section>
       </section>
       <section>
-        <h2><a href="reading_course_references.html">References</a></h2>
+        <h2><a href="https://www.zotero.org/groups/2322877/linked_bibliographic_data_quality/items">References</a></h2>
       </section>
       <section>
         <h2>Appendices</h2>
@@ -309,7 +437,7 @@
           </ol>
           <aside class="notes">
             <ol>
-              <li>Using grounded theory analysis as described by Jabberdeen (2009) and Charmaz (2014)</li>
+              <li>Using grounded theory analysis as described by Jabareen (2009) and Charmaz (2014)</li>
               <li>Coordinating BIBFRAME experts to compile and evaluate the quality of the dataset</li>
               <li>Written in Python, using the dataset as a test bed</li>
             </ol>
