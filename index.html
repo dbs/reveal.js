@@ -39,7 +39,7 @@
             <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></p>
             <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
           </div>
-          <p property="dateCreated datePublished">2019-03-15 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          <p property="dateCreated datePublished">2019-09-07 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
           </p>
         </section>
         <section>
@@ -67,7 +67,7 @@
           <section>
             <h3>Web of documents</h3>
             <ul>
-              <li>A web address (like <a href="https://mcgill.ca/">https://mcgill.ca/</a>)</li>
+              <li>A web address (like <a href="https://laurentian.ca/">https://laurentian.ca/</a>)</li>
               <li>… returns an HTML document -- a web page</li>
               <li>… which may link to other web addresses</li>
             </ul>
@@ -91,7 +91,7 @@
           </section>
         </section>
         <section>
-          <section><h2>Modelling today's class</h2></section>
+          <section><h2>Modelling today's gathering</h2></section>
           <section>
             <h3>People</h3>
             <table>
@@ -99,17 +99,16 @@
                 <tr><th>Type or class</th><th>Instance</th></tr>
               </thead>
               <tbody>
-                <tr><td>Professor</td><td>Dr. Guastavino</td></tr>
-                <tr><td>Student</td><td>You*</td></tr>
-                <tr><td>Teaching assistant</td><td>Richard Yanaky</td></tr>
-                <tr><td>Guest lecturer</td><td>Dan Scott</td></tr>
+                <tr><td>Organizers</td><td>Em, David</td></tr>
+                <tr><td>Attendees</td><td>You*</td></tr>
+                <tr><td>Speakers</td><td>Kelsey, Dan</td></tr>
               </tbody>
             </table>
             <aside class="notes">
               We could model this a number of ways:
               <ul>
                 <li>All of these classes may directly be subclasses of People</li>
-                <li>There could be an Instructor class that Professor, Teaching Assistant, and Guest lecturer are subclasses of</li>
+                <li>Each of the instances might belong to multiple classes</li>
                 <li>We might be interested in the relationships between the instances of the classes</li>
                 <li>We might want to know attributes (email address, etc) of the people</li>
               </ul>
@@ -153,9 +152,9 @@
                 <tr><th>Subject</th><th>Predicate</th><th>Object</th></tr>
               </thead>
               <tbody>
-                <tr class="fragment"><td>Dan Scott</td><td>member of</td><td>McGill University</td></tr>
-                <tr class="fragment"><td>McGill University</td><td>location</td><td>Montreal</td></tr>
-                <tr class="fragment"><td>McGill University</td><td>founding date</td><td>1821</td></tr>
+                <tr class="fragment"><td>Dan Scott</td><td>member of</td><td>Laurentian University</td></tr>
+                <tr class="fragment"><td>Laurentian University</td><td>location</td><td>Sudbury</td></tr>
+                <tr class="fragment"><td>Laurentian University</td><td>founding date</td><td>1960</td></tr>
               </tbody>
             </table>
             <aside class="notes">
@@ -170,9 +169,9 @@
                 <tr><th>Subject</th><th>Predicate</th><th>Object</th></tr>
               </thead>
               <tbody>
-                <tr class="fragment"><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
-                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
-                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>"1821"^^xsd:gYear</td></tr>
+                <tr class="fragment"><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://laurentian.ca/</td></tr>
+                <tr class="fragment"><td>https://laurentian.ca/</td><td>http://schema.org/location</td><td>https://greatersudbury.ca/</td></tr>
+                <tr class="fragment"><td>https://laurentian.ca/</td><td>http://schema.org/foundingDate</td><td>"1960"^^xsd:gYear</td></tr>
               </tbody>
             </table>
             <p class="fragment">These three-part statements are called <em>triples</em>.</p>
@@ -331,20 +330,20 @@ LIMIT 10</code></pre></li>
             </aside>
           </section>
           <section>
-            <h2>Wikidata SPARQL: McGill</h2>
+            <h2>Wikidata SPARQL: Laurentian</h2>
             <ol>
-              <li>Let's get something less random. Change <code>?o</code> to <code>"McGill University"</code>: 
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%22McGill%20University%22%0A%7D%0ALIMIT%2010"><pre><code>SELECT * WHERE {
-  ?s ?p "McGill University"
+              <li>Let's get something less random. Change <code>?o</code> to <code>"Laurentian University"</code>: 
+                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%22Laurentian%20University%22%0A%7D%0ALIMIT%2010"><pre><code>SELECT * WHERE {
+  ?s ?p "Laurentian University"
 }
 LIMIT 10</code></pre></a></li>
-                <li>Two of the subjects should be <a href="http://www.wikidata.org/entity/Q201492">Q201492</a>. Click on one of them to see the structured data about McGill University.</li>
+                <li>One of the subjects should be <a href="http://www.wikidata.org/entity/Q3551432">Q3551432</a>. Click on it to see the structured data about Laurentian University.</li>
             </ol>
             <aside class="notes">
               Wikidata uses Q-numbers instead of "natural keys" to identify
               entities because it wants to support many different languages.
               <p>
-              The first statement for McGill was <a href="https://www.wikidata.org/wiki/Property:P31">"instance of (P31)"</a> <a href="http://www.wikidata.org/entity/Q3918">"university (Q3918)"</a>.
+              The first statement for Laurentian was <a href="https://www.wikidata.org/wiki/Property:P31">"instance of (P31)"</a> <a href="http://www.wikidata.org/entity/Q3918">"university (Q3918)"</a>.
               </p>
             </aside>
           </section>
@@ -475,8 +474,7 @@ LIMIT 100</code></pre></a></li>
           <ul>
             <li><a href="https://coffeecode.net/linked-data-introductory-resources.html">Linked
                 data introductory resources</a> - a blog post in which I have
-              aggregated videos, presentations, articles, and books (all
-              available to McGill students)</li>
+              aggregated videos, presentations, articles, and books</li>
           </ul>
         </section>
 			</div>
@@ -491,7 +489,7 @@ LIMIT 100</code></pre></a></li>
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
         history: true,
-        showNotes: true,
+        showNotes: false,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
