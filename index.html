@@ -189,6 +189,153 @@
             </aside>
           </section>
         </section>
+                <section>
+                    <section>
+                        <h2>Knowledge Graph Search API</h2>
+                        <ul>
+                            <li>Google taketh away but also giveth:
+                                <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a></li>
+                        </ul>
+                    </section>
+                    <section data-background="images/kg_api_console.png">
+                        <div class="fragment bgb">
+                        <ul>
+                            <li class="bgb">Enable the API in the <a href="https://console.developers.google.com/apis/dashboard?project=knowledge-graph-searching">Google API Console</a></li>
+                            <li class="bgb">Daily quota of 100,000 requests, 17,000 "Discovery" requests</li>
+                            <li class="bgb">Undocumented result limit of 200; defaults to 20</li>
+                        </ul>
+                        </div>
+                        <aside class="notes">
+                            I've never triggered a "discovery" request. No idea what those are.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph Discovery Widget</h2>
+                        <pre><code>&lt;head&gt;
+  &lt;link type="text/css" rel="stylesheet"
+    href="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.css"&gt;
+  &lt;style&gt;.kge-search-picker { width: 25em; }&lt;/style&gt;
+  &lt;script type="text/javascript"
+    src="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form id='myform'&gt;
+    &lt;label&gt;Search: &lt;input type="text" id="myinput"&gt;&lt;/label&gt;
+  &lt;/form&gt;
+  &lt;script&gt;
+    KGSearchWidget(API_KEY, document.getElementById('myinput'), {});
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                        <p><a href="https://stuff.coffeecode.net/2016/ohiodevfest/kgdiscovery.html">Awesome live demo!</a></p>
+                        <aside class="notes">
+                            <p><em>Primary use:</em> find IDs for entities in the Knowledge Graph</p>
+                            <p>Search can be constrained to particular types (from schema.org) like Book or Person</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>KG Search API: Requests</h2>
+                        <ul>
+                            <li>Same general constraints (type, limit) as the widget
+                                <ul>
+                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;query=john+kasich">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">query=john+kasich</span></a></li>
+                                </ul>
+                            </li>
+                            <li>Can also request specific KG IDs:
+                                <ul>
+                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;ids=/m/02zzm_">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">ids=/m/02zzm_</span></a></li>
+                                </ul>
+                            </li>
+                            <aside class="notes">
+                                Either way, the results look like the following:
+                            </aside>
+                    </section>
+                    <section>
+                        <h2>KG Search API: Results</h2>
+                        <pre><code>{ "@context": {
+    "@vocab": "http://schema.org/",
+    "goog": "http://schema.googleapis.com/",
+    "EntitySearchResult": "goog:EntitySearchResult",
+    "detailedDescription": "goog:detailedDescription",
+    "resultScore": "goog:resultScore",
+    "kg": "http://g.co/kg"
+  },
+  "@type": "ItemList", "itemListElement": [
+    {
+      "@type": "EntitySearchResult",
+      "result": {
+        "@id": "kg:/m/02zzm_",
+        "name": "John Kasich",
+        "@type": [ "Person", "Thing" ],
+        "description": "Governor of Ohio",
+        "image": {
+          "contentUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcRoou4pZKD6FoNaE71ngNlv4RGgUS46mgtin5YJtyEoh42CIs4x",
+          "url": "https://en.wikipedia.org/wiki/John_Kasich"
+        },
+        "detailedDescription": {
+          "articleBody": "John Richard Kasich is an American politician, the 69th and current Governor of Ohio. First elected in 2010 and re-elected in 2014, Kasich is a member of the Republican Party. His term is set to end by January 2019.\n",
+          "url": "https://en.wikipedia.org/wiki/John_Kasich",
+          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+        },
+        "url": "https://johnkasich.com"
+      },
+      "resultScore": 22.28808
+    }
+  ]
+}
+                        </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph IDs</h2>
+                        <pre><code>"kg": "http://g.co/kg"
+...
+"@id": "kg:/m/02zzm_"</code></pre>
+                        <p>So: <a href="http://g.co/kg/m/02zzm_">http://g.co/kg/m/02zzm_</a></p>
+                        <p>URIs don't have to resolve, but it's nice when they do!</p>
+                        <aside class="notes">
+                            So the Knowledge Graph gives you IDs for entities that you can associate and augment with your own data.
+                            <p>Those are the same IDs you get back from the Discovery Widget.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph API problems</h2>
+                        <ul>
+                            <li>Limited constraints = poor precision
+                                <ul>
+                                    <li class="fragment">Can't limit to name of the entity</li>
+                                </ul>
+                            </li>
+
+                            <li>Type mapping to schema.org loses more precision
+                                <ul>
+                                    <li class="fragment">A <em>Fictional character</em> is a <em>Thing</em>, not <em>Person</em></li>
+                                </ul>
+                            </li>
+                            <li>Simplistic entity results: no facts, no relationships
+                                <ul>
+                                    <li class="fragment"><em>When was John Kasich born?</em> - no birthdate returned</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <aside class="notes">
+                            <p>Search cannot be constrained to just the name of the entity, so "Buffy" returns references found anywhere in the description of the entity</p>
+                            <p>Compounded by having to use https://schema.org/Thing for many old Freeweb types like "Fictional Universe" or "Fictional Character" -- "Person" filters out fictional characters, so books / tv shows / actors who played the role show up</p>
+                            <p>The results contain only disconnected entities; none of the relationships to other entities in the graph are reflected in the results. Many of the properties used in Google's results are missing (e.g. birth date)</p>
+                            <p>The Graph is a lie!</p>
+                            <p>One could download the 250GB Freebase data dump and reconstruct the relationships based on the IDs (most of the KG IDs were inherited from Freebase), but that data is now rapidly aging. Who's the President-Elect now?</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Knowledge Graph: entity relations</h2>
+                        <blockquote>Note: The Knowledge Graph Search API
+                            returns only individual matching entities, rather
+                            than graphs of interconnected entities. If you need
+                            the latter, we recommend using data dumps from
+                            Wikidata instead.</blockquote>
+                        <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a>
+                        <aside class="notes">At least Google is upfront about this limitation!</aside>
+                    </section>
+                </section>
         <section>
           <section><h2>Vocabularies and ontologies</h2></section>
           <section>
