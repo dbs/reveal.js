@@ -430,6 +430,27 @@ LIMIT 100</code></pre></a></li>
             </ol>
           </section>
           <section>
+            <h2>Wikidata SPARQL: on a map</h2>
+            Let's display the results on a map. We'll need coordinates for that.
+            <ol>
+              <li>Add a clause requesting <code>P625</code> and store it in a <code>?coords</code> variable:
+<a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%20%20%3Fs%20wdt%3AP625%20%3Fcoords%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?s rdfs:label ?sLabel .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?sLabel) = "en") .
+  FILTER(LANG(?countryLabel) = "en") .
+  ?s wdt:P625 ?coords .
+}
+ORDER BY ?countryLabel
+LIMIT 100</code></pre></a>
+              </li>
+              <li>Change the display type from the standard table to a map by clicking the eye icon</li>
+            </ol>
+
+          </section>
+          <section>
             <h2>Wikidata SPARQL: aggregates</h2>
             SPARQL can count and group too:
             <ol>
@@ -468,6 +489,10 @@ LIMIT 100</code></pre></a></li>
               The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
           </section>
 
+        </section>
+        <section>
+          <h2>In practice</h2>
+          <a href="https://laurentian.concat.ca/eg/opac/record/341138">Laurentian library catalogue</a>
         </section>
         <section>
           <h2>Further resources</h2>
