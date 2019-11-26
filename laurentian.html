@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <script src="js/sigma.require.js"></script>
+    <script src="js/sigma.parsers.json.min.js"></script>
+    <script src="js/sigma.renderers.edgeLabels.min.js"></script>
+    <script src="js/sigma.renderers.parallelEdges.min.js"></script>
+    <style>
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  text-transform: none;
+}
+.reveal .smaller {
+  font-size: 70%;
+}
+#graphcontainer {
+  max-width: 80%;
+  height: 80%;
+  margin: auto;
+}
+    </style>
+  </head>
+  <body>
+            <div id="graphcontainer"></div>
+  <script>
+    data = {
+      "nodes": [
+        {
+          "id": "n0",
+          "label": "Laurentian University",
+          "x": 1,
+          "y": 1,
+          "size": 3
+        },
+        {
+          "id": "n1",
+          "label": "Robert Haché",
+          "x": 2,
+          "y": 2,
+          "size": 3
+        },
+        {
+          "id": "n2",
+          "label": "Waldemar Koczkodaj",
+          "x": 0,
+          "y": 2,
+          "size": 3
+        },
+        {
+          "id": "n3",
+          "label": "Reza",
+          "x": 1,
+          "y": 0,
+          "size": 3
+        }
+      ],
+      "edges": [
+        {
+          "id": "e01",
+          "source": "n0",
+          "target": "n1",
+          "label": "employs",
+          "type": "curvedArrow",
+          "count": 1
+        },
+        {
+          "id": "e11",
+          "source": "n0",
+          "target": "n2",
+          "label": "teachesAt",
+          "type": "curvedArrow",
+          "count": 1
+        },
+        {
+          "id": "e21",
+          "source": "n0",
+          "target": "n3",
+          "label": "hasStudent",
+          "type": "curvedArrow",
+          "count": 2
+        },
+        {
+          "id": "e22",
+          "source": "n3",
+          "target": "n0",
+          "label": "enrolledIn",
+          "type": "curvedArrow",
+          "count": 2
+        },
+        {
+          "id": "e0",
+          "source": "n1",
+          "target": "n0",
+          "type": "curvedArrow",
+          "label": "presidentOf"
+        },
+        {
+          "id": "e1",
+          "source": "n2",
+          "target": "n0",
+          "type": "curvedArrow",
+          "label": "employs"
+        }
+      ]
+    };
+    s = new sigma({ 
+      graph: data,
+      renderer: {
+        container: 'graphcontainer',
+        type: 'canvas'
+      },
+      settings: {
+        defaultNodeColor: '#ec5148',
+        sideMargin: 0.5,
+        edgeLabelSize: 'proportional',
+        enableEdgeHovering: true,
+        minArrowSize: 10
+      }
+    });
+  </script>
+</body>

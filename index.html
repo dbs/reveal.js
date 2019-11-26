@@ -39,7 +39,7 @@
             <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></p>
             <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
           </div>
-          <p property="dateCreated datePublished">2019-09-07 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          <p property="dateCreated datePublished">2019-11-26 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
           </p>
         </section>
         <section>
@@ -91,28 +91,23 @@
           </section>
         </section>
         <section>
-          <section><h2>Modelling today's gathering</h2></section>
+          <section><h2>Modelling universities</h2></section>
           <section>
-            <h3>People</h3>
+            <h3>Entity-relationship diagram</h3>
+            <img src="images/university_members.png">
+          </section>
+          <section>
+            <h3>Relational</h3>
             <table>
               <thead>
-                <tr><th>Type or class</th><th>Instance</th></tr>
+                <tr><th>Table</th><th>Columns</th></tr>
               </thead>
               <tbody>
-                <tr><td>Organizers</td><td>Em, David</td></tr>
-                <tr><td>Attendees</td><td>You*</td></tr>
-                <tr><td>Speakers</td><td>Kelsey, Dan</td></tr>
+                <tr><td>University</td><td> <b>id</b> (PK), name, founding date, location, ...</tr>
+                <tr><td>UniversityPerson</td><td> <b>id</b> (PK), <em>university</em> (FK), <em>person</em> (FK), role</tr>
+                <tr><td>Person</td><td> <b>id</b> (PK), name, birth date, death date, ...</tr>
               </tbody>
             </table>
-            <aside class="notes">
-              We could model this a number of ways:
-              <ul>
-                <li>All of these classes may directly be subclasses of People</li>
-                <li>Each of the instances might belong to multiple classes</li>
-                <li>We might be interested in the relationships between the instances of the classes</li>
-                <li>We might want to know attributes (email address, etc) of the people</li>
-              </ul>
-            </aside>
           </section>
           <section>
             <h3>Entities and relationships: graphs</h3>
@@ -126,6 +121,9 @@
               distinctions, but in most linked data discussions they're
               interchangeable.
             </aside>
+          </section>
+          <section data-background-iframe="laurentian.html" data-background-interactive>
+            <h3>Graph</h3>
           </section>
         </section>
         <section>
@@ -189,153 +187,6 @@
             </aside>
           </section>
         </section>
-                <section>
-                    <section>
-                        <h2>Knowledge Graph Search API</h2>
-                        <ul>
-                            <li>Google taketh away but also giveth:
-                                <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a></li>
-                        </ul>
-                    </section>
-                    <section data-background="images/kg_api_console.png">
-                        <div class="fragment bgb">
-                        <ul>
-                            <li class="bgb">Enable the API in the <a href="https://console.developers.google.com/apis/dashboard?project=knowledge-graph-searching">Google API Console</a></li>
-                            <li class="bgb">Daily quota of 100,000 requests, 17,000 "Discovery" requests</li>
-                            <li class="bgb">Undocumented result limit of 200; defaults to 20</li>
-                        </ul>
-                        </div>
-                        <aside class="notes">
-                            I've never triggered a "discovery" request. No idea what those are.
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>Knowledge Graph Discovery Widget</h2>
-                        <pre><code>&lt;head&gt;
-  &lt;link type="text/css" rel="stylesheet"
-    href="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.css"&gt;
-  &lt;style&gt;.kge-search-picker { width: 25em; }&lt;/style&gt;
-  &lt;script type="text/javascript"
-    src="https://www.gstatic.com/knowledge/kgsearch/widget/1.0/widget.min.js"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;form id='myform'&gt;
-    &lt;label&gt;Search: &lt;input type="text" id="myinput"&gt;&lt;/label&gt;
-  &lt;/form&gt;
-  &lt;script&gt;
-    KGSearchWidget(API_KEY, document.getElementById('myinput'), {});
-  &lt;/script&gt;
-&lt;/body&gt;</code></pre>
-                        <p><a href="https://stuff.coffeecode.net/2016/ohiodevfest/kgdiscovery.html">Awesome live demo!</a></p>
-                        <aside class="notes">
-                            <p><em>Primary use:</em> find IDs for entities in the Knowledge Graph</p>
-                            <p>Search can be constrained to particular types (from schema.org) like Book or Person</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>KG Search API: Requests</h2>
-                        <ul>
-                            <li>Same general constraints (type, limit) as the widget
-                                <ul>
-                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;query=john+kasich">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">query=john+kasich</span></a></li>
-                                </ul>
-                            </li>
-                            <li>Can also request specific KG IDs:
-                                <ul>
-                                    <li><a href="https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;ids=/m/02zzm_">https://kgsearch.googleapis.com/v1/entities:search?key=$API_KEY&amp;<span class="highlight">ids=/m/02zzm_</span></a></li>
-                                </ul>
-                            </li>
-                            <aside class="notes">
-                                Either way, the results look like the following:
-                            </aside>
-                    </section>
-                    <section>
-                        <h2>KG Search API: Results</h2>
-                        <pre><code>{ "@context": {
-    "@vocab": "http://schema.org/",
-    "goog": "http://schema.googleapis.com/",
-    "EntitySearchResult": "goog:EntitySearchResult",
-    "detailedDescription": "goog:detailedDescription",
-    "resultScore": "goog:resultScore",
-    "kg": "http://g.co/kg"
-  },
-  "@type": "ItemList", "itemListElement": [
-    {
-      "@type": "EntitySearchResult",
-      "result": {
-        "@id": "kg:/m/02zzm_",
-        "name": "John Kasich",
-        "@type": [ "Person", "Thing" ],
-        "description": "Governor of Ohio",
-        "image": {
-          "contentUrl": "http://t1.gstatic.com/images?q=tbn:ANd9GcRoou4pZKD6FoNaE71ngNlv4RGgUS46mgtin5YJtyEoh42CIs4x",
-          "url": "https://en.wikipedia.org/wiki/John_Kasich"
-        },
-        "detailedDescription": {
-          "articleBody": "John Richard Kasich is an American politician, the 69th and current Governor of Ohio. First elected in 2010 and re-elected in 2014, Kasich is a member of the Republican Party. His term is set to end by January 2019.\n",
-          "url": "https://en.wikipedia.org/wiki/John_Kasich",
-          "license": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
-        },
-        "url": "https://johnkasich.com"
-      },
-      "resultScore": 22.28808
-    }
-  ]
-}
-                        </code></pre>
-
-                    </section>
-                    <section>
-                        <h2>Knowledge Graph IDs</h2>
-                        <pre><code>"kg": "http://g.co/kg"
-...
-"@id": "kg:/m/02zzm_"</code></pre>
-                        <p>So: <a href="http://g.co/kg/m/02zzm_">http://g.co/kg/m/02zzm_</a></p>
-                        <p>URIs don't have to resolve, but it's nice when they do!</p>
-                        <aside class="notes">
-                            So the Knowledge Graph gives you IDs for entities that you can associate and augment with your own data.
-                            <p>Those are the same IDs you get back from the Discovery Widget.</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>Knowledge Graph API problems</h2>
-                        <ul>
-                            <li>Limited constraints = poor precision
-                                <ul>
-                                    <li class="fragment">Can't limit to name of the entity</li>
-                                </ul>
-                            </li>
-
-                            <li>Type mapping to schema.org loses more precision
-                                <ul>
-                                    <li class="fragment">A <em>Fictional character</em> is a <em>Thing</em>, not <em>Person</em></li>
-                                </ul>
-                            </li>
-                            <li>Simplistic entity results: no facts, no relationships
-                                <ul>
-                                    <li class="fragment"><em>When was John Kasich born?</em> - no birthdate returned</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <aside class="notes">
-                            <p>Search cannot be constrained to just the name of the entity, so "Buffy" returns references found anywhere in the description of the entity</p>
-                            <p>Compounded by having to use https://schema.org/Thing for many old Freeweb types like "Fictional Universe" or "Fictional Character" -- "Person" filters out fictional characters, so books / tv shows / actors who played the role show up</p>
-                            <p>The results contain only disconnected entities; none of the relationships to other entities in the graph are reflected in the results. Many of the properties used in Google's results are missing (e.g. birth date)</p>
-                            <p>The Graph is a lie!</p>
-                            <p>One could download the 250GB Freebase data dump and reconstruct the relationships based on the IDs (most of the KG IDs were inherited from Freebase), but that data is now rapidly aging. Who's the President-Elect now?</p>
-                        </aside>
-                    </section>
-                    <section>
-                        <h2>Knowledge Graph: entity relations</h2>
-                        <blockquote>Note: The Knowledge Graph Search API
-                            returns only individual matching entities, rather
-                            than graphs of interconnected entities. If you need
-                            the latter, we recommend using data dumps from
-                            Wikidata instead.</blockquote>
-                        <a href="https://developers.google.com/knowledge-graph/">https://developers.google.com/knowledge-graph/</a>
-                        <aside class="notes">At least Google is upfront about this limitation!</aside>
-                    </section>
-                </section>
         <section>
           <section><h2>Vocabularies and ontologies</h2></section>
           <section>
@@ -438,6 +289,41 @@
               There are other options, like <a href="http://linkeddatafragments.org/">Linked Data Fragments</a>,
               but we don't have time to cover any of these in depth!
             </aside>
+          </section>
+        </section>
+        <section>
+            <section>
+            <h2>Origins of Wikidata</h2>
+            <ul>
+              <li class="fragment">Wikipedia (and the many Wikipedias)</li>
+              <li class="fragment">Wikimedia Commons</li>
+              <li class="fragment">The Wikimedia Foundation</li>
+              <li class="fragment">A human-editable repository of linked data under the CC-0 license</li>
+              <li class="fragment">Now over 75 million items</li>
+            </ul>
+          </section>
+          <section>
+            <h2>What kind of data?</h2>
+            <ul>
+              <li class="fragment">Must fulfill <a href="https://www.wikidata.org/wiki/Wikidata:Notability">Wikidata's notability policy</a>:
+                <ul>
+                  <li class="fragment">It contains a valid sitelink to a Wikimedia Foundation project page</li>
+                  <li class="fragment">It refers to an instance of a clearly identifiable conceptual or material entity. The entity must be notable, in the sense that it can be described using serious and publicly available references</li>
+                  <li class="fragment">Or fulfills some structural need--supporting another item</li>
+                  <li class="fragment">Tension between trying to represent everything that would benefit from a multilingual representation in Wikipedia &amp; related projects, without tackling literally everything - there is a space for MusicBrainz and other subject-dedicated projects</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Wikidata runs on Wikibase -- all open source software</h2>
+            <ul>
+              <li class="fragment">Wikipedia (PHP + MySQL + Apache)</li>
+              <li class="fragment">Wikibase extension for Wikipedia</li>
+              <li class="fragment">ElasticSearch (full text search)</li>
+              <li class="fragment">BlazeGraph triple store (query service)</li>
+              <li class="fragment">Nginx (query service proxy)</li>
+            </ul>
           </section>
         </section>
         <section>
@@ -595,7 +481,28 @@ LIMIT 100</code></pre></a>
               </li>
               <li>Change the display type from the standard table to a map by clicking the eye icon</li>
             </ol>
+            <aside class="notes">
+              This has the effect of filtering out any universities that do not have coordinates. It's like an INNER JOIN in SQL.
+            </aside>
+          </section>
+          <section>
+            <h2>Wikidata SPARQL: subclasses and OPTIONAL</h2>
+            <p>Let's focus on Canadian universities</p>
+            <a href="https://query.wikidata.org/#%23%20show%20instances%20%26%20subclasses%20of%20Canadian%20universities%20on%20a%20map%0A%23defaultView%3AMap%0A%0ASELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ3918%20.%20%23%20instances%20of%20and%20subclasses%20of%20university%0A%20%20%3Fs%20wdt%3AP31%20%3FinstanceOf%20.%20%20%20%20%20%20%20%20%23%20instance%20of%20what%3F%0A%20%20%3Fs%20wdt%3AP17%20wd%3AQ16%20.%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20in%20Canada%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3FinstanceOf%20rdfs%3Alabel%20%3FinstanceLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%20%20%23%20give%20us%20the%20English%20label%0A%20%20FILTER%28LANG%28%3FinstanceLabel%29%20%3D%20%22en%22%29%20.%20%20%23%20give%20us%20the%20English%20label%0A%20%20OPTIONAL%7B%3Fs%20wdt%3AP625%20%3Fcoords%7D%20.%20%23%20and%20coordinates%2C%20if%20possible%0A%7D%20ORDER%20BY%20%3FsLabel%0A"><pre><code># show instances & subclasses of Canadian universities on a map
+#defaultView:Map
 
+SELECT * WHERE {
+  ?s wdt:P31/wdt:P279* wd:Q3918 . # instances of and subclasses of university
+  ?s wdt:P31 ?instanceOf .        # instance of what?
+  ?s wdt:P17 wd:Q16 .             # in Canada
+  ?s rdfs:label ?sLabel .
+  ?instanceOf rdfs:label ?instanceLabel .
+  FILTER(LANG(?sLabel) = "en") .  # give us the English label
+  FILTER(LANG(?instanceLabel) = "en") .  # give us the English label
+  OPTIONAL{?s wdt:P625 ?coords} . # and coordinates, if possible
+}
+ORDER BY ?sLabel</code></pre></a>
+              <aside class="notes">If we switch back to the Table view, we can easily see universities lacking coordinates. And fix them!</aside>
           </section>
           <section>
             <h2>Wikidata SPARQL: aggregates</h2>
@@ -639,14 +546,27 @@ LIMIT 100</code></pre></a></li>
         </section>
         <section>
           <h2>In practice</h2>
-          <a href="https://laurentian.concat.ca/eg/opac/record/341138">Laurentian library catalogue</a>
+          <ul>
+            <li><a href="https://laurentian.concat.ca/eg/opac/record/341138">Laurentian library catalogue</a></li>
+            <li><a href="https://search.library.wisc.edu/catalog/9910309575802121">University of Wisconsin library</a></li>
+        </ul>
+        </section>
+        <section>
+          <h2>A few research directions</h2>
+          <ul>
+            <li>Ontology development</li>
+            <li>Information retrieval</li>
+            <li>Data quality</li>
+          </ul>
         </section>
         <section>
           <h2>Further resources</h2>
           <ul>
+            <li><a href="https://stuff.coffeecode.net/2018/wikidata_mcgill_sis/">McGill Wikidata workshop (2018)</a></li>
             <li><a href="https://coffeecode.net/linked-data-introductory-resources.html">Linked
                 data introductory resources</a> - a blog post in which I have
               aggregated videos, presentations, articles, and books</li>
+            <li class="citation" rev="author" typeof="ScholarlyArticle" resource="http://journal.code4lib.org/articles/13424"><span property="author" typeof="Person" resource="https://orcid.org/0000-0002-7507-5838"><span property="name">Allison-Cassin, S.</span></span>, &amp; Scott, D. (<span property="datePublished">2018</span>). <span property="name">Wikidata: a platform for your library’s linked open data</span>. <em typeof="Periodical" resource="http://journal.code4lib.org/"><span property="name">The Code4Lib Journal</span></em>, (<span typeof="PublicationIssue" resource="https://journal.code4lib.org/issues/issues/issue40"><span property="issueNumber">40</span><link property="isPartOf" href="http://journal.code4lib.org/"></span>). Retrieved from <a href="http://journal.code4lib.org/articles/13424">http://journal.code4lib.org/articles/13424</a><link property="isPartOf" href="https://journal.code4lib.org/issues/issues/issue40"></li>
           </ul>
         </section>
 			</div>
