@@ -36,7 +36,7 @@
           <h1 property="name">Linked data for relational minds</h1>
           <div property="author" typeof="Person" resource="https://dscott.ca/#i">
             <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
-            <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></p>
+            <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></span></p>
             <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
           </div>
           <p property="dateCreated datePublished">2020-03-10 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
@@ -52,11 +52,12 @@
               <p>
               Relational databases rock!
               </p>
+            </aside>
           </section>
           <section>
             <h3>But there is another way…</h3>
           </section>
-          <section data-background="images/tim_berners_lee.jpg" alt="Portrait of Tim Berners-Lee" />
+          <section data-background="images/tim_berners_lee.jpg" alt="Portrait of Tim Berners-Lee">
             <span class="fragment">Image credit: <a href="https://www.wikidata.org/wiki/Q20202034">Paul Clarke</a> on <a href="https://commons.wikimedia.org/wiki/File:Sir_Tim_Berners-Lee_(cropped).jpg">Wikimedia Commons</a> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></span>
             <aside class="notes">
               Tuesday, March 12th, 2019 was celebrated as the 30th anniversary
@@ -315,7 +316,7 @@
           <section>
             <h3>Published linked data examples</h3>
             <ul>
-              <li>Human-readable with inline RDFa: <a href="https://dscott.ca/#i">https://dscott.ca/#i</a></li>
+              <li>Human-readable with inline RDFa: <a href="https://dscott.ca/#i">https://dscott.ca/#i</a> - <a href="http://linter.structured-data.org/?url=https:%2F%2Fdscott.ca%2F#i">extract it</a></li>
               <li>Turtle (Terse Triple Language): <a href="https://dscott.ca/index.ttli">https://dscott.ca/#i</a></li>
               <li>RDF/XML: <a href="https://dscott.ca/index.rdf">https://dscott.ca/#i</a></li>
             </ul>
@@ -407,7 +408,7 @@ LIMIT 10</code></pre></a></li>
             <ol>
               <li>Add a statement that asks for the <code>rdfs:label</code> of the subject.</li>
               <li>Add a statement that asks for the <code>rdfs:label</code> of the country.</li>
-              <li>Add a <code>LIMIT 100</code> clause to keep things fast.</li>
+              <li>Add a <code>LIMIT 100</code> clause to keep things fast.
                 <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country .
