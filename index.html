@@ -140,8 +140,7 @@
             </table>
           </section>
           <section>
-            <h3>Resource Description Framework (RDF)</h3>
-            <p>Use HTTP URIs (web addresses) to identify things:</p>
+            <h3>RDF: using HTTP URIs</h3>
             <table class="smaller">
               <thead>
                 <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
@@ -154,8 +153,7 @@
             </table>
           </section>
           <section>
-            <h3>Resource Description Framework (RDF)</h3>
-            <p>Use HTTP URIs (web addresses) to identify things:</p>
+            <h3>RDF: using HTTP URIs</h3>
             <table class="smaller">
               <thead>
                 <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
@@ -168,8 +166,7 @@
             </table>
           </section>
           <section>
-            <h3>Resource Description Framework (RDF)</h3>
-            <p>Use HTTP URIs (web addresses) to identify properties:</p>
+            <h3>RDF: using HTTP URIs</h3>
             <table class="smaller">
               <thead>
                 <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
@@ -182,8 +179,7 @@
             </table>
           </section>
           <section>
-            <h3>Resource Description Framework (RDF)</h3>
-            <p>Use expressive literals</p>
+            <h3>RDF: using expressive literals</h3>
             <table class="smaller">
               <thead>
                 <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
@@ -192,8 +188,8 @@
                 <tr><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
                 <tr><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
                 <tr><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>"1821"^^xsd:gYear</td></tr>
-                <tr><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montreal"@en</td></tr>
-                <tr><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montréal"@fr</td></tr>
+                <tr class="property"><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montreal"@en</td></tr>
+                <tr class="property"><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montréal"@fr</td></tr>
               </tbody>
             </table>
             <p class="fragment">These three-part statements are called <em>triples</em>.</p>
@@ -279,7 +275,7 @@
           <section>
             <h3>Syntaxes</h3>
             <ul>
-              <li>Inline syntax: <a href="https://json-ld.org/">JSON-LD</a>, <a href="https://rdfa.info/">RDFa</a>, microdata</li>
+              <li>Embedded within HTML: <a href="https://json-ld.org/">JSON-LD</a>, <a href="https://rdfa.info/">RDFa</a>, microdata</li>
               <li>Parallel data (<em>content negotiation</em>): Turtle, RDF/XML, JSON-LD, NTriples, …</li>
             </ul>
             <aside class="notes">
@@ -315,117 +311,118 @@
             </aside>
           </section>
           <section>
-            <h3>Published linked data examples</h3>
+            <h3>Published linked data example</h3>
             <ul>
-              <li>Human-readable with inline RDFa: <a href="https://dscott.ca/#i">https://dscott.ca/#i</a> - <a href="http://linter.structured-data.org/?url=https:%2F%2Fdscott.ca%2F#i">extract it</a></li>
-              <li>Turtle (Terse Triple Language): <a href="https://dscott.ca/index.ttli">https://dscott.ca/#i</a></li>
+              <li>Human-readable with inline RDFa: <a href="https://dscott.ca/#i">https://dscott.ca/#i</a> - <a href="http://linter.structured-data.org/?url=https:%2F%2Fdscott.ca%2F#i">(extract)</a></li>
+              <li>Turtle (Terse Triple Language): <a href="https://dscott.ca/index.ttl">https://dscott.ca/#i</a></li>
+              <li>JSON-LD: <a href="https://dscott.ca/index.json">https://dscott.ca/#i</a></li>
               <li>RDF/XML: <a href="https://dscott.ca/index.rdf">https://dscott.ca/#i</a></li>
             </ul>
         </section>
+      </section>
+      <section>
         <section>
-          <section>
-            <h2>Querying linked data: <abbr title="SPARQL Protocol and Query Language">SPARQL</abbr></h2>
-            <ul>
-              <li>Just different enough from SQL to be confusing 😕
-                <ul>
-                  <li><code>SELECT</code> variables rather than columns</li>
-                  <li>No <code>FROM</code> clause: just the entire dataset of triples!</li>
-                  <li><code>WHERE</code> clause creates a pattern for the triples you want</li>
-                  <li>No <code>JOIN</code>s: relationships between entities</li>
-                  <li><code>FILTER</code> attribute values to narrow further</li>
-                </ul>
-              </li>
-            </ul>
-          </section>
-          <section>
-            <h2>Hands-on with Wikidata: randomness</h2>
-            <ol>
-              <li>Open <a href="https://query.wikidata.org/">query.wikidata.org</a> in a browser.</li>
-              <li>On the right hand side, type the following query:
-                <pre><code>SELECT * WHERE {
-  ?s ?p ?o
+          <h2>Querying linked data: <abbr title="SPARQL Protocol and Query Language">SPARQL</abbr></h2>
+          <ul>
+            <li>Just different enough from SQL to be confusing 😕
+              <ul>
+                <li><code>SELECT</code> variables rather than columns</li>
+                <li>No <code>FROM</code> clause: just the entire dataset of triples!</li>
+                <li><code>WHERE</code> clause creates a pattern for the triples you want</li>
+                <li>No <code>JOIN</code>s: relationships between entities</li>
+                <li><code>FILTER</code> attribute values to narrow further</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hands-on with Wikidata: randomness</h2>
+          <ol>
+            <li>Open <a href="https://query.wikidata.org/">query.wikidata.org</a> in a browser.</li>
+            <li>On the right hand side, type the following query:
+              <pre><code>SELECT * WHERE {
+?s ?p ?o
 }
 LIMIT 10</code></pre></li>
-                <li>Press <code>CTRL + ENTER</code>, or click the arrow button on the left, to submit the query.</li>
-            </ol>
-            <aside class="notes">
-              Wikidata is one of the largest sets of openly queryable RDF data.
-              It has a rich ontology with thousands of classes and properties.
-              <p>
-              Note, however, the data it contains may not be complete, current,
-              or accurate. (This is arguably true of any large-scale store of
-              data!)
-              </p>
-            </aside>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: McGill</h2>
-            <ol>
-              <li>Let's get something less random. Change <code>?o</code> to <code>"McGill University"</code>: 
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%22McGill%20University%22%0A%7D%0ALIMIT%2010"><pre><code>SELECT * WHERE {
+              <li>Press <code>CTRL + ENTER</code>, or click the arrow button on the left, to submit the query.</li>
+          </ol>
+          <aside class="notes">
+            Wikidata is one of the largest sets of openly queryable RDF data.
+            It has a rich ontology with thousands of classes and properties.
+            <p>
+            Note, however, the data it contains may not be complete, current,
+            or accurate. (This is arguably true of any large-scale store of
+            data!)
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: McGill</h2>
+          <ol>
+            <li>Let's get something less random. Change <code>?o</code> to <code>"McGill University"</code>: 
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20%3Fp%20%22McGill%20University%22%0A%7D%0ALIMIT%2010"><pre><code>SELECT * WHERE {
   ?s ?p "McGill University"
 }
 LIMIT 10</code></pre></a></li>
-                <li>Two of the subjects should be <a href="http://www.wikidata.org/entity/Q201492">Q201492</a>. Click on one of them to see the structured data about McGill University.</li>
-            </ol>
-            <aside class="notes">
-              Wikidata uses Q-numbers instead of "natural keys" to identify
-              entities because it wants to support many different languages.
-              <p>
-              The first statement for McGill was <a href="https://www.wikidata.org/wiki/Property:P31">"instance of (P31)"</a> <a href="http://www.wikidata.org/entity/Q3918">"university (Q3918)"</a>.
-              </p>
-            </aside>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: Universities</h2>
-            Let's retrieve all instances of universities in Wikidata:
-            <ol>
-              <li>Change your predicate to <code>wdt:P31</code> (<em>instance of</em>).</li>
-              <li>Change your object to <code>wd:Q3918</code> (<em>university</em>).
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%0A%7D"><pre><code>SELECT * WHERE {
+              <li>Two of the subjects should be <a href="http://www.wikidata.org/entity/Q201492">Q201492</a>. Click on one of them to see the structured data about McGill University.</li>
+          </ol>
+          <aside class="notes">
+            Wikidata uses Q-numbers instead of "natural keys" to identify
+            entities because it wants to support many different languages.
+            <p>
+            The first statement for McGill was <a href="https://www.wikidata.org/wiki/Property:P31">"instance of (P31)"</a> <a href="http://www.wikidata.org/entity/Q3918">"university (Q3918)"</a>.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: Universities</h2>
+          Let's retrieve all instances of universities in Wikidata:
+          <ol>
+            <li>Change your predicate to <code>wdt:P31</code> (<em>instance of</em>).</li>
+            <li>Change your object to <code>wd:Q3918</code> (<em>university</em>).
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%0A%7D"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918
 }</code></pre></a></li>
-            </ol>
-            <ul>
-              <li><code>wdt:</code> = "truthiness"</li>
-              <li><code>wd:</code> = entity</li>
-            </ul>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: countries</h2>
-            Let's get the countries for each university in Wikidata:
-            <ol>
-              <li>Append the "AND" operator (a period <code>.</code>) to your first statement.</li>
-              <li>Add a statement that asks for the country (predicate = <code>wdt:P17</code>) for the subject and store the value in a new variable, <code>?country</code>.
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%0A%7D"><pre><code>SELECT * WHERE {
+          </ol>
+          <ul>
+            <li><code>wdt:</code> = "truthiness"</li>
+            <li><code>wd:</code> = entity</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: countries</h2>
+          Let's get the countries for each university in Wikidata:
+          <ol>
+            <li>Append the "AND" operator (a period <code>.</code>) to your first statement.</li>
+            <li>Add a statement that asks for the country (predicate = <code>wdt:P17</code>) for the subject and store the value in a new variable, <code>?country</code>.
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%0A%7D"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country
 }</code></pre></a></li>
-            </ol>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: labels!</h2>
-            Okay, we need human-friendly labels.
-            <ol>
-              <li>Add a statement that asks for the <code>rdfs:label</code> of the subject.</li>
-              <li>Add a statement that asks for the <code>rdfs:label</code> of the country.</li>
-              <li>Add a <code>LIMIT 100</code> clause to keep things fast.
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+          </ol>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: labels!</h2>
+          Okay, we need human-friendly labels.
+          <ol>
+            <li>Ask for the <code>rdfs:label</code> of the subject.</li>
+            <li>Ask for the <code>rdfs:label</code> of the country.</li>
+            <li>Add a <code>LIMIT 100</code> clause to keep things fast.
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country .
   ?s rdfs:label ?sLabel .
   ?country rdfs:label ?countryLabel .
 }
 LIMIT 100</code></pre></a></li>
-            </ol>
-            <p>Don't forget the "AND" operator (period <code>.</code>) for your statements!</p>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: English labels!</h2>
-            Okay, we really need labels in a particular language.
-            <ol>
-              <li>Add FILTER statements that restrict the language of each label to "en" (<code>FILTER(LANG(?countryLabel) = "en")</code>)
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+          </ol>
+          <p>Don't forget the "AND" operator (period <code>.</code>) for your statements!</p>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: English labels!</h2>
+          <ol>
+            <li>Add FILTER statements that restrict the language of each label to "en" (<code>FILTER(LANG(?countryLabel) = "en")</code>)
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country .
   ?s rdfs:label ?sLabel .
@@ -434,19 +431,19 @@ LIMIT 100</code></pre></a></li>
   FILTER(LANG(?countryLabel) = "en") .
 }
 LIMIT 100</code></pre></a></li>
-            </ol>
-            <aside class="notes">
-              Wikidata has an extension to SPARQL called a label service that
-              is faster and easily supports multiple languages, but this works
-              as a decent example for using FILTER.
-            </aside>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: ORDER</h2>
-            Let's sort the results in order of country name.
-            <ol>
-              <li>Add an <code>ORDER BY ?countryLabel</code> clause just before the <code>LIMIT</code> clause:
-                <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+          </ol>
+          <aside class="notes">
+            Wikidata has an extension to SPARQL called a label service that
+            is faster and easily supports multiple languages, but this works
+            as a decent example for using FILTER.
+          </aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: ORDER</h2>
+          Sort the results by country name.
+          <ol>
+            <li>Add an <code>ORDER BY ?countryLabel</code> clause just before the <code>LIMIT</code> clause:
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country .
   ?s rdfs:label ?sLabel .
@@ -456,15 +453,56 @@ LIMIT 100</code></pre></a></li>
 }
 ORDER BY ?countryLabel
 LIMIT 100</code></pre></a></li>
-            </ol>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: aggregates</h2>
-            SPARQL can count and group too:
-            <ol>
-              <li>Change your <code>SELECT</code> clause to select <code>?countryLabel (COUNT (?s) AS ?cnt)</code>.</li>
-              <li>Add an <code>GROUP BY DESC(?cnt)</code> clause just before the <code>ORDER BY</code> clause:
-                <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
+          </ol>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: on a map</h2>
+          <ol>
+            <li>Add a clause requesting <code>P625</code> (coordinates) and store it in a <code>?coords</code> variable:
+<a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%20%20%3Fs%20wdt%3AP625%20%3Fcoords%20.%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  ?s rdfs:label ?sLabel .
+  ?country rdfs:label ?countryLabel .
+  FILTER(LANG(?sLabel) = "en") .
+  FILTER(LANG(?countryLabel) = "en") .
+  ?s wdt:P625 ?coords .
+}
+ORDER BY ?countryLabel
+LIMIT 100</code></pre></a>
+            </li>
+            <li>Change the display type from the standard table to a map by clicking the eye icon</li>
+          </ol>
+          <aside class="notes">
+            This has the effect of filtering out any universities that do not have coordinates. It's like an INNER JOIN in SQL.
+          </aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: subclasses and OPTIONAL</h2>
+          <p>Let's focus on Canadian universities</p>
+          <a href="https://query.wikidata.org/#%23%20show%20instances%20%26%20subclasses%20of%20Canadian%20universities%20on%20a%20map%0A%23defaultView%3AMap%0A%0ASELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%2Fwdt%3AP279%2a%20wd%3AQ3918%20.%20%23%20instances%20of%20and%20subclasses%20of%20university%0A%20%20%3Fs%20wdt%3AP31%20%3FinstanceOf%20.%20%20%20%20%20%20%20%20%23%20instance%20of%20what%3F%0A%20%20%3Fs%20wdt%3AP17%20wd%3AQ16%20.%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20in%20Canada%0A%20%20%3Fs%20rdfs%3Alabel%20%3FsLabel%20.%0A%20%20%3FinstanceOf%20rdfs%3Alabel%20%3FinstanceLabel%20.%0A%20%20FILTER%28LANG%28%3FsLabel%29%20%3D%20%22en%22%29%20.%20%20%23%20give%20us%20the%20English%20label%0A%20%20FILTER%28LANG%28%3FinstanceLabel%29%20%3D%20%22en%22%29%20.%20%20%23%20give%20us%20the%20English%20label%0A%20%20OPTIONAL%7B%3Fs%20wdt%3AP625%20%3Fcoords%7D%20.%20%23%20and%20coordinates%2C%20if%20possible%0A%7D%20ORDER%20BY%20%3FsLabel%0A"><pre><code># show instances & subclasses of Canadian universities on a map
+#defaultView:Map
+
+SELECT * WHERE {
+  ?s wdt:P31/wdt:P279* wd:Q3918 . # instances of and subclasses of university
+  ?s wdt:P31 ?instanceOf .        # instance of what?
+  ?s wdt:P17 wd:Q16 .             # in Canada
+  ?s rdfs:label ?sLabel .
+  ?instanceOf rdfs:label ?instanceLabel .
+  FILTER(LANG(?sLabel) = "en") .  # give us the English label
+  FILTER(LANG(?instanceLabel) = "en") .  # give us the English label
+  OPTIONAL{?s wdt:P625 ?coords} . # and coordinates, if possible
+}
+ORDER BY ?sLabel</code></pre></a>
+            <aside class="notes">If we switch back to the Table view, we can easily see universities lacking coordinates. And fix them!</aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: aggregates</h2>
+          SPARQL can count and group too:
+          <ol>
+            <li>Change your <code>SELECT</code> clause to select <code>?countryLabel (COUNT (?s) AS ?cnt)</code>.</li>
+            <li>Add an <code>GROUP BY DESC(?cnt)</code> clause just before the <code>ORDER BY</code> clause:
+              <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
   ?s wdt:P31 wd:Q3918 .
   ?s wdt:P17 ?country .
   ?country rdfs:label ?countryLabel .
@@ -473,39 +511,40 @@ LIMIT 100</code></pre></a></li>
 GROUP BY ?countryLabel
 ORDER BY DESC(?cnt)
 LIMIT 100</code></pre></a></li>
-            </ol>
-            <aside class="notes">
-              The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
-            </aside>
-          </section>
-          <section>
-            <h2>Wikidata SPARQL: HAVING filter</h2>
-            SPARQL can filter aggregate results
-            <ol>
-              <li>Add a <code>HAVING(COUNT(?s) &lt;= 50)</code> clause just before the <code>ORDER BY</code> clause:
-                <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20%3Fpopulation%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20%3Fcountry%20wdt%3AP1082%20%3Fpopulation%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%20%3Fpopulation%0AHAVING%28COUNT%28%3Fs%29%20%3C%3D%2050%29%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
-  ?s wdt:P31 wd:Q3918 .
-  ?s wdt:P17 ?country .
-  ?country rdfs:label ?countryLabel .
-  FILTER(LANG(?countryLabel) = "en") .
+          </ol>
+          <aside class="notes">
+            The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
+          </aside>
+        </section>
+        <section>
+          <h2>Wikidata SPARQL: HAVING filter</h2>
+          SPARQL can filter aggregate results
+          <ol>
+            <li>Add a <code>HAVING(COUNT(?s) &lt;= 50)</code> clause just before the <code>ORDER BY</code> clause:
+              <a href="https://query.wikidata.org/#SELECT%20%3FcountryLabel%20%28COUNT%20%28%3Fs%29%20AS%20%3Fcnt%29%20%3Fpopulation%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20%3Fcountry%20rdfs%3Alabel%20%3FcountryLabel%20.%0A%20%20%3Fcountry%20wdt%3AP1082%20%3Fpopulation%20.%0A%20%20FILTER%28LANG%28%3FcountryLabel%29%20%3D%20%22en%22%29%20.%0A%7D%0AGROUP%20BY%20%3FcountryLabel%20%3Fpopulation%0AHAVING%28COUNT%28%3Fs%29%20%3C%3D%2050%29%0AORDER%20BY%20DESC%28%3Fcnt%29%0ALIMIT%20100"><pre><code>SELECT ?countryLabel (COUNT (?s) AS ?cnt) WHERE {
+?s wdt:P31 wd:Q3918 .
+?s wdt:P17 ?country .
+?country rdfs:label ?countryLabel .
+FILTER(LANG(?countryLabel) = "en") .
 }
 GROUP BY ?countryLabel
 HAVING(COUNT(?s) &lt;= 50)
 ORDER BY DESC(?cnt)
 LIMIT 100</code></pre></a></li>
-            </ol>
-            <aside class="notes">
-              The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
-            </aside>
-          </section>
+          </ol>
+          <aside class="notes">
+            The aggregate functions defined in SPARQL 1.1 are COUNT, SUM, MIN, MAX, AVG, GROUP_CONCAT, and SAMPLE.
+          </aside>
         </section>
+      </section>
+      <section>
         <section>
           <h2>Supporting exploratory search</h2>
-          <p>We can help users learn while searching by tapping into Wikidata for more context:</p>
+          <p>Help users learn while searching by tapping into Wikidata:</p>
           <ul>
             <li><a href="https://laurentian.concat.ca/eg/opac/record/341156?expand=marchtml">Laurentian library catalogue</a></li>
             <li><a href="https://search.library.wisc.edu/catalog/9910309575802121">University of Wisconsin library</a></li>
-        </ul>
+          </ul>
         </section>
         <section>
           <h2>Further resources</h2>
@@ -516,6 +555,7 @@ LIMIT 100</code></pre></a></li>
               available to McGill students)</li>
           </ul>
         </section>
+      </section>
 			</div>
 		</div>
 
