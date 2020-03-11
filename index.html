@@ -40,7 +40,7 @@
             <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></p>
             <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
           </div>
-          <p property="dateCreated datePublished">2019-03-15 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          <p property="dateCreated datePublished">2020-03-10 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
           </p>
         </section>
         <section>
@@ -92,45 +92,6 @@
           </section>
         </section>
         <section>
-          <section><h2>Modelling today's class</h2></section>
-          <section>
-            <h3>People</h3>
-            <table>
-              <thead>
-                <tr><th>Type or class</th><th>Instance</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Professor</td><td>Dr. Guastavino</td></tr>
-                <tr><td>Student</td><td>You*</td></tr>
-                <tr><td>Teaching assistant</td><td>Richard Yanaky</td></tr>
-                <tr><td>Guest lecturer</td><td>Dan Scott</td></tr>
-              </tbody>
-            </table>
-            <aside class="notes">
-              We could model this a number of ways:
-              <ul>
-                <li>All of these classes may directly be subclasses of People</li>
-                <li>There could be an Instructor class that Professor, Teaching Assistant, and Guest lecturer are subclasses of</li>
-                <li>We might be interested in the relationships between the instances of the classes</li>
-                <li>We might want to know attributes (email address, etc) of the people</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <h3>Entities and relationships: graphs</h3>
-            <ul>
-              <li>A set of nodes, vertices, or points connected by edges, arcs, or lines</li>
-            </ul>
-            <aside class="notes">
-              These are different terms for what are essentially the same
-              things when discussing sets of linked data. The usage depends on
-              the speaker, and in very specific domains might have important
-              distinctions, but in most linked data discussions they're
-              interchangeable.
-            </aside>
-          </section>
-        </section>
-        <section>
           <section>
             <h2>Linked data principles</h2>
             <ol>
@@ -168,12 +129,70 @@
             <p>Use HTTP URIs (web addresses) to identify things:</p>
             <table class="smaller">
               <thead>
-                <tr><th>Subject</th><th>Predicate</th><th>Object</th></tr>
+                <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
               </thead>
               <tbody>
-                <tr class="fragment"><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
-                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
-                <tr class="fragment"><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>"1821"^^xsd:gYear</td></tr>
+                <tr><td>https://dscott.ca/#i</td><td>member of</td><td>McGill University</td></tr>
+                <tr><td>McGill University</td><td>location</td><td>Montreal</td></tr>
+                <tr><td>McGill University</td><td>founding date</td><td>1821</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Resource Description Framework (RDF)</h3>
+            <p>Use HTTP URIs (web addresses) to identify things:</p>
+            <table class="smaller">
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>https://dscott.ca/#i</td><td>member of</td><td>https://mcgill.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>location</td><td>Montreal</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>founding date</td><td>1821</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Resource Description Framework (RDF)</h3>
+            <p>Use HTTP URIs (web addresses) to identify things:</p>
+            <table class="smaller">
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>https://dscott.ca/#i</td><td>member of</td><td>https://mcgill.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>location</td><td>https://ville.montreal.qc.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>founding date</td><td>1821</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Resource Description Framework (RDF)</h3>
+            <p>Use HTTP URIs (web addresses) to identify properties:</p>
+            <table class="smaller">
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>1821</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Resource Description Framework (RDF)</h3>
+            <p>Use expressive literals</p>
+            <table class="smaller">
+              <thead>
+                <tr><th>Subject</th><th>Predicate</th><th>Object-or-value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>https://dscott.ca/#i</td><td>http://schema.org/memberOf</td><td>https://mcgill.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>http://schema.org/location</td><td>https://ville.montreal.qc.ca/</td></tr>
+                <tr><td>https://mcgill.ca/</td><td>http://schema.org/foundingDate</td><td>"1821"^^xsd:gYear</td></tr>
+                <tr><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montreal"@en</td></tr>
+                <tr><td>https://ville.montreal.qc.ca/</td><td>http://schema.org/name</td><td>"Montréal"@fr</td></tr>
               </tbody>
             </table>
             <p class="fragment">These three-part statements are called <em>triples</em>.</p>
@@ -272,7 +291,7 @@
               <p>
               BTW you can extract the RDFa that I embedded into the title slide
               of this presentation using <a
-              href="https://search.google.com/structured-data/testing-tool#url=https%3A%2F%2Fstuff.coffeecode.net%2F2019%2Flinked_data_relational_minds">Google's Structured Data Testing Tool</a>
+              href="https://search.google.com/structured-data/testing-tool#url=https%3A%2F%2Fstuff.coffeecode.net%2F2020%2Flinked_data_relational_minds">Google's Structured Data Testing Tool</a>
               </p>
             </aside>
           </section>
