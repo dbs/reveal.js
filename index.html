@@ -279,8 +279,8 @@
             <li>But crawling the web is a lot of work!</li>
             <li>A <em>knowledge graph</em> is a set of queryable linked data, organized via an ontology, that represents entities and their relationships</li>
             <li>Google Knowledge Graph</li>
-            <li>DBPedia</li>
-            <li>Wikidata</li>
+            <li>DBPedia: linked data extracted from Wikipedia</li>
+            <li>Wikidata: linked data supporting all Wikimedia Foundation products</li>
           </ul>
         </section>
       </section>
@@ -402,6 +402,60 @@ LIMIT 100</code></pre></a></li>
             as a decent example for using FILTER.
           </aside>
         </section>
+        <section>
+          <h2>Wikidata SPARQL: English labels!</h2>
+          <ol>
+            <li>Replace the FILTER statements with Wikidata's fast label service:
+              <a href="https://query.wikidata.org/#SELECT%20%2a%20WHERE%20%7B%0A%20%20%3Fs%20wdt%3AP31%20wd%3AQ3918%20.%0A%20%20%3Fs%20wdt%3AP17%20%3Fcountry%20.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0ALIMIT%20100"><pre><code>SELECT * WHERE {
+  ?s wdt:P31 wd:Q3918 .
+  ?s wdt:P17 ?country .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT 100</code></pre></a></li>
+          </ol>
+          <aside class="notes">
+            Wikidata has an extension to SPARQL called a label service that
+            is faster and easily supports multiple languages, but this works
+            as a decent example for using FILTER.
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section><h2>Hands on app time!</h2>
+        <section>
+          <h3>Get the code and try it out</h3>
+          <ul>
+            <li>Open <a href="https://stuff.coffeecode.net/2020/devfest/code">https://stuff.coffeecode.net/2020/devfest/code</a>
+              in your browser</li>
+            <li>Download the files</li>
+            <li>Start up a web server in the directory with the files:
+              <ul>
+                <li>php -S localhost:8000</li>
+                <li>python -m http.server</li>
+                <li>npx http-server -p 8000</li>
+                <li>An actual web server</li>
+              </ul>
+            </li>
+            <li>Point your web browser at <a href="http://localhost:8000/">http://localhost:8000/</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Progressively enhance</h3>
+          <ul>
+            <li>We start basic: just a list of pets with their Wikidata concept URIs</li>
+            <li>At each stage, I add a chunk of vanilla JavaScript
+              <ul>
+                <li>Simple DOM manipulation</li>
+                <li>Iteratively building the SPARQL query</li>
+                <li>Parsing and displaying the results (<em>entity summarization</em>)</li>
+              </ul>
+            </li>
+            <li>Get your hands dirty! Get more data, or try a different dataset!</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section><h2>Advanced SPARQL</h2></section>
         <section>
           <h2>Wikidata SPARQL: ORDER</h2>
           Sort the results by country name.
