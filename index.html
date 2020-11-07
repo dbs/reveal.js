@@ -34,30 +34,16 @@
 		<div class="reveal">
 			<div class="slides">
         <section>
-          <h1 property="name">Linked data for relational minds</h1>
+          <h1 property="name">Enriching applications with linked data</h1>
           <div property="author" typeof="Person" resource="https://dscott.ca/#i">
             <p><span property="name">Dan Scott</span> &lt;<a property="url" href="https://dscott.ca/#i">https://dscott.ca/#i</a>&gt;</p>
             <p class="smaller"><span property="affiliation" typeof="OrganizationRole"><span property="roleName">PhD student</span>, <span property="affiliation" typeof="CollegeOrUniversity" resource="https://mcgill.ca/"><a property="url" href="https://mcgill.ca/"><span property="name">McGill University</span></a></span></span></p>
             <p class="smaller"><span property="jobTitle">Associate Librarian</span>, <span property="worksFor" typeof="CollegeOrUniversity" resource="https://laurentian.ca/"><a property="url" href="https://laurentian.ca/"><span property="name">Laurentian University</span></a></span></p>
           </div>
-          <p><span property="dateCreated datePublished">2020-03-11</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+          <p><span property="dateCreated datePublished">2020-11-07</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" style="padding-left: 2em;"><img alt="Creative Commons License" style="border-width:0; vertical-align: middle" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
           </p>
         </section>
         <section>
-          <section>
-            <h2>I love relational databases</h2>
-            <aside class="notes">
-              I spent eight years at IBM working in the data management division
-              of Software Group, responsible for documentation, information
-              architecture, programming, and product planning.
-              <p>
-              Relational databases rock!
-              </p>
-            </aside>
-          </section>
-          <section>
-            <h3>But there is another way…</h3>
-          </section>
           <section data-background="images/tim_berners_lee.jpg" alt="Portrait of Tim Berners-Lee">
             <span class="fragment">Image credit: <a href="https://www.wikidata.org/wiki/Q20202034">Paul Clarke</a> on <a href="https://commons.wikimedia.org/wiki/File:Sir_Tim_Berners-Lee_(cropped).jpg">Wikimedia Commons</a> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></span>
             <aside class="notes">
@@ -253,20 +239,6 @@
               </p>
             </aside>
           </section>
-          <section>
-            <h3>Notable vocabularies/ontologies</h3>
-            <ul>
-              <li><a href="http://xmlns.com/foaf/spec/"><abbr title="Friend of a Friend">FOAF</abbr></a> - linking people</li>
-              <li><a href="http://schema.org/">schema.org</a> - general vocabulary, led by search engines</li>
-              <li><a href="https://www.w3.org/2004/02/skos/"><abbr title="Simple Knowledge Organization System">SKOS</abbr></a> - thesauri, taxonomies, classification schemes</li>
-              <li><a href="http://www.loc.gov/bibframe/"><abbr title="Bibliographic Framework">BIBFRAME</abbr></a> - bibliographic description; replacement for MARC 21</li>
-            </ul>
-            <aside class="notes">
-              Not surprisingly, schema.org has had a ton of adoption as
-              organizations strive to get their products and services more
-              visible in search engines.
-            </aside>
-          </section>
         </section>
         <section>
           <section>
@@ -293,24 +265,6 @@
             </aside>
           </section>
           <section>
-            <h3>Common approaches</h3>
-            <ul>
-              <li>Inline: modify HTML templates</li>
-              <li>Content negotiation:
-                <ul>
-                  <li>Different templates</li>
-                  <li><a href="https://www.w3.org/TR/r2rml/"><abbr title="Relational to RDF Mapping Language">R2RML</abbr></a> - mapping database tables to RDF</li>
-                </ul>
-              </li>
-              <li>SPARQL endpoint (for queries)</li>
-              <li>Data dumps</li>
-            </ul>
-            <aside class="notes">
-              There are other options, like <a href="http://linkeddatafragments.org/">Linked Data Fragments</a>,
-              but we don't have time to cover any of these in depth!
-            </aside>
-          </section>
-          <section>
             <h3>Published linked data example</h3>
             <ul>
               <li>Human-readable with inline RDFa: <a href="https://dscott.ca/#i">https://dscott.ca/#i</a> - <a href="http://linter.structured-data.org/?url=https:%2F%2Fdscott.ca%2F#i">(extract)</a></li>
@@ -318,6 +272,16 @@
               <li>JSON-LD: <a href="https://dscott.ca/index.json">https://dscott.ca/#i</a></li>
               <li>RDF/XML: <a href="https://dscott.ca/index.rdf">https://dscott.ca/#i</a></li>
             </ul>
+        </section>
+        <section>
+          <h3>Knowledge graphs</h3>
+          <ul>
+            <li>But crawling the web is a lot of work!</li>
+            <li>A <em>knowledge graph</em> is a set of queryable linked data, organized via an ontology, that represents entities and their relationships</li>
+            <li>Google Knowledge Graph</li>
+            <li>DBPedia</li>
+            <li>Wikidata</li>
+          </ul>
         </section>
       </section>
       <section>
@@ -540,7 +504,7 @@ LIMIT 100</code></pre></a></li>
       <section>
         <section>
           <h2>Supporting exploratory search</h2>
-          <p>Help users learn while searching by tapping into Wikidata:</p>
+          <p>Helping users learn while searching by tapping into Wikidata:</p>
           <ul>
             <li><a href="https://laurentian.concat.ca/eg/opac/record/341156?expand=marchtml">Laurentian library catalogue</a></li>
             <li><a href="https://search.library.wisc.edu/catalog/9910309575802121">University of Wisconsin library</a></li>
@@ -551,8 +515,7 @@ LIMIT 100</code></pre></a></li>
           <ul>
             <li><a href="https://coffeecode.net/linked-data-introductory-resources.html">Linked
                 data introductory resources</a> - a blog post in which I have
-              aggregated videos, presentations, articles, and books (all
-              available to McGill students)</li>
+              aggregated videos, presentations, articles, and books</li>
           </ul>
         </section>
       </section>
